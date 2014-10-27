@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<!--[if lt IE 7]>      <html class="lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html class="lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html class="lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!--> 
+<html class=""> <!--<![endif]-->
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>{% block title %}{% endblock %}</title>
+  <meta name="keywords" content="{% block keywords %}{% endblock %}" />
+  <meta name="description" content="{% block description %}{% endblock %}" />
+ {#  <meta content="{{ csrf_token('site') }}" name="csrf-token" /> #}
+  
+  {% block stylesheets %}
+    <link href="asset/css/bootstrap.min.css" rel="stylesheet">
+    <link href="asset/css/web.css" rel="stylesheet">
+
+  {% endblock %}
+
+  {% block head_scripts %}{% endblock %}
+
+</head>
+<body>
+  {% include 'web/views/public/head.html.twig' %}
+
+  {% block body %}
+
+  {% endblock %}
+
+  {% include 'web/views/public/bottom.html.twig' %}
+  <script>
+   var app = {};
+    app.jspath="./";
+  </script>
+  <script src="asset/js/sea-modules/seajs/seajs/2.2.1/sea.js"></script>
+  <script src="asset/js/seajs-config.js"></script>
+  <script>
+  seajs.use("asset/lib/index")
+  </script>
+</body>
+</html>
