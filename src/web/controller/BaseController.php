@@ -1,5 +1,8 @@
 <?php
-require_once 'vendor/twig/twig/lib/Twig/Autoloader.php';
+namespace src\web\controller;
+
+use Twig_Loader_Filesystem;
+use Twig_Environment;
 
 class BaseController 
 {
@@ -11,7 +14,7 @@ class BaseController
 
     public function render($tpl,$array=array())
     {
-        Twig_Autoloader::register();
+        /*Twig_Autoloader::register();*/
 
         $loader = new Twig_Loader_Filesystem('src');
         $twig = new Twig_Environment($loader);
@@ -23,11 +26,11 @@ class BaseController
     {   
         $serviceName=explode(":", $serviceName);
 
-        require_once("src/services/".$serviceName[0]."/Impl/".$serviceName[1]."ServiceImpl.php");
-
         $class=$serviceName[1]."ServiceImpl";
         
-        return new $class;
+        $className="src\\services\\".$serviceName[0]."\\Impl\\".$class;
+        
+        return new $className;
     }
 }
 

@@ -1,5 +1,6 @@
 <?php
-
+namespace src\services;
+use PDO;
 class BaseDao
 {   
     public function getConnection()

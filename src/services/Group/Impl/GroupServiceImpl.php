@@ -1,6 +1,8 @@
 <?php
-require 'src/services/BaseService.php';
-require 'src/services/Group/GroupService.php';
+namespace src\services\Group\Impl;
+
+use src\services\BaseService;
+use src\services\Group\GroupService;
 
 class GroupServiceImpl extends BaseService implements GroupService
 {

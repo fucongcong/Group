@@ -2,6 +2,10 @@
 
 $rounting=include("src/web/routing.php");
 
+$loader = require __DIR__.'/vendor/autoload.php';
+
+$loader->setUseIncludePath(true);
+
 if($rounting[$_SERVER['REQUEST_URI']]){
 
     $rount=$rounting[$_SERVER['REQUEST_URI']];
