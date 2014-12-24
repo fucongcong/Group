@@ -12,7 +12,7 @@
   <meta name="keywords" content="{% block keywords %}{% endblock %}" />
   <meta name="description" content="{% block description %}{% endblock %}" />
  {#  <meta content="{{ csrf_token('site') }}" name="csrf-token" /> #}
-  
+
   {% block stylesheets %}
     <link href="asset/css/bootstrap.min.css" rel="stylesheet">
     <link href="asset/css/web.css" rel="stylesheet">
@@ -23,21 +23,31 @@
 
 </head>
 <body>
-  {% include 'web/views/public/head.html.twig' %}
+{#   {% include 'web/views/public/head.html.twig' %} #}
 
   {% block body %}
-
+  <!--head-->
+        
+       <div class="homepage-feature homepage-feature-slides ">
+          <a href="http://www.qiqiuyu.com/"><img src="http://www.qiqiuyu.com/files/default/2014/10-23/205006edc818248854.png?4.1.0"></a>
+<a href="http://open.edusoho.com"><img src="http://www.qiqiuyu.com/files/default/2014/10-24/155234264731150631.jpg?4.2.0"></a>
+<a href="http://www.qiqiuyu.com/group/5/thread/11"><img src="http://www.qiqiuyu.com/files/default/2014/10-21/113957d6a3b8136524.png?4.1.0"></a>
+          <div class="cycle-pager"></div>
+            <div class="slide-nav cycle-prev"><span class="iconfont icon-zuojiantou"></span></div>
+            <div class="slide-nav cycle-next"><span class="iconfont icon-jiantou"></span>
+          </div>
+       </div>
   {% endblock %}
 
-  {% include 'web/views/public/bottom.html.twig' %}
+{#   {% include 'web/views/public/bottom.html.twig' %} #}
   <script>
    var app = {};
-    app.jspath="./";
+    app.jspath="/asset/js/sea-modules";
   </script>
   <script src="asset/js/sea-modules/seajs/seajs/2.2.1/sea.js"></script>
   <script src="asset/js/seajs-config.js"></script>
   <script>
-  seajs.use("asset/lib/index")
+  seajs.use("/asset/lib/index")
   </script>
 </body>
 </html>

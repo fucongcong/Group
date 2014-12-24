@@ -2,9 +2,13 @@ seajs.config({
 
   // 别名配置
   alias: {
-    'json': 'asset/js/sea-modules/gallery/json/1.0.3/json',
-    'jquery': 'asset/js/sea-modules/jquery/jquery/2.1.0/jquery',
-    'bootstrap': 'asset/js/common/bootstrap'
+    'json': 'gallery/json/1.0.3/json',
+    'jquery': 'jquery/jquery/1.10.1/jquery',
+    '$-debug': 'jquery/jquery/1.10.1/jquery-debug',
+    '$': 'jquery/jquery/1.10.1/jquery',
+    "jquery.cycle2": "jquery-plugin/cycle2/2013.08.01/cycle2",
+    'bootstrap': 'gallery2/bootstrap/3.1.1/bootstrap',
+    'slider': 'gumutianqi/bootstrap-slider/2.0.0/bootstrap-slider',
   },
 
 /*  // 路径配置
@@ -24,7 +28,8 @@ seajs.config({
 
   // 预加载项
   preload: [
-    this.JSON ? '' : 'json'
+    this.JSON ? '' : 'json',
+
   ],
 
 /*  // 调试模式
