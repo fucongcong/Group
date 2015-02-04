@@ -16,19 +16,27 @@ seajs.config({
     'gallery': 'https://a.alipayobjects.com/gallery'
   },*/
 
+//require('gallery/aaaa')相当于require('https://a.alipayobjects.com/gallery/aaaa')
   // 变量配置
   vars: {
     'locale': 'zh-cn'
   },
+/*define(function(require, exports, module) {
 
-/*  // 映射配置
-  map: [
-    ['http://example.com/js/app/', 'http://localhost/js/app/']
+  var lang = require('./i18n/{locale}.js');
+     //=> 加载的是 path/to/i18n/zh-cn.js
+
+});*/
+
+  // 映射配置
+/*  map:[
+    [ '.js', '-debug.js' ]
   ],*/
-
+//seajs.use("/asset/lib/index") use 了index-debug.js
   // 预加载项
   preload: [
     this.JSON ? '' : 'json',
+ /*   'slider'*/
 
   ],
 

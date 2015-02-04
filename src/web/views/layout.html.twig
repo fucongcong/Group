@@ -40,14 +40,19 @@
   {% endblock %}
 
 {#   {% include 'web/views/public/bottom.html.twig' %} #}
-  <script>
-   var app = {};
-    app.jspath="/asset/js/sea-modules";
-  </script>
-  <script src="asset/js/sea-modules/seajs/seajs/2.2.1/sea.js"></script>
-  <script src="asset/js/seajs-config.js"></script>
-  <script>
-  seajs.use("/asset/lib/index")
-  </script>
+  
+{# cmd  seajs: #}
+    <script>
+     var app = {};
+      app.jspath="/asset/js/sea-modules";
+    </script>
+    <script src="asset/js/sea-modules/seajs/seajs/2.2.1/sea.js"></script>
+    <script src="asset/js/seajs-config.js"></script>
+    <script>
+    seajs.use("/asset/lib/index")
+    </script>
+  
+{# amd  requirejs: #}
+  {# <script data-main="/asset/lib/index" src="/asset/lib/require.js"></script>#}
 </body>
 </html>
