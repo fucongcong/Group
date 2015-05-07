@@ -1,7 +1,7 @@
 <?php
-namespace src\Services;
+namespace core\Group\Services;
 
-class BaseService
+class Service
 {
     public function createDao($serviceName)
     {   

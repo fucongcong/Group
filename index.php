@@ -1,5 +1,5 @@
 <?php
-use vender\Group\Kernal;
+use core\Group\Kernal;
 
 $loader = require __DIR__.'/vendor/autoload.php';
 

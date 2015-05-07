@@ -1,7 +1,7 @@
 <?php
-namespace src\Services;
+namespace core\Group\Dao;
 use PDO;
-class BaseDao
+class Dao
 {   
     private static $connection;
 

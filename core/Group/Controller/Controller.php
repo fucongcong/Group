@@ -1,10 +1,10 @@
 <?php
-namespace src\web\Controller;
+namespace core\Group\Controller;
 
 use Twig_Loader_Filesystem;
 use Twig_Environment;
 
-class BaseController 
+class Controller 
 {
 
     public function __construct()

@@ -1,7 +1,7 @@
 <?php
-use src\web\Controller\BaseController;
+use core\Group\Controller\Controller;
 
-class DefaultController extends BaseController
+class DefaultController extends Controller
 {
     public function indexAction()
     {   

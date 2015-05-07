@@ -1,7 +1,7 @@
 <?php
-use src\web\Controller\BaseController;
+use core\Group\Controller\Controller;
 
-class GroupController extends BaseController
+class GroupController extends Controller
 {
     public function indexAction()
     {   

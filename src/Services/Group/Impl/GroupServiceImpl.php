@@ -1,10 +1,10 @@
 <?php
 namespace src\Services\Group\Impl;
 
-use src\Services\BaseService;
+use core\Group\Services\Service;
 use src\Services\Group\GroupService;
 
-class GroupServiceImpl extends BaseService implements GroupService
+class GroupServiceImpl extends Service implements GroupService
 {
 
     public function getGroup($id)

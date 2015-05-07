@@ -2,10 +2,10 @@
 
 namespace src\Services\Group\Dao\Impl;
 
-use src\Services\BaseDao;
+use core\Group\Dao\Dao;
 use src\Services\Group\Dao\GroupDao;
 use PDO;
-class GroupDaoImpl extends BaseDao implements GroupDao
+class GroupDaoImpl extends Dao implements GroupDao
 {
     protected $tables="groups";
 
