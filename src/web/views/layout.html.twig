@@ -23,15 +23,15 @@
 
 </head>
 <body>
-{#   {% include 'web/views/public/head.html.twig' %} #}
+<!-- {#   {% include 'web/views/public/head.html.twig' %} #} -->
 
   {% block body %}
   <!--head-->
         
        <div class="homepage-feature homepage-feature-slides ">
           <a href="http://www.qiqiuyu.com/"><img src="http://www.qiqiuyu.com/files/default/2014/10-23/205006edc818248854.png?4.1.0"></a>
-<a href="http://open.edusoho.com"><img src="http://www.qiqiuyu.com/files/default/2014/10-24/155234264731150631.jpg?4.2.0"></a>
-<a href="http://www.qiqiuyu.com/group/5/thread/11"><img src="http://www.qiqiuyu.com/files/default/2014/10-21/113957d6a3b8136524.png?4.1.0"></a>
+          <a href="http://open.edusoho.com"><img src="http://www.qiqiuyu.com/files/default/2014/10-24/155234264731150631.jpg?4.2.0"></a>
+          <a href="http://www.qiqiuyu.com/group/5/thread/11"><img src="http://www.qiqiuyu.com/files/default/2014/10-21/113957d6a3b8136524.png?4.1.0"></a>
           <div class="cycle-pager"></div>
             <div class="slide-nav cycle-prev"><span class="iconfont icon-zuojiantou"></span></div>
             <div class="slide-nav cycle-next"><span class="iconfont icon-jiantou"></span>
@@ -44,15 +44,15 @@
 {# cmd  seajs: #}
     <script>
      var app = {};
-      app.jspath="/asset/js/sea-modules";
+      app.jspath="/asset/lib/sea-modules";
     </script>
-    <script src="asset/js/sea-modules/seajs/seajs/2.2.1/sea.js"></script>
-    <script src="asset/js/seajs-config.js"></script>
+    <script src="asset/lib/sea-modules/seajs/seajs/2.2.1/sea.js"></script>
+    <script src="asset/lib/seajs-config.js"></script>
     <script>
-    seajs.use("/asset/lib/index")
+    seajs.use("/asset/js/index")
     </script>
   
 {# amd  requirejs: #}
-  {# <script data-main="/asset/lib/index" src="/asset/lib/require.js"></script>#}
+  {# <script data-main="/asset/js/index" src="/asset/js/require.js"></script>#}
 </body>
 </html>

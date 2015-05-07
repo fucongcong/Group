@@ -1,5 +1,5 @@
 <?php
-namespace src\services;
+namespace src\Services;
 
 class BaseService
 {
@@ -9,7 +9,7 @@ class BaseService
 
         $class=$serviceName[1]."DaoImpl";
         
-        $className="src\\services\\".$serviceName[0]."\\Dao\\Impl\\".$class;
+        $className="src\\Services\\".$serviceName[0]."\\Dao\\Impl\\".$class;
         
         return new $className;
     }

@@ -1,5 +1,5 @@
 <?php
-namespace src\web\controller;
+namespace src\web\Controller;
 
 use Twig_Loader_Filesystem;
 use Twig_Environment;
@@ -28,7 +28,7 @@ class BaseController
 
         $class=$serviceName[1]."ServiceImpl";
         
-        $className="src\\services\\".$serviceName[0]."\\Impl\\".$class;
+        $className="src\\Services\\".$serviceName[0]."\\Impl\\".$class;
         
         return new $className;
     }

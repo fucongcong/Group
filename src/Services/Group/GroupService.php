@@ -1,5 +1,5 @@
 <?php
-namespace src\services\Group;
+namespace src\Services\Group;
 
 interface GroupService 
 {

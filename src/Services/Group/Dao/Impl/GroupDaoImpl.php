@@ -1,9 +1,9 @@
 <?php
 
-namespace src\services\Group\Dao\Impl;
+namespace src\Services\Group\Dao\Impl;
 
-use src\services\BaseDao;
-use src\services\Group\Dao\GroupDao;
+use src\Services\BaseDao;
+use src\Services\Group\Dao\GroupDao;
 use PDO;
 class GroupDaoImpl extends BaseDao implements GroupDao
 {
