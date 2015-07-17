@@ -1,32 +1,17 @@
 <?php
 
 namespace core\Group;
+use core\Group\Routing\Route;
 
 Class Kernal
 {
     public function init()
     {   
-        $rounting = include 'src/web/routing.php';
 
         $this->fix_gpc_magic();
-
-        if ($rounting[$_SERVER['REQUEST_URI']]) {
-            $rount = $rounting[$_SERVER['REQUEST_URI']];
-
-            $rount = explode(':', $rount);
-
-            require_once 'src/'.$rount[0].'/Controller/'.$rount[1].'/'.$rount[1].'Controller.php';
-
-            $className = $rount[1].'Controller';
-
-            $class = new $className();
-
-            $action = $rount[2].'Action';
-
-            echo $class->$action();
-        } else {
-            echo '404页面不存在';
-        }
+        $route =new Route();
+        $route->run();
+        
     }
 
     public function fix_gpc_magic()

@@ -11,6 +11,14 @@ class GroupController extends Controller
             'group'=>$group));
     }
 
+    public function testAction($groupId, $id)
+    {   
+        //$group=$this->getGroupService()->getGroup(1);
+        echo $id;
+        return $this->render('web/views/Group/index.html.twig',array(
+            'group'=>$group));
+    }
+
     public function getGroupService()
     {
         return $this->createService("Group:Group");
