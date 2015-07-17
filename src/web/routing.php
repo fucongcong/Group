@@ -1,9 +1,6 @@
 <?php
 
 return array(
-/*    '/group'=>'web:Group:index',
-    '/'=>'web:Default:index',
-    */
 
     '/'=>[
     	'pattern' => 'homepage',
@@ -18,9 +15,9 @@ return array(
     ],
 
     '/user/{id}/group/{groupId}'=>[
-    	'pattern' => 'group',
+    	'pattern' => 'user_group',
     	'_controller' => 'web:Group:test',
-    	'methods' => 'GET',
+    	'methods' => 'Get',
     ],
 
 
