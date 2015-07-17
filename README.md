@@ -1,8 +1,8 @@
 Group
 =====
 
-初级MVC框架，整合了前段框架bootstrap，seajs.  后端分为controller,service,dao3层。
-基础类全部未封装.
+MVC框架，整合了前段框架bootstrap，seajs.模板引擎使用的是Twig(非常强大好用)  后端分为controller,service,dao3层。
+基础类簪未封装.
 
 
 如何配置：
@@ -12,7 +12,7 @@ Group
 config.php 为配置文件
 
 web文件夹下的routing.php 为路由配置
-新增路由匹配机制
+新增路由匹配机制（还将完善，目前还没有对methods和pattern做相应方法处理）
 
 src/routing.php:
 
