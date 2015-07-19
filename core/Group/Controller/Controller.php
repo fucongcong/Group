@@ -3,6 +3,7 @@ namespace core\Group\Controller;
 
 use Twig_Loader_Filesystem;
 use Twig_Environment;
+use core\Group\Twig\WebExtension;
 
 class Controller 
 {
@@ -14,11 +15,14 @@ class Controller
 
     public function render($tpl,$array=array())
     {
-        /*Twig_Autoloader::register();*/
 
         $loader = new Twig_Loader_Filesystem('src');
-        $twig = new Twig_Environment($loader);
 
+        $twig = new Twig_Environment($loader,array(
+         /*   'cache' =>'./cache/Temp'*/
+        ));
+
+        $twig->addExtension(new WebExtension());
         return $twig->render($tpl,$array);
     } 
 
