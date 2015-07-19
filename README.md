@@ -19,23 +19,29 @@ src/routing.php:
 
 	return array(
 
-		'/'=>[
-			'pattern' => 'homepage',
-			'_controller' => 'web:Default:index',
-			'methods' => 'GET',
-		],
+		    'homepage'=>[
+		    	'pattern' => '/',
+		    	'_controller' => 'web:Default:index',
+		    	'methods' => 'GET',
+		    ],
 
-		'/group/{id}'=>[
-			'pattern' => 'group',
-			'_controller' => 'web:Group:index',
-			'methods' => 'GET',
-		],
+		    'group'=>[
+		    	'pattern' => '/group/{id}',
+		    	'_controller' => 'web:Group:index',
+		    	'methods' => 'GET',
+		    ],
 
-		'/user/{id}/group/{groupId}'=>[
-			'pattern' => 'user_group',
-			'_controller' => 'web:Group:test',
-			'methods' => 'Get',
-		],
+		    'create_group'=>[
+		        'pattern' => '/group/{id}',
+		        '_controller' => 'web:Group:index',
+		        'methods' => 'POST',
+		    ],
+
+		    'user_group'=>[
+		    	'pattern' => '/user/{id}/group/{groupId}',
+		    	'_controller' => 'web:Group:test',
+		    	'methods' => 'GET',
+		    ],
 
 
 	);

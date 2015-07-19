@@ -1,13 +1,12 @@
 <?php
 namespace core\Group\Routing;
 
+use core\Group\Common\ArrayToolkit;
 Class Route
 {
-	protected $url;
-
 	protected $parameters = [];
 
-	protected $methods = ["GET", "PUT", "POST", "DELETE", "HEAD", "OPTIONS", "PATCH"];
+	protected $methods = ["GET", "PUT", "POST", "DELETE", "HEAD", "PATCH"];
 
 	public function __construct()
 	{
@@ -16,8 +15,7 @@ Class Route
 
 	public function match()
 	{
-		$routing = include 'src/web/routing.php';
-		$requestUri = $_SERVER['REQUEST_URI'];
+		$routing = $this->getRoute();
 
 		if ($routing[$requestUri]) {
 
@@ -110,5 +108,35 @@ Class Route
 	public function getParameters()
 	{
 		return $this->parameters ;
+	}
+
+	protected function getRoute()
+	{
+		$routing = include 'src/web/routing.php';
+		$requestUri = $_SERVER['REQUEST_URI'];
+
+		$routing = $this->checkMethods($routing);
+
+		$routing =ArrayToolkit::index($routing, 'pattern');
+		//cache #可以做cache层
+		return $routing;
+	}
+
+	protected function checkMethods($routing)
+	{	
+		//cache #可以做cache层
+		$config = array();
+
+		foreach ($routing as $key => $route) {
+		       
+		       if(isset($route['methods']) && !in_array(strtoupper($route['methods']), $this->methods)) continue;
+
+	                    if(isset($route['methods']) && $_SERVER['REQUEST_METHOD'] != strtoupper($route['methods']) ) continue;
+
+	                    $config[$key] = $route;
+
+		}
+
+		return $config;
 	}
 }
