@@ -14,7 +14,7 @@ class GroupController extends Controller
     public function testAction($groupId, $id)
     {   
         //$group=$this->getGroupService()->getGroup(1);
-        echo $id;
+
         return $this->render('web/views/Group/index.html.twig',array(
             'group'=>$group));
     }
