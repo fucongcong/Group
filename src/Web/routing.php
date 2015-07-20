@@ -10,7 +10,7 @@ return array(
 
     'group'=>[
     	'pattern' => '/group/{id}',
-    	'_controller' => 'Web:Group:Group:index',
+    	'_controller' => 'Web:Group:Group:test',
     	'methods' => 'GET',
     ],
 

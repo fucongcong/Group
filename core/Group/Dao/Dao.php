@@ -3,22 +3,22 @@ namespace core\Group\Dao;
 use PDO;
 class Dao
 {   
-	private static $connection;
+	private static $_connection;
 
 	public function getConnection()
 	{   
-		if (self::$connection) {
+		if (self::$_connection) {
 
-		    return self::$connection;
+		    return self::$_connection;
 		}
 
 		$config=include("config.php");
 
-		$connection = new PDO($config['database_driver'].":host=".$config['database_host'].";dbname=".$config['database_name'],$config['database_user'],$config['database_password']);
+		$_connection = new PDO($config['database_driver'].":host=".$config['database_host'].";dbname=".$config['database_name'],$config['database_user'],$config['database_password']);
 
-		self::$connection = $connection;
+		self::$_connection = $_connection;
 
-		return $connection; 
+		return $_connection; 
 	}
 }
 

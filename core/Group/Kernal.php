@@ -1,16 +1,21 @@
 <?php
 
 namespace core\Group;
-use core\Group\Routing\Route;
+use core\Group\Routing\Router;
 
 Class Kernal
-{
+{	
+    	public function __construct($environment)
+    	{
+	        date_default_timezone_set('PRC');
+
+    	}
+
 	public function init()
 	{   
 		$this->fix_gpc_magic();
-		$route =new Route();
-		$route->run();
-	    
+		$router =new Router();
+		$router->run();	    
 	}
 
 	public function fix_gpc_magic()

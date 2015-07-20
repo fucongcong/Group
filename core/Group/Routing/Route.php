@@ -6,98 +6,31 @@ use core\Group\Container\Container;
 use Exception;
 Class Route
 {
-	protected $parameters = [];
+	protected $container;
 
-	protected $methods = ["GET", "PUT", "POST", "DELETE", "HEAD", "PATCH"];
+	protected $action;
 
-	public function __construct()
+	protected $uri;
+
+	protected $methods;
+
+	protected $parameters;
+
+	protected $parametersName;
+
+	private static $_instance;
+
+    	 /**
+	 * Set the container instance on the route.
+	 *
+	 * @param  \core\Group\Container\Container  $container
+	 * @return $this
+	 */
+ 	public function setContainer(Container $container)
 	{
-		
-	}
+		$this->container = $container;
 
-	public function match()
-	{	
-		$requestUri = $_SERVER['REQUEST_URI'];
-
-		$routing = $this->getRoute();
-
-		if ($routing[$requestUri]) {
-
-			return $this->controller($routing[$requestUri]);
-
-		}
-
-		foreach ($routing as $route_key => $route) {
-			
-			preg_match_all('/{(.*?)}/', $route_key, $matches);
-			
-			$config = "";
-
-			if ($matches[0]) {
-				
-				$config = $this->pregUrl($matches, $route_key, $routing);
-			}
-
-			if ($config) {
-				
-				return $this->controller($config);
-			}			
-		}
-
-		$this->controller(array('_controller'=>"Web:Error:NotFound:index"));
-
-	}
-
-	public  function run()
-	{	
-		return $this->match();
-	}
-
-	public function pregUrl($matches, $route_key, $routing) 
-	{
-		$route = $route_key;
-		foreach ($matches[0] as $key => $match) {
-
-			$regex = str_replace($match, "(\S+)", $route_key);
-			$route_key = $regex;
-
-			$regex = str_replace("/", "\/", $regex);
-
-			$parameters[] = $match;
-		}
-
-		$this->setParameters($parameters);
-
-		if (preg_match_all('/^'.$regex.'$/', $_SERVER['REQUEST_URI'], $values)) {
-			
-			$config = $routing[$route];
-			$config['parameters'] = $this->mergeParameters($parameters, $values); 
-			return  $config;
-		}
-
-		return false;
-	}
-
-	public function controller($config)
-	{	
-		$_controller = explode(':', $config['_controller']);
-
-		$className = 'src\\'.$_controller[0].'\\Controller\\'.$_controller[1].'\\'.$_controller[2].'Controller';
-
-		$action = $_controller[3].'Action';
-
-	            echo Container::getInstance()->doAction($className, $action, isset($config['parameters']) ? $config['parameters'] : array());
-
-	}
-
-	public function mergeParameters($parameters, $values)
-	{	
-		foreach ($parameters as $key => $parameter) {
-			
-			$parameterValue[$parameter] = $values[$key+1][0]; 
-		}
-
-		return $parameterValue;
+		return $this;
 	}
 
 	public function setParameters($parameters)
@@ -105,37 +38,59 @@ Class Route
 		$this->parameters = $parameters;
 	}
 
+	public function getParametersName()
+	{
+		return $this->parametersName ;
+	}
+
+	public function setParametersName($parametersName)
+	{
+		$this->parametersName = $parametersName;
+	}
+
 	public function getParameters()
 	{
 		return $this->parameters ;
 	}
 
-	protected function getRoute()
+	public function setAction($action)
 	{
-		$routing = include 'src/Web/routing.php';
-
-		$routing = $this->checkMethods($routing);
-
-		$routing =ArrayToolkit::index($routing, 'pattern');
-		//cache #可以做cache层
-		return $routing;
+		$this->action = $action;
 	}
 
-	protected function checkMethods($routing)
-	{	
-		//cache #可以做cache层
-		$config = array();
+	public function getAction()
+	{
+		return $this->action ;
+	}
 
-		foreach ($routing as $key => $route) {
-		       
-		       if(isset($route['methods']) && !in_array(strtoupper($route['methods']), $this->methods)) continue;
+	public function setUri($uri)
+	{
+		$this->uri = $uri;
+	}
 
-	                    if(isset($route['methods']) && $_SERVER['REQUEST_METHOD'] != strtoupper($route['methods']) ) continue;
+	public function getUri()
+	{
+		return $this->uri ;
+	}
 
-	                    $config[$key] = $route;
+	public function setMethods($methods)
+	{
+		$this->methods = $methods;
+	}
 
+	public function getMethods()
+	{
+		return $this->methods ;
+	}
+
+	public static function getInstance(){
+
+		if(!(self::$_instance instanceof self)){
+
+			self::$_instance = new self;
 		}
 
-		return $config;
+		return self::$_instance;
 	}
+
 }

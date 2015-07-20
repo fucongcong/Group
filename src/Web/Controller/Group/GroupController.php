@@ -13,8 +13,20 @@ class GroupController extends Controller
             'group'=>$group));
     }
 
-    public function testAction($groupId, $id)
+    public function testAction($id)
     {   
+        echo $id;
+        
+        echo $this->route()->getUri();
+
+        print_r($this->route()->getParameters());
+
+        print_r($this->route()->getParametersName());
+
+        echo $this->route()->getAction();
+
+        print_r($this->route()->getMethods());
+
         //$group=$this->getGroupService()->getGroup(1);
         return $this->render('Web/Views/Group/index.html.twig',array(
             'group'=>$group));
