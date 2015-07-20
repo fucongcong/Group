@@ -5,15 +5,10 @@ use Twig_Loader_Filesystem;
 use Twig_Environment;
 use core\Group\Twig\WebExtension;
 use core\Group\Container\Container;
+use core\Group\Controller\BaseController;
 
-class Controller 
-{
-
-	public function __construct()
-	{
-	    
-	}   
-
+class Controller  extends BaseController
+{	
 	public function render($tpl,$array=array())
 	{
 

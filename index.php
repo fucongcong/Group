@@ -5,7 +5,8 @@ $loader = require __DIR__.'/vendor/autoload.php';
 
 $loader->setUseIncludePath(true);
 
-$kernal = new Kernal();
+//dev,prod
+$kernal = new Kernal("dev");
 
 $kernal->init();
 
