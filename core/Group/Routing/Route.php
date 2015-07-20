@@ -44,7 +44,7 @@ Class Route
 			}			
 		}
 
-		$this->controller(array('_controller'=>"web:Error:NotFound:index"));
+		$this->controller(array('_controller'=>"Web:Error:NotFound:index"));
 
 	}
 
@@ -112,7 +112,7 @@ Class Route
 
 	protected function getRoute()
 	{
-		$routing = include 'src/web/routing.php';
+		$routing = include 'src/Web/routing.php';
 
 		$routing = $this->checkMethods($routing);
 

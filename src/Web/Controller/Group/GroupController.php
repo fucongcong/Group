@@ -9,14 +9,14 @@ class GroupController extends Controller
     {   
         //$group=$this->getGroupService()->getGroup(1);
 
-        return $this->render('web/views/Group/index.html.twig',array(
+        return $this->render('Web/Views/Group/index.html.twig',array(
             'group'=>$group));
     }
 
     public function testAction($groupId, $id)
     {   
         //$group=$this->getGroupService()->getGroup(1);
-        return $this->render('web/views/Group/index.html.twig',array(
+        return $this->render('Web/Views/Group/index.html.twig',array(
             'group'=>$group));
     }
 
