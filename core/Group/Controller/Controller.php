@@ -9,39 +9,39 @@ use core\Group\Container\Container;
 class Controller 
 {
 
-    public function __construct()
-    {
-        
-    }   
+	public function __construct()
+	{
+	    
+	}   
 
-    public function render($tpl,$array=array())
-    {
+	public function render($tpl,$array=array())
+	{
 
-        $loader = new Twig_Loader_Filesystem('src');
+		$loader = new Twig_Loader_Filesystem('src');
 
-        $twig = new Twig_Environment($loader,array(
-         /*   'cache' =>'./cache/Temp'*/
-        ));
+		$twig = new Twig_Environment($loader,array(
+		 /*   'cache' =>'./cache/Temp'*/
+		));
 
-        $twig->addExtension(new WebExtension());
-        return $twig->render($tpl,$array);
-    } 
+		$twig->addExtension(new WebExtension());
+		return $twig->render($tpl,$array);
+	} 
 
-    public function createService($serviceName)
-    {   
-        $serviceName=explode(":", $serviceName);
+	public function createService($serviceName)
+	{   
+		$serviceName=explode(":", $serviceName);
 
-        $class=$serviceName[1]."ServiceImpl";
-        
-        $className="src\\Services\\".$serviceName[0]."\\Impl\\".$class;
-        
-        return new $className;
-    }
+		$class=$serviceName[1]."ServiceImpl";
 
-    public function getContainer()
-    {
-        return Container::getInstance();
-    }
+		$className="src\\Services\\".$serviceName[0]."\\Impl\\".$class;
+
+		return new $className;
+	}
+
+	public function getContainer()
+	{
+    		return Container::getInstance();
+	}
 }
 
 ?>
