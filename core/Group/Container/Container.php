@@ -3,6 +3,7 @@ namespace core\Group\Container;
 
 use ReflectionClass;
 use Exception;
+use core\Group\Exception\NotFoundException;
 
 class Container
 {
@@ -12,7 +13,8 @@ class Container
 	{   
 		if (!class_exists($class)) {
 
-		throw new Exception("Class ".$class." not found !");
+			throw new NotFoundException("Class ".$class." not found !");
+
 		}
 
 		$reflector = new ReflectionClass($class);
@@ -25,7 +27,7 @@ class Container
 		$reflector = $this->buildMoudle($class);
 		if(!$reflector->hasMethod($action)) {
 
-			throw new Exception("Class ".$class." exist but the action ".$action." not found");
+			throw new NotFoundException("Class ".$class." exist ,But the Action ".$action." not found");
 		}
 
 		$instanc =$reflector->newInstanceArgs();

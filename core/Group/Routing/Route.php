@@ -44,7 +44,7 @@ Class Route
 			}			
 		}
 
-		echo "404";
+		$this->controller(array('_controller'=>"web:Error:NotFound:index"));
 
 	}
 
