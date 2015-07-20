@@ -1,4 +1,6 @@
 <?php
+namespace src\web\Controller\Group;
+
 use core\Group\Controller\Controller;
 
 class GroupController extends Controller

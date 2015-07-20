@@ -5,7 +5,6 @@ class Dao
 {   
     private static $connection;
 
-
     public function getConnection()
     {   
         if (self::$connection) {

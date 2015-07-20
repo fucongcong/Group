@@ -2,6 +2,8 @@
 namespace core\Group\Routing;
 
 use core\Group\Common\ArrayToolkit;
+use core\Group\Container\Container;
+use Exception;
 Class Route
 {
 	protected $parameters = [];
@@ -14,7 +16,9 @@ Class Route
 	}
 
 	public function match()
-	{
+	{	
+		$requestUri = $_SERVER['REQUEST_URI'];
+
 		$routing = $this->getRoute();
 
 		if ($routing[$requestUri]) {
@@ -78,16 +82,12 @@ Class Route
 	{	
 		$_controller = explode(':', $config['_controller']);
 
-	            require_once 'src/'.$_controller[0].'/Controller/'.$_controller[1].'/'.$_controller[1].'Controller.php';
+		$className = 'src\\'.$_controller[0].'\\Controller\\'.$_controller[1].'\\'.$_controller[2].'Controller';
 
-	            $className = $_controller[1].'Controller';
+		$action = $_controller[3].'Action';
 
-	            $class = new $className();
+	            echo Container::getInstance()->doAction($className, $action, isset($config['parameters']) ? $config['parameters'] : array());
 
-	            $action = $_controller[2].'Action';
-
-		echo call_user_func_array(array($class, $action), isset($config['parameters']) ? $config['parameters'] : array());
-          
 	}
 
 	public function mergeParameters($parameters, $values)
@@ -113,7 +113,6 @@ Class Route
 	protected function getRoute()
 	{
 		$routing = include 'src/web/routing.php';
-		$requestUri = $_SERVER['REQUEST_URI'];
 
 		$routing = $this->checkMethods($routing);
 

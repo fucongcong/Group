@@ -1,4 +1,6 @@
 <?php
+namespace src\web\Controller\Home;
+
 use core\Group\Controller\Controller;
 
 class DefaultController extends Controller

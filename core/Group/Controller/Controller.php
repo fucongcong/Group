@@ -4,6 +4,7 @@ namespace core\Group\Controller;
 use Twig_Loader_Filesystem;
 use Twig_Environment;
 use core\Group\Twig\WebExtension;
+use core\Group\Container\Container;
 
 class Controller 
 {
@@ -35,6 +36,11 @@ class Controller
         $className="src\\Services\\".$serviceName[0]."\\Impl\\".$class;
         
         return new $className;
+    }
+
+    public function getContainer()
+    {
+        return Container::getInstance();
     }
 }
 
