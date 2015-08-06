@@ -1,5 +1,5 @@
 <?php
-namespace core\Group\Exception;
+namespace core\Group\Exceptions;
 
 use Exception;
 
@@ -14,7 +14,7 @@ class NotFoundException extends Exception
 	}
 
     	// 自定义字符串输出的样式
-	public function __toString() 
+	public function __toString()
 	{
     		return __CLASS__ . ": [{$this->code}]: {$this->message}\n";
 	}

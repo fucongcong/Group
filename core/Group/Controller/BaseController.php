@@ -1,11 +1,11 @@
 <?php
 namespace core\Group\Controller;
 
-use core\Group\Exception\NotFoundException;
+use core\Group\Exceptions\NotFoundException;
 use core\Group\Routing\Route;
 
 abstract class BaseController
-{	
+{
 	protected static $route;
 
 	/**

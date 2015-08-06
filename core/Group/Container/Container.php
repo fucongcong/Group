@@ -3,14 +3,14 @@ namespace core\Group\Container;
 
 use ReflectionClass;
 use Exception;
-use core\Group\Exception\NotFoundException;
+use core\Group\Exceptions\NotFoundException;
 
 class Container
 {
 	private static $_instance;
 
 	public function buildMoudle($class)
-	{   
+	{
 		if (!class_exists($class)) {
 
 			throw new NotFoundException("Class ".$class." not found !");

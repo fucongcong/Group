@@ -10,11 +10,11 @@ class GroupDaoImpl extends Dao implements GroupDao
     protected $tables="groups";
 
     public function getGroup($id)
-    {  
+    {
         $sql="SELECT * FROM {$this->tables} WHERE id=:id LIMIT 0,1";
 
         $rs = $this->getConnection()->prepare($sql);
-        
+
         $rs->bindParam(':id',$id);
         $rs->execute();
 
@@ -24,7 +24,6 @@ class GroupDaoImpl extends Dao implements GroupDao
 
         return $group;
     }
-    
 
 }
 ?>
