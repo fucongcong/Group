@@ -12,7 +12,7 @@ Class Router
 	protected $route;
 
 	public function match()
-	{	
+	{
 		$requestUri = $_SERVER['REQUEST_URI'];
 
 		$this->setRoute($this->methods, $requestUri);
@@ -25,20 +25,20 @@ Class Router
 		}
 
 		foreach ($routing as $route_key => $route) {
-			
+
 			preg_match_all('/{(.*?)}/', $route_key, $matches);
 
 			$config = "";
 
 			if ($matches[0]) {
-				
+
 				$config = $this->pregUrl($matches, $route_key, $routing);
 			}
 
 			if ($config) {
-				
+
 				return $this->controller($config);
-			}			
+			}
 		}
 
 		$this->controller(array('_controller'=>"Web:Error:NotFound:index"));
@@ -46,11 +46,11 @@ Class Router
 	}
 
 	public  function run()
-	{	
+	{
 		return $this->match();
 	}
 
-	public function pregUrl($matches, $route_key, $routing) 
+	public function pregUrl($matches, $route_key, $routing)
 	{
 		$route = $route_key;
 		foreach ($matches[0] as $key => $match) {
@@ -73,9 +73,9 @@ Class Router
 		$this->route->setParametersName($filterParameters);
 
 		if (preg_match_all('/^'.$regex.'$/', $_SERVER['REQUEST_URI'], $values)) {
-			
+
 			$config = $routing[$route];
-			$config['parameters'] = $this->mergeParameters($filterParameters, $values); 
+			$config['parameters'] = $this->mergeParameters($filterParameters, $values);
 			return  $config;
 		}
 
@@ -83,7 +83,7 @@ Class Router
 	}
 
 	public function controller($config)
-	{	
+	{
 		$_controller = explode(':', $config['_controller']);
 
 		$className = 'src\\'.$_controller[0].'\\Controller\\'.$_controller[1].'\\'.$_controller[2].'Controller';
@@ -94,15 +94,15 @@ Class Router
 
 		$this->route->setParameters(isset($config['parameters']) ? $config['parameters'] : array());
 
-	            echo Container::getInstance()->doAction($className, $action, isset($config['parameters']) ? $config['parameters'] : array());
+        echo Container::getInstance()->doAction($className, $action, isset($config['parameters']) ? $config['parameters'] : array());
 
 	}
 
 	public function mergeParameters($parameters, $values)
-	{	
+	{
 		foreach ($parameters as $key => $parameter) {
-			
-			$parameterValue[$parameter] = $values[$key+1][0]; 
+
+			$parameterValue[$parameter] = $values[$key+1][0];
 		}
 
 		return $parameterValue;
@@ -120,12 +120,12 @@ Class Router
 	}
 
 	protected function checkMethods($routing)
-	{	
+	{
 		//cache #可以做cache层
 		$config = array();
 
 		foreach ($routing as $key => $route) {
-		       
+
 		       if(isset($route['methods']) && !in_array(strtoupper($route['methods']), $this->methods)) continue;
 
 	                    if(isset($route['methods']) && $_SERVER['REQUEST_METHOD'] != strtoupper($route['methods']) ) continue;

@@ -2,20 +2,22 @@
 
 namespace core\Group;
 use core\Group\Routing\Router;
+use core\Group\App\App;
 
 Class Kernal
-{	
-    	public function __construct($environment)
-    	{
-	        date_default_timezone_set('PRC');
+{
+	public function __construct($environment)
+	{
+        date_default_timezone_set('PRC');
 
-    	}
+	}
 
 	public function init()
-	{   
+	{
+		Container::getInstance()->init();
 		$this->fix_gpc_magic();
-		$router =new Router();
-		$router->run();	    
+		$router = new Router();
+		$router->run();
 	}
 
 	public function fix_gpc_magic()
@@ -33,7 +35,7 @@ Class Kernal
 		$fixed = true;
 	}
 
-	private static function _fix_gpc_magic(&$item) 
+	private static function _fix_gpc_magic(&$item)
 	{
 		if (is_array($item)) {
 			array_walk($item, '_fix_gpc_magic');
@@ -43,7 +45,7 @@ Class Kernal
 		}
 	}
 
-	private static function _fix_gpc_magic_files(&$item, $key) 
+	private static function _fix_gpc_magic_files(&$item, $key)
 	{
 		if ($key != 'tmp_name') {
 
