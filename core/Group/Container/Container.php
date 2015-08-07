@@ -4,8 +4,9 @@ namespace core\Group\Container;
 use ReflectionClass;
 use Exception;
 use core\Group\Exceptions\NotFoundException;
+use core\Group\Contracts\Container\Container as ContainerContract;
 
-class Container
+class Container implements ContainerContract
 {
 	private static $_instance;
 

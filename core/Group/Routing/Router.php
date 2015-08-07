@@ -5,7 +5,9 @@ use core\Group\Common\ArrayToolkit;
 use core\Group\Container\Container;
 use core\Group\Routing\Route;
 use Exception;
-Class Router
+use core\Group\Contracts\Routing\Router as RouterContract;
+
+Class Router implements RouterContract
 {
 	protected $methods = ["GET", "PUT", "POST", "DELETE", "HEAD", "PATCH"];
 
@@ -98,7 +100,7 @@ Class Router
 
 	}
 
-	public function mergeParameters($parameters, $values)
+	protected function mergeParameters($parameters, $values)
 	{
 		foreach ($parameters as $key => $parameter) {
 
