@@ -14,7 +14,7 @@ Class Kernal
 
 	public function init()
 	{
-		Container::getInstance()->init();
+		//Container::getInstance()->init();
 		$this->fix_gpc_magic();
 		$router = new Router();
 		$router->run();

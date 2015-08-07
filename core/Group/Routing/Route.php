@@ -4,7 +4,9 @@ namespace core\Group\Routing;
 use core\Group\Common\ArrayToolkit;
 use core\Group\Container\Container;
 use Exception;
-Class Route
+use core\Group\Contracts\Routing\Route as RouteContract;
+
+Class Route implements RouteContract
 {
 	protected $container;
 
