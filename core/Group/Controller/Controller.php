@@ -8,7 +8,14 @@ use core\Group\Container\Container;
 use core\Group\Controller\BaseController;
 
 class Controller  extends BaseController
-{	
+{
+	/**
+	* 渲染模板的方法
+	*
+	* @param  string  $tpl
+	* @param  array   $array
+	* @return response
+	*/
 	public function render($tpl,$array=array())
 	{
 
@@ -20,10 +27,16 @@ class Controller  extends BaseController
 
 		$twig->addExtension(new WebExtension());
 		return $twig->render($tpl,$array);
-	} 
+	}
 
+	/**
+	* 实例化一个服务类
+	*
+	* @param  string  $serviceName
+	* @return class
+	*/
 	public function createService($serviceName)
-	{   
+	{
 		$serviceName=explode(":", $serviceName);
 
 		$class=$serviceName[1]."ServiceImpl";
@@ -33,6 +46,11 @@ class Controller  extends BaseController
 		return new $className;
 	}
 
+	/**
+	* 获取容器
+	*
+	* @return core\Group\Container\Container
+	*/
 	public function getContainer()
 	{
     		return Container::getInstance();
