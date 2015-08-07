@@ -14,7 +14,11 @@ class NotFoundException extends Exception implements ExceptionContract
     		parent::__construct($message, $code);
 	}
 
-    	// 自定义字符串输出的样式
+    /**
+    * Custom pattern string output
+    *
+    * @return exception message
+    */
 	public function __toString()
 	{
     		return __CLASS__ . ": [{$this->code}]: {$this->message}\n";

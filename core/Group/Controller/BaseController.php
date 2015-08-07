@@ -9,7 +9,7 @@ abstract class BaseController
 	protected static $route;
 
 	/**
-	 * Execute an action on the controller.
+	 * 在控制类下执行方法
 	 *
 	 * @param  string  $method
 	 * @param  array   $parameters
@@ -17,7 +17,7 @@ abstract class BaseController
 	 */
 	public function callAction($method, $parameters)
 	{
-    		return call_user_func_array([$this, $method], $parameters);
+		return call_user_func_array([$this, $method], $parameters);
 	}
 
 	public function __call($method, $parameters)
@@ -25,6 +25,11 @@ abstract class BaseController
 		throw new NotFoundException("Method [$method] does not exist.");
 	}
 
+	/**
+	* route的单例
+	*
+	* @return core\Group\Routing\Route
+	*/
 	public static function route()
 	{
 		if(!(self::$route instanceof Route)){

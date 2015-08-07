@@ -10,6 +10,12 @@ class Container implements ContainerContract
 {
 	private static $_instance;
 
+	/**
+	 * build a moudle class
+	 *
+	 * @param  class
+	 * @return ReflectionClass class
+	 */
 	public function buildMoudle($class)
 	{
 		if (!class_exists($class)) {
@@ -23,6 +29,14 @@ class Container implements ContainerContract
 		return $reflector;
 	}
 
+    /**
+     * do the moudle class action
+     *
+     * @param  class
+     * @param  action
+     * @param  array parameters
+     * @return string
+     */
 	public function doAction($class, $action, array $parameters = [])
 	{
 		$reflector = $this->buildMoudle($class);
@@ -37,6 +51,11 @@ class Container implements ContainerContract
 
 	}
 
+    /**
+     * return single class
+     *
+     * @return core\Group\Container Container
+     */
 	public static function getInstance(){
 
 		if(!(self::$_instance instanceof self)){
