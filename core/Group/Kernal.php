@@ -5,10 +5,12 @@ use core\Group\Routing\Router;
 
 Class Kernal
 {	
+	protected $environment;
+
     	public function __construct($environment)
     	{
 	        date_default_timezone_set('PRC');
-
+	        $this->environment = $environment;
     	}
 
 	public function init()
@@ -55,5 +57,10 @@ Class Kernal
 			}
 
 		}
+	}
+
+	public function getEnvironment()
+	{
+		return $this->environment;
 	}
 }
