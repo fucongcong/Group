@@ -13,6 +13,11 @@ Class Router implements RouterContract
 
 	protected $route;
 
+	/**
+	* match the uri
+	*
+	* @return  void
+	*/
 	public function match()
 	{
 		$requestUri = $_SERVER['REQUEST_URI'];
@@ -52,6 +57,15 @@ Class Router implements RouterContract
 		return $this->match();
 	}
 
+
+	/**
+	* preg the url
+	*
+	* @param  matches
+	* @param  route_key
+	* @param  array routing
+	* @return  array|bool false
+	*/
 	public function pregUrl($matches, $route_key, $routing)
 	{
 		$route = $route_key;
@@ -84,6 +98,12 @@ Class Router implements RouterContract
 		return false;
 	}
 
+	/**
+	* do the controller
+	*
+	* @param  routing config
+	* @return string
+	*/
 	public function controller($config)
 	{
 		$_controller = explode(':', $config['_controller']);
@@ -139,6 +159,12 @@ Class Router implements RouterContract
 		return $config;
 	}
 
+	/**
+	 * set the route
+	 *
+	 * @param  methods
+	 * @param  uri
+	 */
 	public function setRoute($methods, $uri)
 	{
 		$this->route = Route::getInstance();
