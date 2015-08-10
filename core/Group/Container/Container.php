@@ -78,22 +78,41 @@ class Container implements ContainerContract
 		return self::$_instance;
 	}
 
+
+    /**
+     * 设置时区
+     *
+     */
     public function setTimezone()
     {
         $this -> timezone = Config::get('app::timezone');
         date_default_timezone_set($this -> getTimezone());
     }
 
+
+    /**
+     * 获取当前时区
+     *
+     */
     public function getTimezone()
     {
         return $this -> timezone;
     }
 
+    /**
+     * 设置环境
+     *
+     *@return string prod｜dev
+     */
     public function getEnvironment()
     {
         return $this -> environment;
     }
 
+    /**
+     * 获取当前环境
+     *
+     */
     public function setEnvironment()
     {
         $this -> environment = Config::get('app::environment');

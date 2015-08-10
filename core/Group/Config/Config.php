@@ -10,6 +10,12 @@ class Config implements ConfigContract
 
     protected $config = [];
 
+    /**
+    * 获取config下得值
+    *
+    * @param  configName,  name::key
+    * @return string
+    */
     public static function get($configName)
     {
         return  static::getInstance() -> read($configName);
@@ -19,7 +25,7 @@ class Config implements ConfigContract
     * read config
     *
     * @param  configName,  name::key
-    * @return string|array
+    * @return array
     */
     public function read($configName)
     {
@@ -37,11 +43,21 @@ class Config implements ConfigContract
 
     }
 
+    /**
+    * 设置config
+    *
+    * @param  array config
+    */
     public function setConfig($config)
     {
         $this -> config = array_merge($this -> config, $config);
     }
 
+    /**
+    * 获取config
+    *
+    * @return array
+    */
     public function getConfig()
     {
         return $this -> config;
