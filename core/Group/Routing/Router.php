@@ -3,7 +3,7 @@ namespace core\Group\Routing;
 
 use core\Group\Common\ArrayToolkit;
 use core\Group\Container\Container;
-use core\Group\Routing\Route;
+use Route;
 use Exception;
 use core\Group\Contracts\Routing\Router as RouterContract;
 

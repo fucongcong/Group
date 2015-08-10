@@ -2,25 +2,27 @@
 
 namespace core\Group;
 use core\Group\Routing\Router;
-use core\Group\App\App;
+use Container;
+use core\Group\Handlers\AliasLoaderHandler;
 
 Class Kernal
 
-{	
+{
 	protected $environment;
 
-    	public function __construct($environment)
-    	{
-	        date_default_timezone_set('PRC');
-	        $this->environment = $environment;
-    	}
+	public function __construct($environment)
+	{
+        //date_default_timezone_set('PRC');
+        $this->environment = $environment;
+	}
 
 	public function init()
 	{
-		//Container::getInstance()->init();
-		$this->fix_gpc_magic();
+		$this -> aliasLoader();
+		Container::getInstance() -> init();
+		$this -> fix_gpc_magic();
 		$router = new Router();
-		$router->run();
+		$router -> run();
 	}
 
 	public function fix_gpc_magic()
@@ -64,6 +66,13 @@ Class Kernal
 
 	public function getEnvironment()
 	{
-		return $this->environment;
+		return $this -> environment;
 	}
+
+	public function aliasLoader()
+    {
+        $aliases = require_once("config/app.php");
+        AliasLoaderHandler::getInstance($aliases['aliases']) -> register();
+
+    }
 }
