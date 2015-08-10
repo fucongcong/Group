@@ -8,42 +8,42 @@ use core\Group\Contracts\Routing\Route as RouteContract;
 
 Class Route implements RouteContract
 {
-    /**
+	/**
 	* container
 	*
 	* @var core\Group\Container\Container
 	*/
 	protected $container;
 
-    /**
+  	/**
 	* action name
 	*
 	* @var string
 	*/
 	protected $action;
 
-    /**
+   	 /**
 	* uri
 	*
 	* @var string
 	*/
 	protected $uri;
 
-    /**
+   	 /**
 	* the methods current
 	*
 	* @var string
 	*/
 	protected $methods;
 
-    /**
+   	 /**
 	* the parameters
 	*
 	* @var array
 	*/
 	protected $parameters;
 
-    /**
+   	 /**
 	* the parametersName
 	*
 	* @var array
@@ -52,7 +52,7 @@ Class Route implements RouteContract
 
 	private static $_instance;
 
-    /**
+   	 /**
 	 * Set the container instance on the route.
 	 *
 	 * @param  \core\Group\Container\Container  $container
@@ -65,11 +65,11 @@ Class Route implements RouteContract
 		return $this;
 	}
 
-    /**
-    * set params
-    *
-    * @param parameters
-    */
+	/**
+	* set params
+	*
+	* @param parameters
+	*/
 	public function setParameters($parameters)
 	{
 		$this->parameters = $parameters;
