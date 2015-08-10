@@ -6,35 +6,38 @@ use core\Group\Controller\Controller;
 class GroupController extends Controller
 {
     public function indexAction()
-    {   
+    {
         //$group=$this->getGroupService()->getGroup(1);
 
-        return $this->render('Web/Views/Group/index.html.twig',array(
-            'group'=>$group));
+        return $this -> render('Web/Views/Group/index.html.twig',array(
+            'group' => $group));
     }
 
     public function testAction($id)
-    {   
-        echo $id;
-        
-        echo $this->route()->getUri();
+    {
+        echo $id; echo "<br>";
 
-        print_r($this->route()->getParameters());
+        echo $this -> route() -> getUri();echo "<br>";
 
-        print_r($this->route()->getParametersName());
+        print_r($this -> route() -> getParameters());echo "<br>";
 
-        echo $this->route()->getAction();
+        print_r($this -> route() -> getParametersName());echo "<br>";
 
-        print_r($this->route()->getMethods());
+        echo $this -> route() -> getAction();echo "<br>";
 
+        print_r($this -> route() -> getMethods());echo "<br>";
+
+        echo $this -> getContainer() -> getTimezone();echo "<br>";
+
+        echo $this -> getContainer() -> getEnvironment();echo "<br>";
         //$group=$this->getGroupService()->getGroup(1);
-        return $this->render('Web/Views/Group/index.html.twig',array(
-            'group'=>$group));
+        return $this -> render('Web/Views/Group/index.html.twig',array(
+            'group' => $group));
     }
 
     public function getGroupService()
     {
-        return $this->createService("Group:Group");
+        return $this -> createService("Group:Group");
     }
 
 }

@@ -1,6 +1,11 @@
 <?php
 return [
 
+    // prod|dev
+    'environment' => 'prod',
+
+    'timezone' => 'PRC',
+
     'aliases' => [
 
         'Config'    => 'core\Group\Config\Config',

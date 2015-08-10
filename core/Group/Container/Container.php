@@ -5,10 +5,22 @@ use ReflectionClass;
 use Exception;
 use core\Group\Exceptions\NotFoundException;
 use core\Group\Contracts\Container\Container as ContainerContract;
+use Config;
 
 class Container implements ContainerContract
 {
 	private static $_instance;
+
+    protected $timezone;
+
+    protected $environment;
+
+
+    public function init()
+    {
+        $this -> setTimezone();
+        $this -> setEnvironment();
+    }
 
 	/**
 	 * build a moudle class
@@ -66,8 +78,24 @@ class Container implements ContainerContract
 		return self::$_instance;
 	}
 
-    public function init()
+    public function setTimezone()
     {
+        $this -> timezone = Config::get('app::timezone');
+        date_default_timezone_set($this -> getTimezone());
+    }
 
+    public function getTimezone()
+    {
+        return $this -> timezone;
+    }
+
+    public function getEnvironment()
+    {
+        return $this -> environment;
+    }
+
+    public function setEnvironment()
+    {
+        $this -> environment = Config::get('app::environment');
     }
 }
