@@ -4,18 +4,10 @@ namespace core\Group;
 use core\Group\Routing\Router;
 use Container;
 use core\Group\Handlers\AliasLoaderHandler;
+use core\Group\Config\Config;
 
 Class Kernal
-
 {
-	protected $environment;
-
-	public function __construct($environment)
-	{
-        //date_default_timezone_set('PRC');
-        $this->environment = $environment;
-	}
-
 	public function init()
 	{
 		$this -> aliasLoader();
@@ -64,15 +56,10 @@ Class Kernal
 		}
 	}
 
-	public function getEnvironment()
-	{
-		return $this -> environment;
-	}
-
 	public function aliasLoader()
     {
-        $aliases = require_once("config/app.php");
-        AliasLoaderHandler::getInstance($aliases['aliases']) -> register();
+        $aliases = Config::get('app::aliases');
+        AliasLoaderHandler::getInstance($aliases) -> register();
 
     }
 }

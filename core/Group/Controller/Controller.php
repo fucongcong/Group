@@ -22,9 +22,14 @@ class Controller  extends BaseController
 
 		$loader = new Twig_Loader_Filesystem(Config::get('view::path'));
 
-		$twig = new Twig_Environment($loader,array(
-		    'cache' =>Config::get('view::cache_dir')
-		));
+		if (Config::get('view::cache')) {
+
+			$env =  array(
+		    	'cache' =>Config::get('view::cache_dir')
+			);
+		}
+
+		$twig = new Twig_Environment($loader, isset($env) ? : array());
 
 		$twig->addExtension(new WebExtension());
 		return $twig->render($tpl,$array);
