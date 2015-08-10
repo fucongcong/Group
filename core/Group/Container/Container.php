@@ -65,4 +65,9 @@ class Container implements ContainerContract
 
 		return self::$_instance;
 	}
+
+    public function init()
+    {
+
+    }
 }

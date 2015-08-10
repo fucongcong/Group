@@ -1,6 +1,6 @@
 <?php
 namespace core\Group\Contracts\Routing;
-use core\Group\Container\Container;
+use Container;
 
 interface Route
 {

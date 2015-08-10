@@ -4,8 +4,9 @@ namespace core\Group\Controller;
 use Twig_Loader_Filesystem;
 use Twig_Environment;
 use core\Group\Twig\WebExtension;
-use core\Group\Container\Container;
+use Container;
 use core\Group\Controller\BaseController;
+use Config;
 
 class Controller  extends BaseController
 {
@@ -19,10 +20,10 @@ class Controller  extends BaseController
 	public function render($tpl,$array=array())
 	{
 
-		$loader = new Twig_Loader_Filesystem('src');
+		$loader = new Twig_Loader_Filesystem(Config::get('view::path'));
 
 		$twig = new Twig_Environment($loader,array(
-		 /*   'cache' =>'./cache/Temp'*/
+		    'cache' =>Config::get('view::cache_dir')
 		));
 
 		$twig->addExtension(new WebExtension());
@@ -53,7 +54,7 @@ class Controller  extends BaseController
 	*/
 	public function getContainer()
 	{
-    		return Container::getInstance();
+		return Container::getInstance();
 	}
 }
 
