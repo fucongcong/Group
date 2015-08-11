@@ -1,17 +1,69 @@
-Group
-=====
+# Group
+访问[xitongxue.com](http://xitongxue.com),觉得帮到您了点击右上star!给我一点动力！
+关注我们的ＱＱ群：390536187
 
-####MVC框架，整合了前段框架bootstrap，seajs.模板引擎使用的是Twig(非常强大好用)  后端分为controller,service,dao3层。
-基础类未封装完成.
+####1.[Group框架简介](#user-content-Group框架简介)
+- [前端框架介绍](#user-content-1前端框架介绍)
+- [后端框架介绍](#user-content-2后端框架介绍)
+
+####2.[快速开始](#user-content-快速开始)
+- [配置文件](#user-content-1配置文件)
+- [进入框架](#user-content-2进入框架)
+- [目录结构](#user-content-3目录结构)
 
 
-###Step.1如何配置服务器(目前只有Ngnix配置)：
-	将doc文件夹中的NGNIX配置复制即可
+## Group框架简介
+####1.前端框架介绍
+（1）整合bootstrap（帮助你更快速开发）
+
+（2）整合seajs（有效管理JS模块）
+
+####2.后端框架介绍
+（1）模版引擎：twig （symfony2使用的模版引擎）
+
+（2）DSCV架构：Dao（数据层）,Service（服务层），Controller（控制层），View（视图层）
+
+## 快速开始
+####1.配置文件
+
+[Ngnix配置](https://github.com/fucongcong/Group/blob/master/doc/ngnix_server_config.txt)
+
+####2.进入框架
+
+访问localhost:8081 进入框架主页
+
+####3.目录结构
+- asset (前端文件)
+    - css
+    - fonts
+    - img
+    - js
+    - lib
+- config (配置文件)
+	- app.php
+    - database.php
+    - view.php
+- core (框架核心，后期将会打包到composer)
+- doc (文档)
+- runtime (缓存)
+- src (你的网站核心代码)
+	- Services （服务层）
+		- Group (示例)
+			- Dao （数据层）
+		  		- Impl （数据层接口）
+
+		  	- Impl （服务层接口）
+	- Web
+	 	- Controller （控制层）
+	 	- View (视图层)
+	 	- routing.php （路由配置）
+- index.php(主入口)
+
 
 
 ###Step.２配置数据库与自定义路由
 
-####2.1根目录config.php为数据库配置文件 
+####2.1根目录config.php为数据库配置文件
 
 ####2.2web文件夹下的routing.php 为路由配置
 
@@ -67,7 +119,7 @@ Group
 		{
 		    //可获得路由中传入的参数id, groupId
 		    public function testAction($id, $groupId)
-		    {   
+		    {
 		        echo $id;　echo $groupId;
 		        //获取当前路由地址
 		        echo $this->route()->getUri();
@@ -80,7 +132,7 @@ Group
 		        //获取系统允许的方法
 		        print_r($this->route()->getMethods());
 
-		        
+
 		        //$group=$this->getGroupService()->getGroup(1);
 		        return $this->render('Web/Views/Group/index.html.twig',array(
 		            'group'=>$group));
@@ -96,7 +148,7 @@ Group
 
 		?>
 ####2.4服务层Service,找到我们的src\Service
-	
+
 	在controller层中，我们定义了
 	public function getGroupService()
 	{
