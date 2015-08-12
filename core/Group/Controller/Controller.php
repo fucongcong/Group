@@ -29,7 +29,7 @@ class Controller  extends BaseController
 			);
 		}
 
-		$twig = new Twig_Environment($loader, isset($env) ? : array());
+		$twig = new Twig_Environment($loader, isset($env) ? $env : array());
 
 		$twig->addExtension(new WebExtension());
 		return $twig->render($tpl,$array);

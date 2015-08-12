@@ -11,7 +11,7 @@ class NotFoundException extends Exception implements ExceptionContract
 	    // 自定义的代码
 
 	    // 确保所有变量都被正确赋值
-    		parent::__construct($message, $code);
+		parent::__construct($message, $code);
 	}
 
     /**
@@ -21,7 +21,7 @@ class NotFoundException extends Exception implements ExceptionContract
     */
 	public function __toString()
 	{
-    		return __CLASS__ . ": [{$this->code}]: {$this->message}\n";
+		return __CLASS__ . ": [{$this->code}]: {$this->message}\n";
 	}
 
 }
