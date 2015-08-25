@@ -1,0 +1,298 @@
+[2015-08-25 10:11:46 @920.0]	WARN	swSocket_set_buffer_size#332: setsockopt(4, SOL_SOCKET, SO_SNDBUF, 8388608) failed. Error: No buffer space available[55].
+[2015-08-25 10:11:46 @920.0]	WARN	swSocket_set_buffer_size#332: setsockopt(5, SOL_SOCKET, SO_SNDBUF, 8388608) failed. Error: No buffer space available[55].
+[2015-08-25 10:11:46 @920.0]	WARN	swSocket_set_buffer_size#332: setsockopt(6, SOL_SOCKET, SO_SNDBUF, 8388608) failed. Error: No buffer space available[55].
+[2015-08-25 10:11:46 @920.0]	WARN	swSocket_set_buffer_size#332: setsockopt(7, SOL_SOCKET, SO_SNDBUF, 8388608) failed. Error: No buffer space available[55].
+[2015-08-25 10:11:46 @920.0]	WARN	swSocket_set_buffer_size#332: setsockopt(8, SOL_SOCKET, SO_SNDBUF, 8388608) failed. Error: No buffer space available[55].
+[2015-08-25 10:11:46 @920.0]	WARN	swSocket_set_buffer_size#332: setsockopt(9, SOL_SOCKET, SO_SNDBUF, 8388608) failed. Error: No buffer space available[55].
+[2015-08-25 10:11:46 @920.0]	WARN	swSocket_set_buffer_size#332: setsockopt(10, SOL_SOCKET, SO_SNDBUF, 8388608) failed. Error: No buffer space available[55].
+[2015-08-25 10:11:46 @920.0]	WARN	swSocket_set_buffer_size#332: setsockopt(11, SOL_SOCKET, SO_SNDBUF, 8388608) failed. Error: No buffer space available[55].
+[2015-08-25 10:11:46 @920.0]	WARN	swSocket_set_buffer_size#332: setsockopt(12, SOL_SOCKET, SO_SNDBUF, 8388608) failed. Error: No buffer space available[55].
+[2015-08-25 10:11:46 @920.0]	WARN	swSocket_set_buffer_size#332: setsockopt(13, SOL_SOCKET, SO_SNDBUF, 8388608) failed. Error: No buffer space available[55].
+[2015-08-25 10:11:46 @920.0]	WARN	swSocket_set_buffer_size#332: setsockopt(14, SOL_SOCKET, SO_SNDBUF, 8388608) failed. Error: No buffer space available[55].
+[2015-08-25 10:11:46 @920.0]	WARN	swSocket_set_buffer_size#332: setsockopt(15, SOL_SOCKET, SO_SNDBUF, 8388608) failed. Error: No buffer space available[55].
+[2015-08-25 10:11:46 @920.0]	WARN	swSocket_set_buffer_size#332: setsockopt(16, SOL_SOCKET, SO_SNDBUF, 8388608) failed. Error: No buffer space available[55].
+[2015-08-25 10:11:46 @920.0]	WARN	swSocket_set_buffer_size#332: setsockopt(17, SOL_SOCKET, SO_SNDBUF, 8388608) failed. Error: No buffer space available[55].
+[2015-08-25 10:11:46 @920.0]	WARN	swSocket_set_buffer_size#332: setsockopt(18, SOL_SOCKET, SO_SNDBUF, 8388608) failed. Error: No buffer space available[55].
+[2015-08-25 10:11:46 @920.0]	WARN	swSocket_set_buffer_size#332: setsockopt(19, SOL_SOCKET, SO_SNDBUF, 8388608) failed. Error: No buffer space available[55].
+
+Fatal error: Class 'core\Group\Services\Service' not found in /private/var/www/Group/swoole.php on line 71
+[2015-08-25 10:11:52 *924.1]	WARN	zm_deactivate_swoole: Fatal error: Class 'core\Group\Services\Service' not found in /private/var/www/Group/swoole.php on line 71.
+[2015-08-25 10:14:15 @974.0]	WARN	swSocket_set_buffer_size#332: setsockopt(4, SOL_SOCKET, SO_SNDBUF, 8388608) failed. Error: No buffer space available[55].
+[2015-08-25 10:14:15 @974.0]	WARN	swSocket_set_buffer_size#332: setsockopt(5, SOL_SOCKET, SO_SNDBUF, 8388608) failed. Error: No buffer space available[55].
+[2015-08-25 10:14:15 @974.0]	WARN	swSocket_set_buffer_size#332: setsockopt(6, SOL_SOCKET, SO_SNDBUF, 8388608) failed. Error: No buffer space available[55].
+[2015-08-25 10:14:15 @974.0]	WARN	swSocket_set_buffer_size#332: setsockopt(7, SOL_SOCKET, SO_SNDBUF, 8388608) failed. Error: No buffer space available[55].
+[2015-08-25 10:14:15 @974.0]	WARN	swSocket_set_buffer_size#332: setsockopt(8, SOL_SOCKET, SO_SNDBUF, 8388608) failed. Error: No buffer space available[55].
+[2015-08-25 10:14:15 @974.0]	WARN	swSocket_set_buffer_size#332: setsockopt(9, SOL_SOCKET, SO_SNDBUF, 8388608) failed. Error: No buffer space available[55].
+[2015-08-25 10:14:15 @974.0]	WARN	swSocket_set_buffer_size#332: setsockopt(10, SOL_SOCKET, SO_SNDBUF, 8388608) failed. Error: No buffer space available[55].
+[2015-08-25 10:14:15 @974.0]	WARN	swSocket_set_buffer_size#332: setsockopt(11, SOL_SOCKET, SO_SNDBUF, 8388608) failed. Error: No buffer space available[55].
+[2015-08-25 10:14:15 @974.0]	WARN	swSocket_set_buffer_size#332: setsockopt(12, SOL_SOCKET, SO_SNDBUF, 8388608) failed. Error: No buffer space available[55].
+[2015-08-25 10:14:15 @974.0]	WARN	swSocket_set_buffer_size#332: setsockopt(13, SOL_SOCKET, SO_SNDBUF, 8388608) failed. Error: No buffer space available[55].
+[2015-08-25 10:14:15 @974.0]	WARN	swSocket_set_buffer_size#332: setsockopt(14, SOL_SOCKET, SO_SNDBUF, 8388608) failed. Error: No buffer space available[55].
+[2015-08-25 10:14:15 @974.0]	WARN	swSocket_set_buffer_size#332: setsockopt(15, SOL_SOCKET, SO_SNDBUF, 8388608) failed. Error: No buffer space available[55].
+[2015-08-25 10:14:15 @974.0]	WARN	swSocket_set_buffer_size#332: setsockopt(16, SOL_SOCKET, SO_SNDBUF, 8388608) failed. Error: No buffer space available[55].
+[2015-08-25 10:14:15 @974.0]	WARN	swSocket_set_buffer_size#332: setsockopt(17, SOL_SOCKET, SO_SNDBUF, 8388608) failed. Error: No buffer space available[55].
+[2015-08-25 10:14:15 @974.0]	WARN	swSocket_set_buffer_size#332: setsockopt(18, SOL_SOCKET, SO_SNDBUF, 8388608) failed. Error: No buffer space available[55].
+[2015-08-25 10:14:15 @974.0]	WARN	swSocket_set_buffer_size#332: setsockopt(19, SOL_SOCKET, SO_SNDBUF, 8388608) failed. Error: No buffer space available[55].
+
+Fatal error: Class 'core\Group\Services\Service' not found in /private/var/www/Group/swoole.php on line 71
+[2015-08-25 10:14:21 *978.1]	WARN	zm_deactivate_swoole: Fatal error: Class 'core\Group\Services\Service' not found in /private/var/www/Group/swoole.php on line 71.
+[2015-08-25 10:26:52 @1150.0]	WARN	swSocket_set_buffer_size#332: setsockopt(4, SOL_SOCKET, SO_SNDBUF, 8388608) failed. Error: No buffer space available[55].
+[2015-08-25 10:26:52 @1150.0]	WARN	swSocket_set_buffer_size#332: setsockopt(5, SOL_SOCKET, SO_SNDBUF, 8388608) failed. Error: No buffer space available[55].
+[2015-08-25 10:26:52 @1150.0]	WARN	swSocket_set_buffer_size#332: setsockopt(6, SOL_SOCKET, SO_SNDBUF, 8388608) failed. Error: No buffer space available[55].
+[2015-08-25 10:26:52 @1150.0]	WARN	swSocket_set_buffer_size#332: setsockopt(7, SOL_SOCKET, SO_SNDBUF, 8388608) failed. Error: No buffer space available[55].
+[2015-08-25 10:26:52 @1150.0]	WARN	swSocket_set_buffer_size#332: setsockopt(8, SOL_SOCKET, SO_SNDBUF, 8388608) failed. Error: No buffer space available[55].
+[2015-08-25 10:26:52 @1150.0]	WARN	swSocket_set_buffer_size#332: setsockopt(9, SOL_SOCKET, SO_SNDBUF, 8388608) failed. Error: No buffer space available[55].
+[2015-08-25 10:26:52 @1150.0]	WARN	swSocket_set_buffer_size#332: setsockopt(10, SOL_SOCKET, SO_SNDBUF, 8388608) failed. Error: No buffer space available[55].
+[2015-08-25 10:26:52 @1150.0]	WARN	swSocket_set_buffer_size#332: setsockopt(11, SOL_SOCKET, SO_SNDBUF, 8388608) failed. Error: No buffer space available[55].
+
+Warning: swoole_server::send() expects at least 2 parameters, 1 given in /private/var/www/Group/swoole.php on line 96
+
+Warning: swoole_server::send() expects at least 2 parameters, 1 given in /private/var/www/Group/swoole.php on line 96
+
+Warning: swoole_server::send() expects at least 2 parameters, 1 given in /private/var/www/Group/swoole.php on line 96
+
+Warning: swoole_server::send() expects at least 2 parameters, 1 given in /private/var/www/Group/swoole.php on line 96
+[2015-08-25 10:27:23 @1165.0]	WARN	swSocket_set_buffer_size#332: setsockopt(4, SOL_SOCKET, SO_SNDBUF, 8388608) failed. Error: No buffer space available[55].
+[2015-08-25 10:27:23 @1165.0]	WARN	swSocket_set_buffer_size#332: setsockopt(5, SOL_SOCKET, SO_SNDBUF, 8388608) failed. Error: No buffer space available[55].
+[2015-08-25 10:27:23 @1165.0]	WARN	swSocket_set_buffer_size#332: setsockopt(6, SOL_SOCKET, SO_SNDBUF, 8388608) failed. Error: No buffer space available[55].
+[2015-08-25 10:27:23 @1165.0]	WARN	swSocket_set_buffer_size#332: setsockopt(7, SOL_SOCKET, SO_SNDBUF, 8388608) failed. Error: No buffer space available[55].
+[2015-08-25 10:27:23 @1165.0]	WARN	swSocket_set_buffer_size#332: setsockopt(8, SOL_SOCKET, SO_SNDBUF, 8388608) failed. Error: No buffer space available[55].
+[2015-08-25 10:27:23 @1165.0]	WARN	swSocket_set_buffer_size#332: setsockopt(9, SOL_SOCKET, SO_SNDBUF, 8388608) failed. Error: No buffer space available[55].
+[2015-08-25 10:27:23 @1165.0]	WARN	swSocket_set_buffer_size#332: setsockopt(10, SOL_SOCKET, SO_SNDBUF, 8388608) failed. Error: No buffer space available[55].
+[2015-08-25 10:27:23 @1165.0]	WARN	swSocket_set_buffer_size#332: setsockopt(11, SOL_SOCKET, SO_SNDBUF, 8388608) failed. Error: No buffer space available[55].
+[2015-08-25 10:27:23 @1165.0]	WARN	swSocket_listen: bind(127.0.0.1:9502) failed. Error: Address already in use [48]
+[2015-08-25 10:27:23 @1165.0]	WARN	swServer_start_proxy: ReactorThread start failed
+[2015-08-25 10:27:23 @1165.0]	NOTICE	Server is shutdown now.
+[2015-08-25 10:27:23 @1165.0]	WARN	swServer_signal_hanlder: Fatal Error: manager process exit. status=0, signal=15.
+[2015-08-25 10:27:23 @1165.0]	WARN	swFactoryProcess_shutdown#62: waitpid(1167) failed. Error: No child processes[10].
+
+Warning: swoole_server::task(): task can not use. Please set task_worker_num. in /private/var/www/Group/swoole.php on line 80
+[2015-08-25 10:28:21 @1193.0]	WARN	swSocket_set_buffer_size#332: setsockopt(12, SOL_SOCKET, SO_SNDBUF, 8388608) failed. Error: No buffer space available[55].
+[2015-08-25 10:28:21 @1193.0]	WARN	swSocket_set_buffer_size#332: setsockopt(13, SOL_SOCKET, SO_SNDBUF, 8388608) failed. Error: No buffer space available[55].
+[2015-08-25 10:28:21 @1193.0]	WARN	swSocket_set_buffer_size#332: setsockopt(14, SOL_SOCKET, SO_SNDBUF, 8388608) failed. Error: No buffer space available[55].
+[2015-08-25 10:28:21 @1193.0]	WARN	swSocket_set_buffer_size#332: setsockopt(15, SOL_SOCKET, SO_SNDBUF, 8388608) failed. Error: No buffer space available[55].
+[2015-08-25 10:28:21 @1193.0]	WARN	swSocket_set_buffer_size#332: setsockopt(16, SOL_SOCKET, SO_SNDBUF, 8388608) failed. Error: No buffer space available[55].
+[2015-08-25 10:28:21 @1193.0]	WARN	swSocket_set_buffer_size#332: setsockopt(17, SOL_SOCKET, SO_SNDBUF, 8388608) failed. Error: No buffer space available[55].
+[2015-08-25 10:28:21 @1193.0]	WARN	swSocket_set_buffer_size#332: setsockopt(18, SOL_SOCKET, SO_SNDBUF, 8388608) failed. Error: No buffer space available[55].
+[2015-08-25 10:28:21 @1193.0]	WARN	swSocket_set_buffer_size#332: setsockopt(19, SOL_SOCKET, SO_SNDBUF, 8388608) failed. Error: No buffer space available[55].
+[2015-08-25 10:28:21 @1193.0]	WARN	swSocket_set_buffer_size#332: setsockopt(20, SOL_SOCKET, SO_SNDBUF, 8388608) failed. Error: No buffer space available[55].
+[2015-08-25 10:28:21 @1193.0]	WARN	swSocket_set_buffer_size#332: setsockopt(21, SOL_SOCKET, SO_SNDBUF, 8388608) failed. Error: No buffer space available[55].
+[2015-08-25 10:28:21 @1193.0]	WARN	swSocket_set_buffer_size#332: setsockopt(22, SOL_SOCKET, SO_SNDBUF, 8388608) failed. Error: No buffer space available[55].
+[2015-08-25 10:28:21 @1193.0]	WARN	swSocket_set_buffer_size#332: setsockopt(23, SOL_SOCKET, SO_SNDBUF, 8388608) failed. Error: No buffer space available[55].
+[2015-08-25 10:28:21 @1193.0]	WARN	swSocket_set_buffer_size#332: setsockopt(24, SOL_SOCKET, SO_SNDBUF, 8388608) failed. Error: No buffer space available[55].
+[2015-08-25 10:28:21 @1193.0]	WARN	swSocket_set_buffer_size#332: setsockopt(25, SOL_SOCKET, SO_SNDBUF, 8388608) failed. Error: No buffer space available[55].
+[2015-08-25 10:28:21 @1193.0]	WARN	swSocket_set_buffer_size#332: setsockopt(26, SOL_SOCKET, SO_SNDBUF, 8388608) failed. Error: No buffer space available[55].
+[2015-08-25 10:28:21 @1193.0]	WARN	swSocket_set_buffer_size#332: setsockopt(27, SOL_SOCKET, SO_SNDBUF, 8388608) failed. Error: No buffer space available[55].
+
+Warning: swoole_server::send() expects at least 2 parameters, 1 given in /private/var/www/Group/swoole.php on line 97
+
+Warning: swoole_server::send() expects at least 2 parameters, 1 given in /private/var/www/Group/swoole.php on line 97
+
+Warning: swoole_server::send() expects at least 2 parameters, 1 given in /private/var/www/Group/swoole.php on line 97
+
+Warning: swoole_server::send() expects at least 2 parameters, 1 given in /private/var/www/Group/swoole.php on line 97
+
+Warning: swoole_server::send() expects at least 2 parameters, 1 given in /private/var/www/Group/swoole.php on line 97
+
+Warning: swoole_server::send() expects at least 2 parameters, 1 given in /private/var/www/Group/swoole.php on line 97
+
+Warning: swoole_server::send() expects at least 2 parameters, 1 given in /private/var/www/Group/swoole.php on line 97
+
+Warning: swoole_server::send() expects at least 2 parameters, 1 given in /private/var/www/Group/swoole.php on line 97
+[2015-08-25 10:28:52 @1221.0]	WARN	swSocket_set_buffer_size#332: setsockopt(12, SOL_SOCKET, SO_SNDBUF, 8388608) failed. Error: No buffer space available[55].
+[2015-08-25 10:28:52 @1221.0]	WARN	swSocket_set_buffer_size#332: setsockopt(13, SOL_SOCKET, SO_SNDBUF, 8388608) failed. Error: No buffer space available[55].
+[2015-08-25 10:28:52 @1221.0]	WARN	swSocket_set_buffer_size#332: setsockopt(14, SOL_SOCKET, SO_SNDBUF, 8388608) failed. Error: No buffer space available[55].
+[2015-08-25 10:28:52 @1221.0]	WARN	swSocket_set_buffer_size#332: setsockopt(15, SOL_SOCKET, SO_SNDBUF, 8388608) failed. Error: No buffer space available[55].
+[2015-08-25 10:28:52 @1221.0]	WARN	swSocket_set_buffer_size#332: setsockopt(16, SOL_SOCKET, SO_SNDBUF, 8388608) failed. Error: No buffer space available[55].
+[2015-08-25 10:28:52 @1221.0]	WARN	swSocket_set_buffer_size#332: setsockopt(17, SOL_SOCKET, SO_SNDBUF, 8388608) failed. Error: No buffer space available[55].
+[2015-08-25 10:28:52 @1221.0]	WARN	swSocket_set_buffer_size#332: setsockopt(18, SOL_SOCKET, SO_SNDBUF, 8388608) failed. Error: No buffer space available[55].
+[2015-08-25 10:28:52 @1221.0]	WARN	swSocket_set_buffer_size#332: setsockopt(19, SOL_SOCKET, SO_SNDBUF, 8388608) failed. Error: No buffer space available[55].
+[2015-08-25 10:28:52 @1221.0]	WARN	swSocket_set_buffer_size#332: setsockopt(20, SOL_SOCKET, SO_SNDBUF, 8388608) failed. Error: No buffer space available[55].
+[2015-08-25 10:28:52 @1221.0]	WARN	swSocket_set_buffer_size#332: setsockopt(21, SOL_SOCKET, SO_SNDBUF, 8388608) failed. Error: No buffer space available[55].
+[2015-08-25 10:28:52 @1221.0]	WARN	swSocket_set_buffer_size#332: setsockopt(22, SOL_SOCKET, SO_SNDBUF, 8388608) failed. Error: No buffer space available[55].
+[2015-08-25 10:28:52 @1221.0]	WARN	swSocket_set_buffer_size#332: setsockopt(23, SOL_SOCKET, SO_SNDBUF, 8388608) failed. Error: No buffer space available[55].
+[2015-08-25 10:28:52 @1221.0]	WARN	swSocket_set_buffer_size#332: setsockopt(24, SOL_SOCKET, SO_SNDBUF, 8388608) failed. Error: No buffer space available[55].
+[2015-08-25 10:28:52 @1221.0]	WARN	swSocket_set_buffer_size#332: setsockopt(25, SOL_SOCKET, SO_SNDBUF, 8388608) failed. Error: No buffer space available[55].
+[2015-08-25 10:28:52 @1221.0]	WARN	swSocket_set_buffer_size#332: setsockopt(26, SOL_SOCKET, SO_SNDBUF, 8388608) failed. Error: No buffer space available[55].
+[2015-08-25 10:28:52 @1221.0]	WARN	swSocket_set_buffer_size#332: setsockopt(27, SOL_SOCKET, SO_SNDBUF, 8388608) failed. Error: No buffer space available[55].
+[2015-08-25 10:28:52 @1221.0]	WARN	swSocket_listen: bind(127.0.0.1:9502) failed. Error: Address already in use [48]
+[2015-08-25 10:28:52 @1221.0]	WARN	swServer_start_proxy: ReactorThread start failed
+[2015-08-25 10:28:52 @1221.0]	NOTICE	Server is shutdown now.
+[2015-08-25 10:28:52 @1221.0]	WARN	swServer_signal_hanlder: Fatal Error: manager process exit. status=0, signal=15.
+[2015-08-25 10:28:52 @1221.0]	WARN	swFactoryProcess_shutdown#62: waitpid(1223) failed. Error: No child processes[10].
+
+Fatal error: Class 'core\Group\Services\Service' not found in /private/var/www/Group/swoole.php on line 105
+[2015-08-25 10:28:58 ^1193.4]	WARN	zm_deactivate_swoole: Fatal error: Class 'core\Group\Services\Service' not found in /private/var/www/Group/swoole.php on line 105.
+
+Warning: swoole_server::send() expects at least 2 parameters, 1 given in /private/var/www/Group/swoole.php on line 97
+[2015-08-25 10:32:14 @1266.0]	WARN	swSocket_set_buffer_size#332: setsockopt(12, SOL_SOCKET, SO_SNDBUF, 8388608) failed. Error: No buffer space available[55].
+[2015-08-25 10:32:14 @1266.0]	WARN	swSocket_set_buffer_size#332: setsockopt(13, SOL_SOCKET, SO_SNDBUF, 8388608) failed. Error: No buffer space available[55].
+[2015-08-25 10:32:14 @1266.0]	WARN	swSocket_set_buffer_size#332: setsockopt(14, SOL_SOCKET, SO_SNDBUF, 8388608) failed. Error: No buffer space available[55].
+[2015-08-25 10:32:14 @1266.0]	WARN	swSocket_set_buffer_size#332: setsockopt(15, SOL_SOCKET, SO_SNDBUF, 8388608) failed. Error: No buffer space available[55].
+[2015-08-25 10:32:14 @1266.0]	WARN	swSocket_set_buffer_size#332: setsockopt(16, SOL_SOCKET, SO_SNDBUF, 8388608) failed. Error: No buffer space available[55].
+[2015-08-25 10:32:14 @1266.0]	WARN	swSocket_set_buffer_size#332: setsockopt(17, SOL_SOCKET, SO_SNDBUF, 8388608) failed. Error: No buffer space available[55].
+[2015-08-25 10:32:14 @1266.0]	WARN	swSocket_set_buffer_size#332: setsockopt(18, SOL_SOCKET, SO_SNDBUF, 8388608) failed. Error: No buffer space available[55].
+[2015-08-25 10:32:14 @1266.0]	WARN	swSocket_set_buffer_size#332: setsockopt(19, SOL_SOCKET, SO_SNDBUF, 8388608) failed. Error: No buffer space available[55].
+[2015-08-25 10:32:14 @1266.0]	WARN	swSocket_set_buffer_size#332: setsockopt(20, SOL_SOCKET, SO_SNDBUF, 8388608) failed. Error: No buffer space available[55].
+[2015-08-25 10:32:14 @1266.0]	WARN	swSocket_set_buffer_size#332: setsockopt(21, SOL_SOCKET, SO_SNDBUF, 8388608) failed. Error: No buffer space available[55].
+[2015-08-25 10:32:14 @1266.0]	WARN	swSocket_set_buffer_size#332: setsockopt(22, SOL_SOCKET, SO_SNDBUF, 8388608) failed. Error: No buffer space available[55].
+[2015-08-25 10:32:14 @1266.0]	WARN	swSocket_set_buffer_size#332: setsockopt(23, SOL_SOCKET, SO_SNDBUF, 8388608) failed. Error: No buffer space available[55].
+[2015-08-25 10:32:14 @1266.0]	WARN	swSocket_set_buffer_size#332: setsockopt(24, SOL_SOCKET, SO_SNDBUF, 8388608) failed. Error: No buffer space available[55].
+[2015-08-25 10:32:14 @1266.0]	WARN	swSocket_set_buffer_size#332: setsockopt(25, SOL_SOCKET, SO_SNDBUF, 8388608) failed. Error: No buffer space available[55].
+[2015-08-25 10:32:14 @1266.0]	WARN	swSocket_set_buffer_size#332: setsockopt(26, SOL_SOCKET, SO_SNDBUF, 8388608) failed. Error: No buffer space available[55].
+[2015-08-25 10:32:14 @1266.0]	WARN	swSocket_set_buffer_size#332: setsockopt(27, SOL_SOCKET, SO_SNDBUF, 8388608) failed. Error: No buffer space available[55].
+
+Fatal error: Class 'core\Group\Services\Service' not found in /private/var/www/Group/swoole.php on line 105
+[2015-08-25 10:32:19 ^1266.4]	WARN	zm_deactivate_swoole: Fatal error: Class 'core\Group\Services\Service' not found in /private/var/www/Group/swoole.php on line 105.
+[2015-08-25 10:39:50 @1323.0]	WARN	swSocket_set_buffer_size#332: setsockopt(12, SOL_SOCKET, SO_SNDBUF, 8388608) failed. Error: No buffer space available[55].
+[2015-08-25 10:39:50 @1323.0]	WARN	swSocket_set_buffer_size#332: setsockopt(13, SOL_SOCKET, SO_SNDBUF, 8388608) failed. Error: No buffer space available[55].
+[2015-08-25 10:39:50 @1323.0]	WARN	swSocket_set_buffer_size#332: setsockopt(14, SOL_SOCKET, SO_SNDBUF, 8388608) failed. Error: No buffer space available[55].
+[2015-08-25 10:39:50 @1323.0]	WARN	swSocket_set_buffer_size#332: setsockopt(15, SOL_SOCKET, SO_SNDBUF, 8388608) failed. Error: No buffer space available[55].
+[2015-08-25 10:39:50 @1323.0]	WARN	swSocket_set_buffer_size#332: setsockopt(16, SOL_SOCKET, SO_SNDBUF, 8388608) failed. Error: No buffer space available[55].
+[2015-08-25 10:39:50 @1323.0]	WARN	swSocket_set_buffer_size#332: setsockopt(17, SOL_SOCKET, SO_SNDBUF, 8388608) failed. Error: No buffer space available[55].
+[2015-08-25 10:39:50 @1323.0]	WARN	swSocket_set_buffer_size#332: setsockopt(18, SOL_SOCKET, SO_SNDBUF, 8388608) failed. Error: No buffer space available[55].
+[2015-08-25 10:39:50 @1323.0]	WARN	swSocket_set_buffer_size#332: setsockopt(19, SOL_SOCKET, SO_SNDBUF, 8388608) failed. Error: No buffer space available[55].
+[2015-08-25 10:39:50 @1323.0]	WARN	swSocket_set_buffer_size#332: setsockopt(20, SOL_SOCKET, SO_SNDBUF, 8388608) failed. Error: No buffer space available[55].
+[2015-08-25 10:39:50 @1323.0]	WARN	swSocket_set_buffer_size#332: setsockopt(21, SOL_SOCKET, SO_SNDBUF, 8388608) failed. Error: No buffer space available[55].
+[2015-08-25 10:39:50 @1323.0]	WARN	swSocket_set_buffer_size#332: setsockopt(22, SOL_SOCKET, SO_SNDBUF, 8388608) failed. Error: No buffer space available[55].
+[2015-08-25 10:39:50 @1323.0]	WARN	swSocket_set_buffer_size#332: setsockopt(23, SOL_SOCKET, SO_SNDBUF, 8388608) failed. Error: No buffer space available[55].
+[2015-08-25 10:39:50 @1323.0]	WARN	swSocket_set_buffer_size#332: setsockopt(24, SOL_SOCKET, SO_SNDBUF, 8388608) failed. Error: No buffer space available[55].
+[2015-08-25 10:39:50 @1323.0]	WARN	swSocket_set_buffer_size#332: setsockopt(25, SOL_SOCKET, SO_SNDBUF, 8388608) failed. Error: No buffer space available[55].
+[2015-08-25 10:39:50 @1323.0]	WARN	swSocket_set_buffer_size#332: setsockopt(26, SOL_SOCKET, SO_SNDBUF, 8388608) failed. Error: No buffer space available[55].
+[2015-08-25 10:39:50 @1323.0]	WARN	swSocket_set_buffer_size#332: setsockopt(27, SOL_SOCKET, SO_SNDBUF, 8388608) failed. Error: No buffer space available[55].
+
+Fatal error: Class 'core\Group\Config\Config' not found in /private/var/www/Group/swoole.php on line 34
+[2015-08-25 10:39:55 ^1323.4]	WARN	zm_deactivate_swoole: Fatal error: Class 'core\Group\Config\Config' not found in /private/var/www/Group/swoole.php on line 34.
+[2015-08-25 11:20:10 @1799.0]	WARN	swSocket_set_buffer_size#332: setsockopt(12, SOL_SOCKET, SO_SNDBUF, 8388608) failed. Error: No buffer space available[55].
+[2015-08-25 11:20:10 @1799.0]	WARN	swSocket_set_buffer_size#332: setsockopt(13, SOL_SOCKET, SO_SNDBUF, 8388608) failed. Error: No buffer space available[55].
+[2015-08-25 11:20:10 @1799.0]	WARN	swSocket_set_buffer_size#332: setsockopt(14, SOL_SOCKET, SO_SNDBUF, 8388608) failed. Error: No buffer space available[55].
+[2015-08-25 11:20:10 @1799.0]	WARN	swSocket_set_buffer_size#332: setsockopt(15, SOL_SOCKET, SO_SNDBUF, 8388608) failed. Error: No buffer space available[55].
+[2015-08-25 11:20:10 @1799.0]	WARN	swSocket_set_buffer_size#332: setsockopt(16, SOL_SOCKET, SO_SNDBUF, 8388608) failed. Error: No buffer space available[55].
+[2015-08-25 11:20:10 @1799.0]	WARN	swSocket_set_buffer_size#332: setsockopt(17, SOL_SOCKET, SO_SNDBUF, 8388608) failed. Error: No buffer space available[55].
+[2015-08-25 11:20:10 @1799.0]	WARN	swSocket_set_buffer_size#332: setsockopt(18, SOL_SOCKET, SO_SNDBUF, 8388608) failed. Error: No buffer space available[55].
+[2015-08-25 11:20:10 @1799.0]	WARN	swSocket_set_buffer_size#332: setsockopt(19, SOL_SOCKET, SO_SNDBUF, 8388608) failed. Error: No buffer space available[55].
+[2015-08-25 11:20:10 @1799.0]	WARN	swSocket_set_buffer_size#332: setsockopt(20, SOL_SOCKET, SO_SNDBUF, 8388608) failed. Error: No buffer space available[55].
+[2015-08-25 11:20:10 @1799.0]	WARN	swSocket_set_buffer_size#332: setsockopt(21, SOL_SOCKET, SO_SNDBUF, 8388608) failed. Error: No buffer space available[55].
+[2015-08-25 11:20:10 @1799.0]	WARN	swSocket_set_buffer_size#332: setsockopt(22, SOL_SOCKET, SO_SNDBUF, 8388608) failed. Error: No buffer space available[55].
+[2015-08-25 11:20:10 @1799.0]	WARN	swSocket_set_buffer_size#332: setsockopt(23, SOL_SOCKET, SO_SNDBUF, 8388608) failed. Error: No buffer space available[55].
+[2015-08-25 11:20:10 @1799.0]	WARN	swSocket_set_buffer_size#332: setsockopt(24, SOL_SOCKET, SO_SNDBUF, 8388608) failed. Error: No buffer space available[55].
+[2015-08-25 11:20:10 @1799.0]	WARN	swSocket_set_buffer_size#332: setsockopt(25, SOL_SOCKET, SO_SNDBUF, 8388608) failed. Error: No buffer space available[55].
+[2015-08-25 11:20:10 @1799.0]	WARN	swSocket_set_buffer_size#332: setsockopt(26, SOL_SOCKET, SO_SNDBUF, 8388608) failed. Error: No buffer space available[55].
+[2015-08-25 11:20:10 @1799.0]	WARN	swSocket_set_buffer_size#332: setsockopt(27, SOL_SOCKET, SO_SNDBUF, 8388608) failed. Error: No buffer space available[55].
+[2015-08-25 11:20:10 @1799.0]	WARN	swSocket_listen: bind(127.0.0.1:9502) failed. Error: Address already in use [48]
+[2015-08-25 11:20:10 @1799.0]	WARN	swServer_start_proxy: ReactorThread start failed
+[2015-08-25 11:20:10 @1799.0]	NOTICE	Server is shutdown now.
+[2015-08-25 11:20:10 @1799.0]	WARN	swServer_signal_hanlder: Fatal Error: manager process exit. status=0, signal=15.
+[2015-08-25 11:20:10 @1799.0]	WARN	swFactoryProcess_shutdown#62: waitpid(1801) failed. Error: No child processes[10].
+
+Fatal error: Class 'core\Group\Config\Config' not found in /private/var/www/Group/swoole.php on line 34
+[2015-08-25 11:20:18 ^1323.5]	WARN	zm_deactivate_swoole: Fatal error: Class 'core\Group\Config\Config' not found in /private/var/www/Group/swoole.php on line 34.
+[2015-08-25 11:21:44 @1822.0]	WARN	swSocket_set_buffer_size#332: setsockopt(12, SOL_SOCKET, SO_SNDBUF, 8388608) failed. Error: No buffer space available[55].
+[2015-08-25 11:21:44 @1822.0]	WARN	swSocket_set_buffer_size#332: setsockopt(13, SOL_SOCKET, SO_SNDBUF, 8388608) failed. Error: No buffer space available[55].
+[2015-08-25 11:21:44 @1822.0]	WARN	swSocket_set_buffer_size#332: setsockopt(14, SOL_SOCKET, SO_SNDBUF, 8388608) failed. Error: No buffer space available[55].
+[2015-08-25 11:21:44 @1822.0]	WARN	swSocket_set_buffer_size#332: setsockopt(15, SOL_SOCKET, SO_SNDBUF, 8388608) failed. Error: No buffer space available[55].
+[2015-08-25 11:21:44 @1822.0]	WARN	swSocket_set_buffer_size#332: setsockopt(16, SOL_SOCKET, SO_SNDBUF, 8388608) failed. Error: No buffer space available[55].
+[2015-08-25 11:21:44 @1822.0]	WARN	swSocket_set_buffer_size#332: setsockopt(17, SOL_SOCKET, SO_SNDBUF, 8388608) failed. Error: No buffer space available[55].
+[2015-08-25 11:21:44 @1822.0]	WARN	swSocket_set_buffer_size#332: setsockopt(18, SOL_SOCKET, SO_SNDBUF, 8388608) failed. Error: No buffer space available[55].
+[2015-08-25 11:21:44 @1822.0]	WARN	swSocket_set_buffer_size#332: setsockopt(19, SOL_SOCKET, SO_SNDBUF, 8388608) failed. Error: No buffer space available[55].
+[2015-08-25 11:21:44 @1822.0]	WARN	swSocket_set_buffer_size#332: setsockopt(20, SOL_SOCKET, SO_SNDBUF, 8388608) failed. Error: No buffer space available[55].
+[2015-08-25 11:21:44 @1822.0]	WARN	swSocket_set_buffer_size#332: setsockopt(21, SOL_SOCKET, SO_SNDBUF, 8388608) failed. Error: No buffer space available[55].
+[2015-08-25 11:21:44 @1822.0]	WARN	swSocket_set_buffer_size#332: setsockopt(22, SOL_SOCKET, SO_SNDBUF, 8388608) failed. Error: No buffer space available[55].
+[2015-08-25 11:21:44 @1822.0]	WARN	swSocket_set_buffer_size#332: setsockopt(23, SOL_SOCKET, SO_SNDBUF, 8388608) failed. Error: No buffer space available[55].
+[2015-08-25 11:21:44 @1822.0]	WARN	swSocket_set_buffer_size#332: setsockopt(24, SOL_SOCKET, SO_SNDBUF, 8388608) failed. Error: No buffer space available[55].
+[2015-08-25 11:21:44 @1822.0]	WARN	swSocket_set_buffer_size#332: setsockopt(25, SOL_SOCKET, SO_SNDBUF, 8388608) failed. Error: No buffer space available[55].
+[2015-08-25 11:21:44 @1822.0]	WARN	swSocket_set_buffer_size#332: setsockopt(26, SOL_SOCKET, SO_SNDBUF, 8388608) failed. Error: No buffer space available[55].
+[2015-08-25 11:21:44 @1822.0]	WARN	swSocket_set_buffer_size#332: setsockopt(27, SOL_SOCKET, SO_SNDBUF, 8388608) failed. Error: No buffer space available[55].
+
+Fatal error: Class 'core\Group\Dao\Config' not found in /private/var/www/Group/core/Group/Dao/Dao.php on line 22
+[2015-08-25 11:21:50 ^1822.4]	WARN	zm_deactivate_swoole: Fatal error: Class 'core\Group\Dao\Config' not found in /private/var/www/Group/core/Group/Dao/Dao.php on line 22.
+[2015-08-25 11:22:46 @1856.0]	WARN	swSocket_set_buffer_size#332: setsockopt(12, SOL_SOCKET, SO_SNDBUF, 8388608) failed. Error: No buffer space available[55].
+[2015-08-25 11:22:46 @1856.0]	WARN	swSocket_set_buffer_size#332: setsockopt(13, SOL_SOCKET, SO_SNDBUF, 8388608) failed. Error: No buffer space available[55].
+[2015-08-25 11:22:46 @1856.0]	WARN	swSocket_set_buffer_size#332: setsockopt(14, SOL_SOCKET, SO_SNDBUF, 8388608) failed. Error: No buffer space available[55].
+[2015-08-25 11:22:46 @1856.0]	WARN	swSocket_set_buffer_size#332: setsockopt(15, SOL_SOCKET, SO_SNDBUF, 8388608) failed. Error: No buffer space available[55].
+[2015-08-25 11:22:46 @1856.0]	WARN	swSocket_set_buffer_size#332: setsockopt(16, SOL_SOCKET, SO_SNDBUF, 8388608) failed. Error: No buffer space available[55].
+[2015-08-25 11:22:46 @1856.0]	WARN	swSocket_set_buffer_size#332: setsockopt(17, SOL_SOCKET, SO_SNDBUF, 8388608) failed. Error: No buffer space available[55].
+[2015-08-25 11:22:46 @1856.0]	WARN	swSocket_set_buffer_size#332: setsockopt(18, SOL_SOCKET, SO_SNDBUF, 8388608) failed. Error: No buffer space available[55].
+[2015-08-25 11:22:46 @1856.0]	WARN	swSocket_set_buffer_size#332: setsockopt(19, SOL_SOCKET, SO_SNDBUF, 8388608) failed. Error: No buffer space available[55].
+[2015-08-25 11:22:46 @1856.0]	WARN	swSocket_set_buffer_size#332: setsockopt(20, SOL_SOCKET, SO_SNDBUF, 8388608) failed. Error: No buffer space available[55].
+[2015-08-25 11:22:46 @1856.0]	WARN	swSocket_set_buffer_size#332: setsockopt(21, SOL_SOCKET, SO_SNDBUF, 8388608) failed. Error: No buffer space available[55].
+[2015-08-25 11:22:46 @1856.0]	WARN	swSocket_set_buffer_size#332: setsockopt(22, SOL_SOCKET, SO_SNDBUF, 8388608) failed. Error: No buffer space available[55].
+[2015-08-25 11:22:46 @1856.0]	WARN	swSocket_set_buffer_size#332: setsockopt(23, SOL_SOCKET, SO_SNDBUF, 8388608) failed. Error: No buffer space available[55].
+[2015-08-25 11:22:46 @1856.0]	WARN	swSocket_set_buffer_size#332: setsockopt(24, SOL_SOCKET, SO_SNDBUF, 8388608) failed. Error: No buffer space available[55].
+[2015-08-25 11:22:46 @1856.0]	WARN	swSocket_set_buffer_size#332: setsockopt(25, SOL_SOCKET, SO_SNDBUF, 8388608) failed. Error: No buffer space available[55].
+[2015-08-25 11:22:46 @1856.0]	WARN	swSocket_set_buffer_size#332: setsockopt(26, SOL_SOCKET, SO_SNDBUF, 8388608) failed. Error: No buffer space available[55].
+[2015-08-25 11:22:46 @1856.0]	WARN	swSocket_set_buffer_size#332: setsockopt(27, SOL_SOCKET, SO_SNDBUF, 8388608) failed. Error: No buffer space available[55].
+
+Warning: require(config/database.php): failed to open stream: No such file or directory in /private/var/www/Group/core/Group/Config/Config.php on line 87
+
+Fatal error: require(): Failed opening required 'config/database.php' (include_path='.:/usr/local/Cellar/php56/5.6.11_2/lib/php') in /private/var/www/Group/core/Group/Config/Config.php on line 87
+[2015-08-25 11:22:55 ^1856.4]	WARN	zm_deactivate_swoole: Fatal error: require(): Failed opening required 'config/database.php' (include_path='.:/usr/local/Cellar/php56/5.6.11_2/lib/php') in /private/var/www/Group/core/Group/Config/Config.php on line 87.
+[2015-08-25 11:27:19 @1916.0]	WARN	swSocket_set_buffer_size#332: setsockopt(12, SOL_SOCKET, SO_SNDBUF, 8388608) failed. Error: No buffer space available[55].
+[2015-08-25 11:27:19 @1916.0]	WARN	swSocket_set_buffer_size#332: setsockopt(13, SOL_SOCKET, SO_SNDBUF, 8388608) failed. Error: No buffer space available[55].
+[2015-08-25 11:27:19 @1916.0]	WARN	swSocket_set_buffer_size#332: setsockopt(14, SOL_SOCKET, SO_SNDBUF, 8388608) failed. Error: No buffer space available[55].
+[2015-08-25 11:27:19 @1916.0]	WARN	swSocket_set_buffer_size#332: setsockopt(15, SOL_SOCKET, SO_SNDBUF, 8388608) failed. Error: No buffer space available[55].
+[2015-08-25 11:27:19 @1916.0]	WARN	swSocket_set_buffer_size#332: setsockopt(16, SOL_SOCKET, SO_SNDBUF, 8388608) failed. Error: No buffer space available[55].
+[2015-08-25 11:27:19 @1916.0]	WARN	swSocket_set_buffer_size#332: setsockopt(17, SOL_SOCKET, SO_SNDBUF, 8388608) failed. Error: No buffer space available[55].
+[2015-08-25 11:27:19 @1916.0]	WARN	swSocket_set_buffer_size#332: setsockopt(18, SOL_SOCKET, SO_SNDBUF, 8388608) failed. Error: No buffer space available[55].
+[2015-08-25 11:27:19 @1916.0]	WARN	swSocket_set_buffer_size#332: setsockopt(19, SOL_SOCKET, SO_SNDBUF, 8388608) failed. Error: No buffer space available[55].
+[2015-08-25 11:27:19 @1916.0]	WARN	swSocket_set_buffer_size#332: setsockopt(20, SOL_SOCKET, SO_SNDBUF, 8388608) failed. Error: No buffer space available[55].
+[2015-08-25 11:27:19 @1916.0]	WARN	swSocket_set_buffer_size#332: setsockopt(21, SOL_SOCKET, SO_SNDBUF, 8388608) failed. Error: No buffer space available[55].
+[2015-08-25 11:27:19 @1916.0]	WARN	swSocket_set_buffer_size#332: setsockopt(22, SOL_SOCKET, SO_SNDBUF, 8388608) failed. Error: No buffer space available[55].
+[2015-08-25 11:27:19 @1916.0]	WARN	swSocket_set_buffer_size#332: setsockopt(23, SOL_SOCKET, SO_SNDBUF, 8388608) failed. Error: No buffer space available[55].
+[2015-08-25 11:27:19 @1916.0]	WARN	swSocket_set_buffer_size#332: setsockopt(24, SOL_SOCKET, SO_SNDBUF, 8388608) failed. Error: No buffer space available[55].
+[2015-08-25 11:27:19 @1916.0]	WARN	swSocket_set_buffer_size#332: setsockopt(25, SOL_SOCKET, SO_SNDBUF, 8388608) failed. Error: No buffer space available[55].
+[2015-08-25 11:27:19 @1916.0]	WARN	swSocket_set_buffer_size#332: setsockopt(26, SOL_SOCKET, SO_SNDBUF, 8388608) failed. Error: No buffer space available[55].
+[2015-08-25 11:27:19 @1916.0]	WARN	swSocket_set_buffer_size#332: setsockopt(27, SOL_SOCKET, SO_SNDBUF, 8388608) failed. Error: No buffer space available[55].
+[2015-08-25 11:28:35 @1944.0]	WARN	swSocket_set_buffer_size#332: setsockopt(12, SOL_SOCKET, SO_SNDBUF, 8388608) failed. Error: No buffer space available[55].
+[2015-08-25 11:28:35 @1944.0]	WARN	swSocket_set_buffer_size#332: setsockopt(13, SOL_SOCKET, SO_SNDBUF, 8388608) failed. Error: No buffer space available[55].
+[2015-08-25 11:28:35 @1944.0]	WARN	swSocket_set_buffer_size#332: setsockopt(14, SOL_SOCKET, SO_SNDBUF, 8388608) failed. Error: No buffer space available[55].
+[2015-08-25 11:28:35 @1944.0]	WARN	swSocket_set_buffer_size#332: setsockopt(15, SOL_SOCKET, SO_SNDBUF, 8388608) failed. Error: No buffer space available[55].
+[2015-08-25 11:28:35 @1944.0]	WARN	swSocket_set_buffer_size#332: setsockopt(16, SOL_SOCKET, SO_SNDBUF, 8388608) failed. Error: No buffer space available[55].
+[2015-08-25 11:28:35 @1944.0]	WARN	swSocket_set_buffer_size#332: setsockopt(17, SOL_SOCKET, SO_SNDBUF, 8388608) failed. Error: No buffer space available[55].
+[2015-08-25 11:28:35 @1944.0]	WARN	swSocket_set_buffer_size#332: setsockopt(18, SOL_SOCKET, SO_SNDBUF, 8388608) failed. Error: No buffer space available[55].
+[2015-08-25 11:28:35 @1944.0]	WARN	swSocket_set_buffer_size#332: setsockopt(19, SOL_SOCKET, SO_SNDBUF, 8388608) failed. Error: No buffer space available[55].
+[2015-08-25 11:28:35 @1944.0]	WARN	swSocket_set_buffer_size#332: setsockopt(20, SOL_SOCKET, SO_SNDBUF, 8388608) failed. Error: No buffer space available[55].
+[2015-08-25 11:28:35 @1944.0]	WARN	swSocket_set_buffer_size#332: setsockopt(21, SOL_SOCKET, SO_SNDBUF, 8388608) failed. Error: No buffer space available[55].
+[2015-08-25 11:28:35 @1944.0]	WARN	swSocket_set_buffer_size#332: setsockopt(22, SOL_SOCKET, SO_SNDBUF, 8388608) failed. Error: No buffer space available[55].
+[2015-08-25 11:28:35 @1944.0]	WARN	swSocket_set_buffer_size#332: setsockopt(23, SOL_SOCKET, SO_SNDBUF, 8388608) failed. Error: No buffer space available[55].
+[2015-08-25 11:28:35 @1944.0]	WARN	swSocket_set_buffer_size#332: setsockopt(24, SOL_SOCKET, SO_SNDBUF, 8388608) failed. Error: No buffer space available[55].
+[2015-08-25 11:28:35 @1944.0]	WARN	swSocket_set_buffer_size#332: setsockopt(25, SOL_SOCKET, SO_SNDBUF, 8388608) failed. Error: No buffer space available[55].
+[2015-08-25 11:28:35 @1944.0]	WARN	swSocket_set_buffer_size#332: setsockopt(26, SOL_SOCKET, SO_SNDBUF, 8388608) failed. Error: No buffer space available[55].
+[2015-08-25 11:28:35 @1944.0]	WARN	swSocket_set_buffer_size#332: setsockopt(27, SOL_SOCKET, SO_SNDBUF, 8388608) failed. Error: No buffer space available[55].
+[2015-08-25 11:29:56 @1993.0]	WARN	swSocket_set_buffer_size#332: setsockopt(12, SOL_SOCKET, SO_SNDBUF, 8388608) failed. Error: No buffer space available[55].
+[2015-08-25 11:29:56 @1993.0]	WARN	swSocket_set_buffer_size#332: setsockopt(13, SOL_SOCKET, SO_SNDBUF, 8388608) failed. Error: No buffer space available[55].
+[2015-08-25 11:29:56 @1993.0]	WARN	swSocket_set_buffer_size#332: setsockopt(14, SOL_SOCKET, SO_SNDBUF, 8388608) failed. Error: No buffer space available[55].
+[2015-08-25 11:29:56 @1993.0]	WARN	swSocket_set_buffer_size#332: setsockopt(15, SOL_SOCKET, SO_SNDBUF, 8388608) failed. Error: No buffer space available[55].
+[2015-08-25 11:29:56 @1993.0]	WARN	swSocket_set_buffer_size#332: setsockopt(16, SOL_SOCKET, SO_SNDBUF, 8388608) failed. Error: No buffer space available[55].
+[2015-08-25 11:29:56 @1993.0]	WARN	swSocket_set_buffer_size#332: setsockopt(17, SOL_SOCKET, SO_SNDBUF, 8388608) failed. Error: No buffer space available[55].
+[2015-08-25 11:29:56 @1993.0]	WARN	swSocket_set_buffer_size#332: setsockopt(18, SOL_SOCKET, SO_SNDBUF, 8388608) failed. Error: No buffer space available[55].
+[2015-08-25 11:29:56 @1993.0]	WARN	swSocket_set_buffer_size#332: setsockopt(19, SOL_SOCKET, SO_SNDBUF, 8388608) failed. Error: No buffer space available[55].
+[2015-08-25 11:29:56 @1993.0]	WARN	swSocket_set_buffer_size#332: setsockopt(20, SOL_SOCKET, SO_SNDBUF, 8388608) failed. Error: No buffer space available[55].
+[2015-08-25 11:29:56 @1993.0]	WARN	swSocket_set_buffer_size#332: setsockopt(21, SOL_SOCKET, SO_SNDBUF, 8388608) failed. Error: No buffer space available[55].
+[2015-08-25 11:29:56 @1993.0]	WARN	swSocket_set_buffer_size#332: setsockopt(22, SOL_SOCKET, SO_SNDBUF, 8388608) failed. Error: No buffer space available[55].
+[2015-08-25 11:29:56 @1993.0]	WARN	swSocket_set_buffer_size#332: setsockopt(23, SOL_SOCKET, SO_SNDBUF, 8388608) failed. Error: No buffer space available[55].
+[2015-08-25 11:29:56 @1993.0]	WARN	swSocket_set_buffer_size#332: setsockopt(24, SOL_SOCKET, SO_SNDBUF, 8388608) failed. Error: No buffer space available[55].
+[2015-08-25 11:29:56 @1993.0]	WARN	swSocket_set_buffer_size#332: setsockopt(25, SOL_SOCKET, SO_SNDBUF, 8388608) failed. Error: No buffer space available[55].
+[2015-08-25 11:29:56 @1993.0]	WARN	swSocket_set_buffer_size#332: setsockopt(26, SOL_SOCKET, SO_SNDBUF, 8388608) failed. Error: No buffer space available[55].
+[2015-08-25 11:29:56 @1993.0]	WARN	swSocket_set_buffer_size#332: setsockopt(27, SOL_SOCKET, SO_SNDBUF, 8388608) failed. Error: No buffer space available[55].
+
+Warning: require(./config/database.php): failed to open stream: No such file or directory in /private/var/www/Group/core/Group/Config/Config.php on line 87
+
+Fatal error: require(): Failed opening required './config/database.php' (include_path='.:/usr/local/Cellar/php56/5.6.11_2/lib/php') in /private/var/www/Group/core/Group/Config/Config.php on line 87
+[2015-08-25 11:30:01 ^1993.4]	WARN	zm_deactivate_swoole: Fatal error: require(): Failed opening required './config/database.php' (include_path='.:/usr/local/Cellar/php56/5.6.11_2/lib/php') in /private/var/www/Group/core/Group/Config/Config.php on line 87.
+[2015-08-25 11:32:30 @2054.0]	WARN	swSocket_set_buffer_size#332: setsockopt(12, SOL_SOCKET, SO_SNDBUF, 8388608) failed. Error: No buffer space available[55].
+[2015-08-25 11:32:30 @2054.0]	WARN	swSocket_set_buffer_size#332: setsockopt(13, SOL_SOCKET, SO_SNDBUF, 8388608) failed. Error: No buffer space available[55].
+[2015-08-25 11:32:30 @2054.0]	WARN	swSocket_set_buffer_size#332: setsockopt(14, SOL_SOCKET, SO_SNDBUF, 8388608) failed. Error: No buffer space available[55].
+[2015-08-25 11:32:30 @2054.0]	WARN	swSocket_set_buffer_size#332: setsockopt(15, SOL_SOCKET, SO_SNDBUF, 8388608) failed. Error: No buffer space available[55].
+[2015-08-25 11:32:30 @2054.0]	WARN	swSocket_set_buffer_size#332: setsockopt(16, SOL_SOCKET, SO_SNDBUF, 8388608) failed. Error: No buffer space available[55].
+[2015-08-25 11:32:30 @2054.0]	WARN	swSocket_set_buffer_size#332: setsockopt(17, SOL_SOCKET, SO_SNDBUF, 8388608) failed. Error: No buffer space available[55].
+[2015-08-25 11:32:30 @2054.0]	WARN	swSocket_set_buffer_size#332: setsockopt(18, SOL_SOCKET, SO_SNDBUF, 8388608) failed. Error: No buffer space available[55].
+[2015-08-25 11:32:30 @2054.0]	WARN	swSocket_set_buffer_size#332: setsockopt(19, SOL_SOCKET, SO_SNDBUF, 8388608) failed. Error: No buffer space available[55].
+[2015-08-25 11:32:30 @2054.0]	WARN	swSocket_set_buffer_size#332: setsockopt(20, SOL_SOCKET, SO_SNDBUF, 8388608) failed. Error: No buffer space available[55].
+[2015-08-25 11:32:30 @2054.0]	WARN	swSocket_set_buffer_size#332: setsockopt(21, SOL_SOCKET, SO_SNDBUF, 8388608) failed. Error: No buffer space available[55].
+[2015-08-25 11:32:30 @2054.0]	WARN	swSocket_set_buffer_size#332: setsockopt(22, SOL_SOCKET, SO_SNDBUF, 8388608) failed. Error: No buffer space available[55].
+[2015-08-25 11:32:30 @2054.0]	WARN	swSocket_set_buffer_size#332: setsockopt(23, SOL_SOCKET, SO_SNDBUF, 8388608) failed. Error: No buffer space available[55].
+[2015-08-25 11:32:30 @2054.0]	WARN	swSocket_set_buffer_size#332: setsockopt(24, SOL_SOCKET, SO_SNDBUF, 8388608) failed. Error: No buffer space available[55].
+[2015-08-25 11:32:30 @2054.0]	WARN	swSocket_set_buffer_size#332: setsockopt(25, SOL_SOCKET, SO_SNDBUF, 8388608) failed. Error: No buffer space available[55].
+[2015-08-25 11:32:30 @2054.0]	WARN	swSocket_set_buffer_size#332: setsockopt(26, SOL_SOCKET, SO_SNDBUF, 8388608) failed. Error: No buffer space available[55].
+[2015-08-25 11:32:30 @2054.0]	WARN	swSocket_set_buffer_size#332: setsockopt(27, SOL_SOCKET, SO_SNDBUF, 8388608) failed. Error: No buffer space available[55].

@@ -5,7 +5,7 @@ use ReflectionClass;
 use Exception;
 use core\Group\Exceptions\NotFoundException;
 use core\Group\Contracts\Container\Container as ContainerContract;
-use Config;
+use core\Group\Config\Config;
 
 class Container implements ContainerContract
 {

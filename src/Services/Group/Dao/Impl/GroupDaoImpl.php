@@ -25,5 +25,35 @@ class GroupDaoImpl extends Dao implements GroupDao
         return $group;
     }
 
+    public function waveCount()
+    {
+        $sql="UPDATE {$this->tables} SET count=count+1 LIMIT 1";
+
+        $rs = $this->getConnection()->prepare($sql);
+
+        $rs->execute();
+
+        $rs->setFetchMode(PDO::FETCH_ASSOC);
+
+        $count=$rs->fetch() ? : null;
+
+        return $count;
+    }
+
+    public function waveDownCount()
+    {
+        $sql="UPDATE {$this->tables} SET count=count-1 LIMIT 1";
+
+        $rs = $this->getConnection()->prepare($sql);
+
+        $rs->execute();
+
+        $rs->setFetchMode(PDO::FETCH_ASSOC);
+
+        $count=$rs->fetch() ? : null;
+
+        return $count;
+    }
+
 }
 ?>

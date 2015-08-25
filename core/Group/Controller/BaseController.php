@@ -2,7 +2,7 @@
 namespace core\Group\Controller;
 
 use core\Group\Exceptions\NotFoundException;
-use Route;
+use core\Group\Routing\Route;
 
 abstract class BaseController
 {
