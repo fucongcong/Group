@@ -46,7 +46,9 @@
 进入目录，执行以下命令
 
 	git clone https://github.com/fucongcong/Group.git
-
+	
+	cd Group
+	
 	composer install
 
 ####1.配置文件
