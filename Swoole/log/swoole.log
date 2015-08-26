@@ -296,3 +296,4 @@ Fatal error: require(): Failed opening required './config/database.php' (include
 [2015-08-25 11:32:30 @2054.0]	WARN	swSocket_set_buffer_size#332: setsockopt(25, SOL_SOCKET, SO_SNDBUF, 8388608) failed. Error: No buffer space available[55].
 [2015-08-25 11:32:30 @2054.0]	WARN	swSocket_set_buffer_size#332: setsockopt(26, SOL_SOCKET, SO_SNDBUF, 8388608) failed. Error: No buffer space available[55].
 [2015-08-25 11:32:30 @2054.0]	WARN	swSocket_set_buffer_size#332: setsockopt(27, SOL_SOCKET, SO_SNDBUF, 8388608) failed. Error: No buffer space available[55].
+[2015-08-25 20:11:17 #2055.0]	NOTICE	Server is shutdown now.

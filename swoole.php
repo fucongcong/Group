@@ -4,12 +4,7 @@ use core\Group\Handlers\AliasLoaderHandler;
 use core\Group\Config\Config;
 use core\Group\Services\Service;
 use Swoole\ClassMap;
-
-// $loader = require __DIR__.'/vendor/autoload.php';
-
-// $loader->setUseIncludePath(true);
-
-define('APP_DIR', __DIR__);
+//由于取消了命名空间的重命名，在入口时加载了所有类库文件共享。
 
 if (!file_exists(__DIR__.'/Swoole/classCache.php')) {
 
@@ -20,7 +15,7 @@ if (!file_exists(__DIR__.'/Swoole/classCache.php')) {
 $classMaps = include __DIR__.'/Swoole/classCache.php';
 
 foreach ($classMaps as $key => $value) {
-    var_dump($value);
+    // var_dump($value);
     include_once $value;
 }
 
