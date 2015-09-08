@@ -19,15 +19,17 @@ class Dao
 
 	public function __construct()
 	{
-		$this -> database_driver = Config::get('database::database_driver');
+		$pdo = Config::get('database::pdo');
 
-		$this -> database_host = Config::get('database::database_host');
+		$this -> database_driver = $pdo['database_driver'];
 
-		$this -> database_name = Config::get('database::database_name');
+		$this -> database_host = $pdo['database_host'];
 
-		$this -> database_user = Config::get('database::database_user');
+		$this -> database_name = $pdo['database_name'];
 
-		$this -> database_password = Config::get('database::database_password');
+		$this -> database_user = $pdo['database_user'];
+
+		$this -> database_password = $pdo['database_password'];
 
 	}
 

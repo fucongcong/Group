@@ -15,11 +15,14 @@ class Container implements ContainerContract
 
     protected $environment;
 
+    protected $appPath;
+
 
     public function init()
     {
         $this -> setTimezone();
         $this -> setEnvironment();
+        $this -> setAppPath();
     }
 
 	/**
@@ -116,5 +119,15 @@ class Container implements ContainerContract
     public function setEnvironment()
     {
         $this -> environment = Config::get('app::environment');
+    }
+
+    public function setAppPath()
+    {
+        $this -> appPath = __ROOT__;
+    }
+
+    public function getAppPath()
+    {
+        return $this -> appPath;
     }
 }
