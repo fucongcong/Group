@@ -5,12 +5,14 @@ use core\Group\Routing\Router;
 use Container;
 use core\Group\Handlers\AliasLoaderHandler;
 use core\Group\Config\Config;
+use App;
 
 Class Kernal
 {
 	public function init()
 	{
 		$this -> aliasLoader();
+	   	App::checkPath();
 		Container::getInstance() -> init();
 		$this -> fix_gpc_magic();
 		$router = new Router();

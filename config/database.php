@@ -1,17 +1,28 @@
 <?php
 return
 [
-    //pdo
-    "database_driver" => "mysql",
+    'pdo' => [
 
-    "database_host" => "127.0.0.1",
+        "database_driver" => "mysql",
 
-    "database_port" => null,
+        "database_host" => "127.0.0.1",
 
-    "database_name" => "Group",
+        "database_port" => null,
 
-    "database_user" => "root",
+        "database_name" => "Group",
 
-    "database_password" => "root",
+        "database_user" => "root",
+
+        "database_password" => "root",
+    ],
+
+    'redis' => [
+
+        'default' => [
+            'host'     => '127.0.0.1',
+            'port'     => 6379,
+        ],
+
+    ],
 
 ];

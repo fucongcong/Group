@@ -10,6 +10,7 @@ return [
     //类的映射
     'aliases' => [
 
+        'App'       => 'core\Group\App\App',
         'Config'    => 'core\Group\Config\Config',
         'Container' => 'core\Group\Container\Container',
         'Route'     => 'core\Group\Routing\Route',
