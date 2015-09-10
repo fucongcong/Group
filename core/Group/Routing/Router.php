@@ -129,7 +129,7 @@ Class Router implements RouterContract
 
 		return $parameterValue;
 	}
-
+	//to do refactor me
 	protected function getRouting()
 	{
 		$routing = include 'src/Web/routing.php';
@@ -141,6 +141,7 @@ Class Router implements RouterContract
 		return $routing;
 	}
 
+	//to do refactor me
 	protected function checkMethods($routing)
 	{
 		//cache #可以做cache层

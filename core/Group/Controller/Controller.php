@@ -41,6 +41,7 @@ class Controller  extends BaseController
 	* @param  string  $serviceName
 	* @return class
 	*/
+	//to do 单列 可以扩展为模块
 	public function createService($serviceName)
 	{
 		$serviceName=explode(":", $serviceName);
