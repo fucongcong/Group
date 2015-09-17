@@ -5,6 +5,7 @@ use core\Group\Common\ArrayToolkit;
 use core\Group\Container\Container;
 use Route;
 use Exception;
+use Cache;
 use core\Group\Contracts\Routing\Router as RouterContract;
 
 Class Router implements RouterContract
@@ -13,6 +14,13 @@ Class Router implements RouterContract
 
 	protected $route;
 
+	protected $container;
+
+	public function __construct()
+	{
+
+		$this->container = Container::getInstance();
+	}
 	/**
 	* match the uri
 	*
@@ -52,7 +60,7 @@ Class Router implements RouterContract
 
 	}
 
-	public  function run()
+	public function run()
 	{
 		return $this->match();
 	}
@@ -116,7 +124,7 @@ Class Router implements RouterContract
 
 		$this->route->setParameters(isset($config['parameters']) ? $config['parameters'] : array());
 
-        echo Container::getInstance()->doAction($className, $action, isset($config['parameters']) ? $config['parameters'] : array());
+        echo $this->container->doAction($className, $action, isset($config['parameters']) ? $config['parameters'] : array());
 
 	}
 
@@ -141,21 +149,14 @@ Class Router implements RouterContract
 		return $routing;
 	}
 
-	//to do refactor me
 	protected function checkMethods($routing)
 	{
-		//cache #可以做cache层
-		$config = array();
+		if ($this -> container ->getEnvironment() == "prod") {
 
-		foreach ($routing as $key => $route) {
-
-		       if(isset($route['methods']) && !in_array(strtoupper($route['methods']), $this->methods)) continue;
-
-	                    if(isset($route['methods']) && $_SERVER['REQUEST_METHOD'] != strtoupper($route['methods']) ) continue;
-
-	                    $config[$key] = $route;
-
+			return $this -> getMethodsCache($routing);
 		}
+
+		$config = $this -> createMethodsCache($routing);
 
 		return $config;
 	}
@@ -173,6 +174,39 @@ Class Router implements RouterContract
 		$this->route->setMethods($methods);
 		$this->route->setUri($uri);
 
+	}
+
+	private function getMethodsCache($routing)
+	{
+		$file = 'route/routing_'.$_SERVER['REQUEST_METHOD'].'.php';
+
+		if(Cache::isExist($file)) {
+
+			return Cache::get($file);
+		}
+
+		$config = $this -> createMethodsCache($routing);
+
+		Cache::set($file, $config);
+
+		return $config;
+
+	}
+
+	private function createMethodsCache($routing)
+	{
+		$config = array();
+
+		foreach ($routing as $key => $route) {
+
+		       if(isset($route['methods']) && !in_array(strtoupper($route['methods']), $this->methods)) continue;
+
+	                    if(isset($route['methods']) && $_SERVER['REQUEST_METHOD'] != strtoupper($route['methods']) ) continue;
+
+	                    $config[$key] = $route;
+		}
+
+		return $config;
 	}
 
 }
