@@ -3,8 +3,9 @@ namespace core\Group\Services;
 
 class Service
 {
+    //to do 单列
 	public function createDao($serviceName)
-	{   
+	{
 		$serviceName=explode(":", $serviceName);
 
 		$class=$serviceName[1]."DaoImpl";

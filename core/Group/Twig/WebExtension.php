@@ -29,6 +29,11 @@ Class WebExtension extends Twig_Extension
 		return __ROOT__."/".$url;
 	}
 
+    /**
+	* 获取路由
+	*
+	* @return string
+	*/
 	public function getUrl($url)
 	{
 

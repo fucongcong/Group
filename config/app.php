@@ -2,7 +2,7 @@
 return [
 
     // prod|dev
-    'environment' => 'prod',
+    'environment' => 'dev',
 
     //时区
     'timezone' => 'PRC',
@@ -11,6 +11,7 @@ return [
     'aliases' => [
 
         'App'       => 'core\Group\App\App',
+        'Cache'     => 'core\Group\Cache\Cache',
         'Config'    => 'core\Group\Config\Config',
         'Container' => 'core\Group\Container\Container',
         'Route'     => 'core\Group\Routing\Route',
