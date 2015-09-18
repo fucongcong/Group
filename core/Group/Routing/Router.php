@@ -60,12 +60,6 @@ Class Router implements RouterContract
 
 	}
 
-	public function run()
-	{
-		return $this->match();
-	}
-
-
 	/**
 	* preg the url
 	*
@@ -140,23 +134,19 @@ Class Router implements RouterContract
 	//to do refactor me
 	protected function getRouting()
 	{
-		$routing = include 'src/Web/routing.php';
+		$routing = $this->checkMethods();
 
-		$routing = $this->checkMethods($routing);
-
-		$routing =ArrayToolkit::index($routing, 'pattern');
-		//cache #可以做cache层
 		return $routing;
 	}
 
-	protected function checkMethods($routing)
+	protected function checkMethods()
 	{
 		if ($this -> container ->getEnvironment() == "prod") {
 
-			return $this -> getMethodsCache($routing);
+			return $this -> getMethodsCache();
 		}
 
-		$config = $this -> createMethodsCache($routing);
+		$config = $this -> createMethodsCache();
 
 		return $config;
 	}
@@ -176,8 +166,10 @@ Class Router implements RouterContract
 
 	}
 
-	private function getMethodsCache($routing)
+	private function getMethodsCache()
 	{
+		$routing = include 'src/Web/routing.php';
+
 		$file = 'route/routing_'.$_SERVER['REQUEST_METHOD'].'.php';
 
 		if(Cache::isExist($file)) {
@@ -193,8 +185,10 @@ Class Router implements RouterContract
 
 	}
 
-	private function createMethodsCache($routing)
+	private function createMethodsCache()
 	{
+		$routing = include 'src/Web/routing.php';
+
 		$config = array();
 
 		foreach ($routing as $key => $route) {
@@ -205,6 +199,8 @@ Class Router implements RouterContract
 
 	                    $config[$key] = $route;
 		}
+
+		$config = ArrayToolkit::index($config, 'pattern');
 
 		return $config;
 	}

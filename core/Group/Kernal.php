@@ -16,7 +16,7 @@ Class Kernal
 		Container::getInstance() -> init();
 		$this -> fix_gpc_magic();
 		$router = new Router();
-		$router -> run();
+		$router -> match();
 	}
 
 	public function fix_gpc_magic()
