@@ -36,11 +36,7 @@ class App
 
     private function setRoot()
     {
-        $_root  =   rtrim(dirname(_PHP_FILE_),'/');
-        if(!defined('__ROOT__')) {
-
-            define('__ROOT__',  (($_root=='/' || $_root=='\\')?'':$_root));
-        }
+        $_root  =  __ROOT__;
     }
 
 }

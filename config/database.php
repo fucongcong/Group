@@ -1,19 +1,24 @@
 <?php
 return
 [
-    'pdo' => [
+    //pdo DB
+    'driver' => 'DB',
+
+    'connect' => [
 
         "database_driver" => "mysql",
 
-        "database_host" => "127.0.0.1",
+        "database_host" => "192.168.1.4",
 
-        "database_port" => null,
+        "database_port" => 192,
 
-        "database_name" => "Group",
+        "database_name" => "banciyuan",
 
-        "database_user" => "root",
+        "database_user" => "banciyuan",
 
-        "database_password" => "root",
+        "database_password" => "banciyuan",
+
+        "database_encoding" => "utf8mb4"
     ],
 
     'redis' => [

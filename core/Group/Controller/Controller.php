@@ -4,9 +4,9 @@ namespace core\Group\Controller;
 use Twig_Loader_Filesystem;
 use Twig_Environment;
 use core\Group\Twig\WebExtension;
-use Container;
+use core\Group\Container\Container;
 use core\Group\Controller\BaseController;
-use Config;
+use core\Group\Config\Config;
 
 class Controller  extends BaseController
 {

@@ -1,7 +1,8 @@
 <?php
 namespace core\Group\Dao;
 use PDO;
-use Config;
+use core\Group\Config\Config;
+use core\Group\Dao\Driver\DB;
 
 class Dao
 {
@@ -17,19 +18,29 @@ class Dao
 
 	protected $database_password;
 
+	protected $database_encoding;
+
+	protected $driver;
+
 	public function __construct()
 	{
-		$pdo = Config::get('database::pdo');
+		$driver = Config::get('database::driver');
 
-		$this -> database_driver = $pdo['database_driver'];
+		$this -> driver = $driver;
 
-		$this -> database_host = $pdo['database_host'];
+		$database = Config::get("database::{$driver}");
 
-		$this -> database_name = $pdo['database_name'];
+		$this -> database_driver = $database['database_driver'];
 
-		$this -> database_user = $pdo['database_user'];
+		$this -> database_host = $database['database_host'];
 
-		$this -> database_password = $pdo['database_password'];
+		$this -> database_name = $database['database_name'];
+
+		$this -> database_user = $database['database_user'];
+
+		$this -> database_password = $database['database_password'];
+
+		$this -> database_encoding = $database['database_encoding'];
 
 	}
 
@@ -40,9 +51,14 @@ class Dao
 		    return self::$_connection;
 		}
 
-		$config = include("config.php");
-
-		$_connection = new PDO($this -> database_driver.":host=".$this -> database_host.";dbname=".$this -> database_name,$this -> database_user,$this -> database_password);
+		switch ($this -> driver) {
+			case 'DB':
+				$_connection = new PDO($this -> database_driver.":host=".$this -> database_host.";dbname=".$this -> database_name,$this -> database_user,$this -> database_password);
+				break;
+			default:
+				$_connection = new PDO($this -> database_driver.":host=".$this -> database_host.";dbname=".$this -> database_name,$this -> database_user,$this -> database_password);
+				break;
+		}
 
 		self::$_connection = $_connection;
 

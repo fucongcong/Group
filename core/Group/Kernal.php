@@ -2,7 +2,7 @@
 
 namespace core\Group;
 use core\Group\Routing\Router;
-use Container;
+use core\Group\Container\Container;
 use core\Group\Handlers\AliasLoaderHandler;
 use core\Group\Config\Config;
 use App;

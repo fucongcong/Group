@@ -84,7 +84,7 @@ class Config implements ConfigContract
 
         if (!isset($config[$key])) {
 
-            $app = require("config/".$key.".php");
+            $app = require(__ROOT__."config/".$key.".php");
 
             $this -> config = array_merge($this -> config, $app);
 
