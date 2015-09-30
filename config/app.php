@@ -5,7 +5,7 @@ return [
     'environment' => 'prod',
 
     //时区
-    'timezone' => 'PRC',
+    'timezone' => 'Asia/Shanghai',
 
     //类的映射
     'aliases' => [

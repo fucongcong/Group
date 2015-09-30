@@ -13,6 +13,7 @@
     ],
     "require": {
         "php": ">=5.3",
-        "twig/twig": "~1.0"
+        "twig/twig": "~1.0",
+        "mtdowling/cron-expression": "~1.0"
     }
 }
