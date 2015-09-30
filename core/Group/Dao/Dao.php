@@ -40,8 +40,6 @@ class Dao
 		    return self::$_connection;
 		}
 
-		$config = include("config.php");
-
 		$_connection = new PDO($this -> database_driver.":host=".$this -> database_host.";dbname=".$this -> database_name,$this -> database_user,$this -> database_password);
 
 		self::$_connection = $_connection;

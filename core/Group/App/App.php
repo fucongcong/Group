@@ -12,7 +12,7 @@ class App
         self::setRoot();
     }
 
-    private function setIsCgi()
+    private static function setIsCgi()
     {
         if(!defined('IS_CGI')) {
 
@@ -21,7 +21,7 @@ class App
 
     }
 
-    private function setPhpFile()
+    private static function setPhpFile()
     {
         if(!defined('_PHP_FILE_')) {
             if(IS_CGI) {
@@ -34,7 +34,7 @@ class App
         }
     }
 
-    private function setRoot()
+    private static function setRoot()
     {
         $_root  =   rtrim(dirname(_PHP_FILE_),'/');
         if(!defined('__ROOT__')) {
