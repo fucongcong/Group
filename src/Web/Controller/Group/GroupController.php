@@ -32,7 +32,7 @@ class GroupController extends Controller
         echo $this -> getContainer() -> getEnvironment();echo "<br>";
         //$group=$this->getGroupService()->getGroup(1);
         return $this -> render('Web/Views/Group/index.html.twig',array(
-            'group' => $group));
+            'group' => ""));
     }
 
     public function getGroupService()

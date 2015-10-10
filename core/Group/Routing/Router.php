@@ -33,7 +33,7 @@ Class Router implements RouterContract
 		$this->setRoute($this->methods, $requestUri);
 		$routing = $this->getRouting();
 
-		if ($routing[$requestUri]) {
+		if (isset($routing[$requestUri])) {
 
 			return $this->controller($routing[$requestUri]);
 
