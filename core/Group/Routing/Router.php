@@ -70,6 +70,14 @@ Class Router implements RouterContract
 	*/
 	public function pregUrl($matches, $route_key, $routing)
 	{
+        $countKey = explode("/", $_SERVER['REQUEST_URI']);
+        $countKeyPreg = explode("/", $route_key);
+
+        if(count($countKey)!= count($countKeyPreg)) {
+
+            return false;
+        }
+
 		$route = $route_key;
 		foreach ($matches[0] as $key => $match) {
 
