@@ -2,7 +2,7 @@
 return [
 
     // prod|dev
-    'environment' => 'prod',
+    'environment' => 'dev',
 
     //时区
     'timezone' => 'Asia/Shanghai',

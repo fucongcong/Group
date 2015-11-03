@@ -4,15 +4,15 @@
 {% endblock %}
 {% block body %}
 
-<div id="carousel-example-generic" class="carousel slide" data-ride="carousel">
-  <!-- Indicators -->
+<!-- <div id="carousel-example-generic" class="carousel slide" data-ride="carousel">
+
   <ol class="carousel-indicators">
     <li data-target="#carousel-example-generic" data-slide-to="0" class="active"></li>
     <li data-target="#carousel-example-generic" data-slide-to="1"></li>
     <li data-target="#carousel-example-generic" data-slide-to="2"></li>
   </ol>
 
-  <!-- Wrapper for slides -->
+
   <div class="carousel-inner" role="listbox">
     <div class="item active">
       <img src="/asset/img/slide-1.jpg" alt="...">
@@ -26,7 +26,6 @@
 
   </div>
 
-  <!-- Controls -->
   <a class="left carousel-control" href="#carousel-example-generic" role="button" data-slide="prev">
     <span class="glyphicon glyphicon-chevron-left"></span>
     <span class="sr-only">Previous</span>
@@ -35,25 +34,69 @@
     <span class="glyphicon glyphicon-chevron-right"></span>
     <span class="sr-only">Next</span>
   </a>
-</div>
+</div> -->
 
 <div class="container" style="margin-top:20px;">
-<div class="row" >
-    <div class="col-md-8">
+  <div class="row" >
+      <div class="col-md-12 clearfix">
+        <a href="/" type="button" class="btn btn-primary pull-right">返回首页</a>
+      </div>
+
+      <div class="col-md-12">
         <div class="panel panel-default">
-          <div class="panel-heading">Panel heading without title</div>
           <div class="panel-body">
-            Panel content
-<input id="slider" type="text" class="span2" value="" data-slider-min="10" data-slider-max="1000" data-slider-step="5" data-slider-value="[250,450]"/>
-
+            当前路由: {{uri}}
           </div>
+          <div class="panel-footer">$this -> route() -> getUri()</div>
         </div>
+      </div>
 
+      <div class="col-md-12">
+        <div class="panel panel-default">
+          <div class="panel-body">
+            获取所有参数: {{dump(parameters)}}
+          </div>
+          <div class="panel-footer">$this -> route() -> getParameters()</div>
+        </div>
+      </div>
 
+      <div class="col-md-12">
+        <div class="panel panel-default">
+          <div class="panel-body">
+            获取所有参数的名称: {{dump(parametersName)}}
+          </div>
+          <div class="panel-footer">$this -> route() -> getParametersName()</div>
+        </div>
+      </div>
 
+      <div class="col-md-12">
+        <div class="panel panel-default">
+          <div class="panel-body">
+            当前action名称: {{action}}
+          </div>
+          <div class="panel-footer">$this -> route() -> getAction()</div>
+        </div>
+      </div>
 
+       <div class="col-md-12">
+        <div class="panel panel-default">
+          <div class="panel-body">
+            系统允许的请求方法类型: {{dump(methods)}}
+          </div>
+          <div class="panel-footer">$this -> route() -> getMethods()</div>
+        </div>
+      </div>
 
-</div>
+       <div class="col-md-12">
+        <div class="panel panel-default">
+          <div class="panel-body">
+            当前时区: {{timezone}}
+          </div>
+          <div class="panel-footer">$this -> getContainer() -> getTimezone()</div>
+        </div>
+      </div>
+  </div>
+
 </div>
 
 {% endblock %}
