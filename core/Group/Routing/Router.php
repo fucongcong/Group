@@ -56,7 +56,7 @@ Class Router implements RouterContract
 			}
 		}
 
-		$this->controller(array('_controller'=>"Web:Error:NotFound:index"));
+		$this->controller(array('controller'=>"Web:Error:NotFound:index"));
 
 	}
 
@@ -116,7 +116,7 @@ Class Router implements RouterContract
 	*/
 	public function controller($config)
 	{
-		$_controller = explode(':', $config['_controller']);
+		$_controller = explode(':', $config['controller']);
 
 		$className = 'src\\'.$_controller[0].'\\Controller\\'.$_controller[1].'\\'.$_controller[2].'Controller';
 
@@ -201,11 +201,13 @@ Class Router implements RouterContract
 
 		foreach ($routing as $key => $route) {
 
-		       if(isset($route['methods']) && !in_array(strtoupper($route['methods']), $this->methods)) continue;
+				if(!isset($route['methods'])) $route['methods'] = "GET";
 
-	                    if(isset($route['methods']) && $_SERVER['REQUEST_METHOD'] != strtoupper($route['methods']) ) continue;
+	       		if(isset($route['methods']) && !in_array(strtoupper($route['methods']), $this->methods)) continue;
 
-	                    $config[$key] = $route;
+                if(isset($route['methods']) && $_SERVER['REQUEST_METHOD'] != strtoupper($route['methods']) ) continue;
+
+                $config[$key] = $route;
 		}
 
 		$config = ArrayToolkit::index($config, 'pattern');
