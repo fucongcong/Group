@@ -39,16 +39,16 @@
 ####2.后端框架介绍
 （1）模版引擎：twig （symfony2使用的模版引擎）
 
-（2）DSCV架构：Dao（数据层）,Service（服务层），Controller（控制层），View（视图层）
+（2）架构：Dao（数据层）,Service（服务层），Controller（控制层），View（视图层）
 
 ## 快速开始
 #### 准备
 进入目录，执行以下命令
 
 	git clone https://github.com/fucongcong/Group.git
-	
+
 	cd Group
-	
+
 	composer install
 
 ####1.配置文件
@@ -93,12 +93,12 @@
 （3）restful API 风格
 
 示例：
+
 	return array(
 
 		    'homepage'=>[
 		    	'pattern' => '/',
 		    	'_controller' => 'Web:Home:Default:index',
-		    	'methods' => 'GET',
 		    ],
 
 		    'group'=>[
