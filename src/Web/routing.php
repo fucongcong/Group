@@ -4,25 +4,24 @@ return array(
 
     'homepage'=>[
     	'pattern' => '/',
-    	'_controller' => 'Web:Home:Default:index',
-    	'methods' => 'GET',
+    	'controller' => 'Web:Home:Default:index',
     ],
 
     'group'=>[
     	'pattern' => '/group/{id}',
-    	'_controller' => 'Web:Group:Group:test',
+    	'controller' => 'Web:Group:Group:test',
     	'methods' => 'GET',
     ],
 
     'create_group'=>[
         'pattern' => '/group/{id}',
-        '_controller' => 'Web:Group:Group:index',
+        'controller' => 'Web:Group:Group:index',
         'methods' => 'POST',
     ],
 
     'user_group'=>[
     	'pattern' => '/user/{id}/group/{groupId}',
-    	'_controller' => 'Web:Group:Group:test',
+    	'controller' => 'Web:Group:Group:test',
     	'methods' => 'GET',
     ],
 
