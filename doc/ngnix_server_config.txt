@@ -62,3 +62,14 @@ server {
         fastcgi_param  HTTPS              off;
     }
 }
+    location ~ ^/(index)\.php {
+        fastcgi_pass    127.0.0.1:9000;
+        fastcgi_split_path_info ^(.+\.php)(/.*)$;
+        include fastcgi_params;
+        fastcgi_param  SCRIPT_FILENAME    $document_root$fastcgi_script_name;
+        fastcgi_param  HTTPS              off;
+        fastcgi_param HTTP_X-Sendfile-Type X-Accel-Redirect;
+        fastcgi_buffer_size 128k;
+        fastcgi_buffers 8 128k;
+                fastcgi_param PATH_INFO $fastcgi_path_info;
+    }

@@ -15,24 +15,32 @@ class GroupController extends Controller
 
     public function testAction($id)
     {
-        echo $id; echo "<br>";
+        // echo $id; echo "<br>";
 
-        echo $this -> route() -> getUri();echo "<br>";
+        $uri = $this -> route() -> getUri();
 
-        print_r($this -> route() -> getParameters());echo "<br>";
+        $parameters = $this -> route() -> getParameters();
 
-        print_r($this -> route() -> getParametersName());echo "<br>";
+        $parametersName = $this -> route() -> getParametersName();
 
-        echo $this -> route() -> getAction();echo "<br>";
+        $action = $this -> route() -> getAction();
 
-        print_r($this -> route() -> getMethods());echo "<br>";
+        $methods = $this -> route() -> getMethods();
 
-        echo $this -> getContainer() -> getTimezone();echo "<br>";
+        $timezone = $this -> getContainer() -> getTimezone();
 
-        echo $this -> getContainer() -> getEnvironment();echo "<br>";
+        $environment = $this -> getContainer() -> getEnvironment();
+
         //$group=$this->getGroupService()->getGroup(1);
         return $this -> render('Web/Views/Group/index.html.twig',array(
-            'group' => ""));
+            'uri' => $uri,
+            'parameters' => $parameters,
+            'parametersName' => $parametersName,
+            'action' => $action,
+            'methods' => $methods,
+            'timezone' => $timezone,
+            'environment' => $environment
+            ));
     }
 
     public function getGroupService()
