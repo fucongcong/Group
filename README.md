@@ -1,5 +1,5 @@
 # Group
-访问[xitongxue.com](http://xitongxue.com),觉得帮到您了点击右上star!给我一点动力！
+觉得帮到您了点击右上star!给我一点动力！
 关注我们的ＱＱ群：390536187
 
 ####1.[Group框架简介](#user-content-Group框架简介)
