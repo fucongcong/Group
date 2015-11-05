@@ -16,6 +16,9 @@ return
         "database_password" => "root",
     ],
 
+    //redis null
+    'cache' => null,
+
     'redis' => [
 
         'default' => [
