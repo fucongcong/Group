@@ -3,25 +3,13 @@
 namespace core\Group;
 use core\Group\Routing\Router;
 use Container;
-use core\Group\Handlers\AliasLoaderHandler;
-use core\Group\Config\Config;
-use App;
+use core\Group\App\App;
 
 Class Kernal
 {
-	protected $aliases = [
-
-        'App'       => 'core\Group\App\App',
-        'Cache'     => 'core\Group\Cache\Cache',
-        'Config'    => 'core\Group\Config\Config',
-        'Container' => 'core\Group\Container\Container',
-        'Route'     => 'core\Group\Routing\Route',
-	];
-
 	public function init()
 	{
-		$this -> aliasLoader();
-	   	App::checkPath();
+	   	App::init();
 		Container::getInstance() -> init();
 		$this -> fix_gpc_magic();
 		$router = new Router();
@@ -66,12 +54,4 @@ Class Kernal
 
 		}
 	}
-
-	public function aliasLoader()
-    {
-        $aliases = Config::get('app::aliases');
-        $aliases = array_merge($aliases, $this ->aliases);
-        AliasLoaderHandler::getInstance($aliases) -> register();
-
-    }
 }

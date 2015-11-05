@@ -1,10 +1,45 @@
 <?php
 namespace core\Group\App;
 
+use core\Group\Handlers\AliasLoaderHandler;
+use core\Group\Config\Config;
 use Exception;
 
 class App
 {
+    private static $_instance;
+
+    protected $services;
+
+    protected $aliases = [
+
+        'App'       => 'core\Group\App\App',
+        'Cache'     => 'core\Group\Cache\Cache',
+        'Config'    => 'core\Group\Config\Config',
+        'Container' => 'core\Group\Container\Container',
+        'FileCache' => 'core\Group\Cache\FileCache',
+        'Route'     => 'core\Group\Routing\Route',
+    ];
+
+    public function __construct()
+    {
+
+    }
+
+    public static function init()
+    {
+        self::checkPath();
+        self::getInstance() -> aliasLoader();
+    }
+
+    public function aliasLoader()
+    {
+        $aliases = Config::get('app::aliases');
+        $aliases = array_merge($aliases, $this ->aliases);
+        AliasLoaderHandler::getInstance($aliases) -> register();
+
+    }
+
     public static function checkPath()
     {
         self::setIsCgi();
@@ -38,6 +73,21 @@ class App
         if(!defined('__ROOT__')) {
             define('__ROOT__',  (($_root=='/' || $_root=='\\')?'':$_root));
         }
+    }
+
+    /**
+    * return single class
+    *
+    * @return core\APP\App APP
+    */
+    public static function getInstance(){
+
+        if(!(self::$_instance instanceof self)){
+
+            self::$_instance = new self;
+        }
+
+        return self::$_instance;
     }
 
 }
