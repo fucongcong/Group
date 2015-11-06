@@ -1,20 +1,16 @@
 <?php
 namespace src\Services\Group\Impl;
 
-use core\Group\Services\Service;
+use src\Services\Group\Rely\GroupBaseService;
 use src\Services\Group\GroupService;
 
-class GroupServiceImpl extends Service implements GroupService
+class GroupServiceImpl extends GroupBaseService implements GroupService
 {
 
     public function getGroup($id)
     {
+        return $this -> getUserService() -> getUser(1);
         return $this->getGroupDao()->getGroup($id);
-    }
-    
-    public function getGroupDao()
-    {
-        return $this->createDao("Group:Group");
     }
 
 }

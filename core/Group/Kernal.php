@@ -1,19 +1,16 @@
 <?php
 
 namespace core\Group;
-use core\Group\Routing\Router;
-use Container;
+
 use core\Group\App\App;
 
 Class Kernal
 {
 	public function init()
 	{
-	   	App::init();
-		Container::getInstance() -> init();
 		$this -> fix_gpc_magic();
-		$router = new Router();
-		$router -> match();
+		$app = new App();
+	   	$app -> init();
 	}
 
 	public function fix_gpc_magic()

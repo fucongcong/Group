@@ -1,6 +1,8 @@
 <?php
 namespace core\Group\Services;
 
+use ServiceProvider;
+
 class Service
 {
     //to do 单列
@@ -14,6 +16,11 @@ class Service
 
 		return new $className;
 	}
+
+    public function createService($serviceName)
+    {
+        return ServiceProvider::register($serviceName);
+    }
 }
 
 ?>

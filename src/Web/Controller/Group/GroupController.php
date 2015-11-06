@@ -31,7 +31,7 @@ class GroupController extends Controller
 
         $environment = $this -> getContainer() -> getEnvironment();
 
-        //$group=$this->getGroupService()->getGroup(1);
+        echo $this->getGroupService()->getGroup(1);
         return $this -> render('Web/Views/Group/index.html.twig',array(
             'uri' => $uri,
             'parameters' => $parameters,
