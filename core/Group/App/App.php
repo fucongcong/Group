@@ -4,12 +4,18 @@ namespace core\Group\App;
 use core\Group\Handlers\AliasLoaderHandler;
 use core\Group\Config\Config;
 use Exception;
+use Container;
+use core\Group\Routing\Router;
 
 class App
 {
     private static $_instance;
 
     protected $services;
+
+    protected $container;
+
+    protected $router;
 
     protected $aliases = [
 
@@ -19,17 +25,24 @@ class App
         'Container' => 'core\Group\Container\Container',
         'FileCache' => 'core\Group\Cache\FileCache',
         'Route'     => 'core\Group\Routing\Route',
+        'Service' => 'core\Group\Services\Service',
+        'ServiceProvider' => 'core\Group\Services\ServiceProvider',
     ];
 
     public function __construct()
     {
+        $this -> aliasLoader();
 
+        $this ->container = Container::getInstance();
+
+        $this ->router = new Router();
     }
 
-    public static function init()
+    public function init()
     {
         self::checkPath();
-        self::getInstance() -> aliasLoader();
+        $this ->container -> init();
+        $this ->router -> match();
     }
 
     public function aliasLoader()

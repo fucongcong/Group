@@ -4,9 +4,11 @@ namespace core\Group\Controller;
 use Twig_Loader_Filesystem;
 use Twig_Environment;
 use core\Group\Twig\WebExtension;
-use Container;
 use core\Group\Controller\BaseController;
 use Config;
+use Route;
+use Container;
+use ServiceProvider;
 
 class Controller  extends BaseController
 {
@@ -44,13 +46,17 @@ class Controller  extends BaseController
 	//to do 单列 可以扩展为模块
 	public function createService($serviceName)
 	{
-		$serviceName=explode(":", $serviceName);
+		return ServiceProvider::register($serviceName);
+	}
 
-		$class=$serviceName[1]."ServiceImpl";
-
-		$className="src\\Services\\".$serviceName[0]."\\Impl\\".$class;
-
-		return new $className;
+	/**
+	* route的实例
+	*
+	* @return core\Group\Routing\Route
+	*/
+	public function route()
+	{
+		return Route::getInstance();
 	}
 
 	/**

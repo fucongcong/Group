@@ -2,12 +2,9 @@
 namespace core\Group\Controller;
 
 use core\Group\Exceptions\NotFoundException;
-use Route;
 
 abstract class BaseController
 {
-	protected static $route;
-
 	/**
 	 * 在控制类下执行方法
 	 *
@@ -25,19 +22,20 @@ abstract class BaseController
 		throw new NotFoundException("Method [$method] does not exist.");
 	}
 
+	abstract function render($tpl, $parameters);
+
 	/**
-	* route的单例
+	* route的实例
 	*
 	* @return core\Group\Routing\Route
 	*/
-	public static function route()
-	{
-		if(!(self::$route instanceof Route)){
+	abstract function route();
 
-			self::$route = Route::getInstance();
-		}
-
-		return self::$route;
-	}
+	/**
+	* 获取容器
+	*
+	* @return core\Group\Container\Container
+	*/
+	abstract function getContainer();
 
 }
