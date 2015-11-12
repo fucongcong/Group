@@ -28,7 +28,9 @@
 - [Log](#user-content-6Log)
 - [Exception](#user-content-7Exception)
 - [Redis](#user-content-8Redis)
-- [Console](#user-content-9Console)
+- [FileCache](#user-content-9FileCache)
+- [Cache](#user-content-10Cache)
+- [Config](#user-content-10Config)
 
 ## Group框架简介
 ####1.前端框架介绍
@@ -98,24 +100,24 @@
 
 		    'homepage'=>[
 		    	'pattern' => '/',
-		    	'_controller' => 'Web:Home:Default:index',
+		    	'controller' => 'Web:Home:Default:index',
 		    ],
 
 		    'group'=>[
 		    	'pattern' => '/group/{id}',
-		    	'_controller' => 'Web:Group:Group:test',
+		    	'controller' => 'Web:Group:Group:test',
 		    	'methods' => 'GET',
 		    ],
 
 		    'create_group'=>[
 		        'pattern' => '/group/{id}',
-		        '_controller' => 'Web:Group:Group:index',
+		        'controller' => 'Web:Group:Group:index',
 		        'methods' => 'POST',
 		    ],
 
 		    'user_group'=>[
 		    	'pattern' => '/user/{id}/group/{groupId}',
-		    	'_controller' => 'Web:Group:Group:test',
+		    	'controller' => 'Web:Group:Group:test',
 		    	'methods' => 'GET',
 		    ],
 
