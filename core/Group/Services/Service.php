@@ -1,8 +1,6 @@
 <?php
 namespace core\Group\Services;
 
-use ServiceProvider;
-
 class Service
 {
     //to do 单列
