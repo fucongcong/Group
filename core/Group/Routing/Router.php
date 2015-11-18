@@ -28,7 +28,7 @@ Class Router implements RouterContract
 	*/
 	public function match()
 	{
-		$requestUri = $_SERVER['REQUEST_URI'];
+		$requestUri = $_SERVER['PATH_INFO'];
 
 		$this->setRoute($this->methods, $requestUri);
 		$routing = $this->getRouting();
@@ -70,7 +70,7 @@ Class Router implements RouterContract
 	*/
 	public function pregUrl($matches, $route_key, $routing)
 	{
-        $countKey = explode("/", $_SERVER['REQUEST_URI']);
+        $countKey = explode("/", $_SERVER['PATH_INFO']);
         $countKeyPreg = explode("/", $route_key);
 
         if(count($countKey)!= count($countKeyPreg)) {
@@ -98,7 +98,7 @@ Class Router implements RouterContract
 
 		$this->route->setParametersName($filterParameters);
 
-		if (preg_match_all('/^'.$regex.'$/', $_SERVER['REQUEST_URI'], $values)) {
+		if (preg_match_all('/^'.$regex.'$/', $_SERVER['PATH_INFO'], $values)) {
 
 			$config = $routing[$route];
 			$config['parameters'] = $this->mergeParameters($filterParameters, $values);
