@@ -1,7 +1,7 @@
 <?php
 namespace src\web\Controller\Error;
 
-use core\Group\Controller\Controller;
+use Controller;
 
 class NotFoundController extends Controller
 {

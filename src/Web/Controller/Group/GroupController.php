@@ -1,7 +1,7 @@
 <?php
 namespace src\web\Controller\Group;
 
-use core\Group\Controller\Controller;
+use Controller;
 
 class GroupController extends Controller
 {

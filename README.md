@@ -127,4 +127,69 @@
 
 ## 控制层
 
+（1）第一个控制器
 
+	<?php
+	namespace src\web\Controller\Home;
+
+	use Controller;
+
+	//请继承Controller
+	class DefaultController extends Controller
+	{
+	    //一个action 与route对应
+	    public function indexAction()
+	    {
+	        //渲染模版 模版的启始路径可在config的view.php配置
+	        return $this -> render('Web/Views/Default/index.html.twig');
+	    }
+
+	}
+
+	?>
+
+（2）如何获取路由传过来的参数？
+
+	//在后面我们可以跟上路由定义好的参数，$id
+    public function testAction($id)
+    {
+        // echo $id; echo "<br>";
+
+        //可以获取整个路由地址
+        $uri = $this -> route() -> getUri();
+        //获取所有参数
+        $parameters = $this -> route() -> getParameters();
+        //获取参数名
+        $parametersName = $this -> route() -> getParametersName();
+        //获取当前action的名称
+        $action = $this -> route() -> getAction();
+        //获取系统支持的请求方法
+        $methods = $this -> route() -> getMethods();
+        //获取当前时区
+        $timezone = $this -> getContainer() -> getTimezone();
+        //获取当前运行环境
+        $environment = $this -> getContainer() -> getEnvironment();
+        //这里和Service服务层交互
+        echo $this->getGroupService()->getGroup(1);
+        //传入模板
+        return $this -> render('Web/Views/Group/index.html.twig',array(
+            'uri' => $uri,
+            'parameters' => $parameters,
+            'parametersName' => $parametersName,
+            'action' => $action,
+            'methods' => $methods,
+            'timezone' => $timezone,
+            'environment' => $environment
+            ));
+    }
+    public function getGroupService()
+    {
+    	//创建一个Service实例
+        return $this -> createService("Group:Group");
+    }
+
+## 服务层
+
+## 数据层
+
+## 配置文件
