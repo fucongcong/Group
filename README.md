@@ -81,6 +81,7 @@
 			- Dao （数据层）
 		  		- Impl （数据层接口）
 		  	- Impl （服务层接口）
+		  	- Rely （服务之间的依赖）
 	- Web
 	 	- Controller （控制层）
 	 	- View (视图层)
@@ -120,8 +121,6 @@
 		    	'controller' => 'Web:Group:Group:test',
 		    	'methods' => 'GET',
 		    ],
-
-
 	);
 
 
@@ -189,6 +188,72 @@
     }
 
 ## 服务层
+    （1）简单介绍一下目录结构
+- Group (示例)
+    - Dao （数据层）
+    - Impl （服务层实现的接口）
+    - Rely （定义服务之间的依赖关系）
+GroupService.php(接口)
+
+#####服务层主要用于处理数据层与控制层间数据的业务处理。只要继承Service类就可以了。
+
+    GroupService.php
+
+
+    <?php
+    namespace src\Services\Group;
+
+    interface GroupService
+    {
+        public function getGroup($id);
+    }
+
+
+
+    /Rely/GroupBaseService.php
+
+
+    <?php
+    namespace src\Services\Group\Rely;
+
+    use Service;
+    //定义在Rely文件下的依赖
+    abstract class GroupBaseService extends Service
+    {
+        //获取数据层的对象实例
+        public function getGroupDao()
+        {
+            return $this->createDao("Group:Group");
+        }
+
+        //获取其他服务的对象实例
+        public function getUserService()
+        {
+            return $this -> createService("User:User");
+        }
+    }
+
+
+    /Impl/GroupServiceImpl.php
+
+
+    <?php
+    namespace src\Services\Group\Impl;
+
+    use src\Services\Group\Rely\GroupBaseService;
+    use src\Services\Group\GroupService;
+
+    class GroupServiceImpl extends GroupBaseService implements GroupService
+    {
+        //实现定义的服务层接口方法
+        public function getGroup($id)
+        {
+            return $this -> getUserService() -> getUser(1);
+            //return $this->getGroupDao()->getGroup($id);
+        }
+
+    }
+
 
 ## 数据层
 
