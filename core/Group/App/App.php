@@ -23,6 +23,7 @@ class App
         'Cache'     => 'core\Group\Cache\Cache',
         'Config'    => 'core\Group\Config\Config',
         'Container' => 'core\Group\Container\Container',
+        'Controller' => 'core\Group\Controller\Controller',
         'FileCache' => 'core\Group\Cache\FileCache',
         'Route'     => 'core\Group\Routing\Route',
         'Service' => 'core\Group\Services\Service',
