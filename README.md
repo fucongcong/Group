@@ -7,7 +7,7 @@
 - [后端框架介绍](#user-content-2后端框架介绍)
 
 ####2.[快速开始](#user-content-快速开始)
-- [配置文件](#user-content-1配置文件)
+- [服务器配置文件](#user-content-1服务器配置文件)
 - [进入框架](#user-content-2进入框架)
 - [目录结构](#user-content-3目录结构)
 
@@ -53,7 +53,7 @@
 
 	composer install
 
-####1.配置文件
+####1.服务器配置文件
 
 [Ngnix配置](https://github.com/fucongcong/Group/blob/master/doc/ngnix_server_config.txt)
 
