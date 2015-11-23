@@ -54,15 +54,15 @@ class Container implements ContainerContract
      */
 	public function doAction($class, $action, array $parameters = [])
 	{
-		$reflector = $this->buildMoudle($class);
-		if(!$reflector->hasMethod($action)) {
+		$reflector = $this -> buildMoudle($class);
+		if(!$reflector -> hasMethod($action)) {
 
 			throw new NotFoundException("Class ".$class." exist ,But the Action ".$action." not found");
 		}
 
-		$instanc =$reflector->newInstanceArgs();
-		$method = $reflector->getmethod($action);
-		return $method->invokeArgs($instanc, $parameters);
+		$instanc = $reflector -> newInstanceArgs();
+		$method = $reflector -> getmethod($action);
+		return $method -> invokeArgs($instanc, $parameters);
 
 	}
 

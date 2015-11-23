@@ -1,0 +1,11 @@
+#!/usr/bin/env php
+<?php
+use core\Group\Console\Console;
+
+$loader = require __DIR__.'/../vendor/autoload.php';
+
+$loader->setUseIncludePath(true);
+
+$console = new Console($argv);
+
+$console -> run();

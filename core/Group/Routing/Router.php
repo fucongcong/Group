@@ -19,7 +19,7 @@ Class Router implements RouterContract
 	public function __construct()
 	{
 
-		$this->container = Container::getInstance();
+		$this -> container = Container::getInstance();
 	}
 	/**
 	* match the uri
@@ -30,12 +30,12 @@ Class Router implements RouterContract
 	{
 		$requestUri = $_SERVER['PATH_INFO'];
 
-		$this->setRoute($this->methods, $requestUri);
-		$routing = $this->getRouting();
+		$this -> setRoute($this->methods, $requestUri);
+		$routing = $this -> getRouting();
 
 		if (isset($routing[$requestUri])) {
 
-			return $this->controller($routing[$requestUri]);
+			return $this -> controller($routing[$requestUri]);
 
 		}
 
@@ -47,16 +47,16 @@ Class Router implements RouterContract
 
 			if ($matches[0]) {
 
-				$config = $this->pregUrl($matches, $route_key, $routing);
+				$config = $this -> pregUrl($matches, $route_key, $routing);
 			}
 
 			if ($config) {
 
-				return $this->controller($config);
+				return $this -> controller($config);
 			}
 		}
 
-		$this->controller(array('controller'=>"Web:Error:NotFound:index"));
+		$this -> controller(array('controller'=>"Web:Error:NotFound:index"));
 
 	}
 
@@ -96,12 +96,12 @@ Class Router implements RouterContract
 
 		}
 
-		$this->route->setParametersName($filterParameters);
+		$this -> route -> setParametersName($filterParameters);
 
 		if (preg_match_all('/^'.$regex.'$/', $_SERVER['PATH_INFO'], $values)) {
 
 			$config = $routing[$route];
-			$config['parameters'] = $this->mergeParameters($filterParameters, $values);
+			$config['parameters'] = $this -> mergeParameters($filterParameters, $values);
 			return  $config;
 		}
 
@@ -122,11 +122,11 @@ Class Router implements RouterContract
 
 		$action = $_controller[3].'Action';
 
-		$this->route->setAction($action);
+		$this -> route -> setAction($action);
 
-		$this->route->setParameters(isset($config['parameters']) ? $config['parameters'] : array());
+		$this -> route -> setParameters(isset($config['parameters']) ? $config['parameters'] : array());
 
-        echo $this->container->doAction($className, $action, isset($config['parameters']) ? $config['parameters'] : array());
+        echo $this -> container -> doAction($className, $action, isset($config['parameters']) ? $config['parameters'] : array());
 
 	}
 
@@ -142,14 +142,14 @@ Class Router implements RouterContract
 	//to do refactor me
 	protected function getRouting()
 	{
-		$routing = $this->checkMethods();
+		$routing = $this -> checkMethods();
 
 		return $routing;
 	}
 
 	protected function checkMethods()
 	{
-		if ($this -> container ->getEnvironment() == "prod") {
+		if ($this -> container -> getEnvironment() == "prod") {
 
 			return $this -> getMethodsCache();
 		}
@@ -167,10 +167,10 @@ Class Router implements RouterContract
 	 */
 	public function setRoute($methods, $uri)
 	{
-		$this->route = Route::getInstance();
+		$this -> route = Route::getInstance();
 
-		$this->route->setMethods($methods);
-		$this->route->setUri($uri);
+		$this -> route -> setMethods($methods);
+		$this -> route -> setUri($uri);
 
 	}
 
@@ -207,7 +207,7 @@ Class Router implements RouterContract
 					continue;
 				}
 
-	       		if(isset($route['methods']) && !in_array(strtoupper($route['methods']), $this->methods)) continue;
+	       		if(isset($route['methods']) && !in_array(strtoupper($route['methods']), $this -> methods)) continue;
 
                 if(isset($route['methods']) && $_SERVER['REQUEST_METHOD'] != strtoupper($route['methods']) ) continue;
 
