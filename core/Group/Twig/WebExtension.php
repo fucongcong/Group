@@ -26,7 +26,7 @@ Class WebExtension extends Twig_Extension
 	*/
 	public function getPublic($url)
 	{
-		return __ROOT__."/".$url;
+		return "/".$url;
 	}
 
     /**

@@ -6,11 +6,11 @@ class Service
     //to do 单列
 	public function createDao($serviceName)
 	{
-		$serviceName=explode(":", $serviceName);
+		$serviceName = explode(":", $serviceName);
 
-		$class=$serviceName[1]."DaoImpl";
+		$class = $serviceName[1]."DaoImpl";
 
-		$className="src\\Services\\".$serviceName[0]."\\Dao\\Impl\\".$class;
+		$className = "src\\Services\\".$serviceName[0]."\\Dao\\Impl\\".$class;
 
 		return new $className;
 	}

@@ -32,7 +32,7 @@ class AliasLoaderHandler
      */
     private function __construct($aliases)
     {
-        $this->aliases = $aliases;
+        $this -> aliases = $aliases;
     }
 
     /**
@@ -47,9 +47,9 @@ class AliasLoaderHandler
             return static::$instance = new static($aliases);
         }
 
-        $aliases = array_merge(static::$instance->getAliases(), $aliases);
+        $aliases = array_merge(static::$instance -> getAliases(), $aliases);
 
-        static::$instance->setAliases($aliases);
+        static::$instance -> setAliases($aliases);
 
         return static::$instance;
     }
@@ -62,8 +62,8 @@ class AliasLoaderHandler
      */
     public function load($alias)
     {
-        if (isset($this->aliases[$alias])) {
-            return class_alias($this->aliases[$alias], $alias);
+        if (isset($this -> aliases[$alias])) {
+            return class_alias($this -> aliases[$alias], $alias);
         }
     }
 
@@ -76,7 +76,7 @@ class AliasLoaderHandler
      */
     public function alias($class, $alias)
     {
-        $this->aliases[$class] = $alias;
+        $this -> aliases[$class] = $alias;
     }
 
     /**
@@ -86,10 +86,10 @@ class AliasLoaderHandler
      */
     public function register()
     {
-        if (!$this->registered) {
-            $this->prependToLoaderStack();
+        if (!$this -> registered) {
+            $this -> prependToLoaderStack();
 
-            $this->registered = true;
+            $this -> registered = true;
         }
     }
 
@@ -110,7 +110,7 @@ class AliasLoaderHandler
      */
     public function getAliases()
     {
-        return $this->aliases;
+        return $this -> aliases;
     }
 
     /**
@@ -121,7 +121,7 @@ class AliasLoaderHandler
      */
     public function setAliases(array $aliases)
     {
-        $this->aliases = $aliases;
+        $this -> aliases = $aliases;
     }
 
     /**
@@ -131,7 +131,7 @@ class AliasLoaderHandler
      */
     public function isRegistered()
     {
-        return $this->registered;
+        return $this -> registered;
     }
 
     /**
@@ -142,7 +142,7 @@ class AliasLoaderHandler
      */
     public function setRegistered($value)
     {
-        $this->registered = $value;
+        $this -> registered = $value;
     }
 
     /**
