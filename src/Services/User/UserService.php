@@ -6,4 +6,3 @@ interface UserService
     public function getUser($id);
 }
 
-?>

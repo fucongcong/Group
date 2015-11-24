@@ -26,4 +26,3 @@ class GroupDaoImpl extends Dao implements GroupDao
     }
 
 }
-?>

@@ -6,21 +6,21 @@ class Console
     protected $argv;
 
     protected $options = [
-        'generate:service',
-        'generate:controller',
-        'sql:generate',
-        'sql:migrate',
+        'generate:service' => 'core\Group\Console\Command\GenerateServiceCommand',
+        'generate:controller' => 'core\Group\Console\Command\GenerateControllerCommand',
+        'sql:generate' => 'core\Group\Console\Command\SqlGenerateCommand',
+        'sql:migrate' => 'core\Group\Console\Command\SqlMigrateCommand',
     ];
 
     protected $help = <<<EOF
 
-      使用帮助:
-      Usage: core/console [options] [args...]
+使用帮助:
+Usage: core/console [options] [args...]
 
-      generate:service  name      生成一个自定义service
-      generate:controller  name   生成一个自定义controller
-      sql:generate                  生成一个sql执行模板
-      sql:migrate                   执行sql模板
+generate:service  name      生成一个自定义service
+generate:controller  name   生成一个自定义controller
+sql:generate                生成一个sql执行模板
+sql:migrate                 执行sql模板
 
 
 EOF;
@@ -48,6 +48,8 @@ EOF;
         }
 
         $command = new $options[$argv[1]];
+        $command -> setArgv($argv);
         $command -> init();
+        die;
     }
 }

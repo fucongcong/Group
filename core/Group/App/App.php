@@ -19,29 +19,29 @@ class App
 
     protected $aliases = [
 
-        'App'       => 'core\Group\App\App',
-        'Cache'     => 'core\Group\Cache\Cache',
-        'Config'    => 'core\Group\Config\Config',
-        'Container' => 'core\Group\Container\Container',
-        'Controller' => 'core\Group\Controller\Controller',
-        'FileCache' => 'core\Group\Cache\FileCache',
-        'Route'     => 'core\Group\Routing\Route',
-        'Service' => 'core\Group\Services\Service',
-        'ServiceProvider' => 'core\Group\Services\ServiceProvider',
+        'App'               => 'core\Group\App\App',
+        'Cache'             => 'core\Group\Cache\Cache',
+        'Config'            => 'core\Group\Config\Config',
+        'Container'         => 'core\Group\Container\Container',
+        'Controller'        => 'core\Group\Controller\Controller',
+        'Filesystem'        => 'core\Group\Common\Filesystem',
+        'App'               => 'core\Group\App\App',
+        'Route'             => 'core\Group\Routing\Route',
+        'Service'           => 'core\Group\Services\Service',
+        'ServiceProvider'   => 'core\Group\Services\ServiceProvider',
     ];
 
     public function __construct()
     {
         $this -> aliasLoader();
-
-        $this -> container = Container::getInstance();
-
-        $this -> router = new Router();
     }
 
     public function init()
     {
+        $this -> container = Container::getInstance();
         $this -> container -> init();
+
+        $this -> router = new Router();
         $this -> router -> match();
     }
 
