@@ -4,3 +4,4 @@
 /asset/js/*
 /asset/img/*
 /vendor
+composer.lock
