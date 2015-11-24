@@ -1,11 +1,14 @@
 #!/usr/bin/env php
 <?php
 use core\Group\Console\Console;
+use core\Group\App\App;
 
 $loader = require __DIR__.'/../vendor/autoload.php';
+
+define('__ROOT__', realpath(dirname(__FILE__)) . DIRECTORY_SEPARATOR . "../");
 
 $loader->setUseIncludePath(true);
 
 $console = new Console($argv);
-
+$app = new App();
 $console -> run();

@@ -14,4 +14,3 @@ class GroupServiceImpl extends GroupBaseService implements GroupService
     }
 
 }
-?>

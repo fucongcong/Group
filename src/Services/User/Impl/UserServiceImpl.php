@@ -13,4 +13,3 @@ class UserServiceImpl extends UserBaseService implements UserService
     }
 
 }
-?>

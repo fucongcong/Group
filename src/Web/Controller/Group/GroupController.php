@@ -1,5 +1,5 @@
 <?php
-namespace src\web\Controller\Group;
+namespace src\Web\Controller\Group;
 
 use Controller;
 
