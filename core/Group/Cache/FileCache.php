@@ -14,22 +14,22 @@ class FileCache implements CacheContract
     * @param  cacheName,  name::key
     * @return string|array
     */
-    public static function get($cacheName)
+    public static function get($cacheName, $cache_dir = false)
     {
-        $cache_dir = self::$cache_dir;
+        $cache_dir = $cache_dir == false ? self::$cache_dir : $cache_dir;
         $dir = $cache_dir.$cacheName;
 
         return include $dir;
     }
 
-    public static function set($cacheName, $data)
+    public static function set($cacheName, $data, $cache_dir = false)
     {
-        $cache_dir = self::$cache_dir;
+        $cache_dir = $cache_dir == false ? self::$cache_dir : $cache_dir;
         $dir = $cache_dir.$cacheName;
 
         $data = var_export($data, true);
         $data = "<?php
-        return ".$data.";";
+return ".$data.";";
 
         $parts = explode('/', $dir);
         $file = array_pop($parts);
@@ -44,9 +44,9 @@ class FileCache implements CacheContract
         file_put_contents("$dir/$file", $data);
     }
 
-    public static function isExist($cacheName)
+    public static function isExist($cacheName, $cache_dir = false)
     {
-        $cache_dir = self::$cache_dir;
+        $cache_dir = $cache_dir == false ? self::$cache_dir : $cache_dir;
 
         $dir = $cache_dir.$cacheName;
 
