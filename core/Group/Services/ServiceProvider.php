@@ -6,6 +6,11 @@ use NotFoundException;
 
 class ServiceProvider
 {
+    /**
+    * 注册service
+    *
+    * @return Service
+    */
     public static function register($serviceName)
     {
         $serviceName = explode(":", $serviceName);

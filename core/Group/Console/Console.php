@@ -5,6 +5,10 @@ class Console
 {
     protected $argv;
 
+    /**
+    * 命令的定义集合
+    *
+    */
     protected $options = [
         'generate:service' => 'core\Group\Console\Command\GenerateServiceCommand',
         'generate:controller' => 'core\Group\Console\Command\GenerateControllerCommand',
@@ -12,30 +16,48 @@ class Console
         'sql:migrate' => 'core\Group\Console\Command\SqlMigrateCommand',
     ];
 
-    protected $help = <<<EOF
+    protected $help = "
+\033[34m
+ ----------------------------------------------------------
 
-使用帮助:
-Usage: core/console [options] [args...]
+     -----        ----      ----      |     |   / ----
+    /          | /        |      |    |     |   |      |
+    |          |          |      |    |     |   | ----/
+    |   ----   |          |      |    |     |   |
+     -----|    |            ----       ----     |
 
-generate:service  name      生成一个自定义service
-generate:controller  name   生成一个自定义controller
-sql:generate                生成一个sql执行模板
-sql:migrate                 执行sql模板
+ ----------------------------------------------------------
+\033[0m
+\033[31m 使用帮助: \033[0m
+\033[33m Usage: core/console [options] [args...] \033[0m
+
+\033[32m generate:service name \033[0m      生成一个自定义service
+\033[32m generate:controller  name \033[0m   生成一个自定义controller
+\033[32m sql:generate\033[0m                生成一个sql执行模板
+\033[32m sql:migrate\033[0m                 执行sql模板
 
 
-EOF;
+";
 
     public function __construct($argv)
     {
         $this -> argv = $argv;
     }
 
+    /**
+    * run the console
+    *
+    */
     public function run()
     {
         $this -> checkArgv();
         die($this -> help);
     }
 
+    /**
+    * 检查输入的参数与命令
+    *
+    */
     protected function checkArgv()
     {
         $argv = $this -> argv;
@@ -43,7 +65,7 @@ EOF;
         $options = $this -> options;
         if(!isset($options[$argv[1]])) {
 
-            $this -> help = "输入的命令有误！\n";
+            $this -> help = "\033[31m错误的命令！\033[0m\n";
             return;
         }
 
