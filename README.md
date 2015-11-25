@@ -351,6 +351,32 @@ GroupService.php(接口)
     // "SELECT * FROM test WHERE foo IN ('foo', 'bar', 'baz')"
 
 
-## 配置文件
+## 配置文件详解
 
 ## Console 控制台介绍
+####使用方法
+
+    //进入根目录 执行
+    app/console
+
+
+    ----------------------------------------------------------
+
+     -----        ----      ----      |     |   / ----
+    /          | /        |      |    |     |   |      |
+    |          |          |      |    |     |   | ----/
+    |   ----   |          |      |    |     |   |
+     -----|    |            ----       ----     |
+
+    ----------------------------------------------------------
+
+    使用帮助:
+    Usage: core/console [options] [args...]
+
+    generate:service name       生成一个自定义service
+    generate:controller  name    生成一个自定义controller
+    sql:generate                生成一个sql执行模板(存放于app/sql)
+    sql:migrate                 执行sql模板
+
+#####目前支持的自动脚本命令
+####自定以脚本文件
