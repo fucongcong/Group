@@ -15,6 +15,7 @@
         "php": ">=5.3",
         "twig/twig": "~1.0",
         "symfony/filesystem": "~2.7.0",
+        "aura/sql": "~2.4.3",
         "mtdowling/cron-expression": "~1.0"
     }
 }

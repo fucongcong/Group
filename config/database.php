@@ -1,20 +1,82 @@
 <?php
 return
 [
+    //默认可以不开启读写配置，读写配置可以配置多个
     'pdo' => [
 
-        "database_driver" => "mysql",
+        'default' => [
 
-        "database_host" => "127.0.0.1",
+            "database_driver" => "mysql",
 
-        "database_port" => 3306,
+            "database_host" => "127.0.0.1",
 
-        "database_name" => "Group",
+            "database_name" => "Group",
 
-        "database_user" => "root",
+            "database_user" => "root",
 
-        "database_password" => "123",
+            "database_password" => "123",
+        ],
+
+        'write' => [
+
+            'master1' => [
+
+                "database_driver" => "mysql",
+
+                "database_host" => "127.0.0.1",
+
+                "database_name" => "Group1",
+
+                "database_user" => "root",
+
+                "database_password" => "123",
+            ],
+
+            'master2' => [
+
+                "database_driver" => "mysql",
+
+                "database_host" => "127.0.0.1",
+
+                "database_name" => "Group2",
+
+                "database_user" => "root",
+
+                "database_password" => "123",
+            ],
+        ],
+
+        'read' => [
+
+            'slave1' => [
+
+                "database_driver" => "mysql",
+
+                "database_host" => "127.0.0.1",
+
+                "database_name" => "Group3",
+
+                "database_user" => "root",
+
+                "database_password" => "123",
+            ],
+
+            'slave2' =>  [
+
+                "database_driver" => "mysql",
+
+                "database_host" => "127.0.0.1",
+
+                "database_name" => "Group4",
+
+                "database_user" => "root",
+
+                "database_password" => "123",
+            ],
+        ],
     ],
+
+
 
     //redis null
     'cache' => null,
