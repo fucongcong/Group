@@ -24,7 +24,7 @@ class App
         'Config'            => 'core\Group\Config\Config',
         'Container'         => 'core\Group\Container\Container',
         'Controller'        => 'core\Group\Controller\Controller',
-        'Dao'             => 'core\Group\Dao\Dao',
+        'Dao'               => 'core\Group\Dao\Dao',
         'Filesystem'        => 'core\Group\Common\Filesystem',
         'FileCache'         => 'core\Group\Cache\FileCache',
         'Route'             => 'core\Group\Routing\Route',

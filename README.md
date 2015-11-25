@@ -252,6 +252,104 @@ GroupService.php(接口)
 
 
 ## 数据层
+###支持主从配置(详见配置文件)
+
+###如何使用
+
+
+        <?php
+
+            namespace src\Services\Group\Dao\Impl;
+
+            use Dao;
+            use src\Services\Group\Dao\GroupDao;
+
+            class GroupDaoImpl extends Dao implements GroupDao
+            {
+                //定以数据表
+                protected $tables="groups";
+
+                //具体方法
+                public function getGroup($id)
+                {
+                    $sql="SELECT * FROM {$this->tables} WHERE id=:id LIMIT 0,1";
+                    //动态参数绑定
+                    $bind = array('id' => $id);
+                    //读取默认配置
+                    //$group = $this->getDefault()->fetchOne($sql, $bind);
+
+                    //读取写服务器配置，如果没有指定具体参数，随机写入分配的服务器
+                    //$group = $this->getWrite('master1')->fetchOne($sql, $bind);
+                    //$group = $this->getWrite('master2')->fetchOne($sql, $bind);
+
+                    //读取读服务器配置，如果没有指定具体参数，随机读取分配的服务器
+                    //$group = $this->getRead()->fetchOne($sql, $bind);
+                    return $group ? $group : null;
+                }
+
+            }
+
+###支持的语法
+
+#####fetch(*)
+
+    $pdo = $this->getDefault();
+
+    $stm  = 'SELECT * FROM test WHERE foo = :foo AND bar = :bar';
+    $bind = array('foo' => 'baz', 'bar' => 'dib');
+    $result = $pdo->fetchAll($stm, $bind);
+
+    // fetchAssoc() returns an associative array of all rows where the key is the
+    // first column, and the row arrays are keyed on the column names
+    $result = $pdo->fetchAssoc($stm, $bind);
+
+    // fetchGroup() is like fetchAssoc() except that the values aren't wrapped in
+    // arrays. Instead, single column values are returned as a single dimensional
+    // array and multiple columns are returned as an array of arrays
+    // Set style to PDO::FETCH_NAMED when values are an array
+    // (i.e. there are more than two columns in the select)
+    $result = $pdo->fetchGroup($stm, $bind, $style = PDO::FETCH_COLUMN)
+
+    // fetchObject() returns the first row as an object of your choosing; the
+    // columns are mapped to object properties. an optional 4th parameter array
+    // provides constructor arguments when instantiating the object.
+    $result = $pdo->fetchObject($stm, $bind, 'ClassName', array('ctor_arg_1'));
+
+    // fetchObjects() returns an array of objects of your choosing; the
+    // columns are mapped to object properties. an optional 4th parameter array
+    // provides constructor arguments when instantiating the object.
+    $result = $pdo->fetchObjects($stm, $bind, 'ClassName', array('ctor_arg_1'));
+
+    // fetchOne() returns the first row as an associative array where the keys
+    // are the column names
+    $result = $pdo->fetchOne($stm, $bind);
+
+    // fetchPairs() returns an associative array where each key is the first
+    // column and each value is the second column
+    $result = $pdo->fetchPairs($stm, $bind);
+
+    // fetchValue() returns the value of the first row in the first column
+    $result = $pdo->fetchValue($stm, $bind);
+
+    // fetchAffected() returns the number of affected rows
+    $stm = "UPDATE test SET incr = incr + 1 WHERE foo = :foo AND bar = :bar";
+    $row_count = $pdo->fetchAffected($stm, $bind);
+
+#####数组转换
+
+
+    $pdo = $this->getDefault();
+
+    $stm = 'SELECT * FROM test WHERE foo IN (:foo)'
+
+    $array = array('foo', 'bar', 'baz');
+    $cond = 'IN (' . $pdo->quote($array) . ')';
+
+    $bind_values = array('foo' => $array);
+    $sth = $pdo->perform($stm, $bind_values);
+    echo $sth->queryString;
+    // "SELECT * FROM test WHERE foo IN ('foo', 'bar', 'baz')"
+
 
 ## 配置文件
 
