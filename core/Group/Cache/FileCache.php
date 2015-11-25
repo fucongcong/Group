@@ -11,7 +11,7 @@ class FileCache implements CacheContract
     /**
     * 获取cache
     *
-    * @param  cacheName,  name::key
+    * @param  cacheName,  name::key ; cache_dir
     * @return string|array
     */
     public static function get($cacheName, $cache_dir = false)
@@ -22,6 +22,11 @@ class FileCache implements CacheContract
         return include $dir;
     }
 
+    /**
+    * 设置cache
+    *
+    * @param  cacheName(string); data(array); cache_dir(string)
+    */
     public static function set($cacheName, $data, $cache_dir = false)
     {
         $cache_dir = $cache_dir == false ? self::$cache_dir : $cache_dir;
@@ -44,6 +49,12 @@ return ".$data.";";
         file_put_contents("$dir/$file", $data);
     }
 
+    /**
+    * 文件是否存在
+    *
+    * @param  cacheName(string); cache_dir(string)
+    * @return boolean
+    */
     public static function isExist($cacheName, $cache_dir = false)
     {
         $cache_dir = $cache_dir == false ? self::$cache_dir : $cache_dir;

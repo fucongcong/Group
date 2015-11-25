@@ -37,6 +37,10 @@ class App
         $this -> aliasLoader();
     }
 
+    /**
+    * init appliaction
+    *
+    */
     public function init()
     {
         $this -> container = Container::getInstance();
@@ -46,6 +50,10 @@ class App
         $this -> router -> match();
     }
 
+    /**
+    * do the class alias
+    *
+    */
     public function aliasLoader()
     {
         $aliases = Config::get('app::aliases');
