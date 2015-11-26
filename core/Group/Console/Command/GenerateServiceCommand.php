@@ -9,21 +9,29 @@ class GenerateServiceCommand extends Command
     public function init()
     {
         $input = $this -> getArgv();
-        $name = $input[0];
-        if (!$name) {
+
+        if (!isset($input[0])) {
             throw new \RuntimeException("名称不能为空！");
         }
 
+        $name = $input[0];
         if (!preg_match('/^[a-zA-Z\s]+$/', $name)) {
             throw new \RuntimeException("名称只能为英文！");
         }
 
+        $serviceName=ucfirst($name);
         $this -> outPut('开始初始化'.$serviceName.'Service...');
 
-        $serviceName=ucfirst($name);
         $dir = __ROOT__."src/Services";
 
         $this -> outPut('正在生成目录...');
+
+        if(is_dir($dir."/".$serviceName)) {
+
+            $this -> outPut('目录已存在...初始化失败');
+            die;
+        }
+
         $this -> filesystem = new Filesystem();
         $this -> filesystem -> mkdir($dir."/".$serviceName."/Dao");
         $this -> filesystem -> mkdir($dir."/".$serviceName."/Dao/Impl");

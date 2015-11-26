@@ -58,6 +58,7 @@
 访问 http://localhost:8081 进入框架主页
 
 ####3.目录结构
+- app (脚本文件)
 - asset (前端文件)
     - css
     - fonts
@@ -93,37 +94,41 @@
 
 示例：
 
-	return array(
+```php
+<?php
+return array(
 
-		    'homepage'=>[
-		    	'pattern' => '/',
-		    	'controller' => 'Web:Home:Default:index',
-		    ],
+	    'homepage'=>[
+	    	'pattern' => '/',
+	    	'controller' => 'Web:Home:Default:index',
+	    ],
 
-		    'group'=>[
-		    	'pattern' => '/group/{id}',
-		    	'controller' => 'Web:Group:Group:test',
-		    	'methods' => 'GET',
-		    ],
+	    'group'=>[
+	    	'pattern' => '/group/{id}',
+	    	'controller' => 'Web:Group:Group:test',
+	    	'methods' => 'GET',
+	    ],
 
-		    'create_group'=>[
-		        'pattern' => '/group/{id}',
-		        'controller' => 'Web:Group:Group:index',
-		        'methods' => 'POST',
-		    ],
+	    'create_group'=>[
+	        'pattern' => '/group/{id}',
+	        'controller' => 'Web:Group:Group:index',
+	        'methods' => 'POST',
+	    ],
 
-		    'user_group'=>[
-		    	'pattern' => '/user/{id}/group/{groupId}',
-		    	'controller' => 'Web:Group:Group:test',
-		    	'methods' => 'GET',
-		    ],
-	);
+	    'user_group'=>[
+	    	'pattern' => '/user/{id}/group/{groupId}',
+	    	'controller' => 'Web:Group:Group:test',
+	    	'methods' => 'GET',
+	    ],
+);
+```
 
 
 ## 控制层
 
 （1）第一个控制器
 
+```php
 	<?php
 	namespace src\web\Controller\Home;
 
@@ -142,46 +147,53 @@
 	}
 
 	?>
+```
 
 （2）如何获取路由传过来的参数？
 
-	//在后面我们可以跟上路由定义好的参数，$id
-    public function testAction($id)
-    {
-        // echo $id; echo "<br>";
+```php
+<?php
+namespace src\Web\Controller\Group;
 
-        //可以获取整个路由地址
-        $uri = $this -> route() -> getUri();
-        //获取所有参数
-        $parameters = $this -> route() -> getParameters();
-        //获取参数名
-        $parametersName = $this -> route() -> getParametersName();
-        //获取当前action的名称
-        $action = $this -> route() -> getAction();
-        //获取系统支持的请求方法
-        $methods = $this -> route() -> getMethods();
-        //获取当前时区
-        $timezone = $this -> getContainer() -> getTimezone();
-        //获取当前运行环境
-        $environment = $this -> getContainer() -> getEnvironment();
-        //这里和Service服务层交互
-        echo $this->getGroupService()->getGroup(1);
-        //传入模板
-        return $this -> render('Web/Views/Group/index.html.twig',array(
-            'uri' => $uri,
-            'parameters' => $parameters,
-            'parametersName' => $parametersName,
-            'action' => $action,
-            'methods' => $methods,
-            'timezone' => $timezone,
-            'environment' => $environment
-            ));
-    }
-    public function getGroupService()
-    {
-    	//创建一个Service实例
-        return $this -> createService("Group:Group");
-    }
+use Controller;
+//在后面我们可以跟上路由定义好的参数，$id
+public function testAction($id)
+{
+    // echo $id; echo "<br>";
+
+    //可以获取整个路由地址
+    $uri = $this -> route() -> getUri();
+    //获取所有参数
+    $parameters = $this -> route() -> getParameters();
+    //获取参数名
+    $parametersName = $this -> route() -> getParametersName();
+    //获取当前action的名称
+    $action = $this -> route() -> getAction();
+    //获取系统支持的请求方法
+    $methods = $this -> route() -> getMethods();
+    //获取当前时区
+    $timezone = $this -> getContainer() -> getTimezone();
+    //获取当前运行环境
+    $environment = $this -> getContainer() -> getEnvironment();
+    //这里和Service服务层交互
+    echo $this->getGroupService()->getGroup(1);
+    //传入模板
+    return $this -> render('Web/Views/Group/index.html.twig',array(
+        'uri' => $uri,
+        'parameters' => $parameters,
+        'parametersName' => $parametersName,
+        'action' => $action,
+        'methods' => $methods,
+        'timezone' => $timezone,
+        'environment' => $environment
+        ));
+}
+public function getGroupService()
+{
+	//创建一个Service实例
+    return $this -> createService("Group:Group");
+}
+```
 
 ## 服务层
 #####（1）简单介绍一下目录结构
@@ -194,102 +206,101 @@ GroupService.php(接口)
 #####服务层主要用于处理数据层与控制层间数据的业务处理。只要继承Service类就可以了。
 
     GroupService.php
+```php
+<?php
+namespace src\Services\Group;
 
-
-    <?php
-    namespace src\Services\Group;
-
-    interface GroupService
-    {
-        public function getGroup($id);
-    }
-
-
+interface GroupService
+{
+    public function getGroup($id);
+}
+```
 
     /Rely/GroupBaseService.php
 
+```php
+<?php
+namespace src\Services\Group\Rely;
 
-    <?php
-    namespace src\Services\Group\Rely;
-
-    use Service;
-    //定义在Rely文件下的依赖
-    abstract class GroupBaseService extends Service
+use Service;
+//定义在Rely文件下的依赖
+abstract class GroupBaseService extends Service
+{
+    //获取数据层的对象实例
+    public function getGroupDao()
     {
-        //获取数据层的对象实例
-        public function getGroupDao()
-        {
-            return $this->createDao("Group:Group");
-        }
-
-        //获取其他服务的对象实例
-        public function getUserService()
-        {
-            return $this -> createService("User:User");
-        }
+        return $this->createDao("Group:Group");
     }
 
+    //获取其他服务的对象实例
+    public function getUserService()
+    {
+        return $this -> createService("User:User");
+    }
+}
+```
 
     /Impl/GroupServiceImpl.php
 
+```php
+<?php
+namespace src\Services\Group\Impl;
 
-    <?php
-    namespace src\Services\Group\Impl;
+use src\Services\Group\Rely\GroupBaseService;
+use src\Services\Group\GroupService;
 
-    use src\Services\Group\Rely\GroupBaseService;
-    use src\Services\Group\GroupService;
-
-    class GroupServiceImpl extends GroupBaseService implements GroupService
+class GroupServiceImpl extends GroupBaseService implements GroupService
+{
+    //实现定义的服务层接口方法
+    public function getGroup($id)
     {
-        //实现定义的服务层接口方法
+        return $this -> getUserService() -> getUser(1);
+        //return $this->getGroupDao()->getGroup($id);
+    }
+
+}
+```
+
+## 数据层
+#####支持主从配置(详见配置文件)
+
+#####如何使用
+
+```php
+<?php
+
+    namespace src\Services\Group\Dao\Impl;
+
+    use Dao;
+    use src\Services\Group\Dao\GroupDao;
+
+    class GroupDaoImpl extends Dao implements GroupDao
+    {
+        //定以数据表
+        protected $tables="groups";
+
+        //具体方法
         public function getGroup($id)
         {
-            return $this -> getUserService() -> getUser(1);
-            //return $this->getGroupDao()->getGroup($id);
+            $sql="SELECT * FROM {$this->tables} WHERE id=:id LIMIT 0,1";
+            //动态参数绑定
+            $bind = array('id' => $id);
+            //读取默认配置
+            //$group = $this->getDefault()->fetchOne($sql, $bind);
+
+            //读取写服务器配置，如果没有指定具体参数，随机写入分配的服务器
+            //$group = $this->getWrite('master1')->fetchOne($sql, $bind);
+            //$group = $this->getWrite('master2')->fetchOne($sql, $bind);
+
+            //读取读服务器配置，如果没有指定具体参数，随机读取分配的服务器
+            //$group = $this->getRead()->fetchOne($sql, $bind);
+            return $group ? $group : null;
         }
 
     }
+```
 
-
-## 数据层
-###支持主从配置(详见配置文件)
-
-###如何使用
-
-
-        <?php
-
-            namespace src\Services\Group\Dao\Impl;
-
-            use Dao;
-            use src\Services\Group\Dao\GroupDao;
-
-            class GroupDaoImpl extends Dao implements GroupDao
-            {
-                //定以数据表
-                protected $tables="groups";
-
-                //具体方法
-                public function getGroup($id)
-                {
-                    $sql="SELECT * FROM {$this->tables} WHERE id=:id LIMIT 0,1";
-                    //动态参数绑定
-                    $bind = array('id' => $id);
-                    //读取默认配置
-                    //$group = $this->getDefault()->fetchOne($sql, $bind);
-
-                    //读取写服务器配置，如果没有指定具体参数，随机写入分配的服务器
-                    //$group = $this->getWrite('master1')->fetchOne($sql, $bind);
-                    //$group = $this->getWrite('master2')->fetchOne($sql, $bind);
-
-                    //读取读服务器配置，如果没有指定具体参数，随机读取分配的服务器
-                    //$group = $this->getRead()->fetchOne($sql, $bind);
-                    return $group ? $group : null;
-                }
-
-            }
-
-###支持的语法
+#####支持的语法
 
 #####fetch(*)
 
