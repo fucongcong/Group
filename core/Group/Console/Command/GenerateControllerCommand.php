@@ -9,21 +9,28 @@ class GenerateControllerCommand extends Command
     public function init()
     {
         $input = $this -> getArgv();
-        $name = $input[0];
-        if (!$name) {
+
+        if (!isset($input[0])) {
             throw new \RuntimeException("名称不能为空！");
         }
 
+        $name = $input[0];
         if (!preg_match('/^[a-zA-Z\s]+$/', $name)) {
             throw new \RuntimeException("名称只能为英文！");
         }
 
+        $controllerName=ucfirst($name);
         $this -> outPut('开始初始化'.$controllerName.'Controller...');
 
-        $controllerName=ucfirst($name);
         $dir = __ROOT__."src/Web";
 
         $this -> outPut('正在生成目录...');
+        if(is_dir($dir."/Controller/".$controllerName)) {
+
+            $this -> outPut('目录已存在...初始化失败');
+            die;
+        }
+
         $this -> filesystem = new Filesystem();
         $this -> filesystem -> mkdir($dir."/Controller/".$controllerName);
         $this -> filesystem -> mkdir($dir."/Views/".$controllerName);

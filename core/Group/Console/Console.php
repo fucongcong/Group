@@ -34,7 +34,7 @@ class Console
 \033[32m generate:service name \033[0m      生成一个自定义service
 \033[32m generate:controller  name \033[0m   生成一个自定义controller
 \033[32m sql:generate\033[0m                生成一个sql执行模板(存放于app/sql)
-\033[32m sql:migrate\033[0m                 执行sql模板
+\033[32m sql:migrate   [default|write|read|all]\033[0m \033[33m[name]\033[0m  参数可不填，执行sql模板(默认会向default服务器执行.\033[33m第二个参数只有当第一个参数为write|read时，才会生效,如果不填，默认为write|read下面所有服务器\033[0m)
 
 
 ";

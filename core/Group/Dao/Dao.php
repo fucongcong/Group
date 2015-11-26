@@ -17,7 +17,115 @@ class Dao
 		$this -> config = $pdo;
 	}
 
-	public function getConnection()
+    /**
+    * 获取默认服务器连接
+    *
+    * @return object
+    */
+	public function getDefault()
+	{
+		return $this -> getConnection() -> getDefault();
+	}
+
+    /**
+    * 获取某个读服务器连接
+    *
+    * @param  name
+    * @return object
+    */
+	public function getRead($name = null)
+	{
+		return $this -> getConnection() -> getRead($name);
+	}
+
+    /**
+    * 获取某个写服务器连接
+    *
+    * @param  name
+    * @return object
+    */
+	public function getWrite($name = null)
+	{
+		return $this -> getConnection() -> getWrite($name);
+	}
+
+    /**
+    * 获取所有读服务器的连接
+    *
+    * @return array
+    */
+	public function getAllRead()
+	{
+		$config = $this -> config;
+		$connections = [];
+
+		if(isset($config['read'])) {
+
+			foreach ($config['read'] as $name => $db) {
+
+				$connections[] = $this -> getRead($name);
+			}
+		}
+
+		return $connections;
+	}
+
+    /**
+    * 获取所有写服务器的连接
+    *
+    * @return array
+    */
+	public function getAllWrite()
+	{
+		$config = $this -> config;
+		$connections = [];
+
+		if(isset($config['write'])) {
+
+			foreach ($config['write'] as $name => $db) {
+
+				$connections[] = $this -> getWrite($name);
+			}
+		}
+
+		return $connections;
+	}
+
+    /**
+    * 执行sql
+    *
+    * @param  sql;type[write|all_write|read|all_read|default];name
+    */
+	public function querySql($sql, $type, $name = null)
+	{
+		switch ($type) {
+			case 'write':
+					$this -> getWrite($name) -> query($sql);
+				break;
+			case 'all_write':
+					$connections = $this -> getAllWrite();
+					foreach ($connections as $connection) {
+                        $connection -> query($sql);
+                    }
+				break;
+			case 'read':
+					$this -> getRead($name) -> query($sql);
+				break;
+			case 'all_read':
+					$connections = $this -> getAllRead();
+					foreach ($connections as $connection) {
+                        $connection -> query($sql);
+                    }
+				break;
+			case 'default':
+					$this -> getDefault() -> query($sql);
+				break;
+			default:
+				break;
+		}
+	}
+
+	protected function getConnection()
 	{
 		if (self::$_connection) {
 
@@ -29,21 +137,6 @@ class Dao
 		self::$_connection = $_connection;
 
 		return $_connection;
-	}
-
-	public function getDefault()
-	{
-		return $this -> getConnection() -> getDefault();
-	}
-
-	public function getRead($name = null)
-	{
-		return $this -> getConnection() -> getRead($name);
-	}
-
-	public function getWrite($name = null)
-	{
-		return $this -> getConnection() -> getWrite($name);
 	}
 
 	private function getConnectionLocator()
