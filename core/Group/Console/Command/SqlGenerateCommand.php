@@ -23,9 +23,9 @@ class SqlGenerateCommand extends Command
 
     private function getFile($tpl, $name)
     {
-        $data=file_get_contents(__DIR__."/../tpl/{$tpl}");
+        $data = file_get_contents(__DIR__."/../tpl/{$tpl}");
 
-        return $this->getData($data, $name);
+        return $this -> getData($data, $name);
     }
 
     private function getData($data, $name)
