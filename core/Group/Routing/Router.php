@@ -37,15 +37,15 @@ Class Router implements RouterContract
 
 		}
 
-		foreach ($routing as $route_key => $route) {
+		foreach ($routing as $routeKey => $route) {
 
-			preg_match_all('/{(.*?)}/', $route_key, $matches);
+			preg_match_all('/{(.*?)}/', $routeKey, $matches);
 
 			$config = "";
 
 			if ($matches[0]) {
 
-				$config = $this -> pregUrl($matches, $route_key, $routing);
+				$config = $this -> pregUrl($matches, $routeKey, $routing);
 			}
 
 			if ($config) {
@@ -62,25 +62,25 @@ Class Router implements RouterContract
 	 * preg the url
 	 *
 	 * @param  matches
-	 * @param  route_key
+	 * @param  routeKey
 	 * @param  array routing
 	 * @return  array|bool false
 	 */
-	public function pregUrl($matches, $route_key, $routing)
+	public function pregUrl($matches, $routeKey, $routing)
 	{
         $countKey = explode("/", $_SERVER['PATH_INFO']);
-        $countKeyPreg = explode("/", $route_key);
+        $countKeyPreg = explode("/", $routeKey);
 
         if(count($countKey)!= count($countKeyPreg)) {
 
             return false;
         }
 
-		$route = $route_key;
+		$route = $routeKey;
 		foreach ($matches[0] as $key => $match) {
 
-			$regex = str_replace($match, "(\S+)", $route_key);
-			$route_key = $regex;
+			$regex = str_replace($match, "(\S+)", $routeKey);
+			$routeKey = $regex;
 
 			$regex = str_replace("/", "\/", $regex);
 
@@ -114,11 +114,11 @@ Class Router implements RouterContract
 	 */
 	public function controller($config)
 	{
-		$_controller = explode(':', $config['controller']);
+		$controller = explode(':', $config['controller']);
 
-		$className = 'src\\'.$_controller[0].'\\Controller\\'.$_controller[1].'\\'.$_controller[2].'Controller';
+		$className = 'src\\'.$controller[0].'\\Controller\\'.$controller[1].'\\'.$controller[2].'Controller';
 
-		$action = $_controller[3].'Action';
+		$action = $controller[3].'Action';
 
 		$this -> route -> setAction($action);
 

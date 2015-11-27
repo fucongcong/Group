@@ -393,3 +393,7 @@ class GroupServiceImpl extends GroupBaseService implements GroupService
 
 #####目前支持的自动脚本命令
 ####自定以脚本文件
+
+##单元测试
+
+    phpunit --bootstrap app/test.php src/

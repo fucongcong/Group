@@ -31,6 +31,7 @@ class App
         'Route'             => 'core\Group\Routing\Route',
         'Service'           => 'core\Group\Services\Service',
         'ServiceProvider'   => 'core\Group\Services\ServiceProvider',
+        'Test'              => 'core\Group\Test\Test',
     ];
 
     public function __construct()
