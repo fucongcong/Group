@@ -18,7 +18,7 @@ class Service
 
     public function createService($serviceName)
     {
-        return ServiceProvider::register($serviceName);
+        return \ServiceProvider::register($serviceName);
     }
 }
 

@@ -6,10 +6,6 @@ use Twig_Loader_Filesystem;
 use Twig_Environment;
 use core\Group\Twig\WebExtension;
 use core\Group\Controller\BaseController;
-use Config;
-use Route;
-use Container;
-use ServiceProvider;
 
 class Controller  extends BaseController
 {
@@ -23,9 +19,9 @@ class Controller  extends BaseController
 	public function render($tpl,$array=array())
 	{
 
-		$loader = new Twig_Loader_Filesystem(Config::get('view::path'));
+		$loader = new Twig_Loader_Filesystem(\Config::get('view::path'));
 
-		if (Config::get('view::cache')) {
+		if (\Config::get('view::cache')) {
 
 			$env =  array(
 		    	'cache' => Config::get('view::cache_dir')
@@ -47,7 +43,7 @@ class Controller  extends BaseController
 	//to do 单列 可以扩展为模块
 	public function createService($serviceName)
 	{
-		return ServiceProvider::register($serviceName);
+		return \ServiceProvider::register($serviceName);
 	}
 
 	/**
@@ -57,7 +53,7 @@ class Controller  extends BaseController
 	*/
 	public function route()
 	{
-		return Route::getInstance();
+		return \Route::getInstance();
 	}
 
 	/**
@@ -67,7 +63,7 @@ class Controller  extends BaseController
 	*/
 	public function getContainer()
 	{
-		return Container::getInstance();
+		return \Container::getInstance();
 	}
 }
 

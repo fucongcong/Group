@@ -4,9 +4,6 @@ namespace core\Group\Routing;
 
 use core\Group\Common\ArrayToolkit;
 use core\Group\Container\Container;
-use Route;
-use Exception;
-use FileCache;
 use core\Group\Contracts\Routing\Router as RouterContract;
 
 Class Router implements RouterContract
@@ -168,7 +165,7 @@ Class Router implements RouterContract
 	 */
 	public function setRoute($methods, $uri)
 	{
-		$this -> route = Route::getInstance();
+		$this -> route = \Route::getInstance();
 
 		$this -> route -> setMethods($methods);
 		$this -> route -> setUri($uri);
@@ -181,14 +178,14 @@ Class Router implements RouterContract
 
 		$file = 'route/routing_'.$_SERVER['REQUEST_METHOD'].'.php';
 
-		if(FileCache::isExist($file)) {
+		if(\FileCache::isExist($file)) {
 
-			return FileCache::get($file);
+			return \FileCache::get($file);
 		}
 
 		$config = $this -> createMethodsCache($routing);
 
-		FileCache::set($file, $config);
+		\FileCache::set($file, $config);
 
 		return $config;
 

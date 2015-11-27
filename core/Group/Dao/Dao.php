@@ -3,7 +3,6 @@
 namespace core\Group\Dao;
 use Aura\Sql\ExtendedPdo;
 use Aura\Sql\ConnectionLocator;
-use Config;
 
 class Dao
 {
@@ -13,7 +12,7 @@ class Dao
 
 	public function __construct()
 	{
-		$pdo = Config::get('database::pdo');
+		$pdo = \Config::get('database::pdo');
 
 		$this -> config = $pdo;
 	}

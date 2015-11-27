@@ -6,7 +6,6 @@ use ReflectionClass;
 use Exception;
 use core\Group\Exceptions\NotFoundException;
 use core\Group\Contracts\Container\Container as ContainerContract;
-use Config;
 
 class Container implements ContainerContract
 {
@@ -89,7 +88,7 @@ class Container implements ContainerContract
      */
     public function setTimezone()
     {
-        $this -> timezone = Config::get('app::timezone');
+        $this -> timezone = \Config::get('app::timezone');
         date_default_timezone_set($this -> getTimezone());
     }
 
@@ -119,7 +118,7 @@ class Container implements ContainerContract
      */
     public function setEnvironment()
     {
-        $this -> environment = Config::get('app::environment');
+        $this -> environment = \Config::get('app::environment');
     }
 
     public function setAppPath()

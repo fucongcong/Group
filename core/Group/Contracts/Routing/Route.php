@@ -1,7 +1,6 @@
 <?php
 
 namespace core\Group\Contracts\Routing;
-use Container;
 
 interface Route
 {
@@ -10,7 +9,7 @@ interface Route
     *
     * @param core\Group\Container\Container container
     */
-    public function setContainer(Container $container);
+    public function setContainer(\Container $container);
 
     /**
     * set params
