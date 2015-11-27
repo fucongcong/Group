@@ -47,12 +47,12 @@ class GenerateControllerCommand extends Command
 
     private function getFile($tpl, $controllerName)
     {
-        $data=file_get_contents(__DIR__."/../tpl/{$tpl}");
+        $data = file_get_contents(__DIR__."/../tpl/{$tpl}");
 
-        return $this->getData($data,$controllerName);
+        return $this -> getData($data, $controllerName);
     }
 
-    private function getData($data,$controllerName)
+    private function getData($data, $controllerName)
     {
         return str_replace("{{name}}", $controllerName, $data);
     }

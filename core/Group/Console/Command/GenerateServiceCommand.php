@@ -62,12 +62,12 @@ class GenerateServiceCommand extends Command
 
     private function getFile($tpl, $serviceName)
     {
-        $data=file_get_contents(__DIR__."/../tpl/{$tpl}");
+        $data = file_get_contents(__DIR__."/../tpl/{$tpl}");
 
-        return $this->getData($data,$serviceName);
+        return $this -> getData($data, $serviceName);
     }
 
-    private function getData($data,$serviceName)
+    private function getData($data, $serviceName)
     {
         return str_replace("{{name}}", $serviceName, $data);
     }
