@@ -1,4 +1,6 @@
 /runtime
+/asset/css/*
+/asset/fonts/*
 /asset/js/*
 /asset/img/*
 /asset/lib/*
