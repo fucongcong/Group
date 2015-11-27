@@ -1,5 +1,0 @@
-# Save as .codeclimate.yml (note leading .) in project root directory
-languages:
-  php: true
-# exclude_paths:
-# - "foo/bar.rb"
