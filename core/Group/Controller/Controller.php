@@ -10,12 +10,12 @@ use core\Group\Controller\BaseController;
 class Controller  extends BaseController
 {
 	/**
-	* 渲染模板的方法
-	*
-	* @param  string  $tpl
-	* @param  array   $array
-	* @return response
-	*/
+	 * 渲染模板的方法
+	 *
+	 * @param  string  $tpl
+	 * @param  array   $array
+	 * @return response
+	 */
 	public function render($tpl,$array=array())
 	{
 
@@ -35,11 +35,11 @@ class Controller  extends BaseController
 	}
 
 	/**
-	* 实例化一个服务类
-	*
-	* @param  string  $serviceName
-	* @return class
-	*/
+	 * 实例化一个服务类
+	 *
+	 * @param  string  $serviceName
+	 * @return class
+	 */
 	//to do 单列 可以扩展为模块
 	public function createService($serviceName)
 	{
@@ -47,20 +47,20 @@ class Controller  extends BaseController
 	}
 
 	/**
-	* route的实例
-	*
-	* @return core\Group\Routing\Route
-	*/
+	 * route的实例
+	 *
+	 * @return core\Group\Routing\Route
+	 */
 	public function route()
 	{
 		return \Route::getInstance();
 	}
 
 	/**
-	* 获取容器
-	*
-	* @return core\Group\Container\Container
-	*/
+	 * 获取容器
+	 *
+	 * @return core\Group\Container\Container
+	 */
 	public function getContainer()
 	{
 		return \Container::getInstance();

@@ -20,10 +20,10 @@ Class Router implements RouterContract
 		$this -> container = Container::getInstance();
 	}
 	/**
-	* match the uri
-	*
-	* @return  void
-	*/
+	 * match the uri
+	 *
+	 * @return  void
+	 */
 	public function match()
 	{
 		$requestUri = $_SERVER['PATH_INFO'];
@@ -59,13 +59,13 @@ Class Router implements RouterContract
 	}
 
 	/**
-	* preg the url
-	*
-	* @param  matches
-	* @param  route_key
-	* @param  array routing
-	* @return  array|bool false
-	*/
+	 * preg the url
+	 *
+	 * @param  matches
+	 * @param  route_key
+	 * @param  array routing
+	 * @return  array|bool false
+	 */
 	public function pregUrl($matches, $route_key, $routing)
 	{
         $countKey = explode("/", $_SERVER['PATH_INFO']);
@@ -107,11 +107,11 @@ Class Router implements RouterContract
 	}
 
 	/**
-	* do the controller
-	*
-	* @param  routing config
-	* @return string
-	*/
+	 * do the controller
+	 *
+	 * @param  routing config
+	 * @return string
+	 */
 	public function controller($config)
 	{
 		$_controller = explode(':', $config['controller']);

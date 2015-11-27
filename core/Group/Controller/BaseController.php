@@ -26,17 +26,17 @@ abstract class BaseController
 	abstract function render($tpl, $parameters);
 
 	/**
-	* route的实例
-	*
-	* @return core\Group\Routing\Route
-	*/
+	 * route的实例
+	 *
+	 * @return core\Group\Routing\Route
+	 */
 	abstract function route();
 
 	/**
-	* 获取容器
-	*
-	* @return core\Group\Container\Container
-	*/
+	 * 获取容器
+	 *
+	 * @return core\Group\Container\Container
+	 */
 	abstract function getContainer();
 
 }

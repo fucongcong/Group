@@ -39,9 +39,9 @@ class App
     }
 
     /**
-    * init appliaction
-    *
-    */
+     * init appliaction
+     *
+     */
     public function init()
     {
         $this -> container = Container::getInstance();
@@ -52,9 +52,9 @@ class App
     }
 
     /**
-    * do the class alias
-    *
-    */
+     * do the class alias
+     *
+     */
     public function aliasLoader()
     {
         $aliases = Config::get('app::aliases');
@@ -64,10 +64,10 @@ class App
     }
 
     /**
-    * return single class
-    *
-    * @return core\App\App App
-    */
+     * return single class
+     *
+     * @return core\App\App App
+     */
     public static function getInstance(){
 
         if(!(self::$_instance instanceof self)){

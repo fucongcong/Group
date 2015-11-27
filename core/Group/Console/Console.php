@@ -7,9 +7,9 @@ class Console
     protected $argv;
 
     /**
-    * 命令的定义集合
-    *
-    */
+     * 命令的定义集合
+     *
+     */
     protected $options = [
         'generate:service' => 'core\Group\Console\Command\GenerateServiceCommand',
         'generate:controller' => 'core\Group\Console\Command\GenerateControllerCommand',
@@ -46,9 +46,9 @@ class Console
     }
 
     /**
-    * run the console
-    *
-    */
+     * run the console
+     *
+     */
     public function run()
     {
         $this -> checkArgv();
@@ -56,9 +56,9 @@ class Console
     }
 
     /**
-    * 检查输入的参数与命令
-    *
-    */
+     * 检查输入的参数与命令
+     *
+     */
     protected function checkArgv()
     {
         $argv = $this -> argv;

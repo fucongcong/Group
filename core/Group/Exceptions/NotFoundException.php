@@ -16,10 +16,10 @@ class NotFoundException extends Exception implements ExceptionContract
 	}
 
     /**
-    * Custom pattern string output
-    *
-    * @return exception message
-    */
+     * Custom pattern string output
+     *
+     * @return exception message
+     */
 	public function __toString()
 	{
 		return __CLASS__ . ": [{$this->code}]: {$this->message}\n";

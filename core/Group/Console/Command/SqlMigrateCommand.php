@@ -3,9 +3,6 @@
 namespace core\Group\Console\Command;
 
 use core\Group\Console\Command as Command;
-use Filesystem;
-use FileCache;
-use Dao;
 
 class SqlMigrateCommand extends Command
 {
@@ -15,14 +12,14 @@ class SqlMigrateCommand extends Command
     {
         $sqlDir = __ROOT__."app/sql/";
 
-        $lock = FileCache::isExist("sql.lock", $sqlDir);
+        $lock = \FileCache::isExist("sql.lock", $sqlDir);
         if($lock) {
-            $this -> fileList = FileCache::get("sql.lock", $sqlDir);
+            $this -> fileList = \FileCache::get("sql.lock", $sqlDir);
         }
 
         $this -> ListSql($sqlDir);
 
-        FileCache::set("sql.lock", $this -> fileList, $sqlDir);
+        \FileCache::set("sql.lock", $this -> fileList, $sqlDir);
     }
 
     private function ListSql($sqlDir)
@@ -65,7 +62,7 @@ class SqlMigrateCommand extends Command
 
     private function startMigrate($sqlArr)
     {
-        $dao = new Dao();
+        $dao = new \Dao();
         foreach ($sqlArr as $sql) {
             $this -> doSql($dao, $sql);
         }

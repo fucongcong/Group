@@ -7,37 +7,37 @@ abstract class SqlMigration
     protected $sqlArr = [];
 
     /**
-    * run the sql
-    *
-    */
+     * run the sql
+     *
+     */
     abstract function run();
 
     abstract function back();
 
     /**
-    * add sql
-    *
-    * @param  sql(string)
-    */
+     * add sql
+     *
+     * @param  sql(string)
+     */
     public function addSql($sql)
     {
         $this -> setSqlArr($sql);
     }
 
     /**
-    * get sql array
-    *
-    * @return array
-    */
+     * get sql array
+     *
+     * @return array
+     */
     public function getSqlArr()
     {
         return $this -> sqlArr;
     }
 
     /**
-    * set sql array
-    *
-    */
+     * set sql array
+     *
+     */
     public function setSqlArr($sql)
     {
         $sqlArr = $this -> sqlArr;

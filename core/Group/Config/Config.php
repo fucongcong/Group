@@ -12,22 +12,22 @@ class Config implements ConfigContract
     protected $config = [];
 
     /**
-    * 获取config下得值
-    *
-    * @param  configName,  name::key
-    * @return string
-    */
+     * 获取config下得值
+     *
+     * @param  configName,  name::key
+     * @return string
+     */
     public static function get($configName)
     {
         return  static::getInstance() -> read($configName);
     }
 
     /**
-    * read config
-    *
-    * @param  configName,  name::key
-    * @return array
-    */
+     * read config
+     *
+     * @param  configName,  name::key
+     * @return array
+     */
     public function read($configName)
     {
         $configName = explode('::', $configName);
@@ -45,30 +45,30 @@ class Config implements ConfigContract
     }
 
     /**
-    * 设置config
-    *
-    * @param  array config
-    */
+     * 设置config
+     *
+     * @param  array config
+     */
     public function setConfig($config)
     {
         $this -> config = array_merge($this -> config, $config);
     }
 
     /**
-    * 获取config
-    *
-    * @return array
-    */
+     * 获取config
+     *
+     * @return array
+     */
     public function getConfig()
     {
         return $this -> config;
     }
 
     /**
-    * return single class
-    *
-    * @return core\Group\Config Config
-    */
+     * return single class
+     *
+     * @return core\Group\Config Config
+     */
     public static function getInstance(){
 
         if(!(self::$_instance instanceof self)){

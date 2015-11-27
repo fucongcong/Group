@@ -18,42 +18,42 @@ class Dao
 	}
 
     /**
-    * 获取默认服务器连接
-    *
-    * @return object
-    */
+     * 获取默认服务器连接
+     *
+     * @return object
+     */
 	public function getDefault()
 	{
 		return $this -> getConnection() -> getDefault();
 	}
 
     /**
-    * 获取某个读服务器连接
-    *
-    * @param  name
-    * @return object
-    */
+     * 获取某个读服务器连接
+     *
+     * @param  name
+     * @return object
+     */
 	public function getRead($name = null)
 	{
 		return $this -> getConnection() -> getRead($name);
 	}
 
     /**
-    * 获取某个写服务器连接
-    *
-    * @param  name
-    * @return object
-    */
+     * 获取某个写服务器连接
+     *
+     * @param  name
+     * @return object
+     */
 	public function getWrite($name = null)
 	{
 		return $this -> getConnection() -> getWrite($name);
 	}
 
     /**
-    * 获取所有读服务器的连接
-    *
-    * @return array
-    */
+     * 获取所有读服务器的连接
+     *
+     * @return array
+     */
 	public function getAllRead()
 	{
 		$config = $this -> config;
@@ -71,10 +71,10 @@ class Dao
 	}
 
     /**
-    * 获取所有写服务器的连接
-    *
-    * @return array
-    */
+     * 获取所有写服务器的连接
+     *
+     * @return array
+     */
 	public function getAllWrite()
 	{
 		$config = $this -> config;
@@ -92,10 +92,10 @@ class Dao
 	}
 
     /**
-    * 执行sql
-    *
-    * @param  sql;type[write|all_write|read|all_read|default];name
-    */
+     * 执行sql
+     *
+     * @param  sql;type[write|all_write|read|all_read|default];name
+     */
 	public function querySql($sql, $type, $name = null)
 	{
 		switch ($type) {
