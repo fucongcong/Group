@@ -1,4 +1,5 @@
 <?php
+
 namespace core\Group\Common;
 
 class ArrayToolkit
@@ -8,14 +9,14 @@ class ArrayToolkit
 		if (empty($array)) {
 			return array();
 		}
-		
+
 		$column = array();
 		foreach ($array as $item) {
-		            if (isset($item[$columnName])) {
-		                $column[] = $item[$columnName];
-		            }
-				}
-	        	return $column;
+            if (isset($item[$columnName])) {
+                $column[] = $item[$columnName];
+            }
+		}
+    	return $column;
 	}
 
 	public static function parts(array $array, array $keys)
@@ -72,7 +73,7 @@ class ArrayToolkit
         if (empty($array)) {
             return $indexedArray;
         }
-        
+
         foreach ($array as $item) {
             if (isset($item[$name])) {
                 $indexedArray[$item[$name]] = $item;

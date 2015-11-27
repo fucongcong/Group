@@ -1,4 +1,5 @@
 <?php
+
 namespace core\Group\Dao;
 
 abstract class SqlMigration

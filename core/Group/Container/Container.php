@@ -1,4 +1,5 @@
 <?php
+
 namespace core\Group\Container;
 
 use ReflectionClass;

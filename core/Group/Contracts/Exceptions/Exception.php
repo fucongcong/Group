@@ -1,4 +1,5 @@
 <?php
+
 namespace core\Group\Contracts\Exceptions;
 
 interface Exception

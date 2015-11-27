@@ -1,4 +1,5 @@
 <?php
+
 namespace core\Group\Controller;
 
 use core\Group\Exceptions\NotFoundException;

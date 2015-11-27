@@ -1,4 +1,5 @@
 <?php
+
 namespace core\Group\Console\Command;
 
 use core\Group\Console\Command as Command;

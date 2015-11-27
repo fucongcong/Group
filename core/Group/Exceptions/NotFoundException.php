@@ -1,4 +1,5 @@
 <?php
+
 namespace core\Group\Exceptions;
 
 use Exception;

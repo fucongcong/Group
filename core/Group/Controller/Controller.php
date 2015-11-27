@@ -1,4 +1,5 @@
 <?php
+
 namespace core\Group\Controller;
 
 use Twig_Loader_Filesystem;

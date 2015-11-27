@@ -1,4 +1,5 @@
 <?php
+
 namespace core\Group\App;
 
 use core\Group\Handlers\AliasLoaderHandler;

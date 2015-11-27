@@ -1,4 +1,5 @@
 <?php
+
 namespace core\Group\Services;
 
 class Service

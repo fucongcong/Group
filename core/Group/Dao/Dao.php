@@ -1,4 +1,5 @@
 <?php
+
 namespace core\Group\Dao;
 use Aura\Sql\ExtendedPdo;
 use Aura\Sql\ConnectionLocator;
@@ -8,7 +9,7 @@ class Dao
 {
 	protected $config;
 
-	private static $_connection;
+	private static $connection;
 
 	public function __construct()
 	{
@@ -127,16 +128,16 @@ class Dao
 
 	protected function getConnection()
 	{
-		if (self::$_connection) {
+		if (self::$connection) {
 
-		    return self::$_connection;
+		    return self::$connection;
 		}
 
-		$_connection = $this -> getConnectionLocator();
+		$connection = $this -> getConnectionLocator();
 
-		self::$_connection = $_connection;
+		self::$connection = $connection;
 
-		return $_connection;
+		return $connection;
 	}
 
 	private function getConnectionLocator()
@@ -183,7 +184,4 @@ class Dao
 
 		return $connections;
 	}
-
 }
-
-?>
