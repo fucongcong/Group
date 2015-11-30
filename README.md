@@ -5,8 +5,7 @@
 [![Code Climate](https://codeclimate.com/repos/5657fbc8ea0d1f5571028f67/badges/c8175ffa03bd301eb7c7/gpa.svg)](https://codeclimate.com/repos/5657fbc8ea0d1f5571028f67/feed)
 
 ####1.[Group框架简介](#user-content-Group框架简介)
-- [前端框架介绍](#user-content-1前端框架介绍)
-- [后端框架介绍](#user-content-2后端框架介绍)
+- [后端框架介绍](#user-content-框架介绍)
 
 ####2.[快速开始](#user-content-快速开始)
 - [服务器配置文件](#user-content-1服务器配置文件)
@@ -31,15 +30,10 @@
 - [Filesystem](#user-content-9Filesystem)
 
 ## Group框架简介
-####1.前端框架介绍
-（1）整合bootstrap（帮助你更快速开发）
-
-（2）整合seajs（有效管理JS模块）
-
-####2.后端框架介绍
+####框架介绍
 （1）模版引擎：twig （symfony2使用的模版引擎）
 
-（2）架构：Dao（数据层）,Service（服务层），Controller（控制层），View（视图层）
+（2）架构：Dao（模型层）,Service（服务层），Controller（控制层），View（视图层）
 
 ## 快速开始
 #### 准备
@@ -173,6 +167,8 @@ public function testAction($id)
     $action = $this -> route() -> getAction();
     //获取系统支持的请求方法
     $methods = $this -> route() -> getMethods();
+
+    $currentMethod = $this -> route() -> getCurrentMethod();
     //获取当前时区
     $timezone = $this -> getContainer() -> getTimezone();
     //获取当前运行环境
@@ -186,6 +182,7 @@ public function testAction($id)
         'parametersName' => $parametersName,
         'action' => $action,
         'methods' => $methods,
+        'currentMethod' => $currentMethod,
         'timezone' => $timezone,
         'environment' => $environment
         ));
@@ -305,7 +302,7 @@ class GroupServiceImpl extends GroupBaseService implements GroupService
 #####支持的语法
 
 #####fetch(*)
-
+```php
     $pdo = $this->getDefault();
 
     $stm  = 'SELECT * FROM test WHERE foo = :foo AND bar = :bar';
@@ -347,10 +344,10 @@ class GroupServiceImpl extends GroupBaseService implements GroupService
     // fetchAffected() returns the number of affected rows
     $stm = "UPDATE test SET incr = incr + 1 WHERE foo = :foo AND bar = :bar";
     $row_count = $pdo->fetchAffected($stm, $bind);
-
+```
 #####数组转换
 
-
+```php
     $pdo = $this->getDefault();
 
     $stm = 'SELECT * FROM test WHERE foo IN (:foo)'
@@ -362,7 +359,7 @@ class GroupServiceImpl extends GroupBaseService implements GroupService
     $sth = $pdo->perform($stm, $bind_values);
     echo $sth->queryString;
     // "SELECT * FROM test WHERE foo IN ('foo', 'bar', 'baz')"
-
+```
 
 ## 配置文件详解
 
@@ -393,3 +390,7 @@ class GroupServiceImpl extends GroupBaseService implements GroupService
 
 #####目前支持的自动脚本命令
 ####自定以脚本文件
+
+##单元测试(每次ci都可以跑一下)
+
+    phpunit --bootstrap app/test.php src/Services

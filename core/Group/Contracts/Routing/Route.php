@@ -80,4 +80,18 @@ interface Route
      * @return methods
      */
     public function getMethods();
+
+    /**
+     * set current method
+     *
+     * @param method
+     */
+    public function setCurrentMethod($method);
+
+    /**
+     * get current methods
+     *
+     * @return method
+     */
+    public function getCurrentMethod();
 }

@@ -5,10 +5,19 @@ namespace core\Group\Controller;
 use Twig_Loader_Filesystem;
 use Twig_Environment;
 use core\Group\Twig\WebExtension;
-use core\Group\Controller\BaseController;
+use core\Group\Contracts\Controller\Controller as ControllerContract;
+use core\Group\Exceptions\NotFoundException;
+use Service;
 
-class Controller  extends BaseController
+class Controller implements ControllerContract
 {
+	protected $app;
+
+	public function __construct($app)
+	{
+		$this -> app = $app;
+	}
+
 	/**
 	 * 渲染模板的方法
 	 *
@@ -16,14 +25,14 @@ class Controller  extends BaseController
 	 * @param  array   $array
 	 * @return response
 	 */
-	public function render($tpl,$array=array())
+	public function render($tpl, $array = array())
 	{
 
 		$loader = new Twig_Loader_Filesystem(\Config::get('view::path'));
 
 		if (\Config::get('view::cache')) {
 
-			$env =  array(
+			$env = array(
 		    	'cache' => Config::get('view::cache_dir')
 			);
 		}
@@ -43,7 +52,8 @@ class Controller  extends BaseController
 	//to do 单列 可以扩展为模块
 	public function createService($serviceName)
 	{
-		return \ServiceProvider::register($serviceName);
+		$service = new Service($this -> app);
+		return $service -> register($serviceName);
 	}
 
 	/**
@@ -53,7 +63,7 @@ class Controller  extends BaseController
 	 */
 	public function route()
 	{
-		return \Route::getInstance();
+		return $this -> app -> singleton('route');
 	}
 
 	/**
@@ -63,7 +73,12 @@ class Controller  extends BaseController
 	 */
 	public function getContainer()
 	{
-		return \Container::getInstance();
+		return $this -> app -> singleton('container');
+	}
+
+	public function __call($method, $parameters)
+	{
+		throw new NotFoundException("Method [$method] does not exist.");
 	}
 }
 

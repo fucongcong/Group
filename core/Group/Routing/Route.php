@@ -31,11 +31,18 @@ Class Route implements RouteContract
 	protected $uri;
 
    	/**
-	 * the methods current
+	 * the methods server
 	 *
 	 * @var string
 	 */
 	protected $methods;
+
+   	/**
+	 * the method current
+	 *
+	 * @var string
+	 */
+	protected $currentMethod;
 
    	/**
 	 * the parameters
@@ -164,6 +171,26 @@ Class Route implements RouteContract
 	public function getMethods()
 	{
 		return $this -> methods ;
+	}
+
+	/**
+	 * set current method
+	 *
+	 * @param method
+	 */
+	public function setCurrentMethod($method)
+	{
+		$this -> currentMethod = strtoupper($method);
+	}
+
+	/**
+	 * get current methods
+	 *
+	 * @return method
+	 */
+	public function getCurrentMethod()
+	{
+		return $this -> currentMethod ;
 	}
 
 	/**

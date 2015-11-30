@@ -1,4 +1,5 @@
 <?php
+
 namespace src\Web\Controller\Group;
 
 use Controller;
@@ -27,6 +28,8 @@ class GroupController extends Controller
 
         $methods = $this -> route() -> getMethods();
 
+        $currentMethod = $this -> route() -> getCurrentMethod();
+
         $timezone = $this -> getContainer() -> getTimezone();
 
         $environment = $this -> getContainer() -> getEnvironment();
@@ -38,6 +41,7 @@ class GroupController extends Controller
             'parametersName' => $parametersName,
             'action' => $action,
             'methods' => $methods,
+            'currentMethod' => $currentMethod,
             'timezone' => $timezone,
             'environment' => $environment
             ));

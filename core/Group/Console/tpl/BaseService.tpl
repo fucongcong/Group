@@ -1,4 +1,5 @@
 <?php
+
 namespace src\Services\{{name}}\Rely;
 
 use Service;
