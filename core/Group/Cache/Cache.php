@@ -18,7 +18,12 @@ class Cache implements CacheContract
 
     }
 
-    public static function set($cacheName, $data, $expireTime)
+    /**
+     * 设置cache
+     *
+     * @param  cacheName(string); data(array); expireTime(int)
+     */
+    public static function set($cacheName, $data, $expireTime = 3600)
     {
 
     }

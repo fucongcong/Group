@@ -1,4 +1,5 @@
 <?php
+
 namespace src\web\Controller\Error;
 
 use Controller;

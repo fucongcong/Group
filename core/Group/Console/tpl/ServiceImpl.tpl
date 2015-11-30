@@ -1,4 +1,5 @@
 <?php
+
 namespace src\Services\{{name}}\Impl;
 
 use src\Services\{{name}}\Rely\{{name}}BaseService;

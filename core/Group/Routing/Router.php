@@ -3,8 +3,8 @@
 namespace core\Group\Routing;
 
 use core\Group\Common\ArrayToolkit;
-use core\Group\Container\Container;
 use core\Group\Contracts\Routing\Router as RouterContract;
+use App;
 
 Class Router implements RouterContract
 {
@@ -14,10 +14,9 @@ Class Router implements RouterContract
 
 	protected $container;
 
-	public function __construct()
+	public function __construct($container)
 	{
-
-		$this -> container = Container::getInstance();
+		$this -> container = $container;
 	}
 	/**
 	 * match the uri
@@ -55,7 +54,6 @@ Class Router implements RouterContract
 		}
 
 		$this -> controller(array('controller'=>"Web:Error:NotFound:index"));
-
 	}
 
 	/**
@@ -125,7 +123,6 @@ Class Router implements RouterContract
 		$this -> route -> setParameters(isset($config['parameters']) ? $config['parameters'] : array());
 
         echo $this -> container -> doAction($className, $action, isset($config['parameters']) ? $config['parameters'] : array());
-
 	}
 
 	protected function mergeParameters($parameters, $values)
@@ -168,8 +165,8 @@ Class Router implements RouterContract
 		$this -> route = \Route::getInstance();
 
 		$this -> route -> setMethods($methods);
+		$this -> route -> setCurrentMethod($_SERVER['REQUEST_METHOD']);
 		$this -> route -> setUri($uri);
-
 	}
 
 	private function getMethodsCache()
@@ -188,7 +185,6 @@ Class Router implements RouterContract
 		\FileCache::set($file, $config);
 
 		return $config;
-
 	}
 
 	private function createMethodsCache()

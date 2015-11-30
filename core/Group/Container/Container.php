@@ -4,11 +4,14 @@ namespace core\Group\Container;
 
 use ReflectionClass;
 use Exception;
+use App;
 use core\Group\Exceptions\NotFoundException;
 use core\Group\Contracts\Container\Container as ContainerContract;
 
 class Container implements ContainerContract
 {
+    protected $app;
+
 	private static $_instance;
 
     protected $timezone;
@@ -17,8 +20,7 @@ class Container implements ContainerContract
 
     protected $appPath;
 
-
-    public function init()
+    public function __construct()
     {
         $this -> setTimezone();
         $this -> setEnvironment();
@@ -55,12 +57,13 @@ class Container implements ContainerContract
 	public function doAction($class, $action, array $parameters = [])
 	{
 		$reflector = $this -> buildMoudle($class);
+
 		if(!$reflector -> hasMethod($action)) {
 
 			throw new NotFoundException("Class ".$class." exist ,But the Action ".$action." not found");
 		}
 
-		$instanc = $reflector -> newInstanceArgs();
+		$instanc = $reflector -> newInstanceArgs(array(App::getInstance()));
 		$method = $reflector -> getmethod($action);
 		return $method -> invokeArgs($instanc, $parameters);
 
