@@ -9,7 +9,7 @@ use core\Group\Contracts\Controller\Controller as ControllerContract;
 use core\Group\Exceptions\NotFoundException;
 use Service;
 
-class Controller  implements ControllerContract
+class Controller implements ControllerContract
 {
 	protected $app;
 
