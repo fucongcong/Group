@@ -18,5 +18,5 @@ abstract class ServiceProvider
      *
      * @return Service
      */
-    abstract public function register($serviceName);
+    abstract public function register();
 }

@@ -8,6 +8,8 @@ class Service extends ServiceProvider
 {
     private static $_instance;
 
+    protected $className;
+
     //to do 单列
 	public function createDao($serviceName)
 	{
@@ -26,13 +28,15 @@ class Service extends ServiceProvider
 
         $class = $serviceName[1]."ServiceImpl";
 
-        $className = "src\\Services\\".$serviceName[0]."\\Impl\\".$class;
+        $this -> serviceName = "src\\Services\\".$serviceName[0]."\\Impl\\".$class;
 
-        return $this -> register($className);
+        return $this -> register();
     }
 
-    public function register($serviceName)
+    public function register()
     {
+        $serviceName = $this -> serviceName;
+
         return $this -> app -> singleton(strtolower($serviceName), function() use ($serviceName) {
 
             return new $serviceName($this -> app);

@@ -24,7 +24,7 @@ class GroupDaoImpl extends Dao implements GroupDao
         //$group = $this->getWrite('master2')->fetchOne($sql, $bind);
 
         //读取读服务器配置，如果没有指定具体参数，随机读取分配的服务器
-        //$group = $this->getRead()->fetchOne($sql, $bind);
+        $group = $this->getRead()->fetchOne($sql, $bind);
         return $group ? $group : null;
     }
 

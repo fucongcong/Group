@@ -49,7 +49,6 @@ class Controller implements ControllerContract
 	 * @param  string  $serviceName
 	 * @return class
 	 */
-	//to do 单列 可以扩展为模块
 	public function createService($serviceName)
 	{
 		$service = new Service($this -> app);

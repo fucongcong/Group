@@ -15,8 +15,8 @@ class WebExtension extends Twig_Extension
 	{
 		return array(
 			'asset' => new \Twig_Function_Method($this, 'getPublic') ,
-			'url' => new \Twig_Function_Method($this, 'getUrl') ,
-			'dump' => new \Twig_Function_Method($this, 'dump') ,
+			'url'   => new \Twig_Function_Method($this, 'getUrl') ,
+			'dump'  => new \Twig_Function_Method($this, 'dump') ,
 		);
 	}
 

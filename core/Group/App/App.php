@@ -9,18 +9,23 @@ use core\Group\Routing\Router;
 
 class App
 {
+    /**
+     * array singletons
+     *
+     */
     protected $singletons;
 
     private static $_instance;
-
-    protected $services;
 
     protected $container;
 
     protected $router;
 
+    /**
+     * array aliases
+     *
+     */
     protected $aliases = [
-
         'App'               => 'core\Group\App\App',
         'Cache'             => 'core\Group\Cache\Cache',
         'Config'            => 'core\Group\Config\Config',
@@ -35,13 +40,17 @@ class App
         'Test'              => 'core\Group\Test\Test',
     ];
 
-    protected $singles = [
+    /**
+     * array singles
+     *
+     */
+    protected $singles = [];
 
-    ];
+    protected $serviceProviders = [];
 
     protected $instances = [
         'route'             => '\Route',
-        'container'             => '\Container',
+        'container'         => '\Container',
     ];
 
     public function __construct()
@@ -61,6 +70,8 @@ class App
     {
         self::$_instance = new self;
 
+        $this -> registerServices();
+
         $this -> container = $this -> singleton('container');
 
         $this -> router = new Router($this -> container);
@@ -75,12 +86,18 @@ class App
     {
         $aliases = Config::get('app::aliases');
 
-        $aliases = array_merge($aliases, $this -> aliases);
+        $this -> aliases = array_merge($aliases, $this -> aliases);
 
-        AliasLoaderHandler::getInstance($aliases) -> register();
+        AliasLoaderHandler::getInstance($this -> aliases) -> register();
 
     }
 
+    /**
+     *  向App存储一个单例对象
+     *
+     * @param  name，callable
+     * @return object
+     */
     public function singleton($name, $callable = null)
     {
         if(!isset($this -> singletons[$name]) && $callable) {
@@ -91,6 +108,10 @@ class App
         return $this -> singletons[$name];
     }
 
+    /**
+     *  在网站初始化时就已经生成的单例对象
+     *
+     */
     public function doSingle()
     {
         foreach ($this -> singles as $alias => $class) {
@@ -104,6 +125,19 @@ class App
         foreach ($this -> instances as $alias => $class) {
 
             $this -> singletons[$alias] = $class::getInstance();
+        }
+    }
+
+    public function registerServices()
+    {
+        $providers = Config::get('app::serviceProviders');
+
+        $this -> serviceProviders = array_merge($providers, $this -> serviceProviders);
+
+        foreach ($this -> serviceProviders as $provider) {
+
+            $provider = new $provider(self::$_instance);
+            $provider -> register();
         }
     }
 
