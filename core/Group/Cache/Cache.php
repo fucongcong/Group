@@ -17,7 +17,7 @@ class Cache implements CacheContract
     {
         $redis = \App::getInstance() -> singleton('redis');
 
-        $redis -> get($cacheName);
+        if(is_object($redis)) $redis -> get($cacheName);
     }
 
     /**
@@ -29,7 +29,7 @@ class Cache implements CacheContract
     {
         $redis = \App::getInstance() -> singleton('redis');
 
-        $redis -> set($cacheName, $data, $expireTime);
+        if(is_object($redis)) $redis -> set($cacheName, $data, $expireTime);
     }
 
 }
