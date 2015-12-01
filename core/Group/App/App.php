@@ -47,7 +47,9 @@ class App
     public function __construct()
     {
         $this -> aliasLoader();
+
         $this -> doSingle();
+
         $this -> doSingleInstance();
     }
 
@@ -72,7 +74,9 @@ class App
     public function aliasLoader()
     {
         $aliases = Config::get('app::aliases');
+
         $aliases = array_merge($aliases, $this -> aliases);
+
         AliasLoaderHandler::getInstance($aliases) -> register();
 
     }

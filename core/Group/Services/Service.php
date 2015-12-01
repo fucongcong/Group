@@ -20,17 +20,22 @@ class Service extends ServiceProvider
 		return new $className;
 	}
 
+    public function createService($serviceName)
+    {
+        $serviceName = explode(":", $serviceName);
+
+        $class = $serviceName[1]."ServiceImpl";
+
+        $className = "src\\Services\\".$serviceName[0]."\\Impl\\".$class;
+
+        return $this -> register($className);
+    }
+
     public function register($serviceName)
     {
         return $this -> app -> singleton(strtolower($serviceName), function() use ($serviceName) {
 
-            $serviceName = explode(":", $serviceName);
-
-            $class = $serviceName[1]."ServiceImpl";
-
-            $className = "src\\Services\\".$serviceName[0]."\\Impl\\".$class;
-
-            return new $className($this -> app);
+            return new $serviceName($this -> app);
 
         });
     }

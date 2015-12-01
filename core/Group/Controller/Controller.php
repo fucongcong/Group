@@ -53,7 +53,7 @@ class Controller implements ControllerContract
 	public function createService($serviceName)
 	{
 		$service = new Service($this -> app);
-		return $service -> register($serviceName);
+		return $service -> createService($serviceName);
 	}
 
 	/**

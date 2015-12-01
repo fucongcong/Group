@@ -12,6 +12,6 @@ abstract class GroupBaseService extends Service
 
     public function getUserService()
     {
-        return $this -> register("User:User");
+        return $this -> createService("User:User");
     }
 }
