@@ -2,8 +2,6 @@
 
 namespace core\Group\Services;
 
-use NotFoundException;
-
 abstract class ServiceProvider
 {
     public $app;
