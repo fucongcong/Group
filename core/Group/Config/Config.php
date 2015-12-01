@@ -36,8 +36,7 @@ class Config implements ConfigContract
 
             $config = $this -> checkConfig($configName[0], $configName[1]);
 
-            return $config[$configName[1]];
-
+            return $config[$configName[0]][$configName[1]];
         }
 
         return array();
@@ -87,7 +86,7 @@ class Config implements ConfigContract
 
             $app = require("config/".$key.".php");
 
-            $this -> config = array_merge($this -> config, $app);
+            $this -> config = array_merge($this -> config, [$key => $app]);
 
         }
 

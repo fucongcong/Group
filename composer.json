@@ -16,6 +16,7 @@
         "twig/twig": "~1.0",
         "symfony/filesystem": "~2.7.0",
         "aura/sql": "~2.4.3",
+        "monolog/monolog":"~1.17.1",
         "phpunit/phpunit": "4.*"
     }
 }

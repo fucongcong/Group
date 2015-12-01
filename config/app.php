@@ -14,4 +14,8 @@ return [
 
     ],
 
+    'serviceProviders' => [
+        'core\Group\Redis\RedisServiceProvider',
+    ],
+
 ];

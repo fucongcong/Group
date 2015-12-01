@@ -17,7 +17,9 @@ class GroupController extends Controller
     public function testAction($id)
     {
         // echo $id; echo "<br>";
-
+        //\Cache::set('ha',123,60);
+        //$config = \Config::getInstance();
+        //var_dump($config -> getConfig());
         $uri = $this -> route() -> getUri();
 
         $parameters = $this -> route() -> getParameters();
@@ -34,7 +36,7 @@ class GroupController extends Controller
 
         $environment = $this -> getContainer() -> getEnvironment();
 
-        //var_dump($this->getGroupService()->getGroup(2));
+        var_dump($this->getGroupService()->getGroup(2));
         return $this -> render('Web/Views/Group/index.html.twig',array(
             'uri' => $uri,
             'parameters' => $parameters,
