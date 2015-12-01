@@ -10,8 +10,6 @@ use core\Group\Contracts\Container\Container as ContainerContract;
 
 class Container implements ContainerContract
 {
-    protected $app;
-
 	private static $_instance;
 
     protected $timezone;
