@@ -171,8 +171,6 @@ Class Router implements RouterContract
 
 	private function getMethodsCache()
 	{
-		$routing = include 'src/Web/routing.php';
-
 		$file = 'route/routing_'.$_SERVER['REQUEST_METHOD'].'.php';
 
 		if(\FileCache::isExist($file)) {
@@ -180,7 +178,7 @@ Class Router implements RouterContract
 			return \FileCache::get($file);
 		}
 
-		$config = $this -> createMethodsCache($routing);
+		$config = $this -> createMethodsCache();
 
 		\FileCache::set($file, $config);
 

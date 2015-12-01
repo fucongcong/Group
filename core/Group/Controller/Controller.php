@@ -40,7 +40,7 @@ class Controller implements ControllerContract
 		$twig = new Twig_Environment($loader, isset($env) ? $env : array());
 
 		$twig -> addExtension(new WebExtension());
-		return $twig -> render($tpl,$array);
+		return $twig -> render($tpl, $array);
 	}
 
 	/**

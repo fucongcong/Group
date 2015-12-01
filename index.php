@@ -1,4 +1,5 @@
 <?php
+
 use core\Group\Kernal;
 
 define('__ROOT__', realpath(dirname(__FILE__)) . DIRECTORY_SEPARATOR);
