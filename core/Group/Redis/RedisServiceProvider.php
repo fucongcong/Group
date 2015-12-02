@@ -10,13 +10,13 @@ class RedisServiceProvider extends ServiceProvider
     /**
      * Register the service provider.
      *
-     * @return void
+     * @return object
      */
     public function register()
     {
         $this -> app -> singleton('redis', function () {
 
-            if(\Config::get("database::cache") != 'redis') return ;
+            if(\Config::get("database::cache") != 'redis') return;
             $redis = new Redis;
             $config = \Config::get("database::redis");
             $redis -> pconnect($config['default']['host'], $config['default']['port']);

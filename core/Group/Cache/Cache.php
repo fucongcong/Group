@@ -3,33 +3,22 @@
 namespace core\Group\Cache;
 
 use Exception;
-use core\Group\Contracts\Cache\Cache as CacheContract;
 
-class Cache implements CacheContract
+class Cache
 {
-    /**
-     * 获取cache
-     *
-     * @param  cacheName
-     * @return string|array
-     */
-    public static function get($cacheName)
+    public static function redis()
     {
-        $redis = \App::getInstance() -> singleton('redis');
-
-        if(is_object($redis)) $redis -> get($cacheName);
+        return \App::getInstance() -> singleton('redisCache');
     }
 
-    /**
-     * 设置cache
-     *
-     * @param  cacheName(string); data(array); expireTime(int)
-     */
-    public static function set($cacheName, $data, $expireTime = 3600)
+    public static function __callStatic($method, $parameters)
     {
-        $redis = \App::getInstance() -> singleton('redis');
+        if(\Config::get("database::cache") != 'redis') return;
 
-        if(is_object($redis)) $redis -> set($cacheName, $data, $expireTime);
+        $cache = \App::getInstance() -> singleton('redisCache');
+
+        if(!is_object($cache)) return;
+
+        return call_user_func_array([$cache, $method], $parameters);
     }
-
 }

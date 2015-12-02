@@ -3,9 +3,8 @@
 namespace core\Group\Cache;
 
 use Exception;
-use core\Group\Contracts\Cache\Cache as CacheContract;
 
-class FileCache implements CacheContract
+class FileCache
 {
     protected static $cache_dir = "runtime/cache/";
 

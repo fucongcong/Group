@@ -4,6 +4,9 @@ return [
     // prod|dev
     'environment' => 'dev',
 
+    //zh|en|fr...
+    'locale' => 'zh',
+
     //时区
     'timezone' => 'Asia/Shanghai',
 
@@ -14,6 +17,7 @@ return [
 
     'serviceProviders' => [
         'core\Group\Redis\RedisServiceProvider',
+        'core\Group\Cache\CacheServiceProvider',
     ],
 
     //需要实例化的单例
