@@ -7,7 +7,8 @@ class ArrayToolkit
     /**
      * 返回数组中key对应的值
      *
-     * @param  array,columnName
+     * @param  array
+     * @param  columnName
      * @return array
      */
 	public static function column(array $array, $columnName)
@@ -28,7 +29,8 @@ class ArrayToolkit
     /**
      * 过滤数组中的key
      *
-     * @param  array,keys
+     * @param  array
+     * @param  keys
      * @return array
      */
 	public static function parts(array $array, array $keys)
@@ -44,7 +46,8 @@ class ArrayToolkit
     /**
      * 数组中的key是否存在
      *
-     * @param  array,keys
+     * @param  array
+     * @param  keys
      * @return boolean
      */
 	public static function requireds(array $array, array $keys)
@@ -60,7 +63,8 @@ class ArrayToolkit
     /**
      * 数组间的差异
      *
-     * @param  array,array
+     * @param  array
+     * @param  array
      * @return array
      */
 	public static function changes(array $before, array $after)
@@ -81,7 +85,8 @@ class ArrayToolkit
     /**
      * 根据指定key进行分组
      *
-     * @param  array,key
+     * @param  array
+     * @param  key
      * @return array
      */
     public static function group(array $array, $key)
@@ -100,7 +105,8 @@ class ArrayToolkit
     /**
      * 把指定key作为数组键名返回
      *
-     * @param  array,key
+     * @param  array
+     * @param  key
      * @return array
      */
     public static function index (array $array, $name)
@@ -122,7 +128,8 @@ class ArrayToolkit
     /**
      * 过滤数组中value得值
      *
-     * @param  array,specialValues
+     * @param  array
+     * @param  specialValues
      * @return array
      */
     public static function filter(array $array, array $specialValues)

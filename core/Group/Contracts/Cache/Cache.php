@@ -15,7 +15,9 @@ interface Cache
     /**
      * 设置cache
      *
-     * @param  cacheName(string); data(array); param(参数)
+     * @param  cacheName(string)
+     * @param  data(array)
+     * @param  expireTime(int)
      */
     public function set($cacheName, $data, $param);
 

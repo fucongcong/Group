@@ -11,7 +11,8 @@ class FileCache
     /**
      * 获取cache
      *
-     * @param  cacheName,  name::key ; cache_dir
+     * @param  cacheName,  name::key
+     * @param  cache_dir
      * @return string|array
      */
     public static function get($cacheName, $cache_dir = false)
@@ -25,7 +26,9 @@ class FileCache
     /**
      * 设置cache
      *
-     * @param  cacheName(string); data(array); cache_dir(string)
+     * @param  cacheName(string)
+     * @param  data(array)
+     * @param  cache_dir(string)
      */
     public static function set($cacheName, $data, $cache_dir = false)
     {
@@ -52,7 +55,8 @@ return ".$data.";";
     /**
      * 文件是否存在
      *
-     * @param  cacheName(string); cache_dir(string)
+     * @param  cacheName(string)
+     * @param  cache_dir(string)
      * @return boolean
      */
     public static function isExist($cacheName, $cache_dir = false)

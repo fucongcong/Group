@@ -94,7 +94,9 @@ class Dao
     /**
      * 执行sql
      *
-     * @param  sql;type[write|all_write|read|all_read|default];name
+     * @param  sql
+     * @param  type[write|all_write|read|all_read|default]
+     * @param  name
      */
 	public function querySql($sql, $type, $name = null)
 	{
