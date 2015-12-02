@@ -8,6 +8,7 @@ use core\Group\Twig\WebExtension;
 use core\Group\Contracts\Controller\Controller as ControllerContract;
 use core\Group\Exceptions\NotFoundException;
 use Service;
+use Response;
 
 class Controller implements ControllerContract
 {
@@ -40,7 +41,7 @@ class Controller implements ControllerContract
 		$twig = new Twig_Environment($loader, isset($env) ? $env : array());
 
 		$twig -> addExtension(new WebExtension());
-		return $twig -> render($tpl, $array);
+		return new Response($twig -> render($tpl, $array));
 	}
 
 	/**

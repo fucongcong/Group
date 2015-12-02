@@ -129,7 +129,9 @@ Class Router implements RouterContract
 
 		$this -> route -> setParameters(isset($config['parameters']) ? $config['parameters'] : array());
 
-        echo $this -> container -> doAction($className, $action, isset($config['parameters']) ? $config['parameters'] : array(), $this -> request);
+        $response = $this -> container -> doAction($className, $action, isset($config['parameters']) ? $config['parameters'] : array(), $this -> request);
+
+        $response -> send();
 	}
 
 	protected function mergeParameters($parameters, $values)
