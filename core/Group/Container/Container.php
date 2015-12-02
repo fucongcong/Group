@@ -18,11 +18,17 @@ class Container implements ContainerContract
 
     protected $appPath;
 
+    protected $locale;
+
     public function __construct()
     {
         $this -> setTimezone();
+
         $this -> setEnvironment();
+
         $this -> setAppPath();
+
+        $this -> setLocale();
     }
 
 	/**
@@ -104,7 +110,7 @@ class Container implements ContainerContract
     }
 
     /**
-     * 设置环境
+     * 获取当前环境
      *
      *@return string prod｜dev
      */
@@ -114,7 +120,7 @@ class Container implements ContainerContract
     }
 
     /**
-     * 获取当前环境
+     * 设置环境
      *
      */
     public function setEnvironment()
@@ -122,13 +128,41 @@ class Container implements ContainerContract
         $this -> environment = \Config::get('app::environment');
     }
 
+    /**
+     * 设置系统根目录
+     *
+     */
     public function setAppPath()
     {
         $this -> appPath = __ROOT__;
     }
 
+    /**
+     * 获取系统根目录
+     *
+     *@return string
+     */
     public function getAppPath()
     {
         return $this -> appPath;
+    }
+
+    /**
+     * 设置地区
+     *
+     */
+    public function setLocale()
+    {
+        $this -> locale = \Config::get('app::locale');
+    }
+
+    /**
+     * 获取设置的地区
+     *
+     *@return string
+     */
+    public function getLocale()
+    {
+        return $this -> locale;
     }
 }

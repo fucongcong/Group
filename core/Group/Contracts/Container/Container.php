@@ -46,4 +46,30 @@ interface Container
      *
      */
     public function setEnvironment();
+
+    /**
+     * 设置系统根目录
+     *
+     */
+    public function setAppPath();
+
+    /**
+     * 获取系统根目录
+     *
+     *@return string
+     */
+    public function getAppPath();
+
+    /**
+     * 设置地区
+     *
+     */
+    public function setLocale();
+
+    /**
+     * 获取设置的地区
+     *
+     *@return string
+     */
+    public function getLocale();
 }
