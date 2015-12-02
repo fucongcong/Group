@@ -15,7 +15,7 @@ class App
      */
     protected $singletons;
 
-    private static $_instance;
+    private static $instance;
 
     protected $container;
 
@@ -35,6 +35,8 @@ class App
         'Filesystem'        => 'core\Group\Common\Filesystem',
         'FileCache'         => 'core\Group\Cache\FileCache',
         'Route'             => 'core\Group\Routing\Route',
+        'Request'           => 'core\Group\Http\Request',
+        'Response'          => 'core\Group\Http\Response',
         'Service'           => 'core\Group\Services\Service',
         'ServiceProvider'   => 'core\Group\Services\ServiceProvider',
         'Test'              => 'core\Group\Test\Test',
@@ -68,13 +70,15 @@ class App
      */
     public function init()
     {
-        self::$_instance = new self;
+        self::$instance = new self;
+
+        $request = \Request::createFromGlobals();
 
         $this -> registerServices();
 
         $this -> container = $this -> singleton('container');
 
-        $this -> router = new Router($this -> container);
+        $this -> router = new Router($this -> container, $request);
         $this -> router -> match();
     }
 
@@ -128,6 +132,10 @@ class App
         }
     }
 
+    /**
+     *  注册服务
+     *
+     */
     public function registerServices()
     {
         $providers = Config::get('app::serviceProviders');
@@ -136,7 +144,7 @@ class App
 
         foreach ($this -> serviceProviders as $provider) {
 
-            $provider = new $provider(self::$_instance);
+            $provider = new $provider(self::$instance);
             $provider -> register();
         }
     }
@@ -148,12 +156,12 @@ class App
      */
     public static function getInstance(){
 
-        if(!(self::$_instance instanceof self)){
+        if(!(self::$instance instanceof self)){
 
-            self::$_instance = new self;
+            self::$instance = new self;
         }
 
-        return self::$_instance;
+        return self::$instance;
     }
 
 }

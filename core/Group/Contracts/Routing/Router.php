@@ -34,7 +34,8 @@ interface Router
      *
      * @param  methods
      * @param  uri
+     * @param  currentMethod
      */
-    public function setRoute($methods, $uri);
+    public function setRoute($methods, $uri, $currentMethod);
 
 }

@@ -20,7 +20,7 @@ interface Container
      * @param  array parameters
      * @return string
      */
-    public function doAction($class, $action, array $parameters = []);
+    public function doAction($class, $action, array $parameters, \Request $request);
 
     /**
      * 设置时区

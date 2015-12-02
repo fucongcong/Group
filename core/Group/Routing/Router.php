@@ -5,6 +5,7 @@ namespace core\Group\Routing;
 use core\Group\Common\ArrayToolkit;
 use core\Group\Contracts\Routing\Router as RouterContract;
 use App;
+use Request;
 
 Class Router implements RouterContract
 {
@@ -14,9 +15,15 @@ Class Router implements RouterContract
 
 	protected $container;
 
-	public function __construct($container)
+	protected $request;
+
+	public function __construct($container, Request $request)
 	{
 		$this -> container = $container;
+
+		$this -> request = $request;
+
+		$this -> setRoute($this -> methods, $request -> getPathInfo(), $request -> getMethod());
 	}
 	/**
 	 * match the uri
@@ -25,9 +32,9 @@ Class Router implements RouterContract
 	 */
 	public function match()
 	{
-		$requestUri = $_SERVER['PATH_INFO'];
 
-		$this -> setRoute($this->methods, $requestUri);
+		$requestUri = $this -> route -> getUri();
+
 		$routing = $this -> getRouting();
 
 		if (isset($routing[$requestUri])) {
@@ -66,7 +73,7 @@ Class Router implements RouterContract
 	 */
 	public function pregUrl($matches, $routeKey, $routing)
 	{
-        $countKey = explode("/", $_SERVER['PATH_INFO']);
+        $countKey = explode("/", $this -> route -> getUri());
         $countKeyPreg = explode("/", $routeKey);
 
         if(count($countKey)!= count($countKeyPreg)) {
@@ -94,7 +101,7 @@ Class Router implements RouterContract
 
 		$this -> route -> setParametersName($filterParameters);
 
-		if (preg_match_all('/^'.$regex.'$/', $_SERVER['PATH_INFO'], $values)) {
+		if (preg_match_all('/^'.$regex.'$/', $this -> route -> getUri(), $values)) {
 
 			$config = $routing[$route];
 			$config['parameters'] = $this -> mergeParameters($filterParameters, $values);
@@ -122,7 +129,7 @@ Class Router implements RouterContract
 
 		$this -> route -> setParameters(isset($config['parameters']) ? $config['parameters'] : array());
 
-        echo $this -> container -> doAction($className, $action, isset($config['parameters']) ? $config['parameters'] : array());
+        echo $this -> container -> doAction($className, $action, isset($config['parameters']) ? $config['parameters'] : array(), $this -> request);
 	}
 
 	protected function mergeParameters($parameters, $values)
@@ -160,18 +167,18 @@ Class Router implements RouterContract
 	 * @param  methods
 	 * @param  uri
 	 */
-	public function setRoute($methods, $uri)
+	public function setRoute($methods, $uri, $method)
 	{
 		$this -> route = \Route::getInstance();
 
 		$this -> route -> setMethods($methods);
-		$this -> route -> setCurrentMethod($_SERVER['REQUEST_METHOD']);
+		$this -> route -> setCurrentMethod($method);
 		$this -> route -> setUri($uri);
 	}
 
 	private function getMethodsCache()
 	{
-		$file = 'route/routing_'.$_SERVER['REQUEST_METHOD'].'.php';
+		$file = 'route/routing_'.$this -> route -> getCurrentMethod().'.php';
 
 		if(\FileCache::isExist($file)) {
 
@@ -201,7 +208,7 @@ Class Router implements RouterContract
 
 	       		if(isset($route['methods']) && !in_array(strtoupper($route['methods']), $this -> methods)) continue;
 
-                if(isset($route['methods']) && $_SERVER['REQUEST_METHOD'] != strtoupper($route['methods']) ) continue;
+                if(isset($route['methods']) && $this -> route -> getCurrentMethod() != strtoupper($route['methods']) ) continue;
 
                 $config[$key] = $route;
 		}

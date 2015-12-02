@@ -7,7 +7,7 @@ use core\Group\Contracts\Config\Config as ConfigContract;
 
 class Config implements ConfigContract
 {
-    private static $_instance;
+    private static $instance;
 
     protected $config = [];
 
@@ -70,12 +70,12 @@ class Config implements ConfigContract
      */
     public static function getInstance(){
 
-        if(!(self::$_instance instanceof self)){
+        if(!(self::$instance instanceof self)){
 
-            self::$_instance = new self;
+            self::$instance = new self;
         }
 
-        return self::$_instance;
+        return self::$instance;
     }
 
     private function checkConfig($key, $value)

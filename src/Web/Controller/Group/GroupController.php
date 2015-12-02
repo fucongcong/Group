@@ -3,6 +3,7 @@
 namespace src\Web\Controller\Group;
 
 use Controller;
+use Request;
 
 class GroupController extends Controller
 {
@@ -14,8 +15,10 @@ class GroupController extends Controller
             'group' => $group));
     }
 
-    public function testAction($id)
+    public function testAction(Request $request, $id)
     {
+        //echo $id;
+        //echo $request->query->get('token');
         // echo $id; echo "<br>";
         //\Cache::set('ha',123,60);
         //\Cache::redis() -> set('haa',123,60);

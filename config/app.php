@@ -15,6 +15,7 @@ return [
         //like  'demo'       => 'src\Service\demo',
     ],
 
+    //系统会提前加载服务
     'serviceProviders' => [
         'core\Group\Redis\RedisServiceProvider',
         'core\Group\Cache\CacheServiceProvider',

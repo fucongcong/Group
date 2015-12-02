@@ -10,7 +10,7 @@ use core\Group\Contracts\Container\Container as ContainerContract;
 
 class Container implements ContainerContract
 {
-	private static $_instance;
+	private static $instance;
 
     protected $timezone;
 
@@ -58,7 +58,7 @@ class Container implements ContainerContract
      * @param  array parameters
      * @return string
      */
-	public function doAction($class, $action, array $parameters = [])
+	public function doAction($class, $action, array $parameters, \Request $request)
 	{
 		$reflector = $this -> buildMoudle($class);
 
@@ -69,7 +69,15 @@ class Container implements ContainerContract
 
 		$instanc = $reflector -> newInstanceArgs(array(App::getInstance()));
 		$method = $reflector -> getmethod($action);
-		return $method -> invokeArgs($instanc, $parameters);
+        $args = [];
+        foreach($method -> getParameters() as $arg)
+        {
+            $paramName = $arg ->getName();
+            if(isset($parameters[$paramName])) $args[$paramName] = $parameters[$paramName];
+            if(!empty($arg -> getClass()) && $arg -> getClass() -> getName() == 'core\Group\Http\Request') $args[$paramName] = $request;
+        }
+
+		return $method -> invokeArgs($instanc, $args);
 
 	}
 
@@ -80,12 +88,12 @@ class Container implements ContainerContract
      */
 	public static function getInstance(){
 
-		if(!(self::$_instance instanceof self)){
+		if(!(self::$instance instanceof self)){
 
-			self::$_instance = new self;
+			self::$instance = new self;
 		}
 
-		return self::$_instance;
+		return self::$instance;
 	}
 
 
