@@ -6,11 +6,23 @@ use Exception;
 
 class Cache
 {
+    /**
+     * 返回一个rediscache的对象
+     *
+     * @return object
+     */
     public static function redis()
     {
         return \App::getInstance() -> singleton('redisCache');
     }
 
+    /**
+     * cache的__call
+     *
+     * @param  method
+     * @param  parameters
+     * @return void
+     */
     public static function __callStatic($method, $parameters)
     {
         if(\Config::get("database::cache") != 'redis') return;
