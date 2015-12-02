@@ -58,7 +58,7 @@ Class Route implements RouteContract
 	 */
 	protected $parametersName;
 
-	private static $_instance;
+	private static $instance;
 
    	/**
 	 * Set the container instance on the route.
@@ -200,12 +200,12 @@ Class Route implements RouteContract
 	 */
 	public static function getInstance(){
 
-		if(!(self::$_instance instanceof self)){
+		if(!(self::$instance instanceof self)){
 
-			self::$_instance = new self;
+			self::$instance = new self;
 		}
 
-		return self::$_instance;
+		return self::$instance;
 	}
 
 }

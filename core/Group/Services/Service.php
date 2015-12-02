@@ -22,6 +22,7 @@ class Service extends ServiceProvider
 		return new $className;
 	}
 
+    //需要支持不同目录
     public function createService($serviceName)
     {
         $serviceName = explode(":", $serviceName);
