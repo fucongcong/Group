@@ -2,7 +2,7 @@
 return [
 
     // prod|dev
-    'environment' => 'dev',
+    'environment' => 'prod',
 
     //zh|en|fr...
     'locale' => 'zh',
@@ -19,6 +19,7 @@ return [
     'serviceProviders' => [
         'core\Group\Redis\RedisServiceProvider',
         'core\Group\Cache\CacheServiceProvider',
+        'core\Group\Cache\FileCacheServiceProvider',
     ],
 
     //需要实例化的单例

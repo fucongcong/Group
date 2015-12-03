@@ -19,7 +19,7 @@ class Config implements ConfigContract
      */
     public static function get($configName)
     {
-        return  static::getInstance() -> read($configName);
+        return  self::getInstance() -> read($configName);
     }
 
     /**

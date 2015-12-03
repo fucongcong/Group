@@ -51,7 +51,7 @@ interface Container
      * 设置系统根目录
      *
      */
-    public function setAppPath();
+    public function setAppPath($path);
 
     /**
      * 获取系统根目录

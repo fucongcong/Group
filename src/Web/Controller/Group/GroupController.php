@@ -17,13 +17,16 @@ class GroupController extends Controller
 
     public function testAction(Request $request, $id)
     {
-        //echo $id;
-        //echo $request->query->get('token');
+        // \Log::debug('123',['user'=>1]);
+        // \Log::debug('1233',['user'=>12]);
+        // \Log::debug('12asdasd33',['user'=>555]);
+        // echo $id;
+        // echo $request->query->get('token');
         // echo $id; echo "<br>";
-        //\Cache::set('ha',123,60);
-        //\Cache::redis() -> set('haa',123,60);
-        //$config = \Config::getInstance();
-        //var_dump($config -> getConfig());
+        // \Cache::set('ha',123,60);
+        // \Cache::redis() -> set('haa',123,60);
+        // $config = \Config::getInstance();
+        // var_dump($config -> getConfig());
         $uri = $this -> route() -> getUri();
 
         $parameters = $this -> route() -> getParameters();

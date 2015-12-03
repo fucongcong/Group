@@ -2,8 +2,6 @@
 
 namespace core\Group\Cache;
 
-use Exception;
-
 class Cache
 {
     /**
