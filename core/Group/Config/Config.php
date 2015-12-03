@@ -70,7 +70,7 @@ class Config implements ConfigContract
      */
     public static function getInstance(){
 
-        if(!(self::$instance instanceof self)){
+        if (!(self::$instance instanceof self)){
 
             self::$instance = new self;
         }

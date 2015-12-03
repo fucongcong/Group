@@ -20,13 +20,13 @@ class GenerateControllerCommand extends Command
             throw new \RuntimeException("名称只能为英文！");
         }
 
-        $controllerName=ucfirst($name);
+        $controllerName = ucfirst($name);
         $this -> outPut('开始初始化'.$controllerName.'Controller...');
 
         $dir = __ROOT__."src/Web";
 
         $this -> outPut('正在生成目录...');
-        if(is_dir($dir."/Controller/".$controllerName)) {
+        if (is_dir($dir."/Controller/".$controllerName)) {
 
             $this -> outPut('目录已存在...初始化失败');
             die;

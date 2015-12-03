@@ -42,9 +42,9 @@ return ".$data.";";
         $parts = explode('/', $dir);
         $file = array_pop($parts);
         $dir = '';
-        foreach($parts as $part) {
+        foreach ($parts as $part) {
 
-            if(!is_dir($dir .= "$part/")) {
+            if (!is_dir($dir .= "$part/")) {
                  mkdir($dir);
             }
         }

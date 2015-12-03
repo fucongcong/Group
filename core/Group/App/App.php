@@ -104,7 +104,7 @@ class App
      */
     public function singleton($name, $callable = null)
     {
-        if(!isset($this -> singletons[$name]) && $callable) {
+        if (!isset($this -> singletons[$name]) && $callable) {
 
             $this -> singletons[$name] = call_user_func($callable);
         }
@@ -156,7 +156,7 @@ class App
      */
     public static function getInstance(){
 
-        if(!(self::$instance instanceof self)){
+        if (!(self::$instance instanceof self)){
 
             self::$instance = new self;
         }

@@ -59,7 +59,7 @@ class Dao
 		$config = $this -> config;
 		$connections = [];
 
-		if(isset($config['read'])) {
+		if (isset($config['read'])) {
 
 			foreach ($config['read'] as $name => $db) {
 
@@ -80,7 +80,7 @@ class Dao
 		$config = $this -> config;
 		$connections = [];
 
-		if(isset($config['write'])) {
+		if (isset($config['write'])) {
 
 			foreach ($config['write'] as $name => $db) {
 
@@ -146,7 +146,7 @@ class Dao
 		$config = $this -> config;
 		$connections = new ConnectionLocator;
 
-		if(isset($config['default'])) {
+		if (isset($config['default'])) {
 
 			$connections -> setDefault(function () use ($config) {
 			    return new ExtendedPdo(
@@ -157,7 +157,7 @@ class Dao
 			});
 		}
 
-		if(isset($config['write'])) {
+		if (isset($config['write'])) {
 
 			foreach ($config['write'] as $name => $db) {
 				$connections -> setWrite($name, function () use ($db) {
@@ -170,7 +170,7 @@ class Dao
 			}
 		}
 
-		if(isset($config['read'])) {
+		if (isset($config['read'])) {
 
 			foreach ($config['read'] as $name => $db) {
 				$connections -> setRead($name, function () use ($db) {
