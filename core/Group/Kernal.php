@@ -9,7 +9,9 @@ Class Kernal
 	public function init()
 	{
 		$this -> fix_gpc_magic();
+
 		$app = new App();
+
 	   	$app -> init();
 	}
 
@@ -32,8 +34,8 @@ Class Kernal
 	{
 		if (is_array($item)) {
 			array_walk($item, '_fix_gpc_magic');
-			}
-			else {
+		}
+		else {
 			$item = stripslashes($item);
 		}
 	}

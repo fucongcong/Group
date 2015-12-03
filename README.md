@@ -27,13 +27,15 @@
 - [Console](#user-content-6Console)
 - [Exception](#user-content-2Exception)
 - [FileCache](#user-content-3FileCache)
-- [Filesystem](#user-content-9Filesystem)
+- [Filesystem](#user-content-Filesystem)
+- [Request](#user-content-Request)
+- [Response](#user-content-Response)
 
 ## Group框架简介
 ####框架介绍
 （1）模版引擎：twig （symfony2使用的模版引擎）
 
-（2）架构：Dao（模型层）,Service（服务层），Controller（控制层），View（视图层）
+（2）分层：Dao（模型层）,Service（服务层），Controller（控制层），View（视图层）
 
 ## 快速开始
 #### 准备
