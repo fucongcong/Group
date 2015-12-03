@@ -34,8 +34,8 @@ Class Kernal
 	{
 		if (is_array($item)) {
 			array_walk($item, '_fix_gpc_magic');
-			}
-			else {
+		}
+		else {
 			$item = stripslashes($item);
 		}
 	}
