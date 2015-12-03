@@ -2,70 +2,21 @@
 
 namespace core\Group\Cache;
 
-use Exception;
-
 class FileCache
 {
-    protected static $cache_dir = "runtime/cache/";
-
     /**
-     * 获取cache
+     * FileCache的__call
      *
-     * @param  cacheName,  name::key
-     * @param  cache_dir
-     * @return string|array
+     * @param  method
+     * @param  parameters
+     * @return void
      */
-    public static function get($cacheName, $cache_dir = false)
+    public static function __callStatic($method, $parameters)
     {
-        $cache_dir = $cache_dir == false ? self::$cache_dir : $cache_dir;
-        $dir = $cache_dir.$cacheName;
+        $cache = \App::getInstance() -> singleton('localFileCache');
 
-        return include $dir;
-    }
+        if (!is_object($cache)) return;
 
-    /**
-     * 设置cache
-     *
-     * @param  cacheName(string)
-     * @param  data(array)
-     * @param  cache_dir(string)
-     */
-    public static function set($cacheName, $data, $cache_dir = false)
-    {
-        $cache_dir = $cache_dir == false ? self::$cache_dir : $cache_dir;
-        $dir = $cache_dir.$cacheName;
-
-        $data = var_export($data, true);
-        $data = "<?php
-return ".$data.";";
-
-        $parts = explode('/', $dir);
-        $file = array_pop($parts);
-        $dir = '';
-        foreach ($parts as $part) {
-
-            if (!is_dir($dir .= "$part/")) {
-                 mkdir($dir);
-            }
-        }
-
-        file_put_contents("$dir/$file", $data);
-    }
-
-    /**
-     * 文件是否存在
-     *
-     * @param  cacheName(string)
-     * @param  cache_dir(string)
-     * @return boolean
-     */
-    public static function isExist($cacheName, $cache_dir = false)
-    {
-        $cache_dir = $cache_dir == false ? self::$cache_dir : $cache_dir;
-
-        $dir = $cache_dir.$cacheName;
-
-        return file_exists($dir);
-
+        return call_user_func_array([$cache, $method], $parameters);
     }
 }

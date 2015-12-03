@@ -26,8 +26,6 @@ class Container implements ContainerContract
 
         $this -> setEnvironment();
 
-        $this -> setAppPath();
-
         $this -> setLocale();
     }
 
@@ -140,9 +138,9 @@ class Container implements ContainerContract
      * 设置系统根目录
      *
      */
-    public function setAppPath()
+    public function setAppPath($path)
     {
-        $this -> appPath = __ROOT__;
+        $this -> appPath = $path;
     }
 
     /**

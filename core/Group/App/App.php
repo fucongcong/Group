@@ -40,6 +40,7 @@ class App
         'Service'           => 'core\Group\Services\Service',
         'ServiceProvider'   => 'core\Group\Services\ServiceProvider',
         'Test'              => 'core\Group\Test\Test',
+        'Log'               => 'core\Group\Log\Log',
     ];
 
     /**
@@ -68,15 +69,16 @@ class App
      * init appliaction
      *
      */
-    public function init()
+    public function init($path)
     {
-        self::$instance = new self;
+        $this -> initSelf();
 
         $request = \Request::createFromGlobals();
 
         $this -> registerServices();
 
         $this -> container = $this -> singleton('container');
+        $this -> container -> setAppPath($path);
 
         $this -> router = new Router($this -> container, $request);
         $this -> router -> match();
@@ -154,14 +156,19 @@ class App
      *
      * @return core\App\App App
      */
-    public static function getInstance(){
-
+    public static function getInstance()
+    {
         if (!(self::$instance instanceof self)){
 
             self::$instance = new self;
         }
 
         return self::$instance;
+    }
+
+    public function initSelf()
+    {
+        self::$instance = new self;
     }
 
 }

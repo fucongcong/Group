@@ -6,13 +6,13 @@ use core\Group\App\App;
 
 Class Kernal
 {
-	public function init()
+	public function init($path)
 	{
 		$this -> fix_gpc_magic();
 
 		$app = new App();
 
-	   	$app -> init();
+	   	$app -> init($path);
 	}
 
 	public function fix_gpc_magic()
