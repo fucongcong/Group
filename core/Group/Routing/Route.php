@@ -198,8 +198,8 @@ Class Route implements RouteContract
 	 *
 	 * @return core\Group\Routing Route
 	 */
-	public static function getInstance(){
-
+	public static function getInstance()
+	{
 		if (!(self::$instance instanceof self)){
 
 			self::$instance = new self;

@@ -84,8 +84,8 @@ class Container implements ContainerContract
      *
      * @return core\Group\Container Container
      */
-	public static function getInstance(){
-
+	public static function getInstance()
+    {
 		if (!(self::$instance instanceof self)){
 
 			self::$instance = new self;
@@ -93,7 +93,6 @@ class Container implements ContainerContract
 
 		return self::$instance;
 	}
-
 
     /**
      * 设置时区

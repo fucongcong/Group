@@ -4,6 +4,7 @@ namespace src\Web\Controller\Group;
 
 use Controller;
 use Request;
+use JsonResponse;
 
 class GroupController extends Controller
 {
@@ -42,7 +43,7 @@ class GroupController extends Controller
         $timezone = $this -> getContainer() -> getTimezone();
 
         $environment = $this -> getContainer() -> getEnvironment();
-
+        //return new JsonResponse([$id]);
         //var_dump($this->getGroupService()->getGroup(2));
         return $this -> render('Web/Views/Group/index.html.twig',array(
             'uri' => $uri,
