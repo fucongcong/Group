@@ -25,11 +25,11 @@ class Cache
      */
     public static function __callStatic($method, $parameters)
     {
-        if(\Config::get("database::cache") != 'redis') return;
+        if (\Config::get("database::cache") != 'redis') return;
 
         $cache = \App::getInstance() -> singleton('redisCache');
 
-        if(!is_object($cache)) return;
+        if (!is_object($cache)) return;
 
         return call_user_func_array([$cache, $method], $parameters);
     }

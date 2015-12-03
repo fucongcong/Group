@@ -47,7 +47,7 @@ class SqlMigrateCommand extends Command
     {
         $fileList = $this -> fileList;
 
-        if(in_array($file, $fileList)) return;
+        if (in_array($file, $fileList)) return;
 
         $migrateClass = "\\app\\sql\\".$file;
         $sqlMigrate = new $migrateClass;
@@ -76,14 +76,14 @@ class SqlMigrateCommand extends Command
 
         switch ($type) {
             case 'write':
-                    if($subType == 'all') {
+                    if ($subType == 'all') {
                         $dao -> querySql($sql, 'all_write');
                     }else {
                         $dao -> querySql($sql, 'write', $subType);
                     }
                 break;
             case 'read':
-                    if($subType == 'all') {
+                    if ($subType == 'all') {
                         $dao -> querySql($sql, 'all_read');
                     }else {
                         $dao -> querySql($sql, 'read', $subType);

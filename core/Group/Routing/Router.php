@@ -76,7 +76,7 @@ Class Router implements RouterContract
         $countKey = explode("/", $this -> route -> getUri());
         $countKeyPreg = explode("/", $routeKey);
 
-        if(count($countKey)!= count($countKeyPreg)) {
+        if (count($countKey)!= count($countKeyPreg)) {
 
             return false;
         }

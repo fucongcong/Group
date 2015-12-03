@@ -16,9 +16,9 @@ class CacheServiceProvider extends ServiceProvider
     {
         $cache = null;
 
-        if(\Config::get("database::cache") == 'redis') $cache = 'redisCache';
+        if (\Config::get("database::cache") == 'redis') $cache = 'redisCache';
 
-        if($cache == 'redisCache') {
+        if ($cache == 'redisCache') {
 
             $this -> app -> singleton($cache, function () {
 

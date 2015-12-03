@@ -62,9 +62,9 @@ class Console
     protected function checkArgv()
     {
         $argv = $this -> argv;
-        if(!isset($argv[1])) return;
+        if (!isset($argv[1])) return;
         $options = $this -> options;
-        if(!isset($options[$argv[1]])) {
+        if (!isset($options[$argv[1]])) {
 
             $this -> help = "\033[31m错误的命令！\033[0m\n";
             return;

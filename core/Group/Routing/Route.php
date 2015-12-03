@@ -200,7 +200,7 @@ Class Route implements RouteContract
 	 */
 	public static function getInstance(){
 
-		if(!(self::$instance instanceof self)){
+		if (!(self::$instance instanceof self)){
 
 			self::$instance = new self;
 		}

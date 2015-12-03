@@ -20,14 +20,14 @@ class GenerateServiceCommand extends Command
             throw new \RuntimeException("名称只能为英文！");
         }
 
-        $serviceName=ucfirst($name);
+        $serviceName = ucfirst($name);
         $this -> outPut('开始初始化'.$serviceName.'Service...');
 
         $dir = __ROOT__."src/Services";
 
         $this -> outPut('正在生成目录...');
 
-        if(is_dir($dir."/".$serviceName)) {
+        if (is_dir($dir."/".$serviceName)) {
 
             $this -> outPut('目录已存在...初始化失败');
             die;
