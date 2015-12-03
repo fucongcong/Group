@@ -9,7 +9,9 @@ Class Kernal
 	public function init()
 	{
 		$this -> fix_gpc_magic();
+
 		$app = new App();
+
 	   	$app -> init();
 	}
 
