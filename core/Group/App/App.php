@@ -37,6 +37,7 @@ class App
         'Route'             => 'core\Group\Routing\Route',
         'Request'           => 'core\Group\Http\Request',
         'Response'          => 'core\Group\Http\Response',
+        'JsonResponse'      => 'core\Group\Http\JsonResponse',
         'Service'           => 'core\Group\Services\Service',
         'ServiceProvider'   => 'core\Group\Services\ServiceProvider',
         'Test'              => 'core\Group\Test\Test',

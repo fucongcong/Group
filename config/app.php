@@ -20,6 +20,7 @@ return [
         'core\Group\Redis\RedisServiceProvider',
         'core\Group\Cache\CacheServiceProvider',
         'core\Group\Cache\FileCacheServiceProvider',
+        'core\Group\Session\SessionServiceProvider',
     ],
 
     //需要实例化的单例
