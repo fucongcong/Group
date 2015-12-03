@@ -22,7 +22,7 @@ class RedisSessionHandler implements \SessionHandlerInterface
 
     public function __construct(\Redis $redis)
     {
-        $this->prefix = 'session_';
+        $this -> prefix = 'session_';
         $this -> ttl = 3600;
         $this -> redis = $redis;
     }
@@ -48,7 +48,7 @@ class RedisSessionHandler implements \SessionHandlerInterface
      */
     public function read($sessionId)
     {
-        return $this-> redis -> get($this->prefix.$sessionId) ?: '';
+        return $this-> redis -> get($this -> prefix.$sessionId) ? : '';
     }
 
     /**
@@ -56,7 +56,7 @@ class RedisSessionHandler implements \SessionHandlerInterface
      */
     public function write($sessionId, $data)
     {
-        return $this -> redis -> set($this->prefix.$sessionId, $data, $this->ttl);
+        return $this -> redis -> set($this -> prefix.$sessionId, $data, $this -> ttl);
     }
 
     /**
@@ -64,7 +64,7 @@ class RedisSessionHandler implements \SessionHandlerInterface
      */
     public function destroy($sessionId)
     {
-        return $this-> redis -> set($this->prefix.$sessionId, null);
+        return $this -> redis -> set($this -> prefix.$sessionId, null);
     }
 
     public function gc($maxlifetime)
