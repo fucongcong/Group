@@ -79,7 +79,7 @@ return
 
 
     //redis null
-    'cache' => 'redis',
+    'cache' => 'null',
 
     'redis' => [
 

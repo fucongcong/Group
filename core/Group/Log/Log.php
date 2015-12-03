@@ -21,42 +21,42 @@ class Log
 
     protected static $cache_dir = "runtime/logs/";
 
-    public static function debug($message, $context, $model = 'web.app')
+    public static function debug($message, arr $context, $model = 'web.app')
     {
         return self::writeLog(__FUNCTION__, $message, $context, $model);
     }
 
-    public static function info($message, $context, $model = 'web.app')
+    public static function info($message, arr $context, $model = 'web.app')
     {
         return self::writeLog(__FUNCTION__, $message, $context, $model);
     }
 
-    public static function notice($message, $context, $model = 'web.app')
+    public static function notice($message, arr $context, $model = 'web.app')
     {
         return self::writeLog(__FUNCTION__, $message, $context, $model);
     }
 
-    public static function warning($message, $context, $model = 'web.app')
+    public static function warning($message, arr $context, $model = 'web.app')
     {
         return self::writeLog(__FUNCTION__, $message, $context, $model);
     }
 
-    public static function error($message, $context, $model = 'web.app')
+    public static function error($message, arr $context, $model = 'web.app')
     {
         return self::writeLog(__FUNCTION__, $message, $context, $model);
     }
 
-    public static function critical($message, $context, $model = 'web.app')
+    public static function critical($message, arr $context, $model = 'web.app')
     {
         return self::writeLog(__FUNCTION__, $message, $context, $model);
     }
 
-    public static function alert($message, $context, $model = 'web.app')
+    public static function alert($message, arr $context, $model = 'web.app')
     {
         return self::writeLog(__FUNCTION__, $message, $context, $model);
     }
 
-    public static function emergency($message, $context, $model = 'web.app')
+    public static function emergency($message, arr $context, $model = 'web.app')
     {
         return self::writeLog(__FUNCTION__, $message, $context, $model);
     }
