@@ -100,7 +100,7 @@ class SessionServiceProvider extends ServiceProvider
     {
         return [
             'cookie_lifetime' => \Config::get("session::cookie_lifetime"),
-            'gc_maxlifetime' => \Config::get("session::lifetime"),
+            'gc_maxlifetime'  => \Config::get("session::lifetime"),
         ];
     }
 
