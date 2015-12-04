@@ -13,11 +13,11 @@ class Service extends ServiceProvider
     //to do 单列
 	public function createDao($serviceName)
 	{
-		$serviceName = explode(":", $serviceName);
+		list($group, $serviceName) = explode(":", $serviceName);
 
-		$class = $serviceName[1]."DaoImpl";
+		$class = $serviceName."DaoImpl";
 
-		$className = "src\\Services\\".$serviceName[0]."\\Dao\\Impl\\".$class;
+		$className = "src\\Services\\".$group."\\Dao\\Impl\\".$class;
 
 		return new $className;
 	}
@@ -25,11 +25,11 @@ class Service extends ServiceProvider
     //需要支持不同目录
     public function createService($serviceName)
     {
-        $serviceName = explode(":", $serviceName);
+        list($group, $serviceName) = explode(":", $serviceName);
 
-        $class = $serviceName[1]."ServiceImpl";
+        $class = $serviceName."ServiceImpl";
 
-        $this -> serviceName = "src\\Services\\".$serviceName[0]."\\Impl\\".$class;
+        $this -> serviceName = "src\\Services\\".$group."\\Impl\\".$class;
 
         return $this -> register();
     }
