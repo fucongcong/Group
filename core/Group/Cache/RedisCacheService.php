@@ -5,7 +5,7 @@ namespace core\Group\Cache;
 use Exception;
 use core\Group\Contracts\Cache\Cache as CacheContract;
 
-class RedisCache implements CacheContract
+class RedisCacheService implements CacheContract
 {
     /**
      * redis对象

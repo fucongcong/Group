@@ -3,7 +3,7 @@
 namespace core\Group\Cache;
 
 use ServiceProvider;
-use core\Group\Cache\LocalFileCache;
+use core\Group\Cache\LocalFileCacheService;
 
 class FileCacheServiceProvider extends ServiceProvider
 {
@@ -16,7 +16,7 @@ class FileCacheServiceProvider extends ServiceProvider
     {
         $this -> app -> singleton('localFileCache', function () {
 
-            return new LocalFileCache($this -> app);
+            return new LocalFileCacheService();
 
         });
     }

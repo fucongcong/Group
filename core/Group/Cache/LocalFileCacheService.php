@@ -2,7 +2,7 @@
 
 namespace core\Group\Cache;
 
-class LocalFileCache
+class LocalFileCacheService
 {
     protected static $cache_dir = "runtime/cache/";
 
