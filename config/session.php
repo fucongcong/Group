@@ -8,7 +8,7 @@ return [
     'file' => '/runtime/sessions',
 
     //当driver为redis时，可配置session前缀，注意与redis配置中的前缀不冲突
-    'prex' => 'session_',
+    'prex' => 'session',
 
     //过期时间
     'lifetime' => '3600',

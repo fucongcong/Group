@@ -28,7 +28,6 @@ class Controller implements ControllerContract
 	 */
 	public function render($tpl, $array = array())
 	{
-
 		$loader = new Twig_Loader_Filesystem(\Config::get('view::path'));
 
 		if (\Config::get('view::cache')) {
