@@ -3,7 +3,6 @@
 namespace core\Group\Container;
 
 use ReflectionClass;
-use Exception;
 use App;
 use core\Group\Exceptions\NotFoundException;
 use core\Group\Contracts\Container\Container as ContainerContract;

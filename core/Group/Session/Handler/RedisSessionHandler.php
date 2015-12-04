@@ -2,6 +2,8 @@
 
 namespace core\Group\Session\Handler;
 
+use core\Group\Redis\RedisHelper;
+
 class RedisSessionHandler implements \SessionHandlerInterface
 {
     /**
@@ -22,8 +24,8 @@ class RedisSessionHandler implements \SessionHandlerInterface
 
     public function __construct(\Redis $redis)
     {
-        $this -> prefix = 'session_';
-        $this -> ttl = 3600;
+        $this -> prefix = \Config::get('session::prex');
+        $this -> ttl = \Config::get('session::lifetime');
         $this -> redis = $redis;
     }
 
@@ -48,7 +50,9 @@ class RedisSessionHandler implements \SessionHandlerInterface
      */
     public function read($sessionId)
     {
-        return $this-> redis -> get($this -> prefix.$sessionId) ? : '';
+        list($hashKey, $key) = RedisHelper::hashKey($this -> prefix, $sessionId);
+
+        return $this-> redis -> hGet($hashKey, $key) ? : '';
     }
 
     /**
@@ -56,7 +60,13 @@ class RedisSessionHandler implements \SessionHandlerInterface
      */
     public function write($sessionId, $data)
     {
-        return $this -> redis -> set($this -> prefix.$sessionId, $data, $this -> ttl);
+        list($hashKey, $key) = RedisHelper::hashKey($this -> prefix, $sessionId);
+
+        $status = $this -> redis -> hSet($hashKey, $key, $data);
+
+        $this -> redis -> expire($hashKey, $this -> ttl);
+
+        return $status;
     }
 
     /**
@@ -64,7 +74,9 @@ class RedisSessionHandler implements \SessionHandlerInterface
      */
     public function destroy($sessionId)
     {
-        return $this -> redis -> set($this -> prefix.$sessionId, null);
+        list($hashKey, $key) = RedisHelper::hashKey($this -> prefix, $sessionId);
+
+        return $this -> redis -> hDel($hashKey, $key);
     }
 
     public function gc($maxlifetime)

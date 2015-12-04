@@ -4,7 +4,6 @@ namespace core\Group\Routing;
 
 use core\Group\Common\ArrayToolkit;
 use Container;
-use Exception;
 use core\Group\Contracts\Routing\Route as RouteContract;
 
 Class Route implements RouteContract
