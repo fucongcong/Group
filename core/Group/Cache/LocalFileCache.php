@@ -2,8 +2,6 @@
 
 namespace core\Group\Cache;
 
-use Exception;
-
 class LocalFileCache
 {
     protected static $cache_dir = "runtime/cache/";

@@ -4,7 +4,6 @@ namespace core\Group\App;
 
 use core\Group\Handlers\AliasLoaderHandler;
 use core\Group\Config\Config;
-use Exception;
 use core\Group\Routing\Router;
 
 class App
