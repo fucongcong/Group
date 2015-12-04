@@ -33,6 +33,14 @@
 - [Session](#user-content-Session)
 
 ## Group框架简介
+
+####环境依赖
+- PHP > 5.3
+
+####扩展模块
+- [PhpRedis](https://github.com/phpredis/phpredis)
+- [Swoole](https://github.com/swoole/swoole-src)
+
 ####框架介绍
 （1）模版引擎：twig （symfony2使用的模版引擎）
 
