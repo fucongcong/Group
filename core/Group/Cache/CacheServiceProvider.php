@@ -3,7 +3,7 @@
 namespace core\Group\Cache;
 
 use ServiceProvider;
-use core\Group\Cache\redisCache;
+use core\Group\Cache\RedisCacheService;
 
 class CacheServiceProvider extends ServiceProvider
 {
@@ -22,7 +22,7 @@ class CacheServiceProvider extends ServiceProvider
 
             $this -> app -> singleton($cache, function () {
 
-                return new redisCache($this -> app);
+                return new RedisCacheService($this -> app);
             });
         }
     }

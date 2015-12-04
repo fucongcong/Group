@@ -39,6 +39,7 @@ class App
         'JsonResponse'      => 'core\Group\Http\JsonResponse',
         'Service'           => 'core\Group\Services\Service',
         'ServiceProvider'   => 'core\Group\Services\ServiceProvider',
+        'Session'           => 'core\Group\Session\Session',
         'Test'              => 'core\Group\Test\Test',
         'Log'               => 'core\Group\Log\Log',
     ];

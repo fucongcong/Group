@@ -29,7 +29,7 @@ class GroupController extends Controller
         // $config = \Config::getInstance();
         // var_dump($config -> getConfig());
         $uri = $this -> route() -> getUri();
-
+        //echo \Session::get('aa','123');
         $parameters = $this -> route() -> getParameters();
 
         $parametersName = $this -> route() -> getParametersName();

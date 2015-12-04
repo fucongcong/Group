@@ -3,6 +3,7 @@
 namespace core\Group\Session;
 
 use ServiceProvider;
+use core\Group\Session\SessionService;
 use Symfony\Component\HttpFoundation\Session\Session as SfSession;
 use Symfony\Component\HttpFoundation\Session\Storage\NativeSessionStorage;
 use Symfony\Component\HttpFoundation\Session\Attribute\AttributeBag;
@@ -27,7 +28,7 @@ class SessionServiceProvider extends ServiceProvider
             $session = new SfSession($storage, new AttributeBag('_group_attributes'), new FlashBag());
             $session -> start();
 
-            return $session;
+            return new SessionService($session);
         });
     }
 
@@ -103,5 +104,4 @@ class SessionServiceProvider extends ServiceProvider
             'gc_maxlifetime'  => \Config::get("session::lifetime"),
         ];
     }
-
 }
