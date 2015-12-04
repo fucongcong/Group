@@ -10,70 +10,90 @@ return
 
             "database_host" => "127.0.0.1",
 
+            "database_port" => "3306",
+
             "database_name" => "Group",
 
             "database_user" => "root",
 
             "database_password" => "123",
+
+            "database_charset" => "utf8",
         ],
 
-        'write' => [
+        // 'write' => [
 
-            'master1' => [
+        //     'master1' => [
 
-                "database_driver" => "mysql",
+        //         "database_driver" => "mysql",
 
-                "database_host" => "127.0.0.1",
+        //         "database_host" => "127.0.0.1",
 
-                "database_name" => "Group1",
+        //         "database_port" => "3306",
 
-                "database_user" => "root",
+        //         "database_name" => "Group1",
 
-                "database_password" => "123",
-            ],
+        //         "database_user" => "root",
 
-            'master2' => [
+        //         "database_password" => "123",
 
-                "database_driver" => "mysql",
+        //         "database_charset" => "utf8",
+        //     ],
 
-                "database_host" => "127.0.0.1",
+        //     'master2' => [
 
-                "database_name" => "Group2",
+        //         "database_driver" => "mysql",
 
-                "database_user" => "root",
+        //         "database_host" => "127.0.0.1",
 
-                "database_password" => "123",
-            ],
-        ],
+        //         "database_port" => "3306",
 
-        'read' => [
+        //         "database_name" => "Group2",
 
-            'slave1' => [
+        //         "database_user" => "root",
 
-                "database_driver" => "mysql",
+        //         "database_password" => "123",
 
-                "database_host" => "127.0.0.1",
+        //         "database_charset" => "utf8",
+        //     ],
+        // ],
 
-                "database_name" => "Group3",
+        // 'read' => [
 
-                "database_user" => "root",
+        //     'slave1' => [
 
-                "database_password" => "123",
-            ],
+        //         "database_driver" => "mysql",
 
-            'slave2' =>  [
+        //         "database_host" => "127.0.0.1",
 
-                "database_driver" => "mysql",
+        //         "database_port" => "3306",
 
-                "database_host" => "127.0.0.1",
+        //         "database_name" => "Group3",
 
-                "database_name" => "Group4",
+        //         "database_user" => "root",
 
-                "database_user" => "root",
+        //         "database_password" => "123",
 
-                "database_password" => "123",
-            ],
-        ],
+        //         "database_charset" => "utf8",
+        //     ],
+
+        //     'slave2' =>  [
+
+        //         "database_driver" => "mysql",
+
+        //         "database_host" => "127.0.0.1",
+
+        //         "database_port" => "3306",
+
+        //         "database_name" => "Group4",
+
+        //         "database_user" => "root",
+
+        //         "database_password" => "123",
+
+        //         "database_charset" => "utf8",
+        //     ],
+        // ],
     ],
 
 

@@ -150,7 +150,7 @@ class Dao
 
 			$connections -> setDefault(function () use ($config) {
 			    return new ExtendedPdo(
-						$config['default']['database_driver'].':host='.$config['default']['database_host'].';dbname='.$config['default']['database_name'],
+						$config['default']['database_driver'].':host='.$config['default']['database_host'].';dbname='.$config['default']['database_name'].';port='.$config['default']['database_port'].';charset='.$config['default']['database_charset'],
 				        $config['default']['database_user'],
 				        $config['default']['database_password']
 				);
@@ -162,7 +162,7 @@ class Dao
 			foreach ($config['write'] as $name => $db) {
 				$connections -> setWrite($name, function () use ($db) {
 				    return new ExtendedPdo(
-				        $db['database_driver'].':host='.$db['database_host'].';dbname='.$db['database_name'],
+				        $db['database_driver'].':host='.$db['database_host'].';dbname='.$db['database_name'].';port='.$db['database_port'].';charset='.$db['database_charset'],
 				        $db['database_user'],
 				        $db['database_password']
 				    );
@@ -175,7 +175,7 @@ class Dao
 			foreach ($config['read'] as $name => $db) {
 				$connections -> setRead($name, function () use ($db) {
 				    return new ExtendedPdo(
-				        $db['database_driver'].':host='.$db['database_host'].';dbname='.$db['database_name'],
+				        $db['database_driver'].':host='.$db['database_host'].';dbname='.$db['database_name'].';port='.$db['database_port'].';charset='.$db['database_charset'],
 				        $db['database_user'],
 				        $db['database_password']
 				    );
