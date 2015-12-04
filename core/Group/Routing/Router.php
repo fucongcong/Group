@@ -119,11 +119,11 @@ Class Router implements RouterContract
 	 */
 	public function controller($config)
 	{
-		$controller = explode(':', $config['controller']);
+		list($group, $subGroup, $controller, $action) = explode(':', $config['controller']);
 
-		$className = 'src\\'.$controller[0].'\\Controller\\'.$controller[1].'\\'.$controller[2].'Controller';
+		$className = 'src\\'.$group.'\\Controller\\'.$subGroup.'\\'.$controller.'Controller';
 
-		$action = $controller[3].'Action';
+		$action = $action.'Action';
 
 		$this -> route -> setAction($action);
 
