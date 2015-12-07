@@ -28,8 +28,11 @@ class GroupController extends Controller
         // \Cache::redis() -> set('haa',123,60);
         // $config = \Config::getInstance();
         // var_dump($config -> getConfig());
-        $uri = $this -> route() -> getUri();
         //echo \Session::get('aa','123');
+        // \Session::getFlashBag() -> setAll(['group', 'good']);
+        // \Session::getFlashBag() -> all();
+        $uri = $this -> route() -> getUri();
+
         $parameters = $this -> route() -> getParameters();
 
         $parametersName = $this -> route() -> getParametersName();

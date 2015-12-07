@@ -42,4 +42,24 @@ class SessionService
     {
         return $this -> session -> clear();
     }
+
+    public function remove($name)
+    {
+        return $this -> session -> remove($name);
+    }
+
+    public function isStarted()
+    {
+        return $this -> session -> isStarted();
+    }
+
+    public function replace(array $attributes)
+    {
+        return $this -> session -> replace($attributes);
+    }
+
+    public function getFlashBag()
+    {
+        return $this -> session -> getFlashBag();
+    }
 }

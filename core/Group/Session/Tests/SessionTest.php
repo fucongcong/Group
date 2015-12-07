@@ -38,4 +38,26 @@ class SessionTest extends Test
         $info = Session::all();
         $this -> assertEquals(['group' => 'good'], $info);
     }
+
+    public function testRemove()
+    {
+        Session::set('group', 'good');
+        Session::remove('group');
+        $info = Session::get('group');
+        $this -> assertEquals('', $info);
+    }
+
+    public function testIsStarted()
+    {
+        $status = Session::isStarted();
+        $this -> assertTrue($status);
+    }
+
+    public function testReplace()
+    {
+        Session::set('group', 'good');
+        $attributes = ['group' => 'hello'];
+        Session::replace($attributes);
+        $this -> assertEquals($attributes['group'], Session::get('group'));
+    }
 }

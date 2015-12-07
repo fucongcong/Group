@@ -80,5 +80,3 @@ class Controller implements ControllerContract
 		throw new NotFoundException("Method [$method] does not exist.");
 	}
 }
-
-?>

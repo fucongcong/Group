@@ -6,14 +6,14 @@ use Symfony\Component\HttpFoundation\Session\Flash\FlashBagInterface;
 
 class FlashBag implements FlashBagInterface
 {
-    private $name = 'flashes';
+private $name = 'flashes';
 
     /**
      * Flash messages.
      *
      * @var array
      */
-    private $flashes = array('display' => array(), 'new' => array());
+    private $flashes = array();
 
     /**
      * The storage key for flashes in the session.
@@ -51,9 +51,6 @@ class FlashBag implements FlashBagInterface
     public function initialize(array &$flashes)
     {
         $this->flashes = &$flashes;
-
-        $this->flashes['display'] = array_key_exists('new', $this->flashes) ? $this->flashes['new'] : array();
-        $this->flashes['new'] = array();
     }
 
     /**
@@ -61,7 +58,7 @@ class FlashBag implements FlashBagInterface
      */
     public function add($type, $message)
     {
-        $this->flashes['new'][$type][] = $message;
+        $this->flashes[$type][] = $message;
     }
 
     /**
@@ -69,7 +66,7 @@ class FlashBag implements FlashBagInterface
      */
     public function peek($type, array $default = array())
     {
-        return $this->has($type) ? $this->flashes['display'][$type] : $default;
+        return $this->has($type) ? $this->flashes[$type] : $default;
     }
 
     /**
@@ -77,7 +74,7 @@ class FlashBag implements FlashBagInterface
      */
     public function peekAll()
     {
-        return array_key_exists('display', $this->flashes) ? (array) $this->flashes['display'] : array();
+        return $this->flashes;
     }
 
     /**
@@ -85,16 +82,13 @@ class FlashBag implements FlashBagInterface
      */
     public function get($type, array $default = array())
     {
-        $return = $default;
-
         if (!$this->has($type)) {
-            return $return;
+            return $default;
         }
 
-        if (isset($this->flashes['display'][$type])) {
-            $return = $this->flashes['display'][$type];
-            unset($this->flashes['display'][$type]);
-        }
+        $return = $this->flashes[$type];
+
+        unset($this->flashes[$type]);
 
         return $return;
     }
@@ -104,8 +98,8 @@ class FlashBag implements FlashBagInterface
      */
     public function all()
     {
-        $return = $this->flashes['display'];
-        $this->flashes = array('new' => array(), 'display' => array());
+        $return = $this->peekAll();
+        $this->flashes = array();
 
         return $return;
     }
@@ -113,17 +107,17 @@ class FlashBag implements FlashBagInterface
     /**
      * {@inheritdoc}
      */
-    public function setAll(array $messages)
+    public function set($type, $messages)
     {
-        $this->flashes['new'] = $messages;
+        $this->flashes[$type] = (array) $messages;
     }
 
     /**
      * {@inheritdoc}
      */
-    public function set($type, $messages)
+    public function setAll(array $messages)
     {
-        $this->flashes['new'][$type] = (array) $messages;
+        $this->flashes = $messages;
     }
 
     /**
@@ -131,7 +125,7 @@ class FlashBag implements FlashBagInterface
      */
     public function has($type)
     {
-        return array_key_exists($type, $this->flashes['display']) && $this->flashes['display'][$type];
+        return array_key_exists($type, $this->flashes) && $this->flashes[$type];
     }
 
     /**
@@ -139,7 +133,7 @@ class FlashBag implements FlashBagInterface
      */
     public function keys()
     {
-        return array_keys($this->flashes['display']);
+        return array_keys($this->flashes);
     }
 
     /**
