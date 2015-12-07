@@ -2,21 +2,12 @@
 
 namespace core\Group\Session;
 
-class Session
+use core\Group\Services\ServiceMap;
+
+class Session extends ServiceMap
 {
-    /**
-     * FileCache的__call
-     *
-     * @param  method
-     * @param  parameters
-     * @return void
-     */
-    public static function __callStatic($method, $parameters)
+    public static function getMap()
     {
-        $session = \App::getInstance() -> singleton('session');
-
-        if (!is_object($session)) return;
-
-        return call_user_func_array([$session, $method], $parameters);
+        return 'session';
     }
 }

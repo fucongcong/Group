@@ -16,8 +16,8 @@ class SessionService
     /**
      * 是否存在某个session
      *
-     * @var name
-     * @var default 默认值
+     * @param name
+     * @param default 默认值
      * @return string|array
      */
     public function get($name, $default = null)
@@ -28,8 +28,8 @@ class SessionService
     /**
      * 是否存在某个session
      *
-     * @var name
-     * @var value
+     * @param name
+     * @param value
      */
     public function set($name, $value)
     {
@@ -39,7 +39,7 @@ class SessionService
     /**
      * 是否存在某个session
      *
-     * @var name
+     * @param name
      * @return boolean
      */
     public function has($name)
@@ -79,7 +79,7 @@ class SessionService
     /**
      * 移除某个seeion值
      *
-     * @var name
+     * @param name
      */
     public function remove($name)
     {
@@ -99,7 +99,7 @@ class SessionService
     /**
      * 替换session的值
      *
-     * @var attributes
+     * @param attributes
      */
     public function replace(array $attributes)
     {

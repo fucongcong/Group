@@ -5,19 +5,44 @@ namespace core\Group\Routing;
 use core\Group\Common\ArrayToolkit;
 use core\Group\Contracts\Routing\Router as RouterContract;
 use App;
-use Request;
 
 Class Router implements RouterContract
 {
+	/**
+	 * 支持的http方法
+	 *
+	 * @var methods
+	 */
 	protected $methods = ["GET", "PUT", "POST", "DELETE", "HEAD", "PATCH"];
 
+	/**
+	 * Route object
+	 *
+	 * @var route
+	 */
 	protected $route;
 
+	/**
+	 * Container object
+	 *
+	 * @var container
+	 */
 	protected $container;
 
+	/**
+	 * Request object
+	 *
+	 * @var request
+	 */
 	protected $request;
 
-	public function __construct($container, Request $request)
+	/**
+	 * 初始化
+	 *
+	 * @param Container container
+	 * @param Request request
+	 */
+	public function __construct(\Container $container, \Request $request)
 	{
 		$this -> container = $container;
 
@@ -25,6 +50,7 @@ Class Router implements RouterContract
 
 		$this -> setRoute($this -> methods, $request -> getPathInfo(), $request -> getMethod());
 	}
+
 	/**
 	 * match the uri
 	 *
@@ -143,6 +169,7 @@ Class Router implements RouterContract
 
 		return $parameterValue;
 	}
+
 	//to do refactor me
 	protected function getRouting()
 	{
@@ -194,6 +221,11 @@ Class Router implements RouterContract
 		return $config;
 	}
 
+	/**
+	 * create routing cache
+	 *
+	 * @return  array
+	 */
 	private function createMethodsCache()
 	{
 		$routing = include 'src/Web/routing.php';
