@@ -86,4 +86,14 @@ class RedisCacheService implements CacheContract
 
         return $this-> redis -> hDel($hashKey);
     }
+
+    /**
+     * 返回一个redis对象
+     *
+     * @return object
+     */
+    public function getRedis()
+    {
+        return $this-> redis;
+    }
 }

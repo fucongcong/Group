@@ -8,6 +8,6 @@ return [
     'cache' => false,
 
     //缓存的目录
-    'cache_dir' => './runtime/views',
+    'cache_dir' => 'runtime/cache/views',
 
 ];
