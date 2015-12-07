@@ -35,7 +35,7 @@
 ## Group框架简介
 
 ####环境依赖
-- PHP > 5.3
+- PHP > 5.5
 
 ####扩展模块
 - [PhpRedis](https://github.com/phpredis/phpredis)
