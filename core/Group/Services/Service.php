@@ -45,5 +45,3 @@ class Service extends ServiceProvider
         });
     }
 }
-
-?>

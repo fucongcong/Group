@@ -2,21 +2,12 @@
 
 namespace core\Group\Cache;
 
-class FileCache
+use core\Group\Services\ServiceMap;
+
+class FileCache extends ServiceMap
 {
-    /**
-     * FileCache的__call
-     *
-     * @param  method
-     * @param  parameters
-     * @return void
-     */
-    public static function __callStatic($method, $parameters)
+    public static function getMap()
     {
-        $cache = \App::getInstance() -> singleton('localFileCache');
-
-        if (!is_object($cache)) return;
-
-        return call_user_func_array([$cache, $method], $parameters);
+        return 'localFileCache';
     }
 }

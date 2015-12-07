@@ -171,5 +171,4 @@ class App
     {
         self::$instance = new self;
     }
-
 }

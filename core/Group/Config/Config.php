@@ -92,5 +92,4 @@ class Config implements ConfigContract
 
         return $this -> config;
     }
-
 }
