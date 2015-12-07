@@ -13,33 +13,106 @@ class SessionService
         $this -> session = $session;
     }
 
+    /**
+     * 是否存在某个session
+     *
+     * @var name
+     * @var default 默认值
+     * @return string|array
+     */
     public function get($name, $default = null)
     {
         return $this -> session -> get($name, $default);
     }
 
+    /**
+     * 是否存在某个session
+     *
+     * @var name
+     * @var value
+     */
     public function set($name, $value)
     {
         $this -> session -> set($name, $value);
     }
 
+    /**
+     * 是否存在某个session
+     *
+     * @var name
+     * @return boolean
+     */
     public function has($name)
     {
         return $this -> session -> has($name);
     }
 
+    /**
+     * 获取session
+     *
+     * @return array
+     */
     public function all()
     {
         return $this -> session -> all();
     }
 
+    /**
+     * 获取sessionid
+     *
+     * @return string
+     */
     public function getId()
     {
         return $this -> session -> getId();
     }
 
+    /**
+     * 清除session
+     *
+     */
     public function clear()
     {
-        return $this -> session -> clear();
+        $this -> session -> clear();
+    }
+
+    /**
+     * 移除某个seeion值
+     *
+     * @var name
+     */
+    public function remove($name)
+    {
+        $this -> session -> remove($name);
+    }
+
+    /**
+     * session是否开启
+     *
+     * @return boolean
+     */
+    public function isStarted()
+    {
+        return $this -> session -> isStarted();
+    }
+
+    /**
+     * 替换session的值
+     *
+     * @var attributes
+     */
+    public function replace(array $attributes)
+    {
+        $this -> session -> replace($attributes);
+    }
+
+    /**
+     * 获取一个FlashBag
+     *
+     * @return core\Group\Session\Bag\FlashBag object
+     */
+    public function getFlashBag()
+    {
+        return $this -> session -> getFlashBag();
     }
 }

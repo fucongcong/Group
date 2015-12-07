@@ -219,5 +219,4 @@ Class Router implements RouterContract
 
 		return $config;
 	}
-
 }

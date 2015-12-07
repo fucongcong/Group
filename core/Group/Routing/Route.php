@@ -206,5 +206,4 @@ Class Route implements RouteContract
 
 		return self::$instance;
 	}
-
 }
