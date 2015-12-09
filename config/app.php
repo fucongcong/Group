@@ -21,6 +21,7 @@ return [
         'core\Group\Cache\CacheServiceProvider',
         'core\Group\Cache\FileCacheServiceProvider',
         'core\Group\Session\SessionServiceProvider',
+        'core\Group\EventDispatcher\EventDispatcherServiceProvider',
     ],
 
     //需要实例化的单例

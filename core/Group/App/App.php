@@ -31,6 +31,8 @@ class App
         'Container'         => 'core\Group\Container\Container',
         'Controller'        => 'core\Group\Controller\Controller',
         'Dao'               => 'core\Group\Dao\Dao',
+        'Event'             => 'core\Group\Events\Event',
+        'EventDispatcher'   => 'core\Group\EventDispatcher\EventDispatcher',
         'Filesystem'        => 'core\Group\Common\Filesystem',
         'FileCache'         => 'core\Group\Cache\FileCache',
         'Route'             => 'core\Group\Routing\Route',
@@ -42,6 +44,7 @@ class App
         'Session'           => 'core\Group\Session\Session',
         'Test'              => 'core\Group\Test\Test',
         'Log'               => 'core\Group\Log\Log',
+        'Listener'          => 'core\Group\Listeners\Listener',
     ];
 
     /**
@@ -77,6 +80,7 @@ class App
         $request = \Request::createFromGlobals();
 
         $this -> registerServices();
+        \EventDispatcher::dispatch('kernal.init');
 
         $this -> container = $this -> singleton('container');
         $this -> container -> setAppPath($path);
@@ -170,5 +174,11 @@ class App
     public function initSelf()
     {
         self::$instance = new self;
+    }
+
+    public function rmSingletons($name)
+    {
+        if(isset($this -> singletons[$name]))
+            unset($this -> singletons[$name]);
     }
 }

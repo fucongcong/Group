@@ -6,8 +6,6 @@ use ServiceProvider;
 
 class Service extends ServiceProvider
 {
-    private static $_instance;
-
     protected $className;
 
     //to do 单列
