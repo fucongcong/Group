@@ -23,6 +23,18 @@ class Config implements ConfigContract
     }
 
     /**
+     * 设置config下得值
+     *
+     * @param  key
+     * @param  subKey
+     * @param  value
+     */
+    public static function set($key, $subKey, $value)
+    {
+        self::getInstance() -> setCustom($key, $subKey, $value);
+    }
+
+    /**
      * read config
      *
      * @param  configName,  name::key
@@ -34,7 +46,7 @@ class Config implements ConfigContract
 
         if (count($configName) == 2) {
 
-            $config = $this -> checkConfig($configName[0], $configName[1]);
+            $config = $this -> checkConfig($configName[0]);
 
             return $config[$configName[0]][$configName[1]];
         }
@@ -51,6 +63,11 @@ class Config implements ConfigContract
     public function setConfig($config)
     {
         $this -> config = array_merge($this -> config, $config);
+    }
+
+    public function setCustom($key, $subKey, $value)
+    {
+        $this -> config[$key][$subKey] = $value;
     }
 
     /**
@@ -78,7 +95,7 @@ class Config implements ConfigContract
         return self::$instance;
     }
 
-    private function checkConfig($key, $value)
+    private function checkConfig($key)
     {
         $config = $this -> config;
 

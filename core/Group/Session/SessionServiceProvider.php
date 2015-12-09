@@ -26,7 +26,8 @@ class SessionServiceProvider extends ServiceProvider
             $storage = new NativeSessionStorage($this -> getOptions(), $this -> getHandler(), new MetadataBag());
 
             $session = new SfSession($storage, new AttributeBag('_group_attributes'), new FlashBag());
-            $session -> start();
+
+            if(!$session -> isStarted()) $session -> start();
 
             return new SessionService($session);
         });
