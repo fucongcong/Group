@@ -24,18 +24,20 @@ https://travis-ci.org/fucongcong/Group.svg
 ####6.[数据层](#user-content-数据层)
 
 ####7.[框架基础服务](#user-content-框架基础服务)
-- [Container](#user-content-1Container)
-- [Cache](#user-content-4Cache)
-- [Config](#user-content-5Config)
-- [Console](#user-content-6Console)
-- [Exception](#user-content-2Exception)
+- [Container](#user-content-Container)
+- [Cache](#user-content-Cache)
+- [Config](#user-content-Config)
+- [Console](#user-content-Console)
+- [Exception](#user-content-Exception)
 - [EventDispatcher](#user-content-EventDispatcher)
-- [FileCache](#user-content-3FileCache)
+- [FileCache](#user-content-FileCache)
 - [Filesystem](#user-content-Filesystem)
 - [Request](#user-content-Request)
 - [Response](#user-content-Response)
 - [Session](#user-content-Session)
 - [Log](#user-content-Log)
+
+####8.[单元测试](#user-content-单元测试)
 
 ## Group框架简介
 
@@ -377,10 +379,158 @@ class GroupServiceImpl extends GroupBaseService implements GroupService
     // "SELECT * FROM test WHERE foo IN ('foo', 'bar', 'baz')"
 ```
 
-## 配置文件详解
+## 框架基础服务
 
-## Console 控制台介绍
-####使用方法
+## Container
+#####Container是一个基础的容器，一些系统变量会存放于这里
+
+## Cache
+
+#####目前只支持了Redis得cache，使用请在cache.php配置中配置redis
+
+```php
+
+    use Cache;
+    //key value expireTime
+    Cache::set('ha', 123, 60);
+    //也可以这样
+    Cache::redis() -> set('haa', 123, 60);
+
+    Cache::get('ha');
+    Cache::hSet($hashKey, $key, $data, $expireTime);
+    Cache::hGet($hashKey, $key);
+    Cache::hDel($hashKey, $key);
+    Cache::hDel($hashKey);
+
+    //现在的类库方法还未扩展完全，目前只有以上方法
+    //你可以使用Cache::redis() 获取redis实例，这是一个PhpRedis的实例，api－》(https://github.com/phpredis/phpredis)
+```
+
+## FileCache
+
+#####文件形式的缓存
+
+```php
+
+    use FileCache;
+
+    //默认路径是放在runtime/cache/
+    FileCache::set('test.php', ['testdfata' => 'datadata']);
+    //指定路径
+    FileCache::set('test.php', ['testdfata' => 'datadata'], 'runtime/cache/test/');
+
+    FileCache::get('test.php');
+    FileCache::get('test.php', 'runtime/cache/test/');
+
+```
+
+## Config
+
+#####用于查找config目录下得配置
+
+```php
+
+    use Config;
+
+    //文件名::key
+    Config::get('app::environment');
+
+    //也可以重新设置ests
+    Config::set('app', 'environment', 'dev');
+```
+
+## EventDispatcher
+
+#####事件监听
+
+#####先写一个监听KernalResponseListener
+```php
+<?php
+
+namespace src\web\Listeners;
+
+use Listener;
+use Event;
+
+class KernalResponseListener extends Listener
+{
+    public function setMethod()
+    {
+        return 'onKernalResponse';
+    }
+
+    //触发时执行
+    public function onKernalResponse(Event $event)
+    {
+        echo 'this is a KernalResponse Listener';
+    }
+}
+
+```
+
+#####绑定监听
+
+```php
+
+    use EventDispatcher;
+
+    $listener = new KernalResponseListener();
+
+    //定义一个事件名称，触发的监听器，和一个重要指数
+    EventDispatcher::addListener('kernal.responese', $listener, 10);
+
+    EventDispatcher::removeListener('kernal.responese', $listener);
+
+    EventDispatcher::hasListeners('kernal.responese');
+
+    //最后可以在需要的时候派发事件
+    EventDispatcher::dispatch('kernal.responese');
+    EventDispatcher::dispatch('kernal.responese', $envet);
+
+```
+
+## Session
+
+#####Session 目前支持2中方式存储，默认存放在runtime/sessions下，也可以开启redis driver，将session存在redis中，详见配置
+```php
+
+    use Session;
+
+    Session::set('group', 'good');
+    Session::get('group');
+    Session::remove('group');
+    Session::has('group');
+    Session::clear();
+    Session::all();
+    Session::isStarted();
+
+    $attributes = ['group' => 'hello'];
+    Session::replace($attributes);
+```
+## Log
+
+#####默认存放于runtime/log
+```php
+
+    use Log;
+
+    Log::debug('123',['user'=>1]);
+    Log::info('123',['user'=>1]);
+    Log::notice('123',['user'=>1]);
+    Log::warning('123',['user'=>1]);
+    Log::error('123',['user'=>1]);
+    Log::critical('123',['user'=>1]);
+    Log::alert('123',['user'=>1]);
+    Log::emergency('123',['user'=>1]);
+
+    //默认model是web.app,也可以自定义
+    Log::emergency('123',['user'=>1],'web.admin');
+
+```
+
+## Console
+
+####控制台的使用方法
 
     //进入根目录 执行
     app/console
@@ -404,9 +554,7 @@ class GroupServiceImpl extends GroupBaseService implements GroupService
     sql:generate                生成一个sql执行模板(存放于app/sql)
     sql:migrate                 执行sql模板
 
-#####目前支持的自动脚本命令
-####自定以脚本文件
 
-##单元测试(每次ci都可以跑一下)
+## 单元测试
 
-    phpunit --bootstrap app/test.php src/Services
+    phpunit --bootstrap app/test.php src
