@@ -4,11 +4,11 @@ return [
     'services' => [
 
         //like
-        [
-            'eventName' => 'kernal.response',
-            'listener'  => 'core\Group\Listeners\KernalResponseListener',
-            'priority'  => 0,
-         ]
+        // [
+        //     'eventName' => 'kernal.response',
+        //     'listener'  => 'src\web\Listeners\KernalResponseListener',
+        //     'priority'  => 10,
+        //  ]
 
     ]
 ];
