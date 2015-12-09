@@ -11,20 +11,33 @@ use Response;
 
 class EventDispatcherTest extends Test
 {
-    public function testinit()
+    public function testaddListener()
     {
         $listener = new KernalResponseListener();
-
         EventDispatcher::addListener('kernal.responese', $listener, 10);
 
         $this -> assertTrue(EventDispatcher::hasListeners('kernal.responese'));
-        $object = EventDispatcher::getListeners('kernal.responese');
-        $this -> assertTrue($object[0] instanceof KernalResponseListener);
+
+        EventDispatcher::removeListener('kernal.responese', $listener);
+        $this -> assertFalse(EventDispatcher::hasListeners('kernal.responese'));
+
         EventDispatcher::addListener('kernal.request', function($event){
             //do something
         }, 100);
+    }
+
+    public function testgetListener()
+    {
+        $listener = new KernalResponseListener();
+        EventDispatcher::addListener('kernal.responese', $listener, 10);
+
+        $object = EventDispatcher::getListeners('kernal.responese');
+        $this -> assertTrue($object[0] instanceof KernalResponseListener);
+    }
+
+    public function testdispatch()
+    {
         $event = new HttpEvent(new Response());
         EventDispatcher::dispatch('kernal.responese', $event);
-
     }
 }

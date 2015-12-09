@@ -11,7 +11,15 @@ class KernalInitListener extends \Listener
 
     public function onEventDispatcherInit(\Event $event)
     {
-        $listeners = \Config::get('listener::services');
+        $listeners = [
+            [
+                'eventName' => 'kernal.response',
+                'listener'  => 'core\Group\Listeners\KernalResponseListener',
+                'priority'  => 0,
+            ]
+        ];
+
+        $listeners = array_merge(\Config::get('listener::services'), $listeners);
 
         foreach ($listeners as $listener) {
 

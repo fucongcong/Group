@@ -27,11 +27,13 @@
 - [Config](#user-content-5Config)
 - [Console](#user-content-6Console)
 - [Exception](#user-content-2Exception)
+- [EventDispatcher](#user-content-EventDispatcher)
 - [FileCache](#user-content-3FileCache)
 - [Filesystem](#user-content-Filesystem)
 - [Request](#user-content-Request)
 - [Response](#user-content-Response)
 - [Session](#user-content-Session)
+- [Log](#user-content-Log)
 
 ## Group框架简介
 

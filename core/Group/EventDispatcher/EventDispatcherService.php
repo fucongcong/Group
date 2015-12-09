@@ -8,10 +8,25 @@ use Event;
 
 class EventDispatcherService implements EventDispatcherContract
 {
+    /**
+     *
+     * @var listeners
+     */
     protected $listeners = [];
 
+    /**
+     *
+     * @var sorted listeners
+     */
     protected $sorted = [];
 
+    /**
+     * dispatch the event
+     *
+     * @param  eventName
+     * @param  Event event 可以是一个继承自Event得实例
+     * @return Event event
+     */
     public function dispatch($eventName, Event $event = null)
     {
         if (empty($event)) $event = new Event;
@@ -26,40 +41,69 @@ class EventDispatcherService implements EventDispatcherContract
         return $event;
     }
 
+    /**
+     * add listener for event
+     *
+     * @param  eventName
+     * @param  listener  可以是一个callback方法或者一个继承于Listner的对象实例
+     * @param  priority  越大越早执行
+     */
     public function addListener($eventName, $listener, $priority = 0)
     {
         $this -> listeners[$eventName][$priority][] = $listener;
         $this -> sortEvents($eventName);
     }
 
+    /**
+     * remove listener
+     *
+     * @param  eventName
+     * @param  listener  可以是一个callback方法或者一个继承于Listner的对象实例
+     */
     public function removeListener($eventName, $listener)
     {
-       if (!isset($this->listeners[$eventName])) {
+       if (!isset($this -> listeners[$eventName])) {
             return;
         }
 
-        foreach ($this->listeners[$eventName] as $priority => $listeners) {
+        foreach ($this -> listeners[$eventName] as $priority => $listeners) {
             if (false !== ($key = array_search($listener, $listeners, true))) {
-                unset($this->listeners[$eventName][$priority][$key]);
+                unset($this -> listeners[$eventName][$priority][$key]);
+                $this -> sortEvents($eventName);
             }
         }
     }
 
+    /**
+     * 对eventName的listeners排序
+     *
+     * @param  eventName
+     */
     public function sortEvents($eventName)
     {
-        if (isset($this->listeners[$eventName])) {
-
-            krsort($this->listeners[$eventName]);
+        if (isset($this -> listeners[$eventName])) {
+            krsort($this -> listeners[$eventName]);
             $this -> sorted[$eventName] = call_user_func_array('array_merge', $this->listeners[$eventName]);
         }
     }
 
+    /**
+     * 设置一个有序的sorted
+     *
+     * @param  eventName
+     */
     public function setEvents($eventName)
     {
         if (!isset($this -> sorted[$eventName]))
             $this -> sorted[$eventName] = [];
     }
 
+    /**
+     * 获取排好序的listeners
+     *
+     * @param  eventName
+     * @return  array|null
+     */
     public function getListeners($eventName = null)
     {
         if (isset($eventName)) {
@@ -70,17 +114,29 @@ class EventDispatcherService implements EventDispatcherContract
         return $this -> sorted;
     }
 
+    /**
+     * 是否存在某个监听
+     *
+     * @param  eventName
+     * @return  boolean
+     */
     public function hasListeners($eventName = null)
     {
-        if (isset($eventName)) {
+        if (isset($eventName) && isset($this -> sorted[$eventName])) {
 
-            return isset($this -> sorted[$eventName]) ? true : false;
+            return  empty($this -> sorted[$eventName]) ? false : true;
         }
 
         return empty($this -> sorted) ? false : true;
     }
 
-    public function doDispatch($eventName, $event)
+    /**
+     * 执行触发事件
+     *
+     * @param  eventName
+     * @param  Event event
+     */
+    private function doDispatch($eventName, $event)
     {
         $listeners = $this -> sorted[$eventName];
 
@@ -96,6 +152,5 @@ class EventDispatcherService implements EventDispatcherContract
                 call_user_func_array([$listener, $listener -> getMethod()], [$event]);
             }
         }
-
     }
 }
