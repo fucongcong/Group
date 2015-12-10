@@ -5,7 +5,8 @@
 [![Code Climate](https://codeclimate.com/repos/5657fbc8ea0d1f5571028f67/badges/c8175ffa03bd301eb7c7/gpa.svg)](https://codeclimate.com/repos/5657fbc8ea0d1f5571028f67/feed)
 [![Build Status](https://travis-ci.org/fucongcong/Group.svg?branch=master)](https://travis-ci.org/fucongcong/Group)
 
-####1.[Group框架简介](#user-content-Group框架简介)
+####1.[Group框架简介](#user-content-group框架简介)
+
 - [后端框架介绍](#user-content-框架介绍)
 
 ####2.[快速开始](#user-content-快速开始)
@@ -22,18 +23,18 @@
 ####6.[数据层](#user-content-数据层)
 
 ####7.[框架基础服务](#user-content-框架基础服务)
-- [Container](#user-content-Container)
-- [Cache](#user-content-Cache)
-- [Config](#user-content-Config)
-- [Console](#user-content-Console)
-- [Exception](#user-content-Exception)
-- [EventDispatcher](#user-content-EventDispatcher)
-- [FileCache](#user-content-FileCache)
-- [Filesystem](#user-content-Filesystem)
-- [Request](#user-content-Request)
-- [Response](#user-content-Response)
-- [Session](#user-content-Session)
-- [Log](#user-content-Log)
+- [Container](#user-content-container)
+- [Cache](#user-content-cache)
+- [Config](#user-content-config)
+- [Console](#user-content-console)
+- [Exception](#user-content-exception)
+- [EventDispatcher](#user-content-eventdispatcher)
+- [FileCache](#user-content-filecache)
+- [Filesystem](#user-content-filesystem)
+- [Request](#user-content-request)
+- [Response](#user-content-response)
+- [Session](#user-content-session)
+- [Log](#user-content-log)
 
 ####8.[单元测试](#user-content-单元测试)
 
@@ -72,15 +73,7 @@
 ####3.目录结构
 - app (脚本文件)
 - asset (前端文件)
-    - css
-    - fonts
-    - img
-    - js
-    - lib
 - config (配置文件)
-	- app.php
-    - database.php
-    - view.php
 - core (框架核心，后期将会打包到composer)
 - doc (文档)
 - runtime (缓存)

@@ -3,6 +3,7 @@
 namespace core\Group\EventDispatcher;
 
 use core\Group\Contracts\EventDispatcher\EventDispatcher as EventDispatcherContract;
+use core\Group\Events\EventSubscriberInterface;
 use Listener;
 use Event;
 
@@ -79,7 +80,7 @@ class EventDispatcherService implements EventDispatcherContract
      *
      * @param  eventName
      */
-    public function sortEvents($eventName)
+    private function sortEvents($eventName)
     {
         if (isset($this -> listeners[$eventName])) {
             krsort($this -> listeners[$eventName]);
@@ -92,7 +93,7 @@ class EventDispatcherService implements EventDispatcherContract
      *
      * @param  eventName
      */
-    public function setEvents($eventName)
+    private function setEvents($eventName)
     {
         if (!isset($this -> sorted[$eventName]))
             $this -> sorted[$eventName] = [];
@@ -128,6 +129,55 @@ class EventDispatcherService implements EventDispatcherContract
         }
 
         return empty($this -> sorted) ? false : true;
+    }
+
+    /**
+     * 添加事件绑定器，可以绑定多个事件
+     *
+     * @param  EventSubscriberInterface subscriber
+     */
+    public function addSubscriber(EventSubscriberInterface $subscriber)
+    {
+        foreach ($subscriber -> getSubscribedEvents() as $eventName => $params) {
+
+            if (is_string($params)) {
+
+                $this -> addListener($eventName, array($subscriber, $params));
+
+            } elseif (is_string($params[0])) {
+
+                $this -> addListener($eventName, array($subscriber, $params[0]), isset($params[1]) ? $params[1] : 0);
+
+            } else {
+
+                foreach ($params as $listener) {
+
+                    $this -> addListener($eventName, array($subscriber, $listener[0]), isset($listener[1]) ? $listener[1] : 0);
+                }
+            }
+        }
+    }
+
+    /**
+     * 移除绑定器
+     *
+     * @param  EventSubscriberInterface subscriber
+     */
+    public function removeSubscriber(EventSubscriberInterface $subscriber)
+    {
+        foreach ($subscriber -> getSubscribedEvents() as $eventName => $params) {
+
+            if (is_array($params) && is_array($params[0])) {
+
+                foreach ($params as $listener) {
+                    $this -> removeListener($eventName, array($subscriber, $listener[0]));
+                }
+
+            } else {
+
+                $this -> removeListener($eventName, array($subscriber, is_string($params) ? $params : $params[0]));
+            }
+        }
     }
 
     /**

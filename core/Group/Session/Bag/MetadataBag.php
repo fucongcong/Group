@@ -46,8 +46,8 @@ class MetadataBag extends SfMetadataBag
      */
     public function __construct($storageKey = '_group_meta', $updateThreshold = 0)
     {
-        $this->storageKey = $storageKey;
-        $this->updateThreshold = $updateThreshold;
+        $this -> storageKey = $storageKey;
+        $this -> updateThreshold = $updateThreshold;
     }
 
     /**
@@ -55,17 +55,17 @@ class MetadataBag extends SfMetadataBag
      */
     public function initialize(array &$array)
     {
-        $this->meta = &$array;
+        $this -> meta = &$array;
 
         if (isset($array[self::CREATED])) {
-            $this->lastUsed = $this->meta[self::UPDATED];
+            $this -> lastUsed = $this -> meta[self::UPDATED];
 
             $timeStamp = time();
-            if ($timeStamp - $array[self::UPDATED] >= $this->updateThreshold) {
-                $this->meta[self::UPDATED] = $timeStamp;
+            if ($timeStamp - $array[self::UPDATED] >= $this -> updateThreshold) {
+                $this -> meta[self::UPDATED] = $timeStamp;
             }
         } else {
-            $this->stampCreated();
+            $this -> stampCreated();
         }
     }
 
@@ -76,7 +76,7 @@ class MetadataBag extends SfMetadataBag
      */
     public function getLifetime()
     {
-        return $this->meta[self::LIFETIME];
+        return $this -> meta[self::LIFETIME];
     }
 
     /**
@@ -89,7 +89,7 @@ class MetadataBag extends SfMetadataBag
      */
     public function stampNew($lifetime = null)
     {
-        $this->stampCreated($lifetime);
+        $this -> stampCreated($lifetime);
     }
 
     /**
@@ -97,7 +97,7 @@ class MetadataBag extends SfMetadataBag
      */
     public function getStorageKey()
     {
-        return $this->storageKey;
+        return $this -> storageKey;
     }
 
     /**
@@ -107,7 +107,7 @@ class MetadataBag extends SfMetadataBag
      */
     public function getCreated()
     {
-        return $this->meta[self::CREATED];
+        return $this -> meta[self::CREATED];
     }
 
     /**
@@ -117,7 +117,7 @@ class MetadataBag extends SfMetadataBag
      */
     public function getLastUsed()
     {
-        return $this->lastUsed;
+        return $this -> lastUsed;
     }
 
     /**
@@ -133,7 +133,7 @@ class MetadataBag extends SfMetadataBag
      */
     public function getName()
     {
-        return $this->name;
+        return $this -> name;
     }
 
     /**
@@ -143,13 +143,13 @@ class MetadataBag extends SfMetadataBag
      */
     public function setName($name)
     {
-        $this->name = $name;
+        $this -> name = $name;
     }
 
     private function stampCreated($lifetime = null)
     {
         $timeStamp = time();
-        $this->meta[self::CREATED] = $this->meta[self::UPDATED] = $this->lastUsed = $timeStamp;
-        $this->meta[self::LIFETIME] = (null === $lifetime) ? ini_get('session.cookie_lifetime') : $lifetime;
+        $this -> meta[self::CREATED] = $this -> meta[self::UPDATED] = $this -> lastUsed = $timeStamp;
+        $this -> meta[self::LIFETIME] = (null === $lifetime) ? ini_get('session.cookie_lifetime') : $lifetime;
     }
 }
