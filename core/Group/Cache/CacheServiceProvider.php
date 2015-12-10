@@ -22,7 +22,7 @@ class CacheServiceProvider extends ServiceProvider
 
             $this -> app -> singleton($cache, function () {
 
-                return new RedisCacheService($this -> app);
+                return new RedisCacheService($this -> app -> singleton('redis'));
             });
         }
     }
