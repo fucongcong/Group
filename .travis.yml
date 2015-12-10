@@ -4,7 +4,13 @@ php:
     - 5.6
 install:
     - composer install
-before_script: phpenv config-add doc/myconfig.ini
+before_script:
+    - phpenv config-add doc/myconfig.ini
+    - wget http://download.redis.io/releases/redis-3.0.5.tar.gz
+    - tar xzf redis-3.0.5.tar.gz
+    - cd redis-3.0.5
+    - make
+    - src/redis-server
 script:
     - sudo find -L ./core -name '*.php' -print0 | xargs -0 -n 1 -P 4 php -l
     - phpunit --bootstrap app/test.php core/Group
