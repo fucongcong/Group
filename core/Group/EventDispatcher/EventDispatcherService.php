@@ -141,12 +141,18 @@ class EventDispatcherService implements EventDispatcherContract
         foreach ($subscriber -> getSubscribedEvents() as $eventName => $params) {
 
             if (is_string($params)) {
+
                 $this -> addListener($eventName, array($subscriber, $params));
+
             } elseif (is_string($params[0])) {
-                $this->addListener($eventName, array($subscriber, $params[0]), isset($params[1]) ? $params[1] : 0);
+
+                $this -> addListener($eventName, array($subscriber, $params[0]), isset($params[1]) ? $params[1] : 0);
+
             } else {
+
                 foreach ($params as $listener) {
-                    $this->addListener($eventName, array($subscriber, $listener[0]), isset($listener[1]) ? $listener[1] : 0);
+
+                    $this -> addListener($eventName, array($subscriber, $listener[0]), isset($listener[1]) ? $listener[1] : 0);
                 }
             }
         }
@@ -162,10 +168,13 @@ class EventDispatcherService implements EventDispatcherContract
         foreach ($subscriber -> getSubscribedEvents() as $eventName => $params) {
 
             if (is_array($params) && is_array($params[0])) {
+
                 foreach ($params as $listener) {
                     $this -> removeListener($eventName, array($subscriber, $listener[0]));
                 }
+
             } else {
+
                 $this -> removeListener($eventName, array($subscriber, is_string($params) ? $params : $params[0]));
             }
         }
