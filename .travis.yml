@@ -10,7 +10,9 @@ before_script:
     - tar xzf redis-3.0.5.tar.gz
     - cd redis-3.0.5
     - make
+    - sudo sed -i '' 's/daemonize no/daemonize yes/g' redis.conf
     - src/redis-server
+    - cd ..
 script:
     - sudo find -L ./core -name '*.php' -print0 | xargs -0 -n 1 -P 4 php -l
     - phpunit --bootstrap app/test.php core/Group
