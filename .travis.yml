@@ -10,7 +10,7 @@ before_script:
     - tar xzf redis-3.0.5.tar.gz
     - cd redis-3.0.5
     - make
-    - sudo sed -i '' 's/daemonize no/daemonize yes/g' redis.conf
+    - sudo sed -i 's/daemonize no/daemonize yes/g' redis.conf
     - src/redis-server
     - cd ..
 script:
