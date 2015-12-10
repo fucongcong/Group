@@ -2,6 +2,7 @@
 
 namespace core\Group\Contracts\EventDispatcher;
 
+use core\Group\Events\EventSubscriberInterface;
 use Event;
 
 interface EventDispatcher
@@ -47,4 +48,18 @@ interface EventDispatcher
      * @return  boolean
      */
     public function hasListeners($eventName = null);
+
+    /**
+     * 移除绑定器
+     *
+     * @param  EventSubscriberInterface subscriber
+     */
+    public function removeSubscriber(EventSubscriberInterface $subscriber);
+
+    /**
+     * 添加事件绑定器，可以绑定多个事件
+     *
+     * @param  EventSubscriberInterface subscriber
+     */
+    public function addSubscriber(EventSubscriberInterface $subscriber);
 }
