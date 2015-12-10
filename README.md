@@ -5,9 +5,8 @@
 [![Code Climate](https://codeclimate.com/repos/5657fbc8ea0d1f5571028f67/badges/c8175ffa03bd301eb7c7/gpa.svg)](https://codeclimate.com/repos/5657fbc8ea0d1f5571028f67/feed)
 [![Build Status](https://travis-ci.org/fucongcong/Group.svg?branch=master)](https://travis-ci.org/fucongcong/Group)
 
-
-https://travis-ci.org/fucongcong/Group.svg
 ####1.[Group框架简介](#user-content-group框架简介)
+
 - [后端框架介绍](#user-content-框架介绍)
 
 ####2.[快速开始](#user-content-快速开始)
