@@ -14,9 +14,9 @@ class RedisCacheService implements CacheContract
      */
     protected $redis;
 
-    public function __construct($app)
+    public function __construct($redis)
     {
-        $this -> redis = $app -> singleton('redis');
+        $this -> redis = $redis;
     }
 
     /**
@@ -62,7 +62,7 @@ class RedisCacheService implements CacheContract
      * @param  key
      * @param  data
      * @param  expireTime(int)
-     * @return boolean
+     * @return int
      */
     public function hSet($hashKey, $key, $data, $expireTime = 3600)
     {
