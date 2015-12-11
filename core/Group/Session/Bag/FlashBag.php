@@ -29,7 +29,7 @@ private $name = 'flashes';
      */
     public function __construct($storageKey = '_group_flashes')
     {
-        $this->storageKey = $storageKey;
+        $this -> storageKey = $storageKey;
     }
 
     /**
@@ -37,12 +37,12 @@ private $name = 'flashes';
      */
     public function getName()
     {
-        return $this->name;
+        return $this -> name;
     }
 
     public function setName($name)
     {
-        $this->name = $name;
+        $this -> name = $name;
     }
 
     /**
@@ -50,7 +50,7 @@ private $name = 'flashes';
      */
     public function initialize(array &$flashes)
     {
-        $this->flashes = &$flashes;
+        $this -> flashes = &$flashes;
     }
 
     /**
@@ -58,7 +58,7 @@ private $name = 'flashes';
      */
     public function add($type, $message)
     {
-        $this->flashes[$type][] = $message;
+        $this -> flashes[$type][] = $message;
     }
 
     /**
@@ -66,7 +66,7 @@ private $name = 'flashes';
      */
     public function peek($type, array $default = array())
     {
-        return $this->has($type) ? $this->flashes[$type] : $default;
+        return $this -> has($type) ? $this -> flashes[$type] : $default;
     }
 
     /**
@@ -74,7 +74,7 @@ private $name = 'flashes';
      */
     public function peekAll()
     {
-        return $this->flashes;
+        return $this -> flashes;
     }
 
     /**
@@ -82,13 +82,13 @@ private $name = 'flashes';
      */
     public function get($type, array $default = array())
     {
-        if (!$this->has($type)) {
+        if (!$this -> has($type)) {
             return $default;
         }
 
-        $return = $this->flashes[$type];
+        $return = $this -> flashes[$type];
 
-        unset($this->flashes[$type]);
+        unset($this -> flashes[$type]);
 
         return $return;
     }
@@ -98,8 +98,8 @@ private $name = 'flashes';
      */
     public function all()
     {
-        $return = $this->peekAll();
-        $this->flashes = array();
+        $return = $this -> peekAll();
+        $this -> flashes = array();
 
         return $return;
     }
@@ -109,7 +109,7 @@ private $name = 'flashes';
      */
     public function set($type, $messages)
     {
-        $this->flashes[$type] = (array) $messages;
+        $this -> flashes[$type] = (array) $messages;
     }
 
     /**
@@ -117,7 +117,7 @@ private $name = 'flashes';
      */
     public function setAll(array $messages)
     {
-        $this->flashes = $messages;
+        $this -> flashes = $messages;
     }
 
     /**
@@ -125,7 +125,7 @@ private $name = 'flashes';
      */
     public function has($type)
     {
-        return array_key_exists($type, $this->flashes) && $this->flashes[$type];
+        return array_key_exists($type, $this -> flashes) && $this -> flashes[$type];
     }
 
     /**
@@ -133,7 +133,7 @@ private $name = 'flashes';
      */
     public function keys()
     {
-        return array_keys($this->flashes);
+        return array_keys($this -> flashes);
     }
 
     /**
@@ -141,7 +141,7 @@ private $name = 'flashes';
      */
     public function getStorageKey()
     {
-        return $this->storageKey;
+        return $this -> storageKey;
     }
 
     /**
@@ -149,6 +149,6 @@ private $name = 'flashes';
      */
     public function clear()
     {
-        return $this->all();
+        return $this -> all();
     }
 }
