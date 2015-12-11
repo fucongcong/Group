@@ -12,5 +12,4 @@ class GroupServiceImpl extends GroupBaseService implements GroupService
         //return $this -> getUserService() -> getUser(1);
         return $this->getGroupDao()->getGroup($id);
     }
-
 }
