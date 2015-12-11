@@ -9,15 +9,11 @@ class Cron
 
     public function __construct()
     {
-
         $loader = require __ROOT__.'/vendor/autoload.php';
-
         $loader->setUseIncludePath(true);
 
         $app = new App();
-
         $app -> initSelf();
-
         $app -> registerServices();
     }
 
