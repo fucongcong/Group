@@ -1,5 +1,6 @@
 #!/usr/bin/env php
 <?php
+
 use core\Group\Console\Console;
 use core\Group\App\App;
 
