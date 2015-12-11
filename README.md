@@ -27,6 +27,7 @@
 - [Cache](#user-content-cache)
 - [Config](#user-content-config)
 - [Console](#user-content-console)
+- [CronJob](#user-content-cronjob)
 - [Exception](#user-content-exception)
 - [EventDispatcher](#user-content-eventdispatcher)
 - [FileCache](#user-content-filecache)
@@ -35,6 +36,7 @@
 - [Response](#user-content-response)
 - [Session](#user-content-session)
 - [Log](#user-content-log)
+
 
 ####8.[单元测试](#user-content-单元测试)
 
@@ -544,6 +546,18 @@ class KernalResponseListener extends Listener
     generate:controller  name    生成一个自定义controller
     sql:generate                生成一个sql执行模板(存放于app/sql)
     sql:migrate                 执行sql模板
+
+
+## CronJob
+#####异步定时器介绍
+#####依赖：[Swoole1.7.14以上版本](https://github.com/swoole/swoole-src)
+
+#####配置文件config/cron.php
+#####执行命令
+
+    php app/cron.php &
+
+#####注意，如果要更新定时器配置，或者代码逻辑时，需要重新执行脚本命令(暂不支持热更新)，文件日志存放于runtime/cron，定时器进程id为runtime/pid
 
 
 ## 单元测试
