@@ -4,10 +4,11 @@ namespace core\Group\Test;
 
 use PHPUnit_Framework_TestCase;
 
-class Test extends PHPUnit_Framework_TestCase
+abstract class Test extends PHPUnit_Framework_TestCase
 {
-    public function testAction()
+    public function __construct()
     {
-        $this -> assertEquals('group', 'group');
+        if (method_exists($this, '__initialize'))
+            $this -> __initialize();
     }
 }

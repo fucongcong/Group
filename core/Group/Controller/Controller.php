@@ -75,6 +75,16 @@ class Controller implements ControllerContract
 		return $this -> app -> singleton('container');
 	}
 
+	public function setFlashMessage($type, $message)
+	{
+		\Session::getFlashBag() -> set($type, $message);
+	}
+
+	public function getFlashMessage()
+	{
+		return \Session::getFlashBag() -> all();
+	}
+
 	public function __call($method, $parameters)
 	{
 		throw new NotFoundException("Method [$method] does not exist.");
