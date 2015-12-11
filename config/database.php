@@ -4,7 +4,6 @@ return
     //默认可以不开启读写配置，读写配置可以配置多个
     'pdo' => [
 
-
         'default' => [
 
             "database_driver" => "mysql",
