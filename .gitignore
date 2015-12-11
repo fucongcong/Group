@@ -3,4 +3,6 @@
 /asset/fonts/*
 /asset/js/*
 /asset/img/*
+/asset/lib/*
 /vendor
+composer.lock

@@ -2,28 +2,30 @@
 
 namespace src\Services\Group\Dao\Impl;
 
-use core\Group\Dao\Dao;
+use Dao;
 use src\Services\Group\Dao\GroupDao;
-use PDO;
+
 class GroupDaoImpl extends Dao implements GroupDao
 {
+    //定以数据表
     protected $tables="groups";
 
+    //具体方法
     public function getGroup($id)
     {
         $sql="SELECT * FROM {$this->tables} WHERE id=:id LIMIT 0,1";
+        //动态参数绑定
+        $bind = array('id' => $id);
+        //读取默认配置
+        //$group = $this->getDefault()->fetchOne($sql, $bind);
 
-        $rs = $this->getConnection()->prepare($sql);
+        //读取写服务器配置，如果没有指定具体参数，随机写入分配的服务器
+        //$group = $this->getWrite('master1')->fetchOne($sql, $bind);
+        //$group = $this->getWrite('master2')->fetchOne($sql, $bind);
 
-        $rs->bindParam(':id',$id);
-        $rs->execute();
-
-        $rs->setFetchMode(PDO::FETCH_ASSOC);
-
-        $group=$rs->fetch() ? : null;
-
-        return $group;
+        //读取读服务器配置，如果没有指定具体参数，随机读取分配的服务器
+        $group = $this->getRead()->fetchOne($sql, $bind);
+        return $group ? $group : null;
     }
 
 }
-?>

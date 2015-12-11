@@ -1,15 +1,15 @@
 <?php
+
 namespace core\Group\Container;
 
 use ReflectionClass;
-use Exception;
+use App;
 use core\Group\Exceptions\NotFoundException;
 use core\Group\Contracts\Container\Container as ContainerContract;
-use core\Group\Config\Config;
 
 class Container implements ContainerContract
 {
-	private static $_instance;
+	private static $instance;
 
     protected $timezone;
 
@@ -17,12 +17,15 @@ class Container implements ContainerContract
 
     protected $appPath;
 
+    protected $locale;
 
-    public function init()
+    public function __construct()
     {
         $this -> setTimezone();
+
         $this -> setEnvironment();
-        $this -> setAppPath();
+
+        $this -> setLocale();
     }
 
 	/**
@@ -52,17 +55,26 @@ class Container implements ContainerContract
      * @param  array parameters
      * @return string
      */
-	public function doAction($class, $action, array $parameters = [])
+	public function doAction($class, $action, array $parameters, \Request $request)
 	{
-		$reflector = $this->buildMoudle($class);
-		if(!$reflector->hasMethod($action)) {
+		$reflector = $this -> buildMoudle($class);
+
+		if (!$reflector -> hasMethod($action)) {
 
 			throw new NotFoundException("Class ".$class." exist ,But the Action ".$action." not found");
 		}
 
-		$instanc =$reflector->newInstanceArgs();
-		$method = $reflector->getmethod($action);
-		return $method->invokeArgs($instanc, $parameters);
+		$instanc = $reflector -> newInstanceArgs(array(App::getInstance()));
+		$method = $reflector -> getmethod($action);
+        $args = [];
+        foreach ($method -> getParameters() as $arg)
+        {
+            $paramName = $arg ->getName();
+            if (isset($parameters[$paramName])) $args[$paramName] = $parameters[$paramName];
+            if (!empty($arg -> getClass()) && $arg -> getClass() -> getName() == 'core\Group\Http\Request') $args[$paramName] = $request;
+        }
+
+		return $method -> invokeArgs($instanc, $args);
 
 	}
 
@@ -71,16 +83,15 @@ class Container implements ContainerContract
      *
      * @return core\Group\Container Container
      */
-	public static function getInstance(){
+	public static function getInstance()
+    {
+		if (!(self::$instance instanceof self)){
 
-		if(!(self::$_instance instanceof self)){
-
-			self::$_instance = new self;
+			self::$instance = new self;
 		}
 
-		return self::$_instance;
+		return self::$instance;
 	}
-
 
     /**
      * 设置时区
@@ -88,7 +99,7 @@ class Container implements ContainerContract
      */
     public function setTimezone()
     {
-        $this -> timezone = Config::get('app::timezone');
+        $this -> timezone = \Config::get('app::timezone');
         date_default_timezone_set($this -> getTimezone());
     }
 
@@ -103,7 +114,7 @@ class Container implements ContainerContract
     }
 
     /**
-     * 设置环境
+     * 获取当前环境
      *
      *@return string prod｜dev
      */
@@ -113,21 +124,49 @@ class Container implements ContainerContract
     }
 
     /**
-     * 获取当前环境
+     * 设置环境
      *
      */
     public function setEnvironment()
     {
-        $this -> environment = Config::get('app::environment');
+        $this -> environment = \Config::get('app::environment');
     }
 
-    public function setAppPath()
+    /**
+     * 设置系统根目录
+     *
+     */
+    public function setAppPath($path)
     {
-        $this -> appPath = __ROOT__;
+        $this -> appPath = $path;
     }
 
+    /**
+     * 获取系统根目录
+     *
+     *@return string
+     */
     public function getAppPath()
     {
         return $this -> appPath;
+    }
+
+    /**
+     * 设置地区
+     *
+     */
+    public function setLocale()
+    {
+        $this -> locale = \Config::get('app::locale');
+    }
+
+    /**
+     * 获取设置的地区
+     *
+     *@return string
+     */
+    public function getLocale()
+    {
+        return $this -> locale;
     }
 }

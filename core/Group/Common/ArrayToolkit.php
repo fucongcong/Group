@@ -1,23 +1,38 @@
 <?php
+
 namespace core\Group\Common;
 
 class ArrayToolkit
 {
+    /**
+     * 返回数组中key对应的值
+     *
+     * @param  array
+     * @param  columnName
+     * @return array
+     */
 	public static function column(array $array, $columnName)
 	{
 		if (empty($array)) {
 			return array();
 		}
-		
+
 		$column = array();
 		foreach ($array as $item) {
-		            if (isset($item[$columnName])) {
-		                $column[] = $item[$columnName];
-		            }
-				}
-	        	return $column;
+            if (isset($item[$columnName])) {
+                $column[] = $item[$columnName];
+            }
+		}
+    	return $column;
 	}
 
+    /**
+     * 过滤数组中的key
+     *
+     * @param  array
+     * @param  keys
+     * @return array
+     */
 	public static function parts(array $array, array $keys)
 	{
 		foreach (array_keys($array) as $key) {
@@ -28,6 +43,13 @@ class ArrayToolkit
 		return $array;
 	}
 
+    /**
+     * 数组中的key是否存在
+     *
+     * @param  array
+     * @param  keys
+     * @return boolean
+     */
 	public static function requireds(array $array, array $keys)
 	{
 		foreach ($keys as $key) {
@@ -38,6 +60,13 @@ class ArrayToolkit
 		return true;
 	}
 
+    /**
+     * 数组间的差异
+     *
+     * @param  array
+     * @param  array
+     * @return array
+     */
 	public static function changes(array $before, array $after)
 	{
 		$changes = array('before' => array(), 'after' => array());
@@ -53,6 +82,13 @@ class ArrayToolkit
 		return $changes;
 	}
 
+    /**
+     * 根据指定key进行分组
+     *
+     * @param  array
+     * @param  key
+     * @return array
+     */
     public static function group(array $array, $key)
     {
         $grouped = array();
@@ -66,13 +102,20 @@ class ArrayToolkit
         return $grouped;
     }
 
+    /**
+     * 把指定key作为数组键名返回
+     *
+     * @param  array
+     * @param  key
+     * @return array
+     */
     public static function index (array $array, $name)
     {
         $indexedArray = array();
         if (empty($array)) {
             return $indexedArray;
         }
-        
+
         foreach ($array as $item) {
             if (isset($item[$name])) {
                 $indexedArray[$item[$name]] = $item;
@@ -82,6 +125,13 @@ class ArrayToolkit
         return $indexedArray;
     }
 
+    /**
+     * 过滤数组中value得值
+     *
+     * @param  array
+     * @param  specialValues
+     * @return array
+     */
     public static function filter(array $array, array $specialValues)
     {
     	$filtered = array();
@@ -109,5 +159,4 @@ class ArrayToolkit
 
     	return $filtered;
     }
-
 }

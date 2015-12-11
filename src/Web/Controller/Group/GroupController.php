@@ -1,7 +1,10 @@
 <?php
-namespace src\web\Controller\Group;
 
-use core\Group\Controller\Controller;
+namespace src\Web\Controller\Group;
+
+use Controller;
+use Request;
+use JsonResponse;
 
 class GroupController extends Controller
 {
@@ -13,26 +16,48 @@ class GroupController extends Controller
             'group' => $group));
     }
 
-    public function testAction($id)
+    public function testAction(Request $request, $id)
     {
-        echo $id; echo "<br>";
+        // \Log::debug('123',['user'=>1]);
+        // \Log::debug('1233',['user'=>12]);
+        // \Log::debug('12asdasd33',['user'=>555]);
+        // echo $id;
+        // echo $request->query->get('token');
+        // echo $id; echo "<br>";
+        // \Cache::set('ha',123,60);
+        // \Cache::redis() -> set('haa',123,60);
+        // $config = \Config::getInstance();
+        // var_dump($config -> getConfig());
+        //echo \Session::get('aa','123');
+        // \Session::getFlashBag() -> setAll(['group', 'good']);
+        // \Session::getFlashBag() -> all();
+        $uri = $this -> route() -> getUri();
 
-        echo $this -> route() -> getUri();echo "<br>";
+        $parameters = $this -> route() -> getParameters();
 
-        print_r($this -> route() -> getParameters());echo "<br>";
+        $parametersName = $this -> route() -> getParametersName();
 
-        print_r($this -> route() -> getParametersName());echo "<br>";
+        $action = $this -> route() -> getAction();
 
-        echo $this -> route() -> getAction();echo "<br>";
+        $methods = $this -> route() -> getMethods();
 
-        print_r($this -> route() -> getMethods());echo "<br>";
+        $currentMethod = $this -> route() -> getCurrentMethod();
 
-        echo $this -> getContainer() -> getTimezone();echo "<br>";
+        $timezone = $this -> getContainer() -> getTimezone();
 
-        echo $this -> getContainer() -> getEnvironment();echo "<br>";
-        //$group=$this->getGroupService()->getGroup(1);
+        $environment = $this -> getContainer() -> getEnvironment();
+        //return new JsonResponse([$id]);
+        //var_dump($this->getGroupService()->getGroup(2));
         return $this -> render('Web/Views/Group/index.html.twig',array(
-            'group' => $group));
+            'uri' => $uri,
+            'parameters' => $parameters,
+            'parametersName' => $parametersName,
+            'action' => $action,
+            'methods' => $methods,
+            'currentMethod' => $currentMethod,
+            'timezone' => $timezone,
+            'environment' => $environment
+            ));
     }
 
     public function getGroupService()

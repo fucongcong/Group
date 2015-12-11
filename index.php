@@ -1,4 +1,5 @@
 <?php
+
 use core\Group\Kernal;
 
 define('__ROOT__', realpath(dirname(__FILE__)) . DIRECTORY_SEPARATOR);
@@ -9,6 +10,6 @@ $loader->setUseIncludePath(true);
 
 $kernal = new Kernal();
 
-$kernal->init();
+$kernal->init(realpath(dirname(__FILE__)) . DIRECTORY_SEPARATOR);
 
 ?>

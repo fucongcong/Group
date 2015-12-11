@@ -1,9 +1,8 @@
 <?php
 namespace src\Services\Group;
 
-interface GroupService 
+interface GroupService
 {
     public function getGroup($id);
 }
 
-?>

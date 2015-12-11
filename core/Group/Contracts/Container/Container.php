@@ -1,4 +1,5 @@
 <?php
+
 namespace core\Group\Contracts\Container;
 
 interface Container
@@ -19,7 +20,7 @@ interface Container
      * @param  array parameters
      * @return string
      */
-    public function doAction($class, $action, array $parameters = []);
+    public function doAction($class, $action, array $parameters, \Request $request);
 
     /**
      * 设置时区
@@ -45,4 +46,30 @@ interface Container
      *
      */
     public function setEnvironment();
+
+    /**
+     * 设置系统根目录
+     *
+     */
+    public function setAppPath($path);
+
+    /**
+     * 获取系统根目录
+     *
+     *@return string
+     */
+    public function getAppPath();
+
+    /**
+     * 设置地区
+     *
+     */
+    public function setLocale();
+
+    /**
+     * 获取设置的地区
+     *
+     *@return string
+     */
+    public function getLocale();
 }

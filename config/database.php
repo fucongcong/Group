@@ -1,31 +1,114 @@
 <?php
 return
 [
-    //pdo DB
-    'driver' => 'DB',
+    //默认可以不开启读写配置，读写配置可以配置多个
+    'pdo' => [
 
-    'connect' => [
 
-        "database_driver" => "mysql",
+        'default' => [
 
-        "database_host" => "192.168.1.4",
+            "database_driver" => "mysql",
 
-        "database_port" => 192,
+            "database_host" => "127.0.0.1",
 
-        "database_name" => "banciyuan",
+            "database_port" => "3306",
 
-        "database_user" => "banciyuan",
+            "database_name" => "Group",
 
-        "database_password" => "banciyuan",
+            "database_user" => "root",
 
-        "database_encoding" => "utf8mb4"
+            "database_password" => "123",
+
+            "database_charset" => "utf8",
+        ],
+
+        // 'write' => [
+
+        //     'master1' => [
+
+        //         "database_driver" => "mysql",
+
+        //         "database_host" => "127.0.0.1",
+
+        //         "database_port" => "3306",
+
+        //         "database_name" => "Group1",
+
+        //         "database_user" => "root",
+
+        //         "database_password" => "123",
+
+        //         "database_charset" => "utf8",
+        //     ],
+
+        //     'master2' => [
+
+        //         "database_driver" => "mysql",
+
+        //         "database_host" => "127.0.0.1",
+
+        //         "database_port" => "3306",
+
+        //         "database_name" => "Group2",
+
+        //         "database_user" => "root",
+
+        //         "database_password" => "123",
+
+        //         "database_charset" => "utf8",
+        //     ],
+        // ],
+
+        // 'read' => [
+
+        //     'slave1' => [
+
+        //         "database_driver" => "mysql",
+
+        //         "database_host" => "127.0.0.1",
+
+        //         "database_port" => "3306",
+
+        //         "database_name" => "Group3",
+
+        //         "database_user" => "root",
+
+        //         "database_password" => "123",
+
+        //         "database_charset" => "utf8",
+        //     ],
+
+        //     'slave2' =>  [
+
+        //         "database_driver" => "mysql",
+
+        //         "database_host" => "127.0.0.1",
+
+        //         "database_port" => "3306",
+
+        //         "database_name" => "Group4",
+
+        //         "database_user" => "root",
+
+        //         "database_password" => "123",
+
+        //         "database_charset" => "utf8",
+        //     ],
+        // ],
     ],
+
+
+
+    //redis null
+    'cache' => 'null',
 
     'redis' => [
 
         'default' => [
             'host'     => '127.0.0.1',
             'port'     => 6379,
+            'prefix'   => 'group_',
+            'auth'     => '',
         ],
 
     ],

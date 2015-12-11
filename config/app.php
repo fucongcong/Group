@@ -4,18 +4,29 @@ return [
     // prod|dev
     'environment' => 'prod',
 
+    //zh|en|fr...
+    'locale' => 'zh',
+
     //时区
     'timezone' => 'Asia/Shanghai',
 
     //类的映射
     'aliases' => [
+        //like  'demo'       => 'src\Service\demo',
+    ],
 
-        'App'       => 'core\Group\App\App',
-        'Cache'     => 'core\Group\Cache\Cache',
-        'Config'    => 'core\Group\Config\Config',
-        'Container' => 'core\Group\Container\Container',
-        'Route'     => 'core\Group\Routing\Route',
+    //系统会提前加载服务
+    'serviceProviders' => [
+        'core\Group\Redis\RedisServiceProvider',
+        'core\Group\Cache\CacheServiceProvider',
+        'core\Group\Cache\FileCacheServiceProvider',
+        'core\Group\Session\SessionServiceProvider',
+        'core\Group\EventDispatcher\EventDispatcherServiceProvider',
+    ],
 
+    //需要实例化的单例
+    'singles' => [
+        //like  'demo'       => 'src\demo\demo',
     ],
 
 ];

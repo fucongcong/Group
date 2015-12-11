@@ -1,0 +1,57 @@
+ngnix反向代理:
+
+server {
+    listen 8081;
+
+    server_name www.group.com;
+
+    # 程序的安装路径
+    root /var/www/Group;
+
+    # 日志路径
+    # access_log /var/log/nginx/www.group.com.access.log;
+    # error_log /var/log/nginx/www.group.com.error.log;
+
+    location / {
+        index index.php;
+        try_files $uri @apache;
+    }
+    location @apache {
+        proxy_set_header X-Real-IP  $remote_addr;
+        proxy_set_header X-Forwarded-For $remote_addr;
+        proxy_set_header Host $host;
+        rewrite ^(.*)$ /index.php$1 last;
+        proxy_pass http://127.0.0.1:8090;
+     }
+    location ~ ^/(index)\.php(/|$) {
+        proxy_set_header X-Real-IP  $remote_addr;
+        proxy_set_header X-Forwarded-For $remote_addr;
+        proxy_set_header Host $host;
+        proxy_pass http://127.0.0.1:8090;
+    }
+
+    location ~* \.(jpg|jpeg|gif|png|ico|swf)$ {
+        # 过期时间为3年
+        expires 3y;
+
+        # 关闭日志记录
+        access_log off;
+
+        # 关闭gzip压缩，减少CPU消耗，因为图片的压缩率不高。
+        gzip off;
+    }
+
+    # 配置css/js文件
+    location ~* \.(css|js)$ {
+        access_log off;
+        expires 3y;
+    }
+}
+
+
+apache（httpd.conf）:
+
+修改Listen:8090
+修改DocumentRoot
+开启Rewrite模块
+开启解析php模块
