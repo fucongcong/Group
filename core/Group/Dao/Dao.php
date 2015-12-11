@@ -1,6 +1,7 @@
 <?php
 
 namespace core\Group\Dao;
+
 use Aura\Sql\ExtendedPdo;
 use Aura\Sql\ConnectionLocator;
 
