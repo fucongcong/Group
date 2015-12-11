@@ -19,7 +19,6 @@ class Cron
         $app -> initSelf();
 
         $app -> registerServices();
-var_dump($timer = ParseCrontab::parse('1 * * * * *'));die;
     }
 
     public function run()
@@ -29,7 +28,7 @@ var_dump($timer = ParseCrontab::parse('1 * * * * *'));die;
         $pid = posix_getpid();
         file_put_contents("runtime/pid", $pid);
 
-        swoole_timer_tick(1000, function($timerId){
+        swoole_timer_tick(45000, function($timerId){
 
             $jobs = \Config::get('cron::job');
 
@@ -46,18 +45,21 @@ var_dump($timer = ParseCrontab::parse('1 * * * * *'));die;
     {
         $timer = ParseCrontab::parse($job['time']);
 
-        if (empty($timer)) return;
-        $timer = array_values($timer);
+        if (is_null($timer)) return;
 
         call_user_func_array([new $job['command'], 'init'], []);
 
-        swoole_timer_tick(intval($timer[0] * 1000), function($timerId, $job){
+        $job['timer'] = $timer;
+
+        swoole_timer_tick(intval($timer * 1000), function($timerId, $job){
 
             call_user_func_array([new $job['command'], 'init'], []);
 
+            \FileCache::set($job['name'], ['nextTime' => date('Y-m-d H:i:s', time() + intval($job['timer']))], $this -> cacheDir);
+
         }, $job);
 
-        \FileCache::set($job['name'], ['time' => date('Y-m-d H:i:s', time() + intval($timer[0]))], $this -> cacheDir);
+        \FileCache::set($job['name'], ['nextTime' => date('Y-m-d H:i:s', time() + intval($timer))], $this -> cacheDir);
     }
 
     public function checkStatus()

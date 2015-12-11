@@ -3,14 +3,14 @@ return [
     'job' => [
 
         [
-            'name' => 'SqlGenerate',
-            'time' => '* 1 * * * *',//定时规则
+            'name' => 'SqlGenerate',//任务名
+            'time' => '*/1 * * * *',//定时规则 分 小时 天 周 月
             'command' => 'core\Group\Cron\Tests\Test',
         ],
 
         [
             'name' => 'testSql',
-            'time' => '* 1 * * * *',//定时规则
+            'time' => '*/2 * * * *',//定时规则 分 小时 天 周 月
             'command' => 'core\Group\Cron\Tests\TestSql',
         ]
 

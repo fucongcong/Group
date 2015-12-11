@@ -39,16 +39,7 @@ class ParseCrontab
         $cron = preg_split("/[\s]+/i", trim($crontab_string));
         $start = empty($start_time) ? time() : $start_time;
 
-        if (count($cron) == 6) {
-            $date = array(
-                'second'  => self::_parse_cron_number($cron[0], 0, 59),
-                'minutes' => self::_parse_cron_number($cron[1], 0, 59),
-                'hours'   => self::_parse_cron_number($cron[2], 0, 23),
-                'day'     => self::_parse_cron_number($cron[3], 1, 31),
-                'month'   => self::_parse_cron_number($cron[4], 1, 12),
-                'week'    => self::_parse_cron_number($cron[5], 0, 6),
-            );
-        } elseif (count($cron) == 5) {
+        if (count($cron) == 5) {
             $date = array(
                 'second'  => array(1 => 1),
                 'minutes' => self::_parse_cron_number($cron[0], 0, 59),
@@ -57,6 +48,7 @@ class ParseCrontab
                 'month'   => self::_parse_cron_number($cron[3], 1, 12),
                 'week'    => self::_parse_cron_number($cron[4], 0, 6),
             );
+            $cron = \Cron\CronExpression::factory($cron[0].' '.$cron[1].' '.$cron[2].' '.$cron[3].' '.$cron[4].' *');
         }
         if (
             in_array(intval(date('i', $start)), $date['minutes']) &&
@@ -66,11 +58,10 @@ class ParseCrontab
             in_array(intval(date('n', $start)), $date['month'])
 
         ) {
-            if(count($date['minutes']) == 1) return $date['second'];
-            if(count($date['hours']) == 1) return $date['second'];
-            if(count($date['day']) == 1) return $date['second'];
-            var_dump($date['second']);die;
-            return $date['second'];
+            $preDate = $cron->getPreviousRunDate()->format('Y-m-d H:i:s');
+            $Nextdate = $cron->getNextRunDate()->format('Y-m-d H:i:s');
+
+            return ((strtotime($Nextdate) - $start) + ($start - strtotime($preDate)))/2;
         }
         return null;
     }
