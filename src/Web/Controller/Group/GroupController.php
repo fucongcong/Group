@@ -46,6 +46,9 @@ class GroupController extends Controller
         $timezone = $this -> getContainer() -> getTimezone();
 
         $environment = $this -> getContainer() -> getEnvironment();
+
+        $this -> setFlashMessage('info', '消息提示！');
+
         //return new JsonResponse([$id]);
         //var_dump($this->getGroupService()->getGroup(2));
         return $this -> render('Web/Views/Group/index.html.twig',array(

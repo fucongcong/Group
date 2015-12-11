@@ -9,5 +9,3 @@ $loader->setUseIncludePath(true);
 $kernal = new Kernal();
 
 $kernal->init(realpath(dirname(__FILE__)) . DIRECTORY_SEPARATOR);
-
-?>

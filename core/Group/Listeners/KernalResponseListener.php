@@ -2,8 +2,6 @@
 
 namespace core\Group\Listeners;
 
-use Event;
-
 class KernalResponseListener extends \Listener
 {
     public function setMethod()
@@ -11,7 +9,7 @@ class KernalResponseListener extends \Listener
         return 'onKernalResponse';
     }
 
-    public function onKernalResponse(Event $event)
+    public function onKernalResponse(\Event $event)
     {
         $event -> getResponse() -> send();
     }
