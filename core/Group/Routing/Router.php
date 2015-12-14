@@ -235,6 +235,8 @@ Class Router implements RouterContract
 
 		foreach ($routing as $key => $route) {
 
+				$route['alias'] = $key;
+
 				if(!isset($route['methods'])) {
 
 					$config[$key] = $route;

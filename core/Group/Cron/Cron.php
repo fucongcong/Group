@@ -5,18 +5,28 @@ use core\Group\App\App;
 
 class Cron
 {
-    protected $cacheDir = 'runtime/cron/';
+    protected $cacheDir;
 
+    /**
+     * 初始化环境
+     *
+     */
     public function __construct()
     {
         $loader = require __ROOT__.'/vendor/autoload.php';
-        $loader->setUseIncludePath(true);
+        $loader -> setUseIncludePath(true);
 
         $app = new App();
         $app -> initSelf();
         $app -> registerServices();
+
+        $this -> cacheDir = \Config::get('cron::cacheDir') ? : 'runtime/cron/';
     }
 
+    /**
+     * 执行cron任务
+     *
+     */
     public function run()
     {
         $this -> checkStatus();
@@ -37,6 +47,10 @@ class Cron
         });
     }
 
+    /**
+     * 绑定cron job
+     *
+     */
     public function bindTick($job)
     {
         $timer = ParseCrontab::parse($job['time']);
@@ -58,9 +72,13 @@ class Cron
         \FileCache::set($job['name'], ['nextTime' => date('Y-m-d H:i:s', time() + intval($timer))], $this -> cacheDir);
     }
 
+    /**
+     * 将上一个进程杀死，并清除cron
+     *
+     */
     public function checkStatus()
     {
-        if(file_exists("runtime/pid"))
+        if (file_exists("runtime/pid"))
         $pid = file_get_contents("runtime/pid");
 
         if ($pid) {

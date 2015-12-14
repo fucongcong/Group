@@ -1,5 +1,8 @@
 <?php
 return [
+
+    'cacheDir' => 'runtime/cron/',
+
     'job' => [
 
         [
@@ -9,12 +12,16 @@ return [
         ],
 
         [
+            'name' => 'testCache',
+            'time' => '24 */2 * * *',//定时规则 分 小时 天 周 月
+            'command' => 'src\Web\Cron\TestCache',
+        ],
+
+        [
             'name' => 'testSql',
             'time' => '*/2 * * * *',//定时规则 分 小时 天 周 月
             'command' => 'src\Web\Cron\TestSql',
-        ]
-
-
+        ],
 
     ],
 ];
