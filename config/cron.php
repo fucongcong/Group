@@ -1,7 +1,7 @@
 <?php
 return [
 
-    'cacheDir' => 'runtime/cron/',
+    'cache_dir' => 'runtime/cron/',
 
     'job' => [
 

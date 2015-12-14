@@ -58,8 +58,8 @@ class ParseCrontab
             in_array(intval(date('n', $start)), $date['month'])
 
         ) {
-            $preDate = $cron->getPreviousRunDate()->format('Y-m-d H:i:s');
-            $Nextdate = $cron->getNextRunDate()->format('Y-m-d H:i:s');
+            $preDate = $cron -> getPreviousRunDate() -> format('Y-m-d H:i:s');
+            $Nextdate = $cron -> getNextRunDate() -> format('Y-m-d H:i:s');
 
             return ((strtotime($Nextdate) - $start) + ($start - strtotime($preDate)))/2;
         }

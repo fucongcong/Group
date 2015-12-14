@@ -94,4 +94,11 @@ interface Route
      * @return method
      */
     public function getCurrentMethod();
+
+        /**
+     * 根据别名反解析路由
+     *
+     * @return method
+     */
+    public function deParse($alias, $parameters = []);
 }

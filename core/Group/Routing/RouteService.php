@@ -193,6 +193,25 @@ Class RouteService implements RouteContract
     }
 
     /**
+     * 根据别名反解析路由
+     *
+     * @return method
+     */
+    public function deParse($alias, $parameters = [])
+    {
+        $routing = include 'src/Web/routing.php';
+
+        if(!isset($routing[$alias])) return false;
+
+        $pattern = $routing[$alias]['pattern'];
+        foreach ($parameters as $key => $parameter) {
+            $pattern = str_replace("{".$key."}", $parameter, $pattern);
+        }
+
+        return $pattern;
+    }
+
+    /**
      * return single class
      *
      * @return core\Group\Routing Route

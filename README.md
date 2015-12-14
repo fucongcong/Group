@@ -32,6 +32,7 @@
 - [EventDispatcher](#user-content-eventdispatcher)
 - [FileCache](#user-content-filecache)
 - [Filesystem](#user-content-filesystem)
+- [Route](#user-content-route)
 - [Request](#user-content-request)
 - [Response](#user-content-response)
 - [Session](#user-content-session)
@@ -156,15 +157,16 @@ return array(
 	?>
 ```
 
-（2）如何获取路由传过来的参数？
+（2）如何获取路由传过来的参数？详见Request与Route服务
 
 ```php
 <?php
 namespace src\Web\Controller\Group;
 
 use Controller;
+use Request;
 //在后面我们可以跟上路由定义好的参数，$id
-public function testAction($id)
+public function testAction(Request $request, $id)
 {
     // echo $id; echo "<br>";
 
