@@ -2,7 +2,7 @@
 
 namespace src\Web\Cron;
 
-class TestSql
+class TestCache
 {
     public function init()
     {
@@ -10,7 +10,7 @@ class TestSql
         // $date = time();
         // $sql = "INSERT INTO `Group`.`groups` (`id`, `title`) VALUES (NULL, {$date});";
         // $dao -> querySql($sql, 'default');
-        \Cache::set('test', date('Y-m-d H:i:s', time()));
+        \Cache::set('hour', '每小时执行'.date('Y-m-d H:i:s', time()));
     }
 
 }
