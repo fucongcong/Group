@@ -3,6 +3,7 @@
 namespace core\Group\Twig;
 
 use Twig_Extension;
+use Route;
 
 class WebExtension extends Twig_Extension
 {
@@ -35,9 +36,9 @@ class WebExtension extends Twig_Extension
 	 *
 	 * @return string
 	 */
-	public function getUrl($url)
+	public function getUrl($url, $params = [])
 	{
-
+		Route::deParse($url, $params);
 	}
 
     /**

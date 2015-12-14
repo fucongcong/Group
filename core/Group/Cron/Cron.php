@@ -20,7 +20,7 @@ class Cron
         $app -> initSelf();
         $app -> registerServices();
 
-        $this -> cacheDir = \Config::get('cron::cacheDir') ? : 'runtime/cron/';
+        $this -> cacheDir = \Config::get('cron::cache_dir') ? : 'runtime/cron/';
     }
 
     /**

@@ -38,8 +38,12 @@ class Controller implements ControllerContract
 		}
 
 		$twig = new Twig_Environment($loader, isset($env) ? $env : array());
-
 		$twig -> addExtension(new WebExtension());
+		$extensions = \Config::get('view::extensions');
+		foreach ($extensions as $extension) {
+			if($this -> getContainer() -> buildMoudle($extension) -> isSubclassOf('Twig_Extension'))
+				$twig -> addExtension(new $extension);
+		}
 		return new Response($twig -> render($tpl, $array));
 	}
 

@@ -32,8 +32,10 @@ class GroupController extends Controller
         // \Session::getFlashBag() -> setAll(['group', 'good']);
         // \Session::getFlashBag() -> all();
         $uri = $this -> route() -> getUri();
+        $uri = \Route::getUri();
 
         $parameters = $this -> route() -> getParameters();
+        $parameters = \Route::getParameters();
 
         $parametersName = $this -> route() -> getParametersName();
 
