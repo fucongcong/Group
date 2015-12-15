@@ -57,13 +57,13 @@ class Cron
 
         if (is_null($timer)) return;
 
-        call_user_func_array([new $job['command'], 'init'], []);
+        call_user_func_array([new $job['command'], 'handle'], []);
 
         $job['timer'] = $timer;
 
         swoole_timer_tick(intval($timer * 1000), function($timerId, $job){
 
-            call_user_func_array([new $job['command'], 'init'], []);
+            call_user_func_array([new $job['command'], 'handle'], []);
 
             \FileCache::set($job['name'], ['nextTime' => date('Y-m-d H:i:s', time() + intval($job['timer']))], $this -> cacheDir);
 
