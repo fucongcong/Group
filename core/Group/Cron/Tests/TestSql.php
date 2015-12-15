@@ -4,7 +4,7 @@ namespace core\Group\Cron\Tests;
 
 class TestSql
 {
-    public function init()
+    public function handle()
     {
         $dao = new \Dao();
         $date = time();

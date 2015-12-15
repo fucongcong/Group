@@ -86,4 +86,4 @@ apache（httpd.conf）:
     </Directory>
     </VirtualHost>
 
-最后查看8909端口的access_log和9090端口的access1_log，发现已经实现负载了
+最后查看8090端口的access_log和9090端口的access1_log，发现已经实现负载了

@@ -4,7 +4,7 @@ namespace src\Web\Cron;
 
 class TestSql
 {
-    public function init()
+    public function handle()
     {
         // $dao = new \Dao();
         // $date = time();
