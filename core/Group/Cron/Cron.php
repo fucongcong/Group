@@ -81,7 +81,7 @@ class Cron
         if (file_exists("runtime/pid"))
         $pid = file_get_contents("runtime/pid");
 
-        if ($pid) {
+        if (!empty($pid) && $pid) {
             if (swoole_process::kill($pid, 0)) {
                 swoole_process::kill($pid, SIGUSR1);
                 $filesystem = new \Filesystem();
