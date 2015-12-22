@@ -8,12 +8,17 @@ class ExceptionEvent extends \Event
 
     public function __construct($error)
     {
-        $this -> error = $this -> trace($error);
+        $this -> error = $error;
     }
 
     public function getError()
     {
         return $this -> error;
+    }
+
+    public function getTrace()
+    {
+        return $this -> trace($this -> error);
     }
 
     protected function trace($error)
