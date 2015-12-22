@@ -92,7 +92,18 @@ class ExceptionsHandler
             $controller = new \Controller($this -> app);
             $e = $controller -> twigInit() -> render(\Config::get('view::error'));
         }else {
-            $e = '';
+            if (!is_array($e)) {
+                $trace        = debug_backtrace();
+                $error['message'] = $e;
+                $error['code']    = $code;
+                $error['file']    = $trace[0]['file'];
+                $error['line']    = $trace[0]['line'];
+                ob_start();
+                debug_print_backtrace();
+                $error['trace'] = ob_get_clean();
+
+                $e = $error;
+            }
         }
 
         \EventDispatcher::dispatch('throw.exception', new ExceptionEvent($e));
