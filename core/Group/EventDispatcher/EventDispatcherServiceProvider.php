@@ -19,7 +19,7 @@ class EventDispatcherServiceProvider extends ServiceProvider
 
             $eventDispatcher = new EventDispatcherService();
             $eventDispatcher -> addListener('kernal.init', new KernalInitListener());
-
+            
             return $eventDispatcher;
         });
     }

@@ -72,4 +72,6 @@ interface Container
      *@return string
      */
     public function getLocale();
+
+    public function runningInConsole();
 }

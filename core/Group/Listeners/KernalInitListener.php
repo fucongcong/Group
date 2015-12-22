@@ -16,6 +16,11 @@ class KernalInitListener extends \Listener
                 'eventName' => 'kernal.response',
                 'listener'  => 'core\Group\Listeners\KernalResponseListener',
                 'priority'  => 0,
+            ],
+            [
+                'eventName' => 'throw.exception',
+                'listener'  => 'core\Group\Listeners\ExceptionListener',
+                'priority'  => 0,
             ]
         ];
 

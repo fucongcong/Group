@@ -169,4 +169,9 @@ class Container implements ContainerContract
     {
         return $this -> locale;
     }
+
+    public function runningInConsole()
+    {
+        return php_sapi_name() == 'cli';
+    }
 }
