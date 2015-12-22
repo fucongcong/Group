@@ -2,10 +2,9 @@
 
 namespace core\Group\Events;
 
-use Event;
 use Response;
 
-class HttpEvent extends Event
+class HttpEvent extends \Event
 {
     protected $response;
 

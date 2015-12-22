@@ -59,7 +59,6 @@ Class Router implements RouterContract
 	 */
 	public function match()
 	{
-
 		$requestUri = $this -> route -> getUri();
 
 		$routing = $this -> getRouting();
@@ -67,7 +66,6 @@ Class Router implements RouterContract
 		if (isset($routing[$requestUri])) {
 
 			return $this -> controller($routing[$requestUri]);
-
 		}
 
 		foreach ($routing as $routeKey => $route) {
@@ -87,7 +85,7 @@ Class Router implements RouterContract
 			}
 		}
 
-		$this -> controller(array('controller'=>"Web:Error:NotFound:index"));
+		return $this -> controller(array('controller'=>"Web:Error:NotFound:index"));		
 	}
 
 	/**
@@ -145,7 +143,7 @@ Class Router implements RouterContract
 	 * @return string
 	 */
 	public function controller($config)
-	{
+	{	
 		list($group, $subGroup, $controller, $action) = explode(':', $config['controller']);
 
 		$className = 'src\\'.$group.'\\Controller\\'.$subGroup.'\\'.$controller.'Controller';

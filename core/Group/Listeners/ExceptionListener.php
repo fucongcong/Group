@@ -14,7 +14,7 @@ class ExceptionListener extends \Listener
 
     public function onException(\Event $event)
     {   
-        $response = new Response($event -> getError(), 500);
+        $response = new Response($event -> getTrace(), 500);
         \EventDispatcher::dispatch('kernal.response', new HttpEvent($response));
     }
 }
