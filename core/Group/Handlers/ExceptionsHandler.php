@@ -90,7 +90,7 @@ class ExceptionsHandler
         //dev下面需要render信息
         if ($this -> app -> container -> getEnvironment() == 'prod') {
             $controller = new \Controller($this -> app);
-            $e = $controller -> twigInit() -> render(\Config::get('view::error'));
+            $e = $controller -> twigInit() -> render(\Config::get('view::error_page'));
         }else {
             if (!is_array($e)) {
                 $trace        = debug_backtrace();

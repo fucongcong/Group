@@ -2,7 +2,7 @@
 return [
 
     // prod|dev
-    'environment' => 'dev',
+    'environment' => 'prod',
 
     //zh|en|fr...
     'locale' => 'zh',
