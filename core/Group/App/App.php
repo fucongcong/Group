@@ -5,6 +5,7 @@ namespace core\Group\App;
 use core\Group\Handlers\AliasLoaderHandler;
 use core\Group\Config\Config;
 use core\Group\Routing\Router;
+use core\Group\Handlers\ExceptionsHandler;
 
 class App
 {
@@ -16,7 +17,7 @@ class App
 
     private static $instance;
 
-    protected $container;
+    public $container;
 
     protected $router;
 
@@ -80,10 +81,14 @@ class App
         $request = \Request::createFromGlobals();
 
         $this -> registerServices();
+        
         \EventDispatcher::dispatch('kernal.init');
 
         $this -> container = $this -> singleton('container');
         $this -> container -> setAppPath($path);
+
+        $handler = new ExceptionsHandler();
+        $handler -> bootstrap($this);
 
         $this -> router = new Router($this -> container, $request);
         $this -> router -> match();

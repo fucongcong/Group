@@ -28,6 +28,11 @@ class Controller implements ControllerContract
 	 */
 	public function render($tpl, $array = array())
 	{
+		return new Response($this -> twigInit() -> render($tpl, $array));
+	}
+
+	public function twigInit()
+	{
 		$loader = new Twig_Loader_Filesystem(\Config::get('view::path'));
 
 		if (\Config::get('view::cache')) {
@@ -44,7 +49,8 @@ class Controller implements ControllerContract
 			if($this -> getContainer() -> buildMoudle($extension) -> isSubclassOf('Twig_Extension'))
 				$twig -> addExtension(new $extension);
 		}
-		return new Response($twig -> render($tpl, $array));
+
+		return $twig;
 	}
 
 	/**
