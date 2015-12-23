@@ -8,6 +8,8 @@ final class KernalEvent extends \Event
 
 	const RESPONSE = "kernal.response";
 
+	const REQUEST = "kernal.request";
+
 	const EXCEPTION = "kernal.exception";
 
 }

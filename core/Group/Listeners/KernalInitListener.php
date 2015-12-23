@@ -3,15 +3,16 @@
 namespace core\Group\Listeners;
 
 use core\Group\Events\KernalEvent;
+use core\Group\Exceptions\NotFoundException;
 
 class KernalInitListener extends \Listener
 {
     public function setMethod()
     {
-        return 'onEventDispatcherInit';
+        return 'onKernalInit';
     }
 
-    public function onEventDispatcherInit(\Event $event)
+    public function onKernalInit(\Event $event)
     {
         $listeners = [
             [
@@ -19,11 +20,16 @@ class KernalInitListener extends \Listener
                 'listener'  => 'core\Group\Listeners\KernalResponseListener',
                 'priority'  => 0,
             ],
+            // [
+            //     'eventName' => KernalEvent::REQUEST,
+            //     'listener'  => 'core\Group\Listeners\KernalRequestListener',
+            //     'priority'  => 0,
+            // ],
             [
                 'eventName' => KernalEvent::EXCEPTION,
                 'listener'  => 'core\Group\Listeners\ExceptionListener',
                 'priority'  => 0,
-            ]
+            ],
         ];
 
         $listeners = array_merge(\Config::get('listener::services'), $listeners);

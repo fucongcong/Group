@@ -19,7 +19,19 @@ class Container implements ContainerContract
 
     protected $locale;
 
+    /**
+     * Response object
+     *
+     * @var response
+     */
     protected $response;
+
+    /**
+     * Request object
+     *
+     * @var request
+     */
+    protected $request;
 
     public function __construct()
     {
@@ -189,6 +201,25 @@ class Container implements ContainerContract
     public function getResponse()
     {
         return $this -> response;
+    }
+
+    /**
+     * 设置request
+     *
+     */
+    public function setRequest(\Request $request)
+    {
+        $this -> request = $request;
+    }
+
+    /**
+     * 获取设置的request
+     *
+     *@return string
+     */
+    public function getRequest()
+    {
+        return $this -> request;
     }
 
     public function runningInConsole()

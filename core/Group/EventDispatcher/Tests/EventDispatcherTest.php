@@ -37,7 +37,7 @@ class EventDispatcherTest extends Test
 
     public function testdispatch()
     {
-        $event = new HttpEvent(new Response());
+        $event = new HttpEvent(null, new Response());
         EventDispatcher::dispatch('kernal.responese', $event);
     }
 }
