@@ -133,7 +133,6 @@ class ExceptionsHandler
             if (!is_array($e)) {
                 $trace        = debug_backtrace();
                 $error['message'] = $e;
-                $error['code']    = $code;
                 $error['file']    = $trace[0]['file'];
                 $error['line']    = $trace[0]['line'];
                 ob_start();
