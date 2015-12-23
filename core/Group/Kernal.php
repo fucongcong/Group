@@ -4,7 +4,7 @@ namespace core\Group;
 
 use core\Group\App\App;
 
-Class Kernal
+class Kernal
 {
 	public function init($path)
 	{
