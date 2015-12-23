@@ -4,6 +4,7 @@ namespace core\Group\Handlers;
 
 use core\Group\App\App;
 use core\Group\Events\ExceptionEvent;
+use core\Group\Events\KernalEvent;
 
 class ExceptionsHandler
 {
@@ -106,7 +107,7 @@ class ExceptionsHandler
             }
         }
 
-        \EventDispatcher::dispatch('throw.exception', new ExceptionEvent($e));
+        \EventDispatcher::dispatch(KernalEvent::EXCEPTION, new ExceptionEvent($e));
     }
 
     /**

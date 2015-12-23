@@ -3,7 +3,6 @@
 namespace core\Group\Listeners;
 
 use core\Group\Events\KernalEvent;
-use core\Group\Events\ExceptionEvent;
 
 class KernalInitListener extends \Listener
 {
@@ -21,7 +20,7 @@ class KernalInitListener extends \Listener
                 'priority'  => 0,
             ],
             [
-                'eventName' => ExceptionEvent::EXCEPTION,
+                'eventName' => KernalEvent::EXCEPTION,
                 'listener'  => 'core\Group\Listeners\ExceptionListener',
                 'priority'  => 0,
             ]
