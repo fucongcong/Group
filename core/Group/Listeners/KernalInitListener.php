@@ -2,6 +2,9 @@
 
 namespace core\Group\Listeners;
 
+use core\Group\Events\KernalEvent;
+use core\Group\Events\ExceptionEvent;
+
 class KernalInitListener extends \Listener
 {
     public function setMethod()
@@ -13,12 +16,12 @@ class KernalInitListener extends \Listener
     {
         $listeners = [
             [
-                'eventName' => 'kernal.response',
+                'eventName' => KernalEvent::RESPONSE,
                 'listener'  => 'core\Group\Listeners\KernalResponseListener',
                 'priority'  => 0,
             ],
             [
-                'eventName' => 'throw.exception',
+                'eventName' => ExceptionEvent::EXCEPTION,
                 'listener'  => 'core\Group\Listeners\ExceptionListener',
                 'priority'  => 0,
             ]

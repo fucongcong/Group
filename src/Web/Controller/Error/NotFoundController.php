@@ -12,5 +12,3 @@ class NotFoundController extends Controller
     }
 
 }
-
-?>

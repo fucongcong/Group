@@ -2,8 +2,10 @@
 
 namespace core\Group\Events;
 
-class ExceptionEvent extends \Event
-{
+final class ExceptionEvent extends \Event
+{   
+    const EXCEPTION = "throw.exception";
+
     protected $error;
 
     public function __construct($error)

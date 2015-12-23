@@ -6,6 +6,8 @@ use core\Group\Handlers\AliasLoaderHandler;
 use core\Group\Config\Config;
 use core\Group\Routing\Router;
 use core\Group\Handlers\ExceptionsHandler;
+use core\Group\Events\HttpEvent;
+use core\Group\Events\KernalEvent;
 
 class App
 {
@@ -82,7 +84,7 @@ class App
 
         $this -> registerServices();
         
-        \EventDispatcher::dispatch('kernal.init');
+        \EventDispatcher::dispatch(KernalEvent::INIT);
 
         $this -> container = $this -> singleton('container');
         $this -> container -> setAppPath($path);
@@ -174,6 +176,12 @@ class App
         }
 
         return self::$instance;
+    }
+
+    public function handleHttp()
+    {
+        $response = $this -> container -> getResponse();
+        \EventDispatcher::dispatch(KernalEvent::RESPONSE, new HttpEvent($response));
     }
 
     public function initSelf()
