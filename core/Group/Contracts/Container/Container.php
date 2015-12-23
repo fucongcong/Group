@@ -86,5 +86,18 @@ interface Container
      */
     public function getResponse();
 
+    /**
+     * 设置request
+     *
+     */
+    public function setRequest(\Request $request);
+
+    /**
+     * 获取设置的request
+     *
+     *@return string
+     */
+    public function getRequest();
+
     public function runningInConsole();
 }

@@ -30,23 +30,16 @@ Class Router implements RouterContract
 	protected $container;
 
 	/**
-	 * Request object
-	 *
-	 * @var request
-	 */
-	protected $request;
-
-	/**
 	 * 初始化
 	 *
 	 * @param Container container
 	 * @param Request request
 	 */
-	public function __construct(\Container $container, \Request $request)
+	public function __construct(\Container $container)
 	{
 		$this -> container = $container;
 
-		$this -> request = $request;
+		$request = $this -> container -> getRequest();
 
 		$this -> setRoute($this -> methods, $request -> getPathInfo(), $request -> getMethod());
 	}
@@ -153,7 +146,7 @@ Class Router implements RouterContract
 
 		$this -> route -> setParameters(isset($config['parameters']) ? $config['parameters'] : array());
 
-        $response = $this -> container -> doAction($className, $action, isset($config['parameters']) ? $config['parameters'] : array(), $this -> request);
+        $response = $this -> container -> doAction($className, $action, isset($config['parameters']) ? $config['parameters'] : array(), $this -> container -> getRequest());
 
         $this -> container -> setResponse($response);
 	}

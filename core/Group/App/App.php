@@ -86,13 +86,17 @@ class App
         
         \EventDispatcher::dispatch(KernalEvent::INIT);
 
+        //做一些request过来要做的 然后在派发事件
+        //\EventDispatcher::dispatch(KernalEvent::REQUEST, new HttpEvent($request));
+
         $this -> container = $this -> singleton('container');
         $this -> container -> setAppPath($path);
+        $this -> container -> setRequest($request);
 
         $handler = new ExceptionsHandler();
         $handler -> bootstrap($this);
 
-        $this -> router = new Router($this -> container, $request);
+        $this -> router = new Router($this -> container);
         $this -> router -> match();
     }
 
@@ -181,7 +185,8 @@ class App
     public function handleHttp()
     {
         $response = $this -> container -> getResponse();
-        \EventDispatcher::dispatch(KernalEvent::RESPONSE, new HttpEvent($response));
+        $request = $this -> container -> getRequest();
+        \EventDispatcher::dispatch(KernalEvent::RESPONSE, new HttpEvent($request,$response));
     }
 
     public function initSelf()

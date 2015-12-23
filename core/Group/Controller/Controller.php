@@ -2,13 +2,9 @@
 
 namespace core\Group\Controller;
 
-use Twig_Loader_Filesystem;
-use Twig_Environment;
 use core\Group\Twig\WebExtension;
 use core\Group\Contracts\Controller\Controller as ControllerContract;
 use core\Group\Exceptions\NotFoundException;
-use Service;
-use Response;
 
 class Controller implements ControllerContract
 {
@@ -28,12 +24,12 @@ class Controller implements ControllerContract
 	 */
 	public function render($tpl, $array = array())
 	{
-		return new Response($this -> twigInit() -> render($tpl, $array));
+		return new \Response($this -> twigInit() -> render($tpl, $array));
 	}
 
 	public function twigInit()
 	{
-		$loader = new Twig_Loader_Filesystem(\Config::get('view::path'));
+		$loader = new \Twig_Loader_Filesystem(\Config::get('view::path'));
 
 		if (\Config::get('view::cache')) {
 
@@ -42,7 +38,7 @@ class Controller implements ControllerContract
 			);
 		}
 
-		$twig = new Twig_Environment($loader, isset($env) ? $env : array());
+		$twig = new \Twig_Environment($loader, isset($env) ? $env : array());
 		$twig -> addExtension(new WebExtension());
 		$extensions = \Config::get('view::extensions');
 		foreach ($extensions as $extension) {
@@ -61,7 +57,7 @@ class Controller implements ControllerContract
 	 */
 	public function createService($serviceName)
 	{
-		$service = new Service($this -> app);
+		$service = new \Service($this -> app);
 		return $service -> createService($serviceName);
 	}
 
