@@ -73,5 +73,18 @@ interface Container
      */
     public function getLocale();
 
+    /**
+     * 设置response
+     *
+     */
+    public function setResponse(\Response $response);
+
+    /**
+     * 获取设置的response
+     *
+     *@return string
+     */
+    public function getResponse();
+
     public function runningInConsole();
 }

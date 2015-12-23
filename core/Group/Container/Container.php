@@ -8,7 +8,7 @@ use core\Group\Exceptions\NotFoundException;
 use core\Group\Contracts\Container\Container as ContainerContract;
 
 class Container implements ContainerContract
-{
+{   
 	private static $instance;
 
     protected $timezone;
@@ -18,6 +18,8 @@ class Container implements ContainerContract
     protected $appPath;
 
     protected $locale;
+
+    protected $response;
 
     public function __construct()
     {
@@ -168,6 +170,25 @@ class Container implements ContainerContract
     public function getLocale()
     {
         return $this -> locale;
+    }
+
+    /**
+     * 设置response
+     *
+     */
+    public function setResponse(\Response $response)
+    {
+        $this -> response = $response;
+    }
+
+    /**
+     * 获取设置的response
+     *
+     *@return string
+     */
+    public function getResponse()
+    {
+        return $this -> response;
     }
 
     public function runningInConsole()

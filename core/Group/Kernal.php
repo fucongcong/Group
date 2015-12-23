@@ -13,6 +13,8 @@ Class Kernal
 		$app = new App();
 
 	   	$app -> init($path);
+
+	   	$app -> handleHttp();
 	}
 
 	public function fix_gpc_magic()

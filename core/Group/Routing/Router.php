@@ -4,7 +4,6 @@ namespace core\Group\Routing;
 
 use core\Group\Common\ArrayToolkit;
 use core\Group\Contracts\Routing\Router as RouterContract;
-use core\Group\Events\HttpEvent;
 use App;
 
 Class Router implements RouterContract
@@ -156,7 +155,7 @@ Class Router implements RouterContract
 
         $response = $this -> container -> doAction($className, $action, isset($config['parameters']) ? $config['parameters'] : array(), $this -> request);
 
-        \EventDispatcher::dispatch('kernal.response', new HttpEvent($response));
+        $this -> container -> setResponse($response);
 	}
 
 	protected function mergeParameters($parameters, $values)
