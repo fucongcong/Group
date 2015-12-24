@@ -1,6 +1,6 @@
 <?php
 
-namespace core\Group\Console;
+namespace Group\Console;
 
 class Console
 {
@@ -11,10 +11,10 @@ class Console
      *
      */
     protected $options = [
-        'generate:service' => 'core\Group\Console\Command\GenerateServiceCommand',
-        'generate:controller' => 'core\Group\Console\Command\GenerateControllerCommand',
-        'sql:generate' => 'core\Group\Console\Command\SqlGenerateCommand',
-        'sql:migrate' => 'core\Group\Console\Command\SqlMigrateCommand',
+        'generate:service' => 'Group\Console\Command\GenerateServiceCommand',
+        'generate:controller' => 'Group\Console\Command\GenerateControllerCommand',
+        'sql:generate' => 'Group\Console\Command\SqlGenerateCommand',
+        'sql:migrate' => 'Group\Console\Command\SqlMigrateCommand',
     ];
 
     protected $help = "

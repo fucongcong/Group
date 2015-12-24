@@ -1,6 +1,6 @@
 <?php
 
-namespace core\Group\Session;
+namespace Group\Session;
 
 use Symfony\Component\HttpFoundation\Session\Session as SfSession;
 
@@ -109,7 +109,7 @@ class SessionService
     /**
      * 获取一个FlashBag
      *
-     * @return core\Group\Session\Bag\FlashBag object
+     * @return Group\Session\Bag\FlashBag object
      */
     public function getFlashBag()
     {

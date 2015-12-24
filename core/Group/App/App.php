@@ -1,13 +1,13 @@
 <?php
 
-namespace core\Group\App;
+namespace Group\App;
 
-use core\Group\Handlers\AliasLoaderHandler;
-use core\Group\Config\Config;
-use core\Group\Routing\Router;
-use core\Group\Handlers\ExceptionsHandler;
-use core\Group\Events\HttpEvent;
-use core\Group\Events\KernalEvent;
+use Group\Handlers\AliasLoaderHandler;
+use Group\Config\Config;
+use Group\Routing\Router;
+use Group\Handlers\ExceptionsHandler;
+use Group\Events\HttpEvent;
+use Group\Events\KernalEvent;
 
 class App
 {
@@ -28,26 +28,26 @@ class App
      *
      */
     protected $aliases = [
-        'App'               => 'core\Group\App\App',
-        'Cache'             => 'core\Group\Cache\Cache',
-        'Config'            => 'core\Group\Config\Config',
-        'Container'         => 'core\Group\Container\Container',
-        'Controller'        => 'core\Group\Controller\Controller',
-        'Dao'               => 'core\Group\Dao\Dao',
-        'Event'             => 'core\Group\Events\Event',
-        'EventDispatcher'   => 'core\Group\EventDispatcher\EventDispatcher',
-        'Filesystem'        => 'core\Group\Common\Filesystem',
-        'FileCache'         => 'core\Group\Cache\FileCache',
-        'Route'             => 'core\Group\Routing\Route',
-        'Request'           => 'core\Group\Http\Request',
-        'Response'          => 'core\Group\Http\Response',
-        'JsonResponse'      => 'core\Group\Http\JsonResponse',
-        'Service'           => 'core\Group\Services\Service',
-        'ServiceProvider'   => 'core\Group\Services\ServiceProvider',
-        'Session'           => 'core\Group\Session\Session',
-        'Test'              => 'core\Group\Test\Test',
-        'Log'               => 'core\Group\Log\Log',
-        'Listener'          => 'core\Group\Listeners\Listener',
+        'App'               => 'Group\App\App',
+        'Cache'             => 'Group\Cache\Cache',
+        'Config'            => 'Group\Config\Config',
+        'Container'         => 'Group\Container\Container',
+        'Controller'        => 'Group\Controller\Controller',
+        'Dao'               => 'Group\Dao\Dao',
+        'Event'             => 'Group\Events\Event',
+        'EventDispatcher'   => 'Group\EventDispatcher\EventDispatcher',
+        'Filesystem'        => 'Group\Common\Filesystem',
+        'FileCache'         => 'Group\Cache\FileCache',
+        'Route'             => 'Group\Routing\Route',
+        'Request'           => 'Group\Http\Request',
+        'Response'          => 'Group\Http\Response',
+        'JsonResponse'      => 'Group\Http\JsonResponse',
+        'Service'           => 'Group\Services\Service',
+        'ServiceProvider'   => 'Group\Services\ServiceProvider',
+        'Session'           => 'Group\Session\Session',
+        'Test'              => 'Group\Test\Test',
+        'Log'               => 'Group\Log\Log',
+        'Listener'          => 'Group\Listeners\Listener',
     ];
 
     /**

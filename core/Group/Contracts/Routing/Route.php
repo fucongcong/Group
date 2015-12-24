@@ -1,13 +1,13 @@
 <?php
 
-namespace core\Group\Contracts\Routing;
+namespace Group\Contracts\Routing;
 
 interface Route
 {
     /**
      * set container
      *
-     * @param core\Group\Container\Container container
+     * @param Group\Container\Container container
      */
     public function setContainer(\Container $container);
 

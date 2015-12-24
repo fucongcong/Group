@@ -1,9 +1,9 @@
 <?php
 
-namespace core\Group\Routing;
+namespace Group\Routing;
 
-use core\Group\Common\ArrayToolkit;
-use core\Group\Contracts\Routing\Router as RouterContract;
+use Group\Common\ArrayToolkit;
+use Group\Contracts\Routing\Router as RouterContract;
 use App;
 
 Class Router implements RouterContract

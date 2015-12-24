@@ -1,6 +1,6 @@
 <?php
 
-namespace core\Group\Cron;
+namespace Group\Cron;
 
 class ParseCrontab
 {

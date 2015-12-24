@@ -1,6 +1,6 @@
 <?php
 
-namespace core\Group\Contracts\Config;
+namespace Group\Contracts\Config;
 
 interface Config
 {

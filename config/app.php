@@ -17,12 +17,12 @@ return [
 
     //系统会提前加载服务
     'serviceProviders' => [
-        'core\Group\Redis\RedisServiceProvider',
-        'core\Group\Cache\CacheServiceProvider',
-        'core\Group\Cache\FileCacheServiceProvider',
-        'core\Group\Session\SessionServiceProvider',
-        'core\Group\Routing\RouteServiceProvider',
-        'core\Group\EventDispatcher\EventDispatcherServiceProvider',
+        'Group\Redis\RedisServiceProvider',
+        'Group\Cache\CacheServiceProvider',
+        'Group\Cache\FileCacheServiceProvider',
+        'Group\Session\SessionServiceProvider',
+        'Group\Routing\RouteServiceProvider',
+        'Group\EventDispatcher\EventDispatcherServiceProvider',
     ],
 
     //需要实例化的单例

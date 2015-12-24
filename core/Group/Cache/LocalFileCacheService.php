@@ -1,6 +1,6 @@
 <?php
 
-namespace core\Group\Cache;
+namespace Group\Cache;
 
 class LocalFileCacheService
 {

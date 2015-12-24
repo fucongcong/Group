@@ -1,7 +1,7 @@
 <?php
 
-use core\Group\Cron\ParseCrontab;
-use core\Group\App\App;
+use Group\Cron\ParseCrontab;
+use Group\App\App;
 
 class Cron
 {
@@ -82,10 +82,10 @@ class Cron
         $pid = file_get_contents("runtime/pid");
 
         if (!empty($pid) && $pid) {
+            $filesystem = new \Filesystem();
+            $filesystem -> remove($this -> cacheDir);
             if (swoole_process::kill($pid, 0)) {
-                swoole_process::kill($pid, SIGUSR1);
-                $filesystem = new \Filesystem();
-                $filesystem -> remove($this -> cacheDir);
+                swoole_process::kill($pid, SIGUSR1);  
             }
         }
     }

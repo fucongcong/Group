@@ -1,6 +1,6 @@
 <?php
 
-namespace core\Group\Routing\Tests;
+namespace Group\Routing\Tests;
 
 use Test;
 use Route;

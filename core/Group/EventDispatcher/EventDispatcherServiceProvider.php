@@ -1,11 +1,11 @@
 <?php
 
-namespace core\Group\EventDispatcher;
+namespace Group\EventDispatcher;
 
 use ServiceProvider;
-use core\Group\EventDispatcher\EventDispatcherService;
-use core\Group\Listeners\KernalInitListener;
-use core\Group\Events\KernalEvent;
+use Group\EventDispatcher\EventDispatcherService;
+use Group\Listeners\KernalInitListener;
+use Group\Events\KernalEvent;
 
 class EventDispatcherServiceProvider extends ServiceProvider
 {

@@ -1,8 +1,8 @@
 <?php
 
-namespace core\Group\Cache;
+namespace Group\Cache;
 
-use core\Group\Services\ServiceMap;
+use Group\Services\ServiceMap;
 
 class Cache extends ServiceMap
 {

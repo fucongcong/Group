@@ -1,10 +1,10 @@
 <?php
 
-namespace core\Group\Events\Tests;
+namespace Group\Events\Tests;
 
 use Test;
-use core\Group\EventDispatcher\EventDispatcher;
-use core\Group\Events\Tests\TestSubscriber;
+use Group\EventDispatcher\EventDispatcher;
+use Group\Events\Tests\TestSubscriber;
 
 class EventSubscriberTest extends Test
 {

@@ -1,9 +1,9 @@
 <?php
 
-namespace core\Group\Listeners;
+namespace Group\Listeners;
 
-use core\Group\Events\KernalEvent;
-use core\Group\Exceptions\NotFoundException;
+use Group\Events\KernalEvent;
+use Group\Exceptions\NotFoundException;
 
 class KernalInitListener extends \Listener
 {
@@ -17,17 +17,17 @@ class KernalInitListener extends \Listener
         $listeners = [
             [
                 'eventName' => KernalEvent::RESPONSE,
-                'listener'  => 'core\Group\Listeners\KernalResponseListener',
+                'listener'  => 'Group\Listeners\KernalResponseListener',
                 'priority'  => 0,
             ],
             // [
             //     'eventName' => KernalEvent::REQUEST,
-            //     'listener'  => 'core\Group\Listeners\KernalRequestListener',
+            //     'listener'  => 'Group\Listeners\KernalRequestListener',
             //     'priority'  => 0,
             // ],
             [
                 'eventName' => KernalEvent::EXCEPTION,
-                'listener'  => 'core\Group\Listeners\ExceptionListener',
+                'listener'  => 'Group\Listeners\ExceptionListener',
                 'priority'  => 0,
             ],
         ];

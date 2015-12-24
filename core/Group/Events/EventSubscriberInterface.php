@@ -1,6 +1,6 @@
 <?php
 
-namespace core\Group\Events;
+namespace Group\Events;
 
 /**
  * 这是一个时间绑定器的接口

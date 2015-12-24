@@ -1,6 +1,6 @@
 <?php
 
-namespace core\Group\Contracts\Container;
+namespace Group\Contracts\Container;
 
 interface Container
 {

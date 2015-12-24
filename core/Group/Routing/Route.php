@@ -1,8 +1,8 @@
 <?php
 
-namespace core\Group\Routing;
+namespace Group\Routing;
 
-use core\Group\Services\ServiceMap;
+use Group\Services\ServiceMap;
 
 class Route extends ServiceMap
 {

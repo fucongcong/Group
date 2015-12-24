@@ -2,7 +2,7 @@
 
 namespace app\sql;
 
-use core\Group\Dao\SqlMigration;
+use Group\Dao\SqlMigration;
 
 class {{name}} extends SqlMigration
 {

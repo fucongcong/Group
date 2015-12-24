@@ -1,8 +1,8 @@
 <?php
 
-namespace core\Group\Session\Handler;
+namespace Group\Session\Handler;
 
-use core\Group\Redis\RedisHelper;
+use Group\Redis\RedisHelper;
 
 class RedisSessionHandler implements \SessionHandlerInterface
 {

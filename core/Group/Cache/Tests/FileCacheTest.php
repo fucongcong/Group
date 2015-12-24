@@ -1,6 +1,6 @@
 <?php
 
-namespace core\Group\Cache\Tests;
+namespace Group\Cache\Tests;
 
 use Test;
 use FileCache;

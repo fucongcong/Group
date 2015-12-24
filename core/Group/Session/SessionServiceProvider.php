@@ -1,16 +1,16 @@
 <?php
 
-namespace core\Group\Session;
+namespace Group\Session;
 
 use ServiceProvider;
-use core\Group\Session\SessionService;
+use Group\Session\SessionService;
 use Symfony\Component\HttpFoundation\Session\Session as SfSession;
 use Symfony\Component\HttpFoundation\Session\Storage\NativeSessionStorage;
 use Symfony\Component\HttpFoundation\Session\Attribute\AttributeBag;
-use core\Group\Session\Handler\FileSessionHandler;
-use core\Group\Session\Handler\RedisSessionHandler;
-use core\Group\Session\Bag\MetadataBag;
-use core\Group\Session\Bag\FlashBag;
+use Group\Session\Handler\FileSessionHandler;
+use Group\Session\Handler\RedisSessionHandler;
+use Group\Session\Bag\MetadataBag;
+use Group\Session\Bag\FlashBag;
 
 class SessionServiceProvider extends ServiceProvider
 {
@@ -57,7 +57,7 @@ class SessionServiceProvider extends ServiceProvider
     /**
      * redis Handler
      *
-     * @return core\Group\Session\Handler\RedisSessionHandler handler
+     * @return Group\Session\Handler\RedisSessionHandler handler
      */
     private function getRedisHandler()
     {
@@ -69,7 +69,7 @@ class SessionServiceProvider extends ServiceProvider
     /**
      * file Handler
      *
-     * @return core\Group\Session\Handler\FileSessionHandler handler
+     * @return Group\Session\Handler\FileSessionHandler handler
      */
     private function getFileHandler()
     {

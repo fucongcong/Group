@@ -1,6 +1,6 @@
 <?php
 
-namespace core\Group\Contracts\Routing;
+namespace Group\Contracts\Routing;
 
 interface Router
 {

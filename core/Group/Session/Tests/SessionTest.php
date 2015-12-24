@@ -1,6 +1,6 @@
 <?php
 
-namespace core\Group\Session\Tests;
+namespace Group\Session\Tests;
 
 use Test;
 use Session;

@@ -1,8 +1,8 @@
 #!/usr/bin/env php
 <?php
 
-use core\Group\Console\Console;
-use core\Group\App\App;
+use Group\Console\Console;
+use Group\App\App;
 
 $loader = require __DIR__.'/../vendor/autoload.php';
 

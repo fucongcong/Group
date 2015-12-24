@@ -1,8 +1,8 @@
 <?php
 
-namespace core\Group\EventDispatcher;
+namespace Group\EventDispatcher;
 
-use core\Group\Services\ServiceMap;
+use Group\Services\ServiceMap;
 
 class EventDispatcher extends ServiceMap
 {

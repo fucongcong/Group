@@ -1,17 +1,17 @@
 <?php
 
-namespace core\Group\Routing;
+namespace Group\Routing;
 
-use core\Group\Common\ArrayToolkit;
+use Group\Common\ArrayToolkit;
 use Container;
-use core\Group\Contracts\Routing\Route as RouteContract;
+use Group\Contracts\Routing\Route as RouteContract;
 
 Class RouteService implements RouteContract
 {
     /**
      * container
      *
-     * @var core\Group\Container\Container
+     * @var Group\Container\Container
      */
     protected $container;
 
@@ -62,7 +62,7 @@ Class RouteService implements RouteContract
     /**
      * Set the container instance on the route.
      *
-     * @param  \core\Group\Container\Container  $container
+     * @param  \Group\Container\Container  $container
      * @return $this
      */
     public function setContainer(Container $container)
@@ -215,7 +215,7 @@ Class RouteService implements RouteContract
     /**
      * return single class
      *
-     * @return core\Group\Routing Route
+     * @return Group\Routing Route
      */
     public static function getInstance()
     {

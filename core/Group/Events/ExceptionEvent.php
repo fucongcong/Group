@@ -1,6 +1,6 @@
 <?php
 
-namespace core\Group\Events;
+namespace Group\Events;
 
 final class ExceptionEvent extends \Event
 {   

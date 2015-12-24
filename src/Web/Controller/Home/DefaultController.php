@@ -13,5 +13,4 @@ class DefaultController extends Controller
         //渲染模版 模版的启始路径可在config的view.php配置
         return $this -> render('Web/Views/Default/index.html.twig');
     }
-
 }

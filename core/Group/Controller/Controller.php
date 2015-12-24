@@ -1,10 +1,10 @@
 <?php
 
-namespace core\Group\Controller;
+namespace Group\Controller;
 
-use core\Group\Twig\WebExtension;
-use core\Group\Contracts\Controller\Controller as ControllerContract;
-use core\Group\Exceptions\NotFoundException;
+use Group\Twig\WebExtension;
+use Group\Contracts\Controller\Controller as ControllerContract;
+use Group\Exceptions\NotFoundException;
 
 class Controller implements ControllerContract
 {
@@ -64,7 +64,7 @@ class Controller implements ControllerContract
 	/**
 	 * route的实例
 	 *
-	 * @return core\Group\Routing\Route
+	 * @return Group\Routing\Route
 	 */
 	public function route()
 	{
@@ -74,7 +74,7 @@ class Controller implements ControllerContract
 	/**
 	 * 获取容器
 	 *
-	 * @return core\Group\Container\Container
+	 * @return Group\Container\Container
 	 */
 	public function getContainer()
 	{

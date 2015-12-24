@@ -1,6 +1,6 @@
 <?php
 
-namespace core\Group\Test;
+namespace Group\Test;
 
 use PHPUnit_Framework_TestCase;
 

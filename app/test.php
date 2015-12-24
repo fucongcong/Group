@@ -2,7 +2,7 @@
 /*
  * 单元测试入口
  */
-use core\Group\App\App;
+use Group\App\App;
 
 $loader = require __DIR__.'/../vendor/autoload.php';
 

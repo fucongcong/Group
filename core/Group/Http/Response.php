@@ -1,6 +1,6 @@
 <?php
 
-namespace core\Group\Http;
+namespace Group\Http;
 
 use Symfony\Component\HttpFoundation\Response as SfResponse;
 

@@ -1,11 +1,11 @@
 <?php
 
-namespace core\Group\Cache\Tests;
+namespace Group\Cache\Tests;
 
 use Test;
-use core\Group\Cache\RedisCacheService;
+use Group\Cache\RedisCacheService;
 use Redis;
-use core\Group\Redis\RedisHelper;
+use Group\Redis\RedisHelper;
 
 class RedisCacheTest extends Test
 {
