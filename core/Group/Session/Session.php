@@ -1,8 +1,8 @@
 <?php
 
-namespace core\Group\Session;
+namespace Group\Session;
 
-use core\Group\Services\ServiceMap;
+use Group\Services\ServiceMap;
 
 class Session extends ServiceMap
 {

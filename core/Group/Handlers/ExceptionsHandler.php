@@ -1,10 +1,10 @@
 <?php
 
-namespace core\Group\Handlers;
+namespace Group\Handlers;
 
-use core\Group\App\App;
-use core\Group\Events\ExceptionEvent;
-use core\Group\Events\KernalEvent;
+use Group\App\App;
+use Group\Events\ExceptionEvent;
+use Group\Events\KernalEvent;
 
 class ExceptionsHandler
 {

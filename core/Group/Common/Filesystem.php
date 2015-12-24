@@ -1,6 +1,6 @@
 <?php
 
-namespace core\Group\Common;
+namespace Group\Common;
 
 use Symfony\Component\Filesystem\Filesystem as Symfony_Filesystem;
 

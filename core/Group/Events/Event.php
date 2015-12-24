@@ -1,6 +1,6 @@
 <?php
 
-namespace core\Group\Events;
+namespace Group\Events;
 
 class Event
 {

@@ -1,6 +1,6 @@
 <?php
 
-namespace core\Group\Services;
+namespace Group\Services;
 
 abstract class ServiceProvider
 {

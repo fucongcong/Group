@@ -1,8 +1,8 @@
 <?php
 
-namespace core\Group\Events\Tests;
+namespace Group\Events\Tests;
 
-use core\Group\Events\EventSubscriberInterface;
+use Group\Events\EventSubscriberInterface;
 
 class TestSubscriber implements EventSubscriberInterface
 {

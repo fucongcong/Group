@@ -1,6 +1,6 @@
 <?php
 
-namespace core\Group\Session\Bag;
+namespace Group\Session\Bag;
 
 use Symfony\Component\HttpFoundation\Session\SessionBagInterface;
 use Symfony\Component\HttpFoundation\Session\Storage\MetadataBag as SfMetadataBag;

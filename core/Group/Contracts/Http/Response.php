@@ -1,5 +1,5 @@
 <?php
-namespace core\Group\Contracts\Http;
+namespace Group\Contracts\Http;
 
 interface Response
 {

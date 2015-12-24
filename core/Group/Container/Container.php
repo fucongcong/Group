@@ -1,11 +1,11 @@
 <?php
 
-namespace core\Group\Container;
+namespace Group\Container;
 
 use ReflectionClass;
 use App;
-use core\Group\Exceptions\NotFoundException;
-use core\Group\Contracts\Container\Container as ContainerContract;
+use Group\Exceptions\NotFoundException;
+use Group\Contracts\Container\Container as ContainerContract;
 
 class Container implements ContainerContract
 {   
@@ -85,7 +85,7 @@ class Container implements ContainerContract
         {
             $paramName = $arg ->getName();
             if (isset($parameters[$paramName])) $args[$paramName] = $parameters[$paramName];
-            if (!empty($arg -> getClass()) && $arg -> getClass() -> getName() == 'core\Group\Http\Request') $args[$paramName] = $request;
+            if (!empty($arg -> getClass()) && $arg -> getClass() -> getName() == 'Group\Http\Request') $args[$paramName] = $request;
         }
 
 		return $method -> invokeArgs($instanc, $args);
@@ -94,7 +94,7 @@ class Container implements ContainerContract
     /**
      * return single class
      *
-     * @return core\Group\Container Container
+     * @return Group\Container Container
      */
 	public static function getInstance()
     {

@@ -1,8 +1,14 @@
 {
     "name": "Group/Group",
+    "version": "1.0.0-alpha",
     "description": "The Group Framework.",
     "keywords": ["framework", "Group"],
     "type": "project",
+    "autoload": {
+        "psr-4": {
+            "Group\\": "core/Group/"
+        }
+    },
     "authors": [
         {
             "name": "Fu congcong",

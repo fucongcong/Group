@@ -1,6 +1,6 @@
 <?php
 
-namespace core\Group\Config\Tests;
+namespace Group\Config\Tests;
 
 use Test;
 use Config;

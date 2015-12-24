@@ -1,8 +1,8 @@
 <?php
 
-namespace core\Group\Contracts\EventDispatcher;
+namespace Group\Contracts\EventDispatcher;
 
-use core\Group\Events\EventSubscriberInterface;
+use Group\Events\EventSubscriberInterface;
 use Event;
 
 interface EventDispatcher

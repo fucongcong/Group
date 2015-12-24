@@ -1,9 +1,9 @@
 <?php
 
-namespace core\Group\Cache;
+namespace Group\Cache;
 
 use ServiceProvider;
-use core\Group\Cache\RedisCacheService;
+use Group\Cache\RedisCacheService;
 
 class CacheServiceProvider extends ServiceProvider
 {

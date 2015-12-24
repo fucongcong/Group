@@ -1,6 +1,6 @@
 <?php
 
-namespace core\Group\Listeners;
+namespace Group\Listeners;
 
 abstract class Listener
 {

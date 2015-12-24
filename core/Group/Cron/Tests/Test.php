@@ -1,6 +1,6 @@
 <?php
 
-namespace core\Group\Cron\Tests;
+namespace Group\Cron\Tests;
 
 class Test
 {

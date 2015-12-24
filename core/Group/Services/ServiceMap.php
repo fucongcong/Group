@@ -1,8 +1,8 @@
 <?php
 
-namespace core\Group\Services;
+namespace Group\Services;
 
-use core\Group\Exceptions\NotFoundException;
+use Group\Exceptions\NotFoundException;
 
 abstract class ServiceMap
 {

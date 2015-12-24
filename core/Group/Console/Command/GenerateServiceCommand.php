@@ -1,8 +1,8 @@
 <?php
 
-namespace core\Group\Console\Command;
+namespace Group\Console\Command;
 
-use core\Group\Console\Command as Command;
+use Group\Console\Command as Command;
 use Filesystem;
 
 class GenerateServiceCommand extends Command

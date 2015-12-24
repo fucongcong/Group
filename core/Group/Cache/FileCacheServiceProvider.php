@@ -1,9 +1,9 @@
 <?php
 
-namespace core\Group\Cache;
+namespace Group\Cache;
 
 use ServiceProvider;
-use core\Group\Cache\LocalFileCacheService;
+use Group\Cache\LocalFileCacheService;
 
 class FileCacheServiceProvider extends ServiceProvider
 {

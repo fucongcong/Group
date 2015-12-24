@@ -1,12 +1,12 @@
 <?php
 
-namespace core\Group\Session\Tests;
+namespace Group\Session\Tests;
 
 use Test;
-use core\Group\EventDispatcher\EventDispatcher;
+use Group\EventDispatcher\EventDispatcher;
 use Listener;
-use core\Group\Listeners\KernalResponseListener;
-use core\Group\Events\HttpEvent;
+use Group\Listeners\KernalResponseListener;
+use Group\Events\HttpEvent;
 use Response;
 
 class EventDispatcherTest extends Test

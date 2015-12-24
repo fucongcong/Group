@@ -1,6 +1,6 @@
 <?php
 
-namespace core\Group\Handlers;
+namespace Group\Handlers;
 
 class AliasLoaderHandler
 {
@@ -21,7 +21,7 @@ class AliasLoaderHandler
     /**
      * The singleton instance of the loader.
      *
-     * @var core\Group\Handlers
+     * @var Group\Handlers
      */
     protected static $instance;
 
@@ -39,7 +39,7 @@ class AliasLoaderHandler
      * Get or create the singleton alias loader instance.
      *
      * @param  array  $aliases
-     * @return core\Group\Handlers
+     * @return Group\Handlers
      */
     public static function getInstance(array $aliases = [])
     {
@@ -148,7 +148,7 @@ class AliasLoaderHandler
     /**
      * Set the value of the singleton alias loader.
      *
-     * @param  core\Group\Handlers\AliasLoaderHandler  $loader
+     * @param  Group\Handlers\AliasLoaderHandler  $loader
      * @return void
      */
     public static function setInstance($loader)

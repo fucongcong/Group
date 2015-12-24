@@ -1,9 +1,9 @@
 <?php
 
-namespace core\Group\Routing;
+namespace Group\Routing;
 
 use ServiceProvider;
-use core\Group\Routing\RouteService;
+use Group\Routing\RouteService;
 
 class RouteServiceProvider extends ServiceProvider
 {

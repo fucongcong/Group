@@ -2,7 +2,7 @@
 
 namespace core\Group;
 
-use core\Group\App\App;
+use Group\App\App;
 
 class Kernal
 {

@@ -1,6 +1,6 @@
 <?php
 
-namespace core\Group\Redis;
+namespace Group\Redis;
 
 class RedisHelper
 {

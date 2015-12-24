@@ -1,9 +1,9 @@
 <?php
 
-namespace core\Group\Config;
+namespace Group\Config;
 
 use Exception;
-use core\Group\Contracts\Config\Config as ConfigContract;
+use Group\Contracts\Config\Config as ConfigContract;
 
 class Config implements ConfigContract
 {
@@ -83,7 +83,7 @@ class Config implements ConfigContract
     /**
      * return single class
      *
-     * @return core\Group\Config Config
+     * @return Group\Config Config
      */
     public static function getInstance(){
 

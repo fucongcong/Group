@@ -1,9 +1,9 @@
 <?php
 
-namespace core\Group\Cache;
+namespace Group\Cache;
 
 use Exception;
-use core\Group\Contracts\Cache\Cache as CacheContract;
+use Group\Contracts\Cache\Cache as CacheContract;
 
 class RedisCacheService implements CacheContract
 {

@@ -1,6 +1,6 @@
 <?php
 
-namespace core\Group\Contracts\Controller;
+namespace Group\Contracts\Controller;
 
 interface Controller
 {
@@ -25,14 +25,14 @@ interface Controller
     /**
      * route的实例
      *
-     * @return core\Group\Routing\Route
+     * @return Group\Routing\Route
      */
     public function route();
 
     /**
      * 获取容器
      *
-     * @return core\Group\Container\Container
+     * @return Group\Container\Container
      */
     public function getContainer();
 }

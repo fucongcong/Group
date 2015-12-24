@@ -1,9 +1,9 @@
 <?php
 
-namespace core\Group\Listeners;
+namespace Group\Listeners;
 
-use core\Group\Events\HttpEvent;
-use core\Group\Events\KernalEvent;
+use Group\Events\HttpEvent;
+use Group\Events\KernalEvent;
 
 class ExceptionListener extends \Listener
 {

@@ -1,6 +1,6 @@
 <?php
 
-namespace core\Group\Log;
+namespace Group\Log;
 
 use Monolog\Logger;
 use Monolog\Handler\StreamHandler;

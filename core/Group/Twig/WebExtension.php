@@ -1,6 +1,6 @@
 <?php
 
-namespace core\Group\Twig;
+namespace Group\Twig;
 
 use Twig_Extension;
 use Route;
