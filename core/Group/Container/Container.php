@@ -89,7 +89,6 @@ class Container implements ContainerContract
         }
 
 		return $method -> invokeArgs($instanc, $args);
-
 	}
 
     /**

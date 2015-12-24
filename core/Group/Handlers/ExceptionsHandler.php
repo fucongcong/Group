@@ -15,6 +15,22 @@ class ExceptionsHandler
      */
     protected $app;
 
+    private $levels = array(
+        E_WARNING => 'Warning',
+        E_NOTICE => 'Notice',
+        E_USER_ERROR => 'User Error',
+        E_USER_WARNING => 'User Warning',
+        E_USER_NOTICE => 'User Notice',
+        E_STRICT => 'Runtime Notice',
+        E_RECOVERABLE_ERROR => 'Catchable Fatal Error',
+        E_DEPRECATED => 'Deprecated',
+        E_USER_DEPRECATED => 'User Deprecated',
+        E_ERROR => 'Error',
+        E_CORE_ERROR => 'Core Error',
+        E_COMPILE_ERROR => 'Compile Error',
+        E_PARSE => 'Parse',
+    );
+
     /**
      * Bootstrap the given application.
      *
@@ -33,9 +49,7 @@ class ExceptionsHandler
 
         register_shutdown_function([$this, 'handleShutdown']);
 
-        if ($this -> app -> container -> getEnvironment() == 'prod') {
-            ini_set('display_errors', 'Off');
-        }
+        ini_set('display_errors', 'Off');
     }
 
     /**
@@ -48,13 +62,36 @@ class ExceptionsHandler
      * @param  array  $context
      * @return void
      *
-     * @throws \ErrorException
      */
     public function handleError($level, $message, $file = '', $line = 0, $context = [])
     {
         if (error_reporting() & $level) {
-            throw new \ErrorException($message, 0, $level, $file, $line);
+
+            $error = [
+                'message' => $message,
+                'file'    => $file,
+                'line'    => $line,
+                'type'    => $level,
+            ];
+
+            switch ($level) {
+                case E_USER_ERROR:
+                    $this -> record($error);
+                    if ($this -> app -> container -> runningInConsole()) {
+                        $this -> renderForConsole($e);
+                    } else {
+                        $this -> renderHttpResponse($e);
+                    }
+                    break;
+                default:
+                    $this -> record($error, 'warning');
+                    break;
+            }
+
+            return true;
         }
+
+        return false;
     }
 
     public function handleException($e)
@@ -96,13 +133,11 @@ class ExceptionsHandler
             if (!is_array($e)) {
                 $trace        = debug_backtrace();
                 $error['message'] = $e;
-                $error['code']    = $code;
                 $error['file']    = $trace[0]['file'];
                 $error['line']    = $trace[0]['line'];
                 ob_start();
-                debug_print_backtrace();
-                $error['trace'] = ob_get_clean();
-
+                debug_print_backtrace(DEBUG_BACKTRACE_IGNORE_ARGS);
+                $e['trace'] = ob_get_clean();
                 $e = $error;
             }
         }
@@ -121,19 +156,20 @@ class ExceptionsHandler
 
             if ($this -> isFatal($e['type'])) {
                 $this -> record($e);
+                $e['trace'] = '';
                 if ($this -> app -> container -> runningInConsole()) {
                     $this -> renderForConsole($e);
                 } else {
-                    $this -> renderHttpResponse('');
+                    $this -> renderHttpResponse($e);
                 }
             }
                 
         }
     }
 
-    protected function record($e)
+    protected function record($e, $type = 'error')
     {
-        \Log::error('[' . $e['type'] . '] ' . $e['message'] . '[' . $e['file'] . ' : ' . $e['line'] . ']', []);
+        \Log::$type('[' . $this -> levels[$e['type']] . '] ' . $e['message'] . '[' . $e['file'] . ' : ' . $e['line'] . ']', []);
     }
 
     /**
@@ -146,4 +182,5 @@ class ExceptionsHandler
     {
         return in_array($type, [E_ERROR, E_CORE_ERROR, E_COMPILE_ERROR, E_PARSE]);
     }
+
 }
