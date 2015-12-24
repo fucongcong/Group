@@ -4,6 +4,7 @@
     "description": "The Group Framework.",
     "keywords": ["framework", "Group"],
     "type": "project",
+    "license": "MIT",
     "autoload": {
         "psr-4": {
             "Group\\": "core/Group/"
