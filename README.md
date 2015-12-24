@@ -78,7 +78,6 @@
 - app (脚本文件)
 - asset (前端文件)
 - config (配置文件)
-- core (框架核心，后期将会打包到composer)
 - doc (文档)
 - runtime (缓存)
 - src (你的网站核心代码)
