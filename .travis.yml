@@ -14,5 +14,7 @@ before_script:
     - src/redis-server &
     - cd ..
 script:
-    - sudo find -L ./core -name '*.php' -print0 | xargs -0 -n 1 -P 4 php -l
-    - phpunit --bootstrap app/test.php core/Group
+    - sudo find -L ./app -name '*.php' -print0 | xargs -0 -n 1 -P 4 php -l
+    - sudo find -L ./src -name '*.php' -print0 | xargs -0 -n 1 -P 4 php -l
+    - sudo find -L ./config -name '*.php' -print0 | xargs -0 -n 1 -P 4 php -l
+    - phpunit --bootstrap app/test.php src

@@ -1,6 +1,6 @@
 <?php
 
-use core\Group\Kernal;
+use Group\Kernal;
 
 $loader = require __DIR__.'/vendor/autoload.php';
 
