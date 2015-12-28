@@ -20,13 +20,6 @@
     ],
     "require": {
         "php": ">=5.3",
-        "twig/twig": "~1.0",
-        "symfony/filesystem": "~2.7.0",
-        "aura/sql": "~2.4.3",
-        "monolog/monolog":"~1.17.1",
-        "group/group-framework": "dev-master",
-        "symfony/http-foundation": "~2.7.0",
-        "mtdowling/cron-expression":"~1.0",
-        "phpunit/phpunit": "4.*"
+        "group/group-framework": "~1.0.0"
     }
 }
