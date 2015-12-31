@@ -40,6 +40,7 @@
 - [Session](#user-content-session)
 - [Log](#user-content-log)
 
+#####准备提供异步消息队列,集成rpc服务
 
 ####8.[单元测试](#user-content-单元测试)
 
