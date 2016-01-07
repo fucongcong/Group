@@ -559,9 +559,9 @@ class KernalResponseListener extends Listener
 #####配置文件config/cron.php
 #####执行命令
 
-    php app/cron.php &
+    app/cron
 
-#####注意，如果要更新定时器配置，或者代码逻辑时，需要重新执行脚本命令(暂不支持热更新)，文件日志存放于runtime/cron，定时器进程id为runtime/pid
+#####注意，如果要更新定时器配置，或者代码逻辑时，需要重新执行脚本命令(暂不支持热更新)，文件日志存放于runtime/cron，定时器进程id为runtime/cron/pid
 
 
 ## 单元测试
