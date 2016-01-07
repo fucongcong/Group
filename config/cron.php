@@ -1,7 +1,10 @@
 <?php
 return [
 
-    'cache_dir' => 'runtime/cron/',
+    'cache_dir' => 'runtime/cron',
+
+    //定时器轮询周期，精确到毫秒
+    'tick_time' => 1000,
 
     'job' => [
 
