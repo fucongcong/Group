@@ -1,4 +1,5 @@
 # Group
+#####version 1.0 beta
 轻量级框架，通俗易懂，快速上手。
 觉得帮到您了点击右上star!给我一点动力！
 关注我们的ＱＱ群：390536187
@@ -39,6 +40,7 @@
 - [Session](#user-content-session)
 - [Log](#user-content-log)
 - [Queue](#user-content-queue)
+
 
 ####8.[单元测试](#user-content-单元测试)
 
