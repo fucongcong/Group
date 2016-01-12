@@ -31,6 +31,9 @@ class GroupController extends Controller
         //echo \Session::get('aa','123');
         // \Session::getFlashBag() -> setAll(['group', 'good']);
         // \Session::getFlashBag() -> all();
+        // $tube = 'testjob1';
+        // $data = '这是第一个队列任务';
+        // \Queue::put($tube, $data);
         $uri = $this -> route() -> getUri();
         $uri = \Route::getUri();
 
