@@ -39,8 +39,8 @@
 - [Response](#user-content-response)
 - [Session](#user-content-session)
 - [Log](#user-content-log)
+- [Queue](#user-content-queue)
 
-#####准备提供异步消息队列,集成rpc服务
 
 ####8.[单元测试](#user-content-单元测试)
 
@@ -563,6 +563,30 @@ class KernalResponseListener extends Listener
 
 #####注意，如果要更新定时器配置，或者代码逻辑时，需要重新执行脚本命令(暂不支持热更新)，文件日志存放于runtime/cron，定时器进程id为runtime/cron/pid
 
+## Queue
+#####异步队列服务介绍
+#####依赖：[Swoole1.7.14以上版本](https://github.com/swoole/swoole-src) 
+#####依赖：[beanstalkd](https://github.com/kr/beanstalkd) 
+
+#####向队列插入任务
+```php
+
+    use Queue;
+
+    //队列名
+    $tube = 'testjob1';
+    //具体数据
+    $data = '这是第一个队列任务';
+    //就这么简单 队列已经被塞入内存
+    Queue::put($tube, $data);
+
+```
+#####配置config/queue.php  
+#####开启异步队列服务处理任务
+    
+    app/queue start|restart|stop
+
+#####队列图形化管理工具[beanstalk_console](https://github.com/ptrofimov/beanstalk_console) 
 
 ## 单元测试
 
