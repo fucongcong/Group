@@ -20,6 +20,6 @@
     ],
     "require": {
         "php": ">=5.3",
-        "group/group-framework": "~1.0.0"
+        "group/group-framework": "~1.1.0"
     }
 }
