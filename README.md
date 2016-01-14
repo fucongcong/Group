@@ -586,6 +586,28 @@ class KernalResponseListener extends Listener
     
     app/queue start|restart|stop
 
+#####最后看看我们的任务怎么写
+```php
+    <?php
+
+namespace src\Web\Queue;
+
+use Group\Queue\QueueJob;
+
+class TestJob extends QueueJob
+{   
+    public function handle()
+    {      
+        //队列任务的id号
+        $jobId = $this -> jobId;
+        //你在插入队列时的数据
+        $jobData = $this -> jobData;
+        //后面就可以写处理的逻辑了
+        \Log::info('queue handle job'.$this -> jobId, ['time' => date('Y-m-d H:i:s', time())], 'queue.job');
+    }
+
+}
+```
 #####队列图形化管理工具[beanstalk_console](https://github.com/ptrofimov/beanstalk_console) 
 
 ## 单元测试
