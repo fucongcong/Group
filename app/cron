@@ -1,10 +1,20 @@
 #!/usr/bin/env php
 <?php
 
+use Group\Cron\Cron;
+use Group\App\App;
+
+$loader = require __DIR__.'/../vendor/autoload.php';
+
+$loader->setUseIncludePath(true);
+
 define('__ROOT__', realpath(dirname(__FILE__)) . DIRECTORY_SEPARATOR . "../");
 
-require __DIR__.'/../vendor/group/group-framework/core/Group/Cron/Cron.php';
+$app = new App();
+$app -> initSelf();
+$app -> doBootstrap($loader);
+$app -> registerServices();
 
-$cron = new Cron();
+$cron = new Cron($argv, $loader);
 $cron -> run();
 
