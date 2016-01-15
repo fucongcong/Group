@@ -3,6 +3,11 @@ return [
 
     'cache_dir' => 'runtime/cron',
 
+    'class_cache' => 'runtime/cron/bootstrap.class.cache',
+
+    //log路径
+    'log_dir' => 'runtime/cron',
+
     //定时器轮询周期，精确到毫秒
     'tick_time' => 1000,
 
