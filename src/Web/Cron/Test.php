@@ -2,7 +2,9 @@
 
 namespace src\Web\Cron;
 
-class Test
+use Group\Cron\CronJob;
+
+class Test extends CronJob
 {
     public function handle()
     {
