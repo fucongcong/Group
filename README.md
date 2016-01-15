@@ -588,7 +588,11 @@ class KernalResponseListener extends Listener
     //具体数据
     $data = '这是第一个队列任务';
     //就这么简单 队列已经被塞入内存
-    Queue::put($tube, $data);
+    //$priority, $delaytime, $lifetime 可不填。默认会取配置的参数
+    $priority = 1;
+    $delaytime = 0;
+    $lifetime = 60;
+    Queue::put($tube, $data, $priority, $delaytime, $lifetime);
 
 ```
 #####配置config/queue.php  
