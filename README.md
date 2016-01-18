@@ -625,7 +625,6 @@ class TestJob extends QueueJob
 }
 ```
 #####队列图形化管理工具[beanstalk_console](https://github.com/ptrofimov/beanstalk_console) 
-
 ## 单元测试
 
     phpunit --bootstrap app/test.php src
