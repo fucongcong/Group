@@ -9,11 +9,6 @@ $loader = require __DIR__.'/../vendor/autoload.php';
 $loader->setUseIncludePath(true);
 
 $app = new App();
-
 $app -> initSelf();
-
 $app -> doBootstrap($loader);
-
 $app -> registerServices();
-
-?>
