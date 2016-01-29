@@ -18,7 +18,7 @@
 
 轻量级框架，通俗易懂，快速上手。
 觉得帮到您了点击右上star!给我一点动力！
-关注我们的ＱＱ群：390536187
+PHP交流ＱＱ群：390536187
 
 [![Code Climate](https://codeclimate.com/repos/5657fbc8ea0d1f5571028f67/badges/c8175ffa03bd301eb7c7/gpa.svg)](https://codeclimate.com/repos/5657fbc8ea0d1f5571028f67/feed)
 [![Build Status](https://travis-ci.org/fucongcong/Group.svg?branch=master)](https://travis-ci.org/fucongcong/Group)
