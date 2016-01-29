@@ -23,6 +23,7 @@ return [
         'Group\Session\SessionServiceProvider',
         'Group\Routing\RouteServiceProvider',
         'Group\EventDispatcher\EventDispatcherServiceProvider',
+        'Group\Queue\QueueServiceProvider',
     ],
 
     //需要实例化的单例
