@@ -12,6 +12,7 @@ $loader->setUseIncludePath(true);
 
 $app = new App();
 $app -> initSelf();
+$app -> doBootstrap($loader);
 $app -> registerServices();
 
 $console = new Console($argv);

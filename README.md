@@ -1,6 +1,10 @@
 # Group
+
+[![Code Climate](https://codeclimate.com/repos/5657fbc8ea0d1f5571028f67/badges/c8175ffa03bd301eb7c7/gpa.svg)](https://codeclimate.com/repos/5657fbc8ea0d1f5571028f67/feed)
+[![Build Status](https://travis-ci.org/fucongcong/Group.svg?branch=master)](https://travis-ci.org/fucongcong/Group)
+
 #####version 1.2.2 定时服务多进程化了。优化了异步队列命令提示
-#####version 1.2.1 支持了异步队列服务，轻松搞定高并发！（接下来会支持分布式配置）
+#####version 1.2.1 支持了异步队列服务，轻松搞定高并发！（在php7环境中，stop命令可以会出现失败的情况，请ps -ef|grep queue 查看进程是否被终止）
 #####[性能测试报告,使用swoole http server的话可以参考Group framework的swoole-http-server分支，暂时不放出来](https://github.com/fucongcong/ssos/blob/master/php/group%E6%A1%86%E6%9E%B6%E6%B5%8B%E8%AF%95.php)
 #####未来版本开发计划： 
 - 类文件缓存的优化
@@ -19,9 +23,6 @@
 轻量级框架，通俗易懂，快速上手。
 觉得帮到您了点击右上star!给我一点动力！
 PHP交流ＱＱ群：390536187
-
-[![Code Climate](https://codeclimate.com/repos/5657fbc8ea0d1f5571028f67/badges/c8175ffa03bd301eb7c7/gpa.svg)](https://codeclimate.com/repos/5657fbc8ea0d1f5571028f67/feed)
-[![Build Status](https://travis-ci.org/fucongcong/Group.svg?branch=master)](https://travis-ci.org/fucongcong/Group)
 
 ####1.[Group框架简介](#user-content-group框架简介)
 
@@ -551,21 +552,23 @@ class KernalResponseListener extends Listener
 
     ----------------------------------------------------------
 
-     -----        ----      ----      |     |   / ----
-    /          | /        |      |    |     |   |      |
-    |          |          |      |    |     |   | ----/
-    |   ----   |          |      |    |     |   |
-     -----|    |            ----       ----     |
+         -----        ----      ----      |     |   / ----
+        /          | /        |      |    |     |   |      |
+        |          |          |      |    |     |   | ----/
+        |   ----   |          |      |    |     |   |
+         -----|    |            ----       ----     |
 
-    ----------------------------------------------------------
+     ----------------------------------------------------------
 
-    使用帮助:
-    Usage: core/console [options] [args...]
+     使用帮助: 
+     Usage: core/console [options] [args...] 
 
-    generate:service name       生成一个自定义service
-    generate:controller  name    生成一个自定义controller
-    sql:generate                生成一个sql执行模板(存放于app/sql)
-    sql:migrate                 执行sql模板
+     generate:service name       生成一个自定义service
+     generate:controller  name    生成一个自定义controller
+     sql:generate                生成一个sql执行模板(存放于app/sql)
+     sql:clean                清除lock文件,您可以再次执行migrate脚本中的命令
+     sql:migrate   [default|write|read|all] [name]  参数可不填，执行sql模板(默认会向default服务器执行.第二个参数只有当第一个参数为write|read时，才会生效,如果不填，默认为write|read下面所有服务器)
+     sql:rollback   [default|write|read|all] [name]  参数可不填，执行sql模板(默认会向default服务器执行.第二个参数只有当第一个参数为write|read时，才会生效,如果不填，默认为write|read下面所有服务器)
 
 
 ## CronJob
