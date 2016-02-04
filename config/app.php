@@ -33,7 +33,7 @@ return [
 
     //扩展console命令行控制台
     'console_commands' => [
-        'log.clear' => [
+        'log:clear' => [
             'command' => 'src\Web\Command\LogClearCommand', //执行的类
             'help' => '清除日志', //提示
         ],
