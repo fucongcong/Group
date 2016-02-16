@@ -403,9 +403,19 @@ class GroupServiceImpl extends GroupBaseService implements GroupService
 
     {{ url('create_group', {'id':1}) }} 用于匹配路由,第一个参数是routing配置文件的主键，后面是参数，以数组形式
 
-    {{ render('Web:Group:Group:index')|raw }} 在一个twig文件内部，可以render其他controller下面的模块。最后的raw是不转义html，twig默认所有html都会被转义
+    {{ render('Web:Group:Group:index') }} 在一个twig文件内部，可以render其他controller下面的模块。
 
     {{ 1454566745|smart_time }} 时间戳转换
+
+#####开启csrf验证防止跨站攻击
+
+    //在post 请求时，如果在session.php配置文件中开启csrf_check参数，默认会检查csrf_token参数。你可以在表单中加入以下参数
+    <form method="post" action="{{url('create_group', {'id':1})}}">
+    
+      <input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
+
+      <button type="submit">提交</button>
+    </form>
 
 ## 框架基础服务
 

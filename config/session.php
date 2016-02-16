@@ -15,4 +15,12 @@ return [
 
     //服务器端session过期时间
     'lifetime' => '3600',
+
+
+    /****************csrf/****************/
+    //csrf验证是否开启 true|false
+    'csrf_check' => true,
+
+    //csrf token的密匙
+    'csrf_secret' => 'group',
 ];
