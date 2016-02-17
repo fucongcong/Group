@@ -16,6 +16,11 @@ class GroupController extends Controller
             'group' => $group));
     }
 
+    public function addAction()
+    {
+        return new \Response('1');
+    }
+    
     public function testAction(Request $request, $id)
     {
         // \Log::debug('123',['user'=>1]);
