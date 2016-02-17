@@ -41,7 +41,9 @@ PHP交流ＱＱ群：390536187
 
 ####6.[数据层](#user-content-数据层)
 
-####7.[框架基础服务](#user-content-框架基础服务)
+####7.[视图层](#user-content-视图层)
+
+####8.[框架基础服务](#user-content-框架基础服务)
 - [Container](#user-content-container)
 - [Cache](#user-content-cache)
 - [Config](#user-content-config)
@@ -59,7 +61,7 @@ PHP交流ＱＱ群：390536187
 - [Queue](#user-content-queue)
 
 
-####8.[单元测试](#user-content-单元测试)
+####9.[单元测试](#user-content-单元测试)
 
 ## Group框架简介
 
@@ -393,6 +395,28 @@ class GroupServiceImpl extends GroupBaseService implements GroupService
     // "SELECT * FROM test WHERE foo IN ('foo', 'bar', 'baz')"
 ```
 
+## 视图层
+#####基础的twig语法文档请查看twig官方(twig.sensiolabs.org/documentation)
+#####简单介绍框架内部扩展好的方法
+
+    {{ asset("asset/css/bootstrap.min.css") }} asset方法主要是用于获取前端js,css文件的地址
+
+    {{ url('create_group', {'id':1}) }} 用于匹配路由,第一个参数是routing配置文件的主键，后面是参数，以数组形式
+
+    {{ render('Web:Group:Group:index') }} 在一个twig文件内部，可以render其他controller下面的模块。
+
+    {{ 1454566745|smart_time }} 时间戳转换
+
+#####开启csrf验证防止跨站攻击
+
+    //在post 请求时，如果在session.php配置文件中开启csrf_check参数，默认会检查csrf_token参数。你可以在表单中加入以下参数
+    <form method="post" action="{{url('create_group', {'id':1})}}">
+    
+      <input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
+
+      <button type="submit">提交</button>
+    </form>
+
 ## 框架基础服务
 
 ## Container
@@ -455,7 +479,7 @@ class GroupServiceImpl extends GroupBaseService implements GroupService
 
 ## EventDispatcher
 
-#####事件监听
+#####事件监听Listener
 
 #####先写一个监听KernalResponseListener
 ```php
@@ -502,6 +526,10 @@ class KernalResponseListener extends Listener
     EventDispatcher::dispatch('kernal.responese', $envet);
 
 ```
+
+#####事件绑定器Subscriber
+
+
 
 ## Session
 
@@ -561,7 +589,7 @@ class KernalResponseListener extends Listener
      ----------------------------------------------------------
 
      使用帮助: 
-     Usage: core/console [options] [args...] 
+     Usage: app/console [options] [args...] 
 
      generate:service name       生成一个自定义service
      generate:controller  name    生成一个自定义controller

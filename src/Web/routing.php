@@ -15,7 +15,7 @@ return array(
 
     'create_group'=>[
         'pattern' => '/group/{id}',
-        'controller' => 'Web:Group:Group:index',
+        'controller' => 'Web:Group:Group:add',
         'methods' => 'POST',
     ],
 
