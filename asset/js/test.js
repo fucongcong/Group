@@ -1,4 +1,4 @@
-define(function(require, exports, module) {
+define('/asset/js/test', function(require, exports, module) {
     
     console.log("load 1");
 /*    $('#slider').on('click',function(){

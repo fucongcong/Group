@@ -1,4 +1,4 @@
-define(function(require, exports, module) {
+define('/asset/js/index', function(require, exports, module) {
     
   // 通过 require 引入依赖
   window.$ = window.jQuery = require('jquery');

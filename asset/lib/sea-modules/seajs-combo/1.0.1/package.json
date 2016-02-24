@@ -1,0 +1,22 @@
+{
+  "name": "seajs-combo",
+  "version": "1.0.1",
+  "description": "A Sea.js plugin for concatenating HTTP requests",
+  "keywords": ["seajs", "plugin", "combo"],
+  "author": "Frank Wang <lifesinger@gmail.com>",
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/seajs/seajs-combo.git"
+  },
+  "devDependencies": {
+    "seatools": "*"
+  },
+  "spm": {
+    "main": "dist/seajs-combo.js"
+  },
+  "config": {
+    "plugin-concat": [
+      "seajs-combo.js"
+    ]
+  }
+}

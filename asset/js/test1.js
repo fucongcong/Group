@@ -1,4 +1,4 @@
-define(function(require, exports, module) {
+define('/asset/js/test1', function(require, exports, module) {
     
     console.log("load 2");
 

@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>seajs combo test</title>
+</head>
+<body>
+
+<script src="sea-debug.js"></script>
+
+<!-- 测试a模块 -->
+
+<!-- 合并前 -->
+<!--<script>
+    seajs.use( 'src/a', function( a ){
+        console.log( a );
+    });
+</script>-->
+
+<!-- 合并后 -->
+<!--
+<script src="build/a.js"></script>
+<script>
+    seajs.use( 'a', function( a ){
+        console.log( a );
+    });
+</script>-->
+
+
+
+<!-- 测试r模块 -->
+
+<!-- 合并前 -->
+<!--
+<script>
+    seajs.use( 'src/r', function( r ){
+        console.log( r );
+    });
+</script>-->
+
+<!-- 合并后 -->
+
+<script src="build/r.js"></script>
+<script>
+    seajs.use( 'r', function( r ){
+        console.log( r );
+    });
+</script>
+
+
+
+<!-- 测试c模块 -->
+<!-- 合并前 -->
+<!--<script>
+    seajs.use( 'src/c', function( c ){
+        console.log( c );
+    });
+</script>-->
+
+<!-- 合并后 -->
+<!--
+<script src="src/e.js"></script>
+<script src="build/c.js"></script>
+<script>
+    seajs.config({
+        alias : {
+            'e' : 'src/e'
+        }
+    });
+
+    seajs.use( 'c', function( c ){
+        console.log( c );
+    });
+</script>-->
+
+
+
+<!-- 测试f模块 -->
+
+<!-- 合并前 -->
+<!--<script src="src/f.js"></script>-->
+
+<!-- 合并后 -->
+<!--<script src="build/f.js"></script>-->
+
+
+
+<!-- 测试f2模块 -->
+
+<!-- 合并前 -->
+<!--<script src="src/f2.js"></script>-->
+
+<!-- 合并后 -->
+<!--<script src="build/f2.js"></script>-->
+
+<!-- 测试m模块 -->
+
+<!-- 合并前 -->
+<!--<script src="src/k.js"></script>-->
+
+<!-- 合并后 -->
+<!--<script src="build/k.js"></script>-->
+
+<!-- 测试m模块 -->
+
+<!-- 合并前 -->
+<!--<script src="src/m.js"></script>-->
+
+<!-- 合并后 -->
+<!--<script src="build/m.js"></script>-->
+
+</body>
+</html>

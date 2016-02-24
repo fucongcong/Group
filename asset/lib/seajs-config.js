@@ -8,7 +8,7 @@ seajs.config({
     '$': 'jquery/jquery/1.10.1/jquery',
     "jquery.cycle2": "jquery-plugin/cycle2/2013.08.01/cycle2",
     'bootstrap': 'gallery2/bootstrap/3.1.1/bootstrap',
-    'slider': 'gumutianqi/bootstrap-slider/2.0.0/bootstrap-slider',
+    'slider': 'gumutianqi/bootstrap-slider/2.0.0/bootstrap-slider'
   },
 
 /*  // 路径配置

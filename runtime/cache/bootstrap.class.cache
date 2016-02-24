@@ -1,0 +1,767 @@
+<?php
+
+namespace Group\Redis;
+
+use ServiceProvider;
+use Redis;
+
+class RedisServiceProvider extends ServiceProvider
+{
+    /**
+     * Register the service provider.
+     *
+     * @return object
+     */
+    public function register()
+    {
+        $this -> app -> singleton('redis', function () {
+
+            if (\Config::get("database::cache") != 'redis') return;
+
+            $redis = new Redis;
+            $config = \Config::get("database::redis");
+            //是否需要持久化连接
+            if ($config['default']['connect'] == 'persistence') {
+                $redis -> pconnect($config['default']['host'], $config['default']['port']);
+            }else {
+                $redis -> connect($config['default']['host'], $config['default']['port']);
+            }
+
+            if (isset($config['default']['auth'])) {
+                $redis -> auth($config['default']['auth']);
+            }
+
+            $redis -> setOption(Redis::OPT_PREFIX, isset($config['default']['prefix']) ? $config['default']['prefix'] : '');
+
+            return $redis;
+        });
+    }
+}
+
+
+namespace Group\Cache;
+
+use ServiceProvider;
+use Group\Cache\RedisCacheService;
+
+class CacheServiceProvider extends ServiceProvider
+{
+    /**
+     * Register the service provider.
+     *
+     * @return object
+     */
+    public function register()
+    {
+        $cache = null;
+
+        if (\Config::get("database::cache") == 'redis') $cache = 'redisCache';
+
+        if ($cache == 'redisCache') {
+            $this -> app -> singleton($cache, function () {
+                return new RedisCacheService($this -> app -> singleton('redis'));
+            });
+        }
+    }
+}
+
+
+namespace Group\Cache;
+
+use ServiceProvider;
+use Group\Cache\LocalFileCacheService;
+
+class FileCacheServiceProvider extends ServiceProvider
+{
+    /**
+     * Register the service provider.
+     *
+     * @return object
+     */
+    public function register()
+    {
+        $this -> app -> singleton('localFileCache', function () {
+            return new LocalFileCacheService();
+        });
+    }
+}
+
+
+namespace Group\Session;
+
+use ServiceProvider;
+use Group\Session\SessionService;
+use Symfony\Component\HttpFoundation\Session\Session as SfSession;
+use Symfony\Component\HttpFoundation\Session\Storage\NativeSessionStorage;
+use Symfony\Component\HttpFoundation\Session\Attribute\AttributeBag;
+use Group\Session\Handler\FileSessionHandler;
+use Group\Session\Handler\RedisSessionHandler;
+use Group\Session\Bag\MetadataBag;
+use Group\Session\Bag\FlashBag;
+
+class SessionServiceProvider extends ServiceProvider
+{
+    /**
+     * Register the service provider.
+     *
+     * @return object
+     */
+    public function register()
+    {
+        $this -> app -> singleton('session', function () {
+
+            $storage = new NativeSessionStorage($this -> getOptions(), $this -> getHandler(), new MetadataBag());
+            $this -> checkUserHandler();
+            $session = new SfSession($storage, new AttributeBag('_group_attributes'), new FlashBag());
+
+            if (!$session -> isStarted()) {
+                try{
+                    $session -> start();
+                }catch(\Exception $e){
+                }
+            }
+
+            return new SessionService($session);
+        });
+    }
+
+    /**
+     * get Handler
+     *
+     * @return object
+     */
+    private function getHandler()
+    {
+        $driver = $this -> checkConfig();
+
+        switch ($driver) {
+            case 'redis':
+                $handler = $this -> getRedisHandler();
+                break;
+            default:
+                $handler = $this -> getFileHandler();
+                break;
+        }
+
+        return $handler;
+    }
+
+    /**
+     * redis Handler
+     *
+     * @return Group\Session\Handler\RedisSessionHandler handler
+     */
+    private function getRedisHandler()
+    {
+        $handler = new RedisSessionHandler($this -> app -> singleton('redis'));
+
+        return $handler;
+    }
+
+    private function checkUserHandler()
+    {   
+        $driver = $this -> checkConfig();
+
+        switch ($driver) {
+            case 'redis':
+                $config = \Config::get("database::redis");  
+                ini_set('session.save_path', "tcp://".$config['default']['host'].":".$config['default']['port']);
+                ini_set('session.save_handler', 'redis'); 
+                break;
+            default:
+                ini_set('session.save_handler', 'files');
+                break;
+        }            
+    }
+
+    /**
+     * file Handler
+     *
+     * @return Group\Session\Handler\FileSessionHandler handler
+     */
+    private function getFileHandler()
+    {
+        $handler = new FileSessionHandler(\Config::get("session::file"));
+
+        return $handler;
+    }
+
+    /**
+     * check config
+     *
+     * @return string
+     */
+    private function checkConfig()
+    {
+        $driver = \Config::get("session::driver");
+
+        if ($driver == 'redis' && \Config::get("database::cache") != 'redis')
+            throw new \RuntimeException("尚未开启redis cache");
+
+        return $driver;
+    }
+
+    /**
+     * get config options
+     *
+     * @return array
+     */
+    private function getOptions()
+    {
+        return [
+            'cookie_lifetime' => \Config::get("session::cookie_lifetime"),
+            'gc_maxlifetime'  => \Config::get("session::lifetime"),
+        ];
+    }
+}
+
+
+namespace Group\Routing;
+
+use ServiceProvider;
+use Group\Routing\RouteService;
+
+class RouteServiceProvider extends ServiceProvider
+{
+    /**
+     * Register the service provider.
+     *
+     * @return object
+     */
+    public function register()
+    {
+        $this -> app -> singleton('route', function () {
+            return RouteService::getInstance();
+        });
+    }
+
+}
+
+
+namespace Group\EventDispatcher;
+
+use ServiceProvider;
+use Group\EventDispatcher\EventDispatcherService;
+use Group\Listeners\KernalInitListener;
+use Group\Events\KernalEvent;
+
+class EventDispatcherServiceProvider extends ServiceProvider
+{
+    /**
+     * Register the service provider.
+     *
+     * @return object
+     */
+    public function register()
+    {
+        $this -> app -> singleton('eventDispatcher', function () {
+            $eventDispatcher = new EventDispatcherService();
+            $eventDispatcher -> addListener(KernalEvent::INIT, new KernalInitListener());
+            
+            return $eventDispatcher;
+        });
+    }
+
+}
+
+
+namespace Group\Queue;
+
+use ServiceProvider;
+use Group\Queue\QueueService;
+
+class QueueServiceProvider extends ServiceProvider
+{
+    /**
+     * Register the service provider.
+     *
+     * @return object
+     */
+    public function register()
+    {
+        $this -> app -> singleton('queue', function () {
+
+            return new QueueService;
+        });
+    }
+
+}
+
+
+namespace Group\Routing;
+
+use Group\Services\ServiceMap;
+
+class Route extends ServiceMap
+{
+    public static function getMap()
+    {
+        return 'route';
+    }
+}
+
+
+namespace Group\EventDispatcher;
+
+use Group\Services\ServiceMap;
+
+class EventDispatcher extends ServiceMap
+{
+    public static function getMap()
+    {
+        return 'eventDispatcher';
+    }
+}
+
+
+namespace Group\Events;
+
+class Event
+{	
+	protected $property;
+
+    public function __construct($property = null)
+    {
+        $this -> property = $property;
+    }
+
+    public function getProperty()
+    {
+        return $this -> property;
+    }
+
+    public function setProperty($property)
+    {
+        $this -> property = $property;
+    }
+}
+
+
+namespace Group\Dao;
+
+use Aura\Sql\ExtendedPdo;
+use Aura\Sql\ConnectionLocator;
+
+class Dao
+{
+	protected $config;
+
+	private static $connection;
+
+	public function __construct()
+	{
+		$pdo = \Config::get('database::pdo');
+		$this -> config = $pdo;
+	}
+
+    /**
+     * 获取默认服务器连接
+     *
+     * @return object
+     */
+	public function getDefault()
+	{
+		return $this -> getConnection() -> getDefault();
+	}
+
+    /**
+     * 获取某个读服务器连接
+     *
+     * @param  name
+     * @return object
+     */
+	public function getRead($name = null)
+	{
+		return $this -> getConnection() -> getRead($name);
+	}
+
+    /**
+     * 获取某个写服务器连接
+     *
+     * @param  name
+     * @return object
+     */
+	public function getWrite($name = null)
+	{
+		return $this -> getConnection() -> getWrite($name);
+	}
+
+    /**
+     * 获取所有读服务器的连接
+     *
+     * @return array
+     */
+	public function getAllRead()
+	{
+		$config = $this -> config;
+		$connections = [];
+
+		if (isset($config['read'])) {
+			foreach ($config['read'] as $name => $db) {
+				$connections[] = $this -> getRead($name);
+			}
+		}
+
+		return $connections;
+	}
+
+    /**
+     * 获取所有写服务器的连接
+     *
+     * @return array
+     */
+	public function getAllWrite()
+	{
+		$config = $this -> config;
+		$connections = [];
+
+		if (isset($config['write'])) {
+			foreach ($config['write'] as $name => $db) {
+				$connections[] = $this -> getWrite($name);
+			}
+		}
+
+		return $connections;
+	}
+
+    /**
+     * 执行sql
+     *
+     * @param  sql
+     * @param  type[write|all_write|read|all_read|default]
+     * @param  name
+     */
+	public function querySql($sql, $type, $name = null)
+	{
+		switch ($type) {
+			case 'write':
+					$this -> getWrite($name) -> query($sql);
+				break;
+			case 'all_write':
+					$connections = $this -> getAllWrite();
+					foreach ($connections as $connection) {
+                        $connection -> query($sql);
+                    }
+				break;
+			case 'read':
+					$this -> getRead($name) -> query($sql);
+				break;
+			case 'all_read':
+					$connections = $this -> getAllRead();
+					foreach ($connections as $connection) {
+                        $connection -> query($sql);
+                    }
+				break;
+			case 'default':
+					$this -> getDefault() -> query($sql);
+				break;
+			default:
+				break;
+		}
+	}
+
+	protected function getConnection()
+	{
+		if (self::$connection) {
+		    return self::$connection;
+		}
+
+		$connection = $this -> getConnectionLocator();
+
+		self::$connection = $connection;
+
+		return $connection;
+	}
+
+	private function getConnectionLocator()
+	{
+		$config = $this -> config;
+		$connections = new ConnectionLocator;
+
+		if (isset($config['default'])) {
+			$connections -> setDefault(function () use ($config) {
+			    return new ExtendedPdo(
+						$config['default']['database_driver'].':host='.$config['default']['database_host'].';dbname='.$config['default']['database_name'].';port='.$config['default']['database_port'].';charset='.$config['default']['database_charset'],
+				        $config['default']['database_user'],
+				        $config['default']['database_password']
+				);
+			});
+		}
+
+		if (isset($config['write'])) {
+			foreach ($config['write'] as $name => $db) {
+				$connections -> setWrite($name, function () use ($db) {
+				    return new ExtendedPdo(
+				        $db['database_driver'].':host='.$db['database_host'].';dbname='.$db['database_name'].';port='.$db['database_port'].';charset='.$db['database_charset'],
+				        $db['database_user'],
+				        $db['database_password']
+				    );
+				});
+			}
+		}
+
+		if (isset($config['read'])) {
+			foreach ($config['read'] as $name => $db) {
+				$connections -> setRead($name, function () use ($db) {
+				    return new ExtendedPdo(
+				        $db['database_driver'].':host='.$db['database_host'].';dbname='.$db['database_name'].';port='.$db['database_port'].';charset='.$db['database_charset'],
+				        $db['database_user'],
+				        $db['database_password']
+				    );
+				});
+			}
+		}
+
+		return $connections;
+	}
+}
+
+
+namespace Group\Controller;
+
+use Group\Twig\WebExtension;
+use Group\Contracts\Controller\Controller as ControllerContract;
+use Group\Exceptions\NotFoundException;
+
+class Controller implements ControllerContract
+{
+	protected $app;
+
+	public function __construct($app)
+	{
+		$this -> app = $app;
+	}
+
+	/**
+	 * 渲染模板的方法
+	 *
+	 * @param  string  $tpl
+	 * @param  array   $array
+	 * @return response
+	 */
+	public function render($tpl, $array = array())
+	{
+		return $this -> twigInit() -> render($tpl, $array);
+	}
+
+	public function twigInit()
+	{
+		$loader = new \Twig_Loader_Filesystem(\Config::get('view::path'));
+
+		if (\Config::get('view::cache')) {
+			$env = array(
+		    	'cache' => \Config::get('view::cache_dir')
+			);
+		}
+
+		$twig = new \Twig_Environment($loader, isset($env) ? $env : array());
+		$twig -> addExtension(new WebExtension());
+		$extensions = \Config::get('view::extensions');
+		foreach ($extensions as $extension) {
+			if($this -> getContainer() -> buildMoudle($extension) -> isSubclassOf('Twig_Extension'))
+				$twig -> addExtension(new $extension);
+		}
+
+		return $twig;
+	}
+
+	/**
+	 * 实例化一个服务类
+	 *
+	 * @param  string  $serviceName
+	 * @return class
+	 */
+	public function createService($serviceName)
+	{
+		$service = new \Service($this -> app);
+		return $service -> createService($serviceName);
+	}
+
+	/**
+	 * route的实例
+	 *
+	 * @return Group\Routing\Route
+	 */
+	public function route()
+	{
+		return $this -> app -> singleton('route');
+	}
+
+	/**
+	 * 获取容器
+	 *
+	 * @return Group\Container\Container
+	 */
+	public function getContainer()
+	{
+		return $this -> app -> singleton('container');
+	}
+
+	public function setFlashMessage($type, $message)
+	{
+		\Session::getFlashBag() -> set($type, $message);
+	}
+
+	public function getFlashMessage()
+	{
+		return \Session::getFlashBag() -> all();
+	}
+
+	public function __call($method, $parameters)
+	{
+		throw new NotFoundException("Method [$method] does not exist.");
+	}
+}
+
+
+namespace Group\Cache;
+
+use Group\Services\ServiceMap;
+
+class Cache extends ServiceMap
+{
+    public static function getMap()
+    {
+        if (\Config::get("database::cache") != 'redis') return '';
+
+        return 'redisCache';
+    }
+
+    /**
+     * 返回一个rediscache的对象
+     *
+     * @return object
+     */
+    public static function redis()
+    {
+        return \App::getInstance() -> singleton('redisCache');
+    }
+}
+
+
+namespace Group\Session;
+
+use Group\Services\ServiceMap;
+
+class Session extends ServiceMap
+{
+    public static function getMap()
+    {
+        return 'session';
+    }
+}
+
+
+namespace Group\Log;
+
+use Monolog\Logger;
+use Monolog\Handler\StreamHandler;
+use Monolog\Handler\FirePHPHandler;
+
+class Log
+{
+    protected static $levels = [
+        'debug'     => Logger::DEBUG,
+        'info'      => Logger::INFO,
+        'notice'    => Logger::NOTICE,
+        'warning'   => Logger::WARNING,
+        'error'     => Logger::ERROR,
+        'critical'  => Logger::CRITICAL,
+        'alert'     => Logger::ALERT,
+        'emergency' => Logger::EMERGENCY,
+    ];
+
+    public static $cache_dir = "runtime/logs";
+
+    public static function debug($message, array $context, $model = 'web.app')
+    {
+        return self::writeLog(__FUNCTION__, $message, $context, $model);
+    }
+
+    public static function info($message, array $context, $model = 'web.app')
+    {
+        return self::writeLog(__FUNCTION__, $message, $context, $model);
+    }
+
+    public static function notice($message, array $context, $model = 'web.app')
+    {
+        return self::writeLog(__FUNCTION__, $message, $context, $model);
+    }
+
+    public static function warning($message, array $context, $model = 'web.app')
+    {
+        return self::writeLog(__FUNCTION__, $message, $context, $model);
+    }
+
+    public static function error($message, array $context, $model = 'web.app')
+    {
+        return self::writeLog(__FUNCTION__, $message, $context, $model);
+    }
+
+    public static function critical($message, array $context, $model = 'web.app')
+    {
+        return self::writeLog(__FUNCTION__, $message, $context, $model);
+    }
+
+    public static function alert($message, array $context, $model = 'web.app')
+    {
+        return self::writeLog(__FUNCTION__, $message, $context, $model);
+    }
+
+    public static function emergency($message, array $context, $model = 'web.app')
+    {
+        return self::writeLog(__FUNCTION__, $message, $context, $model);
+    }
+
+    public static function clear()
+    {
+
+    }
+
+    public static function writeLog($level, $message, $context, $model)
+    {
+        $logger = new Logger($model);
+        $env = \Container::getInstance() -> getEnvironment();
+        $path = \Container::getInstance() -> getAppPath();
+        $cache_dir = static::$cache_dir;
+
+        $logger->pushHandler(new StreamHandler($path.$cache_dir.'/'.$env.'.log', self::$levels[$level]));
+        $logger->pushHandler(new FirePHPHandler());
+
+        return $logger->$level($message, $context);
+
+    }
+}
+
+
+namespace Group\Listeners;
+
+abstract class Listener
+{
+    abstract function setMethod();
+
+    public function getMethod()
+    {
+        return $this -> setMethod();
+    }
+}
+
+
+namespace Group\Http;
+
+use Symfony\Component\HttpFoundation\Request as SfRequest;
+
+class Request extends SfRequest
+{
+
+}
+
+
+namespace Group\Http;
+
+use Symfony\Component\HttpFoundation\Response as SfResponse;
+
+class Response extends SfResponse
+{
+
+}

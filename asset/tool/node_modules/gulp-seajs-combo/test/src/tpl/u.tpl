@@ -1,0 +1,1 @@
+<div>This is test Handlebars tpl.</div>
