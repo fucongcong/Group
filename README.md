@@ -5,7 +5,7 @@
 
 #####version 1.2.2 定时服务多进程化了。优化了异步队列命令提示
 #####version 1.2.1 支持了异步队列服务，轻松搞定高并发！（在php7环境中，stop命令可以会出现失败的情况，请ps -ef|grep queue 查看进程是否被终止）
-#####[性能测试报告,使用swoole http server的话可以参考Group framework的swoole-http-server分支](https://github.com/fucongcong/ssos/blob/master/php/group%E6%A1%86%E6%9E%B6%E6%B5%8B%E8%AF%95.php)
+#####[性能测试报告,使用swoole http server的话可以参考Group framework的swoole-http-server分支](https://github.com/fucongcong/ssos/blob/master/php/group%E6%A1%86%E6%9E%B6%E6%B5%8B%E8%AF%95.md)
 #####未来版本开发计划： 
 - 类文件缓存的优化
 - rpc服务
