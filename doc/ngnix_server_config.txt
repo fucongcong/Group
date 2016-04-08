@@ -19,6 +19,13 @@ server {
         rewrite ^(.*)$ /index.php/$1 last;
     }
 
+    #js，css请求合并 安装nginx扩展模块nginx-http-concat，需要重新编译nginx 可以看github项目https://github.com/alibaba/nginx-http-concat
+    location /asset/ {
+        concat on;
+        concat_types text/css application/javascript
+        concat_max_files 20;
+    }
+
     location ~ ^/(index)\.php(/|$) {
         fastcgi_pass   unix:/var/run/php5-fpm.sock;
         fastcgi_split_path_info ^(.+\.php)(/.*)$;

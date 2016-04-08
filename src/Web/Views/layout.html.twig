@@ -14,9 +14,7 @@
  {#  <meta content="{{ csrf_token('site') }}" name="csrf-token" /> #}
 
   {% block stylesheets %}
-    <link href="{{ asset("asset/css/bootstrap.min.css") }}" rel="stylesheet">
-    <link href="{{ asset("asset/css/web.css") }}" rel="stylesheet">
-
+    <link href="{{ asset("asset/??css/bootstrap.min.css,css/web.css") }}" rel="stylesheet">
   {% endblock %}
 
   {% block head_scripts %}{% endblock %}
@@ -46,9 +44,7 @@
      var app = {};
       app.jspath="/asset/lib/sea-modules";
     </script>
-    <script src="{{ asset("asset/lib/sea-modules/seajs/seajs/2.2.1/sea.js") }}"></script>
-    <script src="{{ asset("asset/lib/seajs-config.js") }}"></script>
-    <script src="{{ asset("asset/lib/sea-modules/seajs-combo/1.0.1/src/seajs-combo.js") }}"></script>
+    <script src="{{ asset("asset/??lib/sea-modules/seajs/seajs/2.2.1/sea.js,lib/seajs-config.js,lib/sea-modules/seajs-combo/1.0.1/src/seajs-combo.js") }}"></script>
     <script>
       seajs.use("/asset/js/index")
     </script>
