@@ -1,0 +1,31 @@
+{
+    "name": "group/framework",
+    "description": "The Group Framework.",
+    "keywords": ["framework", "Group"],
+    "type": "project",
+    "license": "MIT",
+    "autoload": {
+        "psr-4": {
+            "Group\\": "core/Group/"
+        }
+    },
+    "authors": [
+        {
+            "name": "Fu congcong",
+            "email": "cc@xitongxue.com",
+            "homepage": "https://github.com/fucongcong",
+            "role": "Lead Developer"
+        }
+    ],
+    "require": {
+        "php": ">=5.3",
+        "twig/twig": "~1.0",
+        "symfony/filesystem": "~2.7.0",
+        "aura/sql": "~2.4.3",
+        "monolog/monolog":"~1.17.1",
+        "symfony/http-foundation": "~2.7.0",
+        "mtdowling/cron-expression":"~1.0",
+        "phpunit/phpunit": "4.*",
+        "pda/pheanstalk":"~3.1.0"
+    }
+}

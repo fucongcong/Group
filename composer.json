@@ -1,8 +1,15 @@
 {
-    "name": "Group/Group",
+    "name": "group/group",
+    "version": "1.0.0-alpha",
     "description": "The Group Framework.",
     "keywords": ["framework", "Group"],
     "type": "project",
+    "license": "MIT",
+    "autoload": {
+        "psr-4": {
+            "Group\\": "core/Group/"
+        }
+    },
     "authors": [
         {
             "name": "Fu congcong",
@@ -13,7 +20,6 @@
     ],
     "require": {
         "php": ">=5.3",
-        "twig/twig": "~1.0",
-
-    },
+        "group/group-framework": "~1.1.6"
+    }
 }
