@@ -1,8 +1,8 @@
 <?php
 
-namespace src\web\Controller\User;
+namespace src\Web\Controller\User;
 
-use src\web\Controller\BaseController;
+use src\Web\Controller\BaseController;
 use Request;
 use src\Web\Common\SimpleValidator;
 
