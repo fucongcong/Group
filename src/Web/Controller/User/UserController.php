@@ -10,7 +10,7 @@ class UserController extends BaseController
 {
     public function registerAction(Request $request)
     {   
-        $user = $request->request->all();
+        $user = $request -> request -> all();
 
         if (empty($user)) return $this -> createJsonResponse('', '参数错误', 0);
 
@@ -33,7 +33,7 @@ class UserController extends BaseController
 
     public function loginAction(Request $request)
     {      
-        $user = $request->request->all();
+        $user = $request -> request -> all();
 
         $res = D('User') -> getUserByMobile($user['mobile']);
         if (!$res) return $this -> createJsonResponse('', '账号或密码错误', 0);
@@ -44,11 +44,29 @@ class UserController extends BaseController
         return $this -> createJsonResponse('', '登陆失败', 0);
     }
 
-    public function edit(Request $request)
+    public function detailAction(Request $request)
     {   
-        $info = $request->request->all();
-        if (!$this -> isLogin($info['token'])) return $this -> createJsonResponse('', '请登录', 0); 
-        
+        $uid = $request -> query -> get('uid');
+        $user = D('User') -> getUserInfo($uid);
+        return $this -> createJsonResponse($user, '', 1);
+    }
 
+    public function editAction(Request $request)
+    {   
+        $info = $request -> request -> all();
+        $uid = $this -> isLogin($info['token']);
+        if (!$uid) return $this -> createJsonResponse('', '请登录', 0); 
+        
+        if (isset($info['sex']) && !in_array($info['sex'], ['male', 'female'])) {
+            return $this -> createJsonResponse('', '性别有误', 0);
+        }
+
+        if (isset($info['username']) && !SimpleValidator::nickname($info['username'])) {
+            return $this->createJsonResponse('', '用户名3-20位，一个中文为2个字符', 0);
+        }
+
+        D('User') -> updateUserInfo($info, $uid);
+        $user = D('User') -> getUserInfo($uid);
+        return $this -> createJsonResponse($user, '更新成功', 1);
     }
 }

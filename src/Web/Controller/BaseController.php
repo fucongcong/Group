@@ -18,7 +18,7 @@ class BaseController extends Controller
 
     public function isLogin($token)
     {
-        return D('Login') -> isLogin($token);
+        return D('Login') -> getLoginUid($token);
     }
 }
 
