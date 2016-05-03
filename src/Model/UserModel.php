@@ -38,10 +38,11 @@ class UserModel extends Model {
     }
 
     public function updateUserInfo($info, $uid)
-    {
+    {   
         if (isset($info['sex'])) $data['sex'] = $info['sex'];
         if (isset($info['username'])) $data['username'] = $info['username'];
-        return $this -> data($data) -> where(['uid' => $uid]) -> save();
+        if (!empty($data)) return $this -> data($data) -> where(['uid' => $uid]) -> save();
+        return false;
     }
 
     public function updateUserAvatar($avatar, $uid)

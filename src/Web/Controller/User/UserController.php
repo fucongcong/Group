@@ -88,7 +88,7 @@ class UserController extends BaseController
         $fileName = $file->getFilename();
 
         D('User') -> updateUserAvatar($fileName, $uid);
-
-        return $this -> createJsonResponse(['avatar' => $fileName], '头像更新成功', 1);
+        $user = D('User') -> getUserInfo($uid);
+        return $this -> createJsonResponse($user, '头像更新成功', 1);
     }
 }
