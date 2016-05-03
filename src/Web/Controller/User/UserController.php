@@ -55,7 +55,7 @@ class UserController extends BaseController
     {   
         $info = $request -> request -> all();
         $uid = $this -> isLogin($info['token']);
-        if (!$uid) return $this -> createJsonResponse('', '请登录', 0); 
+        if (!$uid) return $this -> createJsonResponse('', '请登录', 2); 
         
         if (isset($info['sex']) && !in_array($info['sex'], ['male', 'female'])) {
             return $this -> createJsonResponse('', '性别有误', 0);
@@ -68,5 +68,27 @@ class UserController extends BaseController
         D('User') -> updateUserInfo($info, $uid);
         $user = D('User') -> getUserInfo($uid);
         return $this -> createJsonResponse($user, '更新成功', 1);
+    }
+
+    public function setAvatarAction(Request $request)
+    {
+        $info = $request -> request -> all();
+        $uid = $this -> isLogin($info['token']);
+        if (!$uid) return $this -> createJsonResponse('', '请登录', 2);
+
+        $file = $request->files->get('avatar');
+        $filenamePrefix = "user_{$uid}_";
+
+        $hash = substr(md5($filenamePrefix . time()), -8);
+        $ext = $file -> getClientOriginalExtension();
+
+        $filename = $filenamePrefix . $hash . '.' . $ext;
+
+        $file = $file -> move(__ROOT__."asset/public/avatar", $filename);
+        $fileName = $file->getFilename();
+
+        D('User') -> updateUserAvatar($fileName, $uid);
+
+        return $this -> createJsonResponse(['avatar' => $fileName], '头像更新成功', 1);
     }
 }

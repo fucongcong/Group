@@ -24,4 +24,11 @@ return [
         'controller' => 'Web:User:User:edit',
         'methods' => 'POST',
     ],
+
+    'user_setAvatar'=>[
+        'pattern' => '/user/setAvatar',
+        'controller' => 'Web:User:User:setAvatar',
+        'methods' => 'POST',
+    ],
+    
 ];

@@ -32,6 +32,8 @@ class UserModel extends Model {
             'female' => '女'
         ];
         $user['sex'] = $sex[$user['sex']];
+
+        if (!empty($user['avatar'])) $user['avatar'] = "http://121.43.59.240/asset/public/avatar/".$user['avatar'];
         return $user;
     }
 
@@ -40,5 +42,10 @@ class UserModel extends Model {
         if (isset($info['sex'])) $data['sex'] = $info['sex'];
         if (isset($info['username'])) $data['username'] = $info['username'];
         return $this -> data($data) -> where(['uid' => $uid]) -> save();
+    }
+
+    public function updateUserAvatar($avatar, $uid)
+    {
+        return $this -> data(['avatar' => $avatar]) -> where(['uid' => $uid]) -> save();
     }
 }
