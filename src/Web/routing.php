@@ -1,30 +1,16 @@
 <?php
 
-return array(
+return [
 
-    'homepage'=>[
-    	'pattern' => '/',
-    	'controller' => 'Web:Home:Default:index',
-    ],
-
-    'group'=>[
-    	'pattern' => '/group/{id}',
-    	'controller' => 'Web:Group:Group:test',
-    	'methods' => 'GET',
-    ],
-
-    'create_group'=>[
-        'pattern' => '/group/{id}',
-        'controller' => 'Web:Group:Group:add',
+    'user_register'=>[
+        'pattern' => '/register',
+        'controller' => 'Web:User:User:register',
         'methods' => 'POST',
     ],
 
-    'user_group'=>[
-    	'pattern' => '/user/{id}/group/{groupId}',
-    	'controller' => 'Web:Group:Group:test',
-    	'methods' => 'GET',
+    'user_login'=>[
+        'pattern' => '/login',
+        'controller' => 'Web:User:User:login',
+        'methods' => 'POST',
     ],
-
-
-    );
-?>
+];

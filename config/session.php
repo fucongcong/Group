@@ -14,12 +14,12 @@ return [
     'cookie_lifetime' => '1440',
 
     //服务器端session过期时间
-    'lifetime' => '3600',
+    'lifetime' => 3600*24*30,
 
 
     /****************csrf/****************/
     //csrf验证是否开启 true|false
-    'csrf_check' => true,
+    'csrf_check' => false,
 
     //csrf token的密匙
     'csrf_secret' => 'group',

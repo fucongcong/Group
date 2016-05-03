@@ -12,7 +12,7 @@ return
 
             "database_port" => "3306",
 
-            "database_name" => "Group",
+            "database_name" => "pet",
 
             "database_user" => "root",
 
