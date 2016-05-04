@@ -12,7 +12,7 @@ class UserController extends BaseController
     {   
         $user = $request -> request -> all();
 
-        if (empty($user)) return $this -> createJsonResponse('', '参数错误', 0);
+        if (empty($user)) return $this -> createJsonResponse($user, '参数错误', 0);
 
         if (!preg_match('/(13\d|14[57]|15[^4,\D]|17[678]|18\d)\d{8}|170[059]\d{7}/i', $user['mobile'])) {
             return $this -> createJsonResponse('', '手机号码不正确', 0);

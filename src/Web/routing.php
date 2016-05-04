@@ -31,4 +31,44 @@ return [
         'methods' => 'POST',
     ],
     
+    'group_add'=>[
+        'pattern' => '/group/add',
+        'controller' => 'Web:Group:Index:addGroup',
+        'methods' => 'POST',
+    ],
+
+    'group_edit'=>[
+        'pattern' => '/group/edit',
+        'controller' => 'Web:Group:Index:editGroup',
+        'methods' => 'POST',
+    ],
+
+    'group_delete'=>[
+        'pattern' => '/group/delete',
+        'controller' => 'Web:Group:Index:deleteGroup',
+        'methods' => 'POST',
+    ],
+
+    'group_ding'=>[
+        'pattern' => '/group/ding',
+        'controller' => 'Web:Group:Index:dingGroup',
+        'methods' => 'POST',
+    ],
+
+    'group_unding'=>[
+        'pattern' => '/group/unding',
+        'controller' => 'Web:Group:Index:unDingGroup',
+        'methods' => 'POST',
+    ],
+
+    'group_detail'=>[
+        'pattern' => '/group/detail',
+        'controller' => 'Web:Group:Index:detail',
+        'methods' => 'POST',
+    ],
+
+    'group_list'=>[
+        'pattern' => '/group/list',
+        'controller' => 'Web:Group:Index:listGroups',
+    ],
 ];

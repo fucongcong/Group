@@ -225,3 +225,46 @@ function require_cache($filename) {
     }
     return $_importFiles[$filename];
 }
+
+/**
+ * 获取字符串的长度
+ *
+ * 计算时, 汉字或全角字符占2个长度, 英文字符占1个长度
+ * @param string  $str
+ * @param boolean $filter 是否过滤html标签
+ * @return int 字符串的长度
+ */
+function get_str_length($str, $filter = false) {
+    if ($filter) {
+        $str = html_entity_decode($str, ENT_QUOTES);
+        $str = strip_tags($str);
+    }
+    return (strlen($str) + mb_strlen($str, 'UTF8')) / 2;
+}
+//getShort会清理掉所有的样式
+function getShort($str, $length = 40, $ext = '&hellip;') {
+    $str = strip_tags($str);
+    $str = htmlspecialchars($str);
+    $strlenth = 0;
+    $output = '';
+    preg_match_all("/[\x01-\x7f]|[\xc2-\xdf][\x80-\xbf]|[\xe0-\xef][\x80-\xbf]{2}|[\xf0-\xff][\x80-\xbf]{3}/", $str, $match);
+    foreach ($match[0] as $v) {
+        preg_match("/[\xe0-\xef][\x80-\xbf]{2}/", $v, $matchs);
+        if (!empty($matchs[0])) {
+            $strlenth += 1;
+        } elseif (is_numeric($v)) {
+            $strlenth += 0.545;
+        } else {
+            $strlenth += 0.475;
+        }
+
+        if ($strlenth > $length) {
+            $output .= $ext;
+            break;
+        }
+
+        $output .= $v;
+    }
+    $output = htmlspecialchars_decode($output);
+    return $output;
+}
