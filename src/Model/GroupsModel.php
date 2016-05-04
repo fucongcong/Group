@@ -38,6 +38,6 @@ class GroupsModel extends Model {
 
     public function findGroups($start, $limit = 10)
     {
-        return $this -> order('mtime DESC') -> limit($start.",".$limit) -> find();
+        return $this -> order('mtime DESC') -> limit("{$start},{$limit}") -> select();
     }
 }
