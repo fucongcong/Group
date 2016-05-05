@@ -39,8 +39,9 @@ class UserController extends BaseController
         if (!$res) return $this -> createJsonResponse('', '账号或密码错误', 0);
         if ($res['password'] != md5($user['password'])) return $this -> createJsonResponse('', '账号或密码错误', 0);
 
+        $user = D('User') -> getUserInfo($res['uid']);
         $token = D('Login') -> addLogin($res['uid']);
-        if ($token) return $this -> createJsonResponse(['token' => $token], '登陆成功', 1);
+        if ($token) return $this -> createJsonResponse(['user' => $user, 'token' => $token], '登陆成功', 1);
         return $this -> createJsonResponse('', '登陆失败', 0);
     }
 
@@ -48,7 +49,8 @@ class UserController extends BaseController
     {   
         $uid = $request -> query -> get('uid');
         $user = D('User') -> getUserInfo($uid);
-        return $this -> createJsonResponse($user, '', 1);
+        if ($user) return $this -> createJsonResponse($user, '', 1);
+        return $this -> createJsonResponse('', '用户不存在', 0);
     }
 
     public function editAction(Request $request)

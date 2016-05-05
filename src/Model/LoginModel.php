@@ -14,7 +14,7 @@ class LoginModel extends Model {
             $res = $this -> data($data) -> add();
         }
         
-        if ($res) return $data['token'];
+        if ($res) return $data;
         return fasle;
     }
 
