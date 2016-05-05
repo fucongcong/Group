@@ -41,8 +41,9 @@ class UserController extends BaseController
 
         $user = D('User') -> getUserInfo($res['uid']);
         $token = D('Login') -> addLogin($res['uid']);
-        if ($token) return $this -> createJsonResponse(['user' => $user, 'token' => $token], '登陆成功', 1);
-        return $this -> createJsonResponse('', '登陆失败', 0);
+        $user['token'] = $token['token'];
+        $user['token_etime'] = $token['etime'];
+        return $this -> createJsonResponse($user, '登陆成功', 1);
     }
 
     public function detailAction(Request $request)
