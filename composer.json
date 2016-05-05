@@ -20,6 +20,7 @@
     ],
     "require": {
         "php": ">=5.3",
+        "intervention/image": "2.3.7",
         "group/group-framework": "~1.1.6"
     }
 }

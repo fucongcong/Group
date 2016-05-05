@@ -85,10 +85,15 @@ class UserController extends BaseController
         $hash = substr(md5($filenamePrefix . time()), -8);
         $ext = $file -> getClientOriginalExtension();
 
-        $filename = $filenamePrefix . $hash . '.' . $ext;
+        $fileName = $filenamePrefix . $hash . '.' . $ext;
 
-        $file = $file -> move(__ROOT__."asset/public/avatar", $filename);
-        $fileName = $file->getFilename();
+        $file = $file -> move(__ROOT__."asset/public/avatar", $fileName);
+
+        $img = \Intervention\Image\ImageManagerStatic::make("asset/public/avatar/".$fileName);
+        // resize image instance
+        $img->resize(200, 200);
+        // save image in desired format
+        $img->save(__ROOT__."asset/public/avatar/".$filenamePrefix . $hash . '2X2.' . $ext);
 
         D('User') -> updateUserAvatar($fileName, $uid);
         $user = D('User') -> getUserInfo($uid);

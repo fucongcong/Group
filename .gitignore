@@ -4,5 +4,6 @@
 /asset/js/*
 /asset/img/*
 /asset/lib/*
+/asset/public/*
 /vendor
 composer.lock
