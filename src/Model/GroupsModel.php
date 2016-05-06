@@ -40,4 +40,15 @@ class GroupsModel extends Model {
     {
         return $this -> order('mtime DESC') -> limit("{$start},{$limit}") -> select();
     }
+
+    public function wavePostNum($gid, $type = 'up')
+    {   
+        if ($type == 'up') {
+            $sql = "UPDATE `groups` SET post_num=post_num+1";
+        } else {
+            $sql = "UPDATE `groups` SET post_num=post_num-1";
+        }
+        
+        return M() -> query($sql);
+    }
 }

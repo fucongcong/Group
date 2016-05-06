@@ -71,4 +71,10 @@ return [
         'pattern' => '/group/list',
         'controller' => 'Web:Group:Index:listGroups',
     ],
+
+    'group_post_add'=>[
+        'pattern' => '/group/post/add',
+        'controller' => 'Web:Group:Post:addPost',
+        'methods' => 'POST',
+    ],
 ];
