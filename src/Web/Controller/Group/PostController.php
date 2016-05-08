@@ -52,7 +52,9 @@ class PostController extends BaseController
         $posts = D('GroupsPost') -> findPosts($gid, $start);
         if (empty($posts)) return $this -> createJsonResponse(null, '', 0);
         foreach ($posts as &$post) {
-            $post['user'] = D('User') -> getUserInfo($post['uid']);
+            $user = D('User') -> getUserInfo($post['uid']);
+            $post['username'] = $user['username'];
+            $post['user_avatar'] = $user['avatar'];
         }
         return $this -> createJsonResponse($posts, '', 1);
     }
