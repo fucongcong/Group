@@ -17,7 +17,7 @@ class GroupsModel extends Model {
     {   
         $group = $this -> where(['gid' => $gid]) -> find();
         if (!$group) return false;
-        $group['ding_num'] = D('GroupDing') -> getDingNum($gid);
+        $group['ding_num'] = D('GroupsDing') -> getDingNum($gid);
         return $group;
     }
 
