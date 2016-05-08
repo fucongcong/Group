@@ -53,4 +53,16 @@ class UserModel extends Model {
     {
         return $this -> data(['avatar' => $avatar]) -> where(['uid' => $uid]) -> save();
     }
+
+    public function updatePassword($uid, $password, $newPassword)
+    {
+        $user = $this -> where(['uid' => $uid]) -> find();
+        if ($user) {
+            if ($user['password'] == $password) {
+                return $this -> data(['password' => $newPassword]) -> where(['uid' => $uid]) -> save();
+            }
+            return false;
+        }
+        return false;
+    }
 }

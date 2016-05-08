@@ -97,6 +97,7 @@ class IndexController extends BaseController
 
         $groups = D('Groups') -> findGroups($start);
 
+        if (empty($groups)) return $this -> createJsonResponse(null, '', 0);
         return $this -> createJsonResponse($groups, '', 1);
     }
 

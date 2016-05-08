@@ -14,8 +14,11 @@ class GroupsModel extends Model {
     }
 
     public function getGroup($gid)
-    {
-        return $this -> where(['gid' => $gid]) -> find();
+    {   
+        $group = $this -> where(['gid' => $gid]) -> find();
+        if (!$group) return false;
+        $group['ding_num'] = D('GroupDing') -> getDingNum($gid);
+        return $group;
     }
 
     public function updateGroup($gid, $group)
