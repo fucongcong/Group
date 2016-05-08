@@ -45,12 +45,15 @@ class PostController extends BaseController
 
     public function listPostsAction(Request $request)
     {   
-        $gid = $request -> query() -> get('gid');
-        $start = $request -> query() -> get('start');
+        $gid = $request -> query -> get('gid');
+        $start = $request -> query -> get('start');
         if (!$start) $start = 0;
 
         $posts = D('GroupsPost') -> findPosts($gid, $start);
         if (empty($posts)) return $this -> createJsonResponse(null, '', 0);
+        foreach ($posts as &$post) {
+            $post['user'] = D('User') -> getUserInfo($post['uid']);
+        }
         return $this -> createJsonResponse($posts, '', 1);
     }
 }
