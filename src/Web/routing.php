@@ -22,6 +22,7 @@ return [
     'user_changePassword'=>[
         'pattern' => '/user/changePassword',
         'controller' => 'Web:User:User:changePassword',
+        'methods' => 'POST',
     ],
 
     'user_edit'=>[
