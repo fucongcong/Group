@@ -73,6 +73,23 @@ class UserController extends BaseController
         return $this -> createJsonResponse($user, '更新成功', 1);
     }
 
+    public function changePasswordAction(Request $request)
+    {
+        $token = $request -> request -> get('token');
+        $uid = $this -> isLogin($token);
+        if (!$uid) return $this -> createJsonResponse('', '请登录', 2);
+
+        $user = $request -> request -> all();
+        if (!SimpleValidator::password($user['old_password']) && !SimpleValidator::password($user['new_password'])) {
+            return $this->createJsonResponse('', '密码格式不正确', 0);
+        }
+
+        if (D('User') -> updatePassword($uid, md5($user['old_password']), md5($user['new_password']))) {
+            return $this->createJsonResponse('', '密码修改成功', 1);
+        }
+        return $this->createJsonResponse('', '密码修改失败', 0);
+    }
+
     public function setAvatarAction(Request $request)
     {
         $info = $request -> request -> all();
