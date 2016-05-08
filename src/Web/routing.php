@@ -19,6 +19,11 @@ return [
         'controller' => 'Web:User:User:detail',
     ],
 
+    'user_changePassword'=>[
+        'pattern' => '/user/changePassword',
+        'controller' => 'Web:User:User:changePassword',
+    ],
+
     'user_edit'=>[
         'pattern' => '/user/edit',
         'controller' => 'Web:User:User:edit',
