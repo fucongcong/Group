@@ -83,4 +83,15 @@ return [
         'controller' => 'Web:Group:Post:addPost',
         'methods' => 'POST',
     ],
+
+    'group_post_delete'=>[
+        'pattern' => '/group/post/delete',
+        'controller' => 'Web:Group:Post:deletePost',
+        'methods' => 'POST',
+    ],
+
+     'group_post_list'=>[
+        'pattern' => '/group/post/list',
+        'controller' => 'Web:Group:Post:listPosts',
+    ],
 ];
