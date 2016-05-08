@@ -27,4 +27,9 @@ class GroupsDingModel extends Model {
     {
         return $this -> where(['gid' => $gid, 'uid' => $uid]) -> count();
     }
+
+    public function getDingNum($gid)
+    {
+        return $this -> where(['gid' => $gid]) -> count();
+    }
 }
