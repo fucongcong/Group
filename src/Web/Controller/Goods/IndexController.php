@@ -7,7 +7,7 @@ use Request;
 
 class IndexController extends BaseController
 {
-    public function listGoods(Request $request)
+    public function listGoodsAction(Request $request)
     {
 
     }

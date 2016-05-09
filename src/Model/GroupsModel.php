@@ -44,6 +44,11 @@ class GroupsModel extends Model {
         return $this -> order('mtime DESC') -> limit("{$start},{$limit}") -> select();
     }
 
+    public function findGroupsByUid($uid, $start, $limit = 10)
+    {
+        return $this -> where(['uid' => $uid]) -> order('ctime DESC') -> limit("{$start},{$limit}") -> select();
+    }
+
     public function wavePostNum($gid, $type = 'up')
     {   
         if ($type == 'up') {

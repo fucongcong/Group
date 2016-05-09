@@ -101,8 +101,11 @@ class UserController extends BaseController
 
         $hash = substr(md5($filenamePrefix . time()), -8);
         $ext = $file -> getClientOriginalExtension();
+        if ($ext) {
+            $ext = '.' . $ext;
+        }
 
-        $fileName = $filenamePrefix . $hash . '.' . $ext;
+        $fileName = $filenamePrefix . $hash . $ext;
 
         $file = $file -> move(__ROOT__."asset/public/avatar", $fileName);
 
@@ -110,7 +113,7 @@ class UserController extends BaseController
         // resize image instance
         $img->resize(200, 200);
         // save image in desired format
-        $img->save(__ROOT__."asset/public/avatar/".$filenamePrefix . $hash . '2X2.' . $ext);
+        $img->save(__ROOT__."asset/public/avatar/".$filenamePrefix . $hash . '2X2' . $ext);
 
         D('User') -> updateUserAvatar($fileName, $uid);
         $user = D('User') -> getUserInfo($uid);

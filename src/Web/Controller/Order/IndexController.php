@@ -7,7 +7,7 @@ use Request;
 
 class IndexController extends BaseController
 {
-    public function addOrder(Request $request)
+    public function addOrderAction(Request $request)
     {
         
     }

@@ -36,6 +36,20 @@ return [
         'controller' => 'Web:User:User:setAvatar',
         'methods' => 'POST',
     ],
+
+    'user_pets'=>[
+        'pattern' => '/user/pets',
+        'controller' => 'Web:User:Index:listPets',
+        'methods' => 'POST',
+    ],
+
+    'user_groups'=>[
+        'pattern' => '/user/groups',
+        'controller' => 'Web:User:Index:listGroups',
+        'methods' => 'POST',
+    ],
+
+
     
     'group_add'=>[
         'pattern' => '/group/add',
@@ -93,5 +107,25 @@ return [
      'group_post_list'=>[
         'pattern' => '/group/post/list',
         'controller' => 'Web:Group:Post:listPosts',
+    ],
+
+
+
+    'pet_add'=>[
+        'pattern' => '/pet/add',
+        'controller' => 'Web:Pet:Index:addPet',
+        'methods' => 'POST',
+    ],
+
+    'pet_edit'=>[
+        'pattern' => '/pet/edit',
+        'controller' => 'Web:Pet:Index:editPet',
+        'methods' => 'POST',
+    ],
+
+    'pet_delete'=>[
+        'pattern' => '/pet/delete',
+        'controller' => 'Web:Pet:Index:deletePet',
+        'methods' => 'POST',
     ],
 ];
