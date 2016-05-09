@@ -7,6 +7,12 @@
 <link rel="stylesheet" type="text/css" href="{{ asset("asset/css/WebApp_reset.css") }}" />
 {% endblock %}
 
+{% block head_scripts %}
+<script>
+    seajs.use("/asset/js/login")
+</script>
+{% endblock %}
+
 {% block body %}
 <div class="logo">
     <img src="{{ asset("asset/img/logo.png") }}" >

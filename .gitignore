@@ -1,6 +1,4 @@
 /runtime
-/asset/fonts/*
-/asset/lib/*
 /asset/public/*
 /vendor
 composer.lock
