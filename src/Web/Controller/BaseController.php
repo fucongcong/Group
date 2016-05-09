@@ -15,5 +15,10 @@ class BaseController extends Controller
     {
         return new \Response(json_encode(['status' => $status, 'info' => $info, 'data' => $data]));
     }
+
+    public function redirect($url, $status = 302)
+    {
+        header("location: {$url}");
+    }
 }
 

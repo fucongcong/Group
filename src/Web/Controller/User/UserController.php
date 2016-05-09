@@ -8,6 +8,14 @@ use src\Web\Common\SimpleValidator;
 
 class UserController extends BaseController
 {   
+    public function indexAction(Request $request)
+    {   
+        $uid = \Session::get('uid');
+        if (!$uid) return $this -> redirect('/login');
+
+        return $this -> render('Web/Views/User/info.html.twig');
+    }
+
     public function registerAction(Request $request)
     {   
         return $this -> render('Web/Views/User/register.html.twig');
@@ -59,16 +67,25 @@ class UserController extends BaseController
     {      
         $user = $request -> request -> all();
 
-        $res = D('User') -> getUserByMobile($user['mobile']);
+        if (empty($user['email']) || empty($user['password'])) return $this -> createJsonResponse('', '账号或密码不能为空', 0);
+
+        $res = D('User') -> getUserByEmail($user['email']);
         if (!$res) return $this -> createJsonResponse('', '账号或密码错误', 0);
         if ($res['password'] != md5($user['password'])) return $this -> createJsonResponse('', '账号或密码错误', 0);
 
-        $user = D('User') -> getUserInfo($res['uid']);
-        $token = D('Login') -> addLogin($res['uid']);
-        $user['token'] = $token['token'];
-        $user['token_etime'] = $token['etime'];
-        return $this -> createJsonResponse($user, '登陆成功', 1);
+        \Session::set('uid', $res['uid']);
+
+        return $this -> createJsonResponse('', '登陆成功', 1);
     }
+
+    public function loginOutAction()
+    {   
+        //unset($_SESSION['uid']);
+        \Session::clear();
+        return $this -> redirect('/login');
+    }
+
+
 
     public function detailAction(Request $request)
     {   

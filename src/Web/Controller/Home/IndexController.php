@@ -10,8 +10,8 @@ class IndexController extends BaseController
     public function indexAction(Request $request)
     {   
         $uid = \Session::get('uid');
-        if (!$uid) 
-            
+        if (!$uid) return $this -> redirect('/login');
+
         return $this -> render('Web/Views/Home/index.html.twig');
     }
 }

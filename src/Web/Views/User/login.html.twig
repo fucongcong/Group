@@ -19,7 +19,7 @@
 </div>
 <div class="title">I am a good man.</div>
 
-<div class="login_box">
+<form class="login_box" id="login-form">
 
     
     <div class="row mr0 ml0 info" {% if not messages %}style="display:none;" {% endif %}>
@@ -36,7 +36,7 @@
     <div class="input_box" id="name_box">
         <div class="input_name">邮箱</div>
         <div class="input">
-            <input type="text" name="email" placeholder="请输入姓名">
+            <input type="text" name="email" placeholder="请输入邮箱">
         </div>
     </div>
     <div class="input_box" id="pas_box">
@@ -51,9 +51,9 @@
         <img src="{{ asset("asset/img/header.jpg") }}">
         <div>哎呀！好帅~</div>
     </div>
-</div>
+</form>
 <div class="reg_box">
     <div class="warn_go">没有账号</div>
-    <a class="go_reg" href="{{ url('user_register') }}">立即注册</a>
+    <div class="go_reg">立即注册</div>
 </div>
 {% endblock %}

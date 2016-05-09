@@ -21,8 +21,6 @@
   {% block stylesheets %}
   {% endblock %}
 
-  
-
 </head>
 <body>
 <!-- {#   {% include 'web/views/public/head.html.twig' %} #} -->
@@ -35,16 +33,17 @@
 {#   {% include 'web/views/public/bottom.html.twig' %} #}
 
 {# cmd  seajs: #}
-
+  
+  <script src="{{ asset("asset/js/zepto.min.js") }}"></script>
     <script>
      var app = {};
       app.jspath="/asset/lib/sea-modules";
     </script>
     <script src="{{ asset("asset/lib/sea-modules/seajs/seajs/2.2.1/sea.js") }}"></script>
     <script src="{{ asset("asset/lib/seajs-config.js") }}"></script>
-    <script>
+    {# <script>
     seajs.use("/asset/js/index")
-    </script>
+    </script>#}
 
   
     {% block head_scripts %}{% endblock %}

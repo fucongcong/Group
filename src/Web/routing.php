@@ -24,13 +24,22 @@ return [
         'controller' => 'Web:User:User:login',
     ],
 
+    'user_login_out'=>[
+        'pattern' => '/login_out',
+        'controller' => 'Web:User:User:loginOut',
+    ],
+
+
     'user_do_login'=>[
-        'pattern' => '/dologin',
+        'pattern' => '/doLogin',
         'controller' => 'Web:User:User:doLogin',
         'methods' => 'POST',
     ],
 
-
+    'user'=>[
+        'pattern' => '/user',
+        'controller' => 'Web:User:User:index',
+    ],
 
 
 

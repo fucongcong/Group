@@ -1,19 +1,23 @@
 
 define('/asset/js/login', function(require, exports, module) {
 
-    window.$ = window.jQuery = require('jquery');
+    //window.$ = window.jQuery = require('jquery');
 
-    $('#login').on('click', function() {
+    $('.login_but').on('tap', function() {
 
         $.post('/doLogin', $('#login-form').serialize(), function(res){
-            res = jQuery.parseJSON(res);
+            res = $.parseJSON(res);
             if (res.status == 1) {
-                window.location.href = "/login";
+                location.href = "/";
             } else {
                 $('.info').show();
                 $('.alert-info').html(res.info);
             }
         }) 
 
+    })
+
+    $(".go_reg").on("tap",function(){
+        location.href="/register";
     })
 });

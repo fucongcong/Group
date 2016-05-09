@@ -18,9 +18,9 @@ class UserModel extends Model {
         return false;
     }
 
-    public function getUserByMobile($mobile)
+    public function getUserByEmail($email)
     {
-        return $this -> where(['mobile' => $mobile]) -> find();
+        return $this -> where(['email' => $email]) -> find();
     }
 
     public function getUserInfo($uid)

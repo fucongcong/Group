@@ -1,27 +1,29 @@
 {% extends 'Web/Views/layout.html.twig' %}
 
-{% block title %}用户主页{% endblock %}
-
+{% block title %}个人中心{% endblock %}
 {% block stylesheets %}
 <link rel="stylesheet" type="text/css" href="{{ asset("asset/css/public.css") }}" />
-<link rel="stylesheet" type="text/css" href="{{ asset("asset/css/login.css") }}" />
+<link rel="stylesheet" type="text/css" href="{{ asset("asset/css/personal.css") }}" />
 <link rel="stylesheet" type="text/css" href="{{ asset("asset/css/WebApp_reset.css") }}" />
 {% endblock %}
 
 {% block head_scripts %}
 <script>
     seajs.use("/asset/js/home")
+    seajs.use("/asset/js/info")
 </script>
 {% endblock %}
 
 {% block body %}
-<div class="lf_box">
-    <div class="head">
-        <img src="{{ asset("asset/img/logo.png") }}">
-    </div>
-    <div class="lf_info">
-        <span>{{ user.username }}</span>
-    </div>
-</div>
+<ul class="per_list">
+    <li>我的资料</li>
+    <li>荣誉勋章</li>
+    <li>雷锋日记</li>
+    <li>收藏夹</li>
+    <li>好友</li>
+    <li>消息</li>
+    <li>设置</li>
+</ul>
+<div class="feed_back">退出登录</div>
 {% include 'web/views/public/bottom.html.twig' %} 
 {% endblock %}
