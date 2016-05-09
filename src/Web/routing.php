@@ -1,6 +1,12 @@
 <?php
 
 return [
+    
+    'home'=>[
+        'pattern' => '/',
+        'controller' => 'Web:Home:Index:index',
+    ],
+
 
     'user_register'=>[
         'pattern' => '/register',
@@ -23,6 +29,16 @@ return [
         'controller' => 'Web:User:User:doLogin',
         'methods' => 'POST',
     ],
+
+
+
+
+
+
+
+
+
+
 
     'user_detail'=>[
         'pattern' => '/user/detail',

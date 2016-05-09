@@ -7,15 +7,21 @@
 <link rel="stylesheet" type="text/css" href="{{ asset("asset/css/WebApp_reset.css") }}" />
 {% endblock %}
 
+{% block head_scripts %}
+<script>
+    seajs.use("/asset/js/register")
+</script>
+{% endblock %}
+
 {% block body %}
 <div class="logo">
     <img src="{{ asset("asset/img/logo.png") }}" >
 </div>
 <div class="title">I am a good man.</div>
-<div class="login_box">
+<form class="login_box" id="register-form">
 
-    <div class="row mr0 ml0 info hidden">
-        <div class="alert alert-info" role="alert">
+    <div class="row mr0 ml0 info" style="display:none;">
+        <div class="alert alert-info fz14" role="alert">
         </div>
     </div>
 
@@ -34,23 +40,24 @@
     <div class="input_box" id="pas_box">
         <div class="input_name">登录密码</div>
         <div class="input">
-            <input type="text" name="password" placeholder="请输入登录密码">
+            <input type="password" name="password" placeholder="请输入登录密码">
         </div>
     </div>
     <div class="input_box" id="pas_box">
         <div class="input_name">确认密码</div>
         <div class="input">
-            <input type="text" name="rePassword" placeholder="请确认密码">
+            <input type="password" name="rePassword" placeholder="请确认密码">
         </div>
     </div>
     <div class="header_box">
         <img src="{{ asset("asset/img/header.jpg") }}">
         <div>选一张迷人帅气的头像吧。</div>
     </div>
-    <div class="register_but">注&nbsp&nbsp&nbsp册</div>
-</div>
+    <button type="button" class="register_but" id="register">注&nbsp&nbsp&nbsp册</button>
+
+</form>
 <div class="reg_box">
     <div class="warn_go">已有账号</div>
-    <div class="go_log">立即登录</div>
+    <a class="go_log" href="{{ url('user_login') }}">立即登录</a>
 </div>
 {% endblock %}

@@ -1,6 +1,6 @@
 {% extends 'Web/Views/layout.html.twig' %}
 
-{% block title %}用户注册{% endblock %}
+{% block title %}用户登陆{% endblock %}
 {% block stylesheets %}
 <link rel="stylesheet" type="text/css" href="{{ asset("asset/css/public.css") }}" />
 <link rel="stylesheet" type="text/css" href="{{ asset("asset/css/login.css") }}" />
@@ -21,15 +21,17 @@
 
 <div class="login_box">
 
-    {% if messages %}
-    <div class="row mr0 ml0 info">
+    
+    <div class="row mr0 ml0 info" {% if not messages %}style="display:none;" {% endif %}>
         <div class="alert alert-info" role="alert">
-            {% for message in messages %}
-                {{ message }}1
-            {% endfor %}
+            {% if not messages %}
+                {% for message in messages %}
+                    {{ message.0 }}
+                {% endfor %}
+            {% endif %}
         </div>
     </div>
-    {% endif %}
+    
     
     <div class="input_box" id="name_box">
         <div class="input_name">邮箱</div>
@@ -40,7 +42,7 @@
     <div class="input_box" id="pas_box">
         <div class="input_name">密码</div>
         <div class="input">
-            <input type="text" name="password" placeholder="请输入密码">
+            <input type="password" name="password" placeholder="请输入密码">
         </div>
     </div>
     <div class="forget">忘记密码</div>
@@ -52,6 +54,6 @@
 </div>
 <div class="reg_box">
     <div class="warn_go">没有账号</div>
-    <div class="go_reg">立即注册</div>
+    <a class="go_reg" href="{{ url('user_register') }}">立即注册</a>
 </div>
 {% endblock %}

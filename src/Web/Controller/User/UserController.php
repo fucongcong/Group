@@ -23,15 +23,19 @@ class UserController extends BaseController
             return $this->createJsonResponse('', '姓名格式不正确', 0);
         }
 
+        if (!SimpleValidator::email($user['email'])) {
+            return $this->createJsonResponse('', '邮箱不正确', 0);
+        }
+
         if (D('User') -> isEmailRegister($user['email'])) {
             return $this -> createJsonResponse('', '该邮箱已被注册', 0);
         }
 
-        if (!SimpleValidator::password($user['password']) || !SimpleValidator::password($user['reRassword'])) {
+        if (!SimpleValidator::password($user['password']) || !SimpleValidator::password($user['rePassword'])) {
             return $this->createJsonResponse('', '密码格式不正确', 0);
         }
 
-        if ($user['password'] != $user['reRassword']) {
+        if ($user['password'] != $user['rePassword']) {
             return $this->createJsonResponse('', '两次密码不一致', 0);
         }
 
