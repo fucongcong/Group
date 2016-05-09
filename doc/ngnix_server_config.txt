@@ -1,14 +1,14 @@
 server {
-    listen 8081;
+    listen 81;
 
-    server_name www.group.com;
+    #server_name www.group.com;
 
     # 程序的安装路径
     root /var/www/Group;
 
     # 日志路径
-    access_log /var/log/nginx/www.group.com.access.log;
-    error_log /var/log/nginx/www.group.com.error.log;
+    access_log /var/log/nginx/www.group1.com.access.log;
+    error_log /var/log/nginx/www.group1.com.error.log;
 
     location / {
         index index.php;

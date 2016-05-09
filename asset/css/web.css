@@ -7,3 +7,23 @@
     text-align: center;
     padding: 40px 0;
 }
+
+.alert {
+    padding: 9px;
+}
+
+.mr0{
+    margin-right: 0px;
+}
+
+.ml0{
+    margin-left: 0px;
+}
+
+.info {
+    width: 80%;
+}
+
+.hidden {
+    display: none;
+}

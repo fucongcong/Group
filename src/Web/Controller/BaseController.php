@@ -15,10 +15,5 @@ class BaseController extends Controller
     {
         return new \Response(json_encode(['status' => $status, 'info' => $info, 'data' => $data]));
     }
-
-    public function isLogin($token)
-    {
-        return D('Login') -> getLoginUid($token);
-    }
 }
 

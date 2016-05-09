@@ -9,7 +9,7 @@ use src\Web\Common\SimpleValidator;
 class UserController extends BaseController
 {   
     public function registerAction(Request $request)
-    {
+    {   
         return $this -> render('Web/Views/User/register.html.twig');
     }
 
@@ -19,24 +19,39 @@ class UserController extends BaseController
 
         if (empty($user)) return $this -> createJsonResponse($user, '参数错误', 0);
 
-        if (!preg_match('/(13\d|14[57]|15[^4,\D]|17[678]|18\d)\d{8}|170[059]\d{7}/i', $user['mobile'])) {
-            return $this -> createJsonResponse('', '手机号码不正确', 0);
+        if (!SimpleValidator::truename($user['username'])) {
+            return $this->createJsonResponse('', '姓名格式不正确', 0);
         }
 
-        if (!SimpleValidator::password($user['password'])) {
+        if (D('User') -> isEmailRegister($user['email'])) {
+            return $this -> createJsonResponse('', '该邮箱已被注册', 0);
+        }
+
+        if (!SimpleValidator::password($user['password']) || !SimpleValidator::password($user['reRassword'])) {
             return $this->createJsonResponse('', '密码格式不正确', 0);
         }
 
-        if (D('User') -> isMobileRegister($user['mobile'])) {
-            return $this -> createJsonResponse('', '该手机已被注册', 0);
+        if ($user['password'] != $user['reRassword']) {
+            return $this->createJsonResponse('', '两次密码不一致', 0);
         }
 
-        if (D('User') -> addUser($user)) return $this -> createJsonResponse('', '注册成功', 1);
-
+        if (D('User') -> addUser($user)) {
+            $this -> setFlashMessage('info', '注册成功，请登录！');
+            return $this -> createJsonResponse('', '注册成功', 1);
+        }
         return $this -> createJsonResponse('', '注册失败', 0);
     }
 
     public function loginAction(Request $request)
+    {   
+        $messages = $this -> getFlashMessage();
+
+        return $this -> render('Web/Views/User/login.html.twig', array(
+            'messages' => $messages
+            ));
+    }
+
+    public function doLoginAction(Request $request)
     {      
         $user = $request -> request -> all();
 

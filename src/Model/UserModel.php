@@ -4,16 +4,16 @@ class UserModel extends Model {
 
     public function addUser($user)
     {
-        $user['username'] = mt_rand(1000, 9999);
+        $user['username'] = $user['username'];
         $user['password'] = md5($user['password']);
-        $user['mobile'] = $user['mobile'];
+        $user['email'] = $user['email'];
         $user['ctime'] = time();
         return $this -> data($user) -> add();
     }
 
-    public function isMobileRegister($mobile)
+    public function isEmailRegister($email)
     {   
-        $exist = $this -> where(['mobile' => $mobile]) -> count();
+        $exist = $this -> where(['email' => $email]) -> count();
         if ($exist) return true;
         return false;
     }

@@ -13,10 +13,12 @@
   <meta name="description" content="{% block description %}{% endblock %}" />
  {#  <meta content="{{ csrf_token('site') }}" name="csrf-token" /> #}
 
-  {% block stylesheets %}
+  {% block parent_stylesheets %}
     <link href="{{ asset("asset/css/bootstrap.min.css") }}" rel="stylesheet">
     <link href="{{ asset("asset/css/web.css") }}" rel="stylesheet">
+  {% endblock %}
 
+  {% block stylesheets %}
   {% endblock %}
 
   {% block head_scripts %}{% endblock %}

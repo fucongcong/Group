@@ -16,6 +16,11 @@ return [
     'user_login'=>[
         'pattern' => '/login',
         'controller' => 'Web:User:User:login',
+    ],
+
+    'user_do_login'=>[
+        'pattern' => '/dologin',
+        'controller' => 'Web:User:User:doLogin',
         'methods' => 'POST',
     ],
 
