@@ -79,8 +79,7 @@ class UserController extends BaseController
     }
 
     public function loginOutAction()
-    {   
-        //unset($_SESSION['uid']);
+    {  
         \Session::clear();
         return $this -> redirect('/login');
     }

@@ -24,7 +24,7 @@
     
     <div class="row mr0 ml0 info" {% if not messages %}style="display:none;" {% endif %}>
         <div class="alert alert-info" role="alert">
-            {% if not messages %}
+            {% if messages %}
                 {% for message in messages %}
                     {{ message.0 }}
                 {% endfor %}
