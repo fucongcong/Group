@@ -1,0 +1,55 @@
+.title_box{
+	margin: 0.1rem;
+	background: #fff;
+	height: 0.3rem;
+	line-height: 0.3rem;
+	background: #fff url(../img/tag_pic.png) no-repeat 0.1rem center;
+	background-size: 0.15rem;
+}
+.title_box input{
+	color: #aaaaaa;
+	height: 0.3rem;
+	line-height: 0.3rem;
+	margin-left: 0.4rem;
+	font-size: 0.12rem;
+	width: 80%;
+}
+.info_box{
+	margin: 0.1rem;
+	background: #fff;
+}
+.info_box textarea{
+	width: 80%;
+	height: 1.5rem;
+	background: #fff url(../img/text.png) no-repeat 0.1rem 0.08rem;
+	background-size: 0.15rem;
+	padding-left: 0.4rem;
+	padding-top: 0.08rem;
+	color: #aaaaaa;
+	font-size: 0.12rem;
+}
+.pic_box{
+	margin: 0.1rem;
+	background: #fff;
+	padding: 0.1rem;
+}
+.pic_box img{
+	width: 0.5rem;
+	height: auto;
+}
+.post_but{
+	margin: 0.1rem;
+	height: 0.3rem;
+	line-height: 0.3rem;
+	text-align: center;
+	background: #9fdecb;
+	color: #fff;
+}
+.cancel_but{
+	margin: 0.1rem;
+	height: 0.3rem;
+	line-height: 0.3rem;
+	text-align: center;
+	background: #fadd7f;
+	color: #fff;
+}

@@ -1,0 +1,87 @@
+@charset "utf-8";
+html {
+  font-size: 625%;
+  -webkit-text-size-adjust:none;
+}
+@media screen and (min-width: 320px) {
+    html{
+        font-size:625%;
+    }
+}
+@media screen and (min-width: 360px) {
+    html{
+        font-size:700%;
+    }
+}
+@media screen and (min-width: 414px) {
+    html{
+        font-size:812.5%;
+    }
+}
+body {
+  min-width: 320px;
+  font-size: 0.14rem;
+  font-family: 'microsoft yahei', verdana, arial, helvetica, sans-serif;
+  color: rgb(127,126,126);
+  margin: 0 auto;
+  background: #f2f0c7;
+  height: 100%;
+}
+
+@-webkit-keyframes btnRotate {
+    0% {
+       -webkit-transform: rotateZ(0deg);
+       }
+    100% {
+       -webkit-transform: rotateZ(360deg);
+       }
+}
+@-moz-keyframes btnRotate {
+    0% {
+       -moz-transform: rotateZ(0deg);
+       }
+    100% {
+       -moz-transform: rotateZ(360deg);
+       }
+}
+.but_tab{
+  bottom: 0;
+  position: fixed;
+  height: 0.4rem;
+  width: 100%;
+}
+.but_tab .tab_box1{
+  width: 25%;
+  height: 0.4rem;
+  float: left;
+  background: #9fdecb url(../img/home_off.png) no-repeat center center;
+  background-size: 0.25rem;
+  border-right: 1px #f2f0c7 solid;
+  box-sizing:border-box;
+}
+.but_tab .tab_box2{
+  width: 25%;
+  height: 0.4rem;
+  float: left;
+  background: #9fdecb url(../img/list_off.png) no-repeat center center;
+  background-size: 0.25rem;
+  border-right: 1px #f2f0c7 solid;
+  box-sizing:border-box;
+}
+.but_tab .tab_box3{
+  width: 25%;
+  height: 0.4rem;
+  float: left;
+  background: #9fdecb url(../img/tie_off.png) no-repeat center center;
+  background-size: 0.25rem;
+  border-right: 1px #f2f0c7 solid;
+  box-sizing:border-box;
+}
+.but_tab .tab_box4{
+  width: 25%;
+  height: 0.4rem;
+  float: left;
+  background: #9fdecb url(../img/man_off.png) no-repeat center center;
+  background-size: 0.25rem;
+  box-sizing:border-box;
+}

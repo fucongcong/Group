@@ -1,0 +1,117 @@
+.posts{
+	background-color: #fff;
+	margin: 0.1rem;
+}
+.posts .posted{
+	background-color: #fff;
+	padding-top: 0.1rem;
+	padding-bottom: 0.1rem;
+	border-bottom: 1px solid;
+	border-color: #f2f0c7;
+	height: 0.8rem;
+}
+.header{
+	height: 0.8rem;
+	padding-left: 0.1rem;
+	float: left;
+}
+.header img{
+	width: auto;
+	height: 0.8rem;
+	float: left;
+}
+.poster{
+	margin-left: 1rem;
+}
+.posts .posted .poster span:after{
+	content: url(../img/girl_pic.jpg) 5px center;
+}
+.posts .posted .poster h1{
+	padding-left: 0.16rem;
+	padding-top: 0.08rem;
+	margin-bottom: 0.08rem;
+	background: url(../img/user_pic.jpg) no-repeat left 0.1rem;
+	background-size: 0.12rem;
+}
+.posts .posts_info{
+	border-top: 1px;
+	margin: 0.1rem;
+	padding-bottom: 0.1rem;
+	font-size: 12px;
+}
+.thing .thing_label{
+	color: #b5b4b4;
+	padding-left: 0.16rem;
+	background: url(../img/tag_pic.png) no-repeat left;
+	background-size: 0.12rem;
+}
+.posts_info .info_des{
+	padding-left: 0.16rem;
+	padding-top: 0.06rem;
+	background: url(../img/text.png) no-repeat left 0.1rem;
+	background-size: 0.12rem;
+}
+.comment_nav{
+	background: #fff;
+	margin-right: 0.1rem;
+	margin-left: 0.1rem;
+	margin-bottom: 0.5rem;
+}
+.comment_nav li{
+	width: 100%;
+	padding-top: 0.1rem;
+	overflow: hidden;
+}
+.comment_box{
+	background: #fadd7f;
+	color: #fff;
+	margin-top: 0.05rem;
+	margin-right: 0.1rem;
+	padding: 6px;
+	border-radius: 0.05rem;
+	font-size: 14px;
+}
+.comment_time{
+	font-size: 10px;
+	color: #d1d1d1;
+	padding: 4px;
+	bottom: 0;
+	text-align: right;
+}
+.chat_box{
+	bottom: 0;
+	position: fixed;
+	height: 0.5rem;
+	width: 100%;
+	background: #f2f0c7;
+}
+.chat_box .chat_input{
+	width: 70%;
+	float: left;
+	background: #fff;
+	margin-top: 0.1rem;
+	margin-left: 0.1rem;
+	padding-left: 0.1rem;
+	border-radius: 0.05rem;
+	height: 0.3rem;
+	line-height: 0.3rem;
+	box-sizing:border-box;
+}
+.chat_box .chat_input input{
+	line-height: 0.3rem;
+	color: #8e8e8e;
+	font-size: 0.12rem;
+}
+.chat_box .chat_but{
+	background-color: #9fdecb;
+	text-align: center;
+	float: left;
+	color: #fff;
+	width: 20%;
+	height: 0.3rem;
+	line-height: 0.3rem;
+	margin-top: 0.1rem;
+	margin-left: 0.1rem;
+	border-radius: 0.05rem;
+	box-sizing:border-box;
+}

@@ -7,8 +7,13 @@ use Request;
 use src\Web\Common\SimpleValidator;
 
 class UserController extends BaseController
-{
+{   
     public function registerAction(Request $request)
+    {
+        return $this -> render('Web/Views/User/register.html.twig');
+    }
+
+    public function doRegisterAction(Request $request)
     {   
         $user = $request -> request -> all();
 

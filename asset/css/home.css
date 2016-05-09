@@ -1,0 +1,29 @@
+body{
+	background: #f2f0c7 url(../img/bg.png) no-repeat;
+	background-size: 100%;
+}
+.lf_box{
+	margin-top: 5%;
+	padding-left: 8%;
+}
+.head{
+	height: 0.6rem;
+	width: 0.6rem;
+	float: left;
+	border-radius: 50%;
+	overflow: hidden;
+	border: 1px #fff solid;
+	box-sizing:border-box;
+}
+.head img{
+	width: 0.6rem;
+	height: auto;
+}
+.lf_info{
+
+}
+.check_icon img{
+	width: 0.8rem;
+	float: right;
+	margin-right: 0.3rem;
+}

@@ -5,6 +5,11 @@ return [
     'user_register'=>[
         'pattern' => '/register',
         'controller' => 'Web:User:User:register',
+    ],
+
+    'user_do_register'=>[
+        'pattern' => '/doRegister',
+        'controller' => 'Web:User:User:doRegister',
         'methods' => 'POST',
     ],
 
@@ -109,23 +114,4 @@ return [
         'controller' => 'Web:Group:Post:listPosts',
     ],
 
-
-
-    'pet_add'=>[
-        'pattern' => '/pet/add',
-        'controller' => 'Web:Pet:Index:addPet',
-        'methods' => 'POST',
-    ],
-
-    'pet_edit'=>[
-        'pattern' => '/pet/edit',
-        'controller' => 'Web:Pet:Index:editPet',
-        'methods' => 'POST',
-    ],
-
-    'pet_delete'=>[
-        'pattern' => '/pet/delete',
-        'controller' => 'Web:Pet:Index:deletePet',
-        'methods' => 'POST',
-    ],
 ];

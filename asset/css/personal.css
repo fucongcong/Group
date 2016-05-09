@@ -1,0 +1,49 @@
+.per_list{
+	margin: 0.3rem;
+	color: #9a7563;
+	font-size: 0.12rem;
+}
+.per_list li{
+	height: 0.3rem;
+	padding-left: 0.4rem;
+	line-height: 0.3rem;
+	border-bottom: 1px #f2f0c7 solid;
+}
+.per_list li:nth-child(1){
+	background: #fff url(../img/date.png) no-repeat 0.1rem center;
+	background-size: 0.2rem;
+}
+.per_list li:nth-child(2){
+	background: #fff url(../img/medal.png) no-repeat 0.1rem center;
+	background-size: 0.2rem;
+}
+.per_list li:nth-child(3){
+	background: #fff url(../img/diary.png) no-repeat 0.1rem center;
+	background-size: 0.2rem;
+	margin-top: 0.3rem;
+}
+.per_list li:nth-child(4){
+	background: #fff url(../img/collect.png) no-repeat 0.1rem center;
+	background-size: 0.2rem;
+}
+.per_list li:nth-child(5){
+	background: #fff url(../img/friend.png) no-repeat 0.1rem center;
+	background-size: 0.2rem;
+	margin-top: 0.3rem;
+}
+.per_list li:nth-child(6){
+	background: #fff url(../img/News.png) no-repeat 0.1rem center;
+	background-size: 0.2rem;
+}
+.per_list li:nth-child(7){
+	background: #fff url(../img/set.png) no-repeat 0.1rem center;
+	background-size: 0.2rem;
+}
+.feed_back{
+	background: #9a7563;
+	margin: 0.3rem;
+	height: 0.3rem;
+	line-height: 0.3rem;
+	color: #fff;
+	text-align: center;
+}
