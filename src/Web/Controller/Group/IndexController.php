@@ -97,6 +97,11 @@ class IndexController extends BaseController
 
         $groups = D('Groups') -> findGroups($start);
 
+        foreach ($groups as &$group) {
+            $user = D('User') -> getUserInfo($group['uid']);
+            $group['username'] = $user['username'];
+            $group['user_avatar'] = $user['avatar'];
+        }
         if (empty($groups)) return $this -> createJsonResponse(null, '', 0);
         return $this -> createJsonResponse($groups, '', 1);
     }
@@ -109,6 +114,9 @@ class IndexController extends BaseController
         $token = $request -> request -> get('token');
         $uid = $this -> isLogin($token);
         if ($uid) {
+            $user = D('User') -> getUserInfo($group['uid']);
+            $group['username'] = $user['username'];
+            $group['user_avatar'] = $user['avatar'];
             $is_ding = D('GroupsDing') -> isDing($gid, $uid);
             if ($is_ding) {
                 $group['is_ding'] = true;
