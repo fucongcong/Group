@@ -29,7 +29,7 @@ class IndexController extends BaseController
         }
 
         $res = D('Pet') -> addPet($uid, $pet);
-        if ($res) return $this -> createJsonResponse('', '添加成功', 1);
+        if ($res) return $this -> createJsonResponse(D('Pet') -> getPet($res), '添加成功', 1);
         return $this -> createJsonResponse('', '添加失败', 0);
     }
 
@@ -58,7 +58,7 @@ class IndexController extends BaseController
         }
 
         $res = D('Pet') -> editPet($pet['pid'], $pet);
-        if ($res) return $this -> createJsonResponse('', '编辑成功', 1);
+        if ($res) return $this -> createJsonResponse(D('Pet') -> getPet($res), '编辑成功', 1);
         return $this -> createJsonResponse('', '编辑失败', 0);
     }
 
