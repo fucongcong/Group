@@ -58,7 +58,7 @@ class IndexController extends BaseController
         }
 
         $res = D('Pet') -> editPet($pet['pid'], $pet);
-        if ($res) return $this -> createJsonResponse(D('Pet') -> getPet($res), '编辑成功', 1);
+        if ($res) return $this -> createJsonResponse(D('Pet') -> getPet($pet['pid']), '编辑成功', 1);
         return $this -> createJsonResponse('', '编辑失败', 0);
     }
 
