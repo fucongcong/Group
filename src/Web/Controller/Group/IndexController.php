@@ -110,13 +110,14 @@ class IndexController extends BaseController
     {
         $gid = $request -> request -> get('gid');
         $group = D('Groups') -> getGroup($gid);
+        $user = D('User') -> getUserInfo($group['uid']);
+        $group['username'] = $user['username'];
+        $group['user_avatar'] = $user['avatar'];
 
         $token = $request -> request -> get('token');
         $uid = $this -> isLogin($token);
         if ($uid) {
-            $user = D('User') -> getUserInfo($group['uid']);
-            $group['username'] = $user['username'];
-            $group['user_avatar'] = $user['avatar'];
+            
             $is_ding = D('GroupsDing') -> isDing($gid, $uid);
             if ($is_ding) {
                 $group['is_ding'] = true;
