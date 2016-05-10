@@ -35,6 +35,6 @@ class GroupsPostModel extends Model {
 
     public function findPosts($gid, $start, $limit = 10)
     {
-        return $this -> order('ctime DESC') -> limit("{$start},{$limit}") -> select();
+        return $this -> where(['gid' => $gid]) -> order('ctime DESC') -> limit("{$start},{$limit}") -> select();
     }
 }

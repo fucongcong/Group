@@ -2,7 +2,7 @@
 
 {% block title %}用户主页{% endblock %}
 
-{% block parent_stylesheets %}
+{% block stylesheets %}
 <link rel="stylesheet" type="text/css" href="{{ asset("asset/css/public.css") }}" />
 <link rel="stylesheet" type="text/css" href="{{ asset("asset/css/post.css") }}" />
 <link rel="stylesheet" type="text/css" href="{{ asset("asset/css/WebApp_reset.css") }}" />
@@ -16,6 +16,12 @@
 {% endblock %}
 
 {% block body %}
+<form id="post-form">
+<div class="row m01 message" style="display:none;">
+    <div class="alert alert-info fz14 mb0" role="alert">
+    </div>
+</div>
+
 <div class="title_box">
     <input type="text" placeholder="点击输入标签" name="title"/>
 </div>
@@ -27,5 +33,6 @@
 </div>
 <div class="post_but">发布</div>
 <div class="cancel_but">放弃</div>
+</form>
 {% include 'Web/Views/public/bottom.html.twig' %} 
 {% endblock %}

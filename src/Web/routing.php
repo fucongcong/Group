@@ -51,6 +51,26 @@ return [
         'controller' => 'Web:Group:Index:post',
     ],
 
+    'group_add'=>[
+        'pattern' => '/group/add',
+        'controller' => 'Web:Group:Index:addGroup',
+        'methods' => 'POST',
+    ],
+
+    'group_detail'=>[
+        'pattern' => '/group/{gid}',
+        'controller' => 'Web:Group:Index:detail',
+    ],
+
+    'group_post_add'=>[
+        'pattern' => '/group/post/add',
+        'controller' => 'Web:Group:Post:addPost',
+        'methods' => 'POST',
+    ],
+
+    
+
+
 
 
 
@@ -98,11 +118,7 @@ return [
 
 
     
-    'group_add'=>[
-        'pattern' => '/group/add',
-        'controller' => 'Web:Group:Index:addGroup',
-        'methods' => 'POST',
-    ],
+
 
     'group_edit'=>[
         'pattern' => '/group/edit',
@@ -128,22 +144,12 @@ return [
         'methods' => 'POST',
     ],
 
-    'group_detail'=>[
-        'pattern' => '/group/detail',
-        'controller' => 'Web:Group:Index:detail',
-        'methods' => 'POST',
-    ],
-
     // 'group_list'=>[
     //     'pattern' => '/group/list',
     //     'controller' => 'Web:Group:Index:listGroups',
     // ],
 
-    'group_post_add'=>[
-        'pattern' => '/group/post/add',
-        'controller' => 'Web:Group:Post:addPost',
-        'methods' => 'POST',
-    ],
+
 
     'group_post_delete'=>[
         'pattern' => '/group/post/delete',

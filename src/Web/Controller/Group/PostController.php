@@ -8,14 +8,13 @@ use Request;
 class PostController extends BaseController
 {
     public function addPostAction(Request $request)
-    {
+    {   
+        $uid = \Session::get('uid');
+        if (!$uid) $this -> createJsonResponse('', '未登录', 0);
+
         $post = $request -> request -> all();
         $group = D('Groups') -> getGroup($post['gid']);
         if (empty($group)) return $this -> createJsonResponse('', '帖子不存在', 0);
-
-        $token = $request -> request -> get('token');
-        $uid = $this -> isLogin($token);
-        if (!$uid) return $this -> createJsonResponse('', '请登录', 2);
 
         if (trim($post['content']) == "") return $this -> createJsonResponse($post, '回复内容不能为空', 0);
 
@@ -25,6 +24,17 @@ class PostController extends BaseController
         if ($res) return $this -> createJsonResponse($group, ' 回复成功', 1);
         return $this -> createJsonResponse('', ' 回复失败', 0);
     }
+
+
+
+
+
+
+
+
+
+
+
 
     public function deletePostAction(Request $request)
     {

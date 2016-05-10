@@ -1,0 +1,59 @@
+{% extends 'Web/Views/layout.html.twig' %}
+
+{% block title %}用户主页{% endblock %}
+
+{% block parent_stylesheets %}
+<link rel="stylesheet" type="text/css" href="{{ asset("asset/css/public.css") }}" />
+<link rel="stylesheet" type="text/css" href="{{ asset("asset/css/details.css") }}" />
+<link rel="stylesheet" type="text/css" href="{{ asset("asset/css/WebApp_reset.css") }}" />
+{% endblock %}
+
+{% block head_scripts %}
+<script>
+    seajs.use("/asset/js/home")
+    seajs.use("/asset/js/reply")
+</script>
+{% endblock %}
+
+{% block body %}
+<div class="posts" id="posts" >
+    <div class="posted" id="posted" >
+        <div class="header">
+            <img src="{{ asset("asset/img/touxiang2.jpg") }}" >
+        </div>
+        <div class="poster" id="poster">
+            <span>{{ group.user.username }}</span>
+            <h1>荣誉勋章</h1>
+            <h2>{{ group.user.school|default('未知') }}</h2>
+        </div>
+    </div>
+    <div class="posts_info" id="posts_info">
+        <div class="thing">
+            <div class="thing_label" id="thing_label">标签：{{ group.title}}</div>
+        </div>
+        <div class="info_des">{{ group.content}}</div>
+    </div>
+</div>
+<ul class="comment_nav">
+{% for post in posts %}
+    <li class="mt5">
+        <div class="header">
+            <img src="{{ asset("asset/img/touxiang.jpg") }}" >
+        </div>
+        <div class="poster">
+            <span>{{ post.user.username }}</span>
+            <div class="comment_box">{{ post.content }}</div>
+            <div class="comment_time">{{ post.ctime|smart_time }}</div>
+        </div>
+    </li>
+{% endfor %}
+</ul>
+<form class="chat_box" id="reply-form">
+    <div class="chat_input">
+        <input type="hidden" name="gid" value="{{ group.gid }}">
+        <input type="text" placeholder="点击输入" name="content">
+    </div>
+    <div class="chat_but">私敲他</div>
+</from>
+{% include 'Web/Views/public/bottom.html.twig' %} 
+{% endblock %}

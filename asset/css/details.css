@@ -79,7 +79,7 @@
 	text-align: right;
 }
 .chat_box{
-	bottom: 0;
+	bottom: 50px;
 	position: fixed;
 	height: 0.5rem;
 	width: 100%;

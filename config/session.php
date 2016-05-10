@@ -11,7 +11,7 @@ return [
     'prex' => 'session',
 
     //浏览器端session过期时间
-    'cookie_lifetime' => '1440',
+    'cookie_lifetime' => 24*30*3600,
 
     //服务器端session过期时间
     'lifetime' => 3600*24*30,

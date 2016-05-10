@@ -21,19 +21,21 @@
 </div>
 <div class="list_body">
     <ul>
-        <li>
+        {% for group in groups %}
+        <li class="go_detail" data-gid="{{ group.gid }}">
             <img src="{{ asset("asset/img/touxiang.jpg") }}">
             <div class="info_box">
                 <div class="info">
-                    <span>粉红色钱包</span>
-                    <div class="info_det">昨天我在食堂门口捡到一个粉红色钱包，内有 一张卡通和两张银行卡，麻烦失主看到和我联系。</div>
+                    <span>{{ group.title }}</span>
+                    <div class="info_det">{{ group.content }}</div>
                 </div>
                 <div class="check_box">
                     <div class="check_info01">查看详情</div>
-                    <div class="up_time">2014-5-29</div>
+                    <div class="up_time">{{ group.ctime|smart_time }}</div>
                 </div>
             </div>
         </li>
+        {% endfor %}
     </ul>
 </div>
 <div class="post_box">
