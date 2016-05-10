@@ -6,7 +6,7 @@ define('/asset/js/home', function(require, exports, module) {
     })
 
     $(".tab_box2").on("tap",function(){
-        location.href = "";
+        location.href = "/group/list";
     })
 
     $(".tab_box3").on("tap",function(){

@@ -71,7 +71,7 @@
 .post_box{
 	width: 100%;
 	position: fixed;
-	bottom: 0;
+	bottom: 50px;
 }
 .post_box .post_but{
 	background-color: #9fdecb;

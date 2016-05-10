@@ -7,6 +7,34 @@ use Request;
 
 class IndexController extends BaseController
 {
+    public function listAction(Request $request)
+    {   
+        $uid = \Session::get('uid');
+        if (!$uid) return $this -> redirect('/login');
+
+        return $this -> render('Web/Views/Group/list.html.twig');
+    }
+
+    public function postAction(Request $request)
+    {   
+        $uid = \Session::get('uid');
+        if (!$uid) return $this -> redirect('/login');
+
+        return $this -> render('Web/Views/Group/post.html.twig');
+    }
+
+
+
+
+
+
+
+
+
+
+
+
+
     public function addGroupAction(Request $request)
     {
         $group = $request -> request -> all();

@@ -41,6 +41,18 @@ return [
         'controller' => 'Web:User:User:index',
     ],
 
+    'group_list'=>[
+        'pattern' => '/group/list',
+        'controller' => 'Web:Group:Index:list',
+    ],
+
+    'group_post'=>[
+        'pattern' => '/group/post',
+        'controller' => 'Web:Group:Index:post',
+    ],
+
+
+
 
 
 
@@ -122,10 +134,10 @@ return [
         'methods' => 'POST',
     ],
 
-    'group_list'=>[
-        'pattern' => '/group/list',
-        'controller' => 'Web:Group:Index:listGroups',
-    ],
+    // 'group_list'=>[
+    //     'pattern' => '/group/list',
+    //     'controller' => 'Web:Group:Index:listGroups',
+    // ],
 
     'group_post_add'=>[
         'pattern' => '/group/post/add',

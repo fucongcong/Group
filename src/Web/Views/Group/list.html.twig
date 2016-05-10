@@ -1,0 +1,43 @@
+{% extends 'Web/Views/layout.html.twig' %}
+
+{% block title %}用户主页{% endblock %}
+
+{% block parent_stylesheets %}
+<link rel="stylesheet" type="text/css" href="{{ asset("asset/css/public.css") }}" />
+<link rel="stylesheet" type="text/css" href="{{ asset("asset/css/list.css") }}" />
+<link rel="stylesheet" type="text/css" href="{{ asset("asset/css/WebApp_reset.css") }}" />
+{% endblock %}
+
+{% block head_scripts %}
+<script>
+    seajs.use("/asset/js/home")
+    seajs.use("/asset/js/list")
+</script>
+{% endblock %}
+
+{% block body %}
+<div class="search_box">
+    <input type="text" id="search_tab" class="search_tab" placeholder="输入关键字">
+</div>
+<div class="list_body">
+    <ul>
+        <li>
+            <img src="{{ asset("asset/img/touxiang.jpg") }}">
+            <div class="info_box">
+                <div class="info">
+                    <span>粉红色钱包</span>
+                    <div class="info_det">昨天我在食堂门口捡到一个粉红色钱包，内有 一张卡通和两张银行卡，麻烦失主看到和我联系。</div>
+                </div>
+                <div class="check_box">
+                    <div class="check_info01">查看详情</div>
+                    <div class="up_time">2014-5-29</div>
+                </div>
+            </div>
+        </li>
+    </ul>
+</div>
+<div class="post_box">
+    <div class="post_but">找不到发帖求助</div>
+</div>
+{% include 'Web/Views/public/bottom.html.twig' %} 
+{% endblock %}

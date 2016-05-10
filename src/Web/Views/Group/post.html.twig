@@ -1,0 +1,31 @@
+{% extends 'Web/Views/layout.html.twig' %}
+
+{% block title %}用户主页{% endblock %}
+
+{% block parent_stylesheets %}
+<link rel="stylesheet" type="text/css" href="{{ asset("asset/css/public.css") }}" />
+<link rel="stylesheet" type="text/css" href="{{ asset("asset/css/post.css") }}" />
+<link rel="stylesheet" type="text/css" href="{{ asset("asset/css/WebApp_reset.css") }}" />
+{% endblock %}
+
+{% block head_scripts %}
+<script>
+    seajs.use("/asset/js/home")
+    seajs.use("/asset/js/groupPost")
+</script>
+{% endblock %}
+
+{% block body %}
+<div class="title_box">
+    <input type="text" placeholder="点击输入标签" name="title"/>
+</div>
+<div class="info_box">
+    <textarea placeholder="点击输入文字内容" name="content"></textarea>
+</div>
+<div class="pic_box">
+    <img src="{{ asset("asset/img/header.jpg") }}" >
+</div>
+<div class="post_but">发布</div>
+<div class="cancel_but">放弃</div>
+{% include 'Web/Views/public/bottom.html.twig' %} 
+{% endblock %}

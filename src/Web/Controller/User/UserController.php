@@ -86,6 +86,14 @@ class UserController extends BaseController
 
 
 
+
+
+
+
+
+
+
+
     public function detailAction(Request $request)
     {   
         $uid = $request -> query -> get('uid');
