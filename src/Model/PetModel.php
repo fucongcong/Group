@@ -16,7 +16,15 @@ class PetModel extends Model {
 
     public function getPet($pid)
     {
-        return $this -> where(['pid' => $pid]) -> find();
+        $pet = $this -> where(['pid' => $pid]) -> find();
+        if (!empty($pet['avatar'])) {
+            $avater = explode(".", $pet['avatar']);
+            if (count($avater) > 1) {
+                $avater[1] = '.' . $avater[1];
+            }
+            $pet['avatar'] = "http://121.43.59.240/asset/public/avatar/".$avater[0]."2X2".$avater[1];
+        }
+        return $pet;
     }
 
     public function editPet($pid, $pet)
@@ -38,4 +46,10 @@ class PetModel extends Model {
     {
         return $this -> where(['uid' => $uid]) -> order('ctime DESC') -> limit("{$start},{$limit}") -> select();
     }
+
+    public function updatePetAvatar($avatar, $pid)
+    {
+        return $this -> data(['avatar' => $avatar]) -> where(['pid' => $pid]) -> save();
+    }
+
 }

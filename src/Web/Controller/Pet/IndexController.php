@@ -78,4 +78,39 @@ class IndexController extends BaseController
         if ($res) return $this -> createJsonResponse('', '删除成功', 1);
         return $this -> createJsonResponse('', '删除失败', 0);
     }
+
+    public function setAvatarAction(Request $request)
+    {
+        $info = $request -> request -> all();
+        $uid = $this -> isLogin($info['token']);
+        if (!$uid) return $this -> createJsonResponse('', '请登录', 2);
+
+        $pid = $request -> request -> get('pid');
+        $exist = D('Pet') -> getPet($pid);
+        if (!$exist) return $this -> createJsonResponse('', '宠物不存在', 0);
+        if ($exist['uid'] != $uid) return $this -> createJsonResponse('', '没有权限编辑', 0);
+
+        $file = $request->files->get('avatar');
+        $filenamePrefix = "pet_{$pid}_";
+
+        $hash = substr(md5($filenamePrefix . time()), -8);
+        $ext = $file -> getClientOriginalExtension();
+        if ($ext) {
+            $ext = '.' . $ext;
+        }
+
+        $fileName = $filenamePrefix . $hash . $ext;
+
+        $file = $file -> move(__ROOT__."asset/public/avatar", $fileName);
+
+        $img = \Intervention\Image\ImageManagerStatic::make("asset/public/avatar/".$fileName);
+        // resize image instance
+        $img->resize(200, 200);
+        // save image in desired format
+        $img->save(__ROOT__."asset/public/avatar/".$filenamePrefix . $hash . '2X2' . $ext);
+
+        D('Pet') -> updatePetAvatar($fileName, $pid);
+        $pet = D('Pet') -> getPet($pid);
+        return $this -> createJsonResponse($pet, '头像更新成功', 1);
+    }
 }

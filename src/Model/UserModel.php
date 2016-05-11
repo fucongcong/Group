@@ -35,8 +35,10 @@ class UserModel extends Model {
 
         if (!empty($user['avatar'])) {
             $avater = explode(".", $user['avatar']);
-
-            $user['avatar'] = "http://121.43.59.240/asset/public/avatar/".$avater[0]."2X2.".$avater[1];
+            if (count($avater) > 1) {
+                $avater[1] = '.' . $avater[1];
+            }
+            $user['avatar'] = "http://121.43.59.240/asset/public/avatar/".$avater[0]."2X2".$avater[1];
         };
         return $user;
     }
