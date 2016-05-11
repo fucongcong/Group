@@ -44,7 +44,19 @@ class PetModel extends Model {
 
     public function findPetsByUid($uid, $start, $limit = 10)
     {
-        return $this -> where(['uid' => $uid]) -> order('ctime DESC') -> limit("{$start},{$limit}") -> select();
+        $pets = $this -> where(['uid' => $uid]) -> order('ctime DESC') -> limit("{$start},{$limit}") -> select();
+        if ($pets) {
+            foreach ($pets as &$pet) {
+                if (!empty($pet['avatar'])) {
+                    $avater = explode(".", $pet['avatar']);
+                    if (count($avater) > 1) {
+                        $avater[1] = '.' . $avater[1];
+                    }
+                    $pet['avatar'] = "http://121.43.59.240/asset/public/avatar/".$avater[0]."2X2".$avater[1];
+                }
+            }
+        }
+        return $pets;
     }
 
     public function updatePetAvatar($avatar, $pid)
