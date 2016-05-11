@@ -128,4 +128,10 @@ return [
         'controller' => 'Web:Pet:Index:deletePet',
         'methods' => 'POST',
     ],
+
+    'pet_setAvatar'=>[
+        'pattern' => '/pet/setAvatar',
+        'controller' => 'Web:Pet:Index:setAvatar',
+        'methods' => 'POST',
+    ],
 ];
