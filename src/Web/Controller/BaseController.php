@@ -7,7 +7,8 @@ use Controller;
 class BaseController extends Controller
 {
     public function __construct()
-    {   
+    {    
+         \Session::set('uid',1);
         require(__ROOT__."/core/common.php");
     }
 

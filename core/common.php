@@ -1,30 +1,10 @@
 <?php
-        
+
 use Config;
 use Cache;
 use core\Model\Model;
 use core\Common\StaticTookit;
-// function D($name) {
 
-//     static $_model = array();
-
-//     $names = explode(".", $name);
-//     $className = "";
-
-//     if(count($names) == 2) {
-//         $className = "src\\Model\\{$names[0]}\\{$names[1]}Model";
-//     }
-
-//     if (!class_exists($className)) {
-//         throw new Exception("Class ".$className." not found !");
-//     }
-
-//     if (!isset($_model[$names[1]]))
-//         $_model[$names[1]] = new $className();
-
-//     return $_model[$names[1]];
-
-// }
 function D($name='', $app='pet_') {
     $_model = StaticTookit::get('_model', []);
     if (empty($name))

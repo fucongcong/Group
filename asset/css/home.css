@@ -1,10 +1,15 @@
-body{
+.body{
 	background: #f2f0c7 url(../img/bg.png) no-repeat;
 	background-size: 100%;
+} 
+.head_box{
+	height: 3rem;
+	padding-top: 0.1rem;
+	color: #9a7563;
 }
 .lf_box{
 	margin-top: 5%;
-	padding-left: 8%;
+	padding-left: 10%;
 }
 .head{
 	height: 0.6rem;
@@ -19,11 +24,68 @@ body{
 	width: 0.6rem;
 	height: auto;
 }
-.lf_info{
-
+.thx_tit{
+	padding-left: 0.1rem;
+}
+.thx_tit span{
+	color: #fadd7f;
+}
+.thx_info{
+	padding-top: 0.2rem;
+	margin-left: 1.2rem;
+	width: 50%; 
 }
 .check_icon img{
 	width: 0.8rem;
 	float: right;
 	margin-right: 0.3rem;
+}
+.menu{
+	margin-left: 0.5rem;
+	margin-right: 0.5rem;
+	color: #fff;
+	text-align: center;
+	font-size: 0.16rem;
+}
+.menu1{
+	width: 100%;
+	background: #a5c8ee;
+	height: 0.5rem;
+	line-height: 0.5rem;
+}
+.menu_box{
+	width: 100%;
+	margin-top: 0.1rem;
+}
+.menu2{
+	width: 45%;
+	background: #fadd7f;
+	margin-right: 5%;
+	float: left;
+	height: 1.4rem;
+	line-height: 1.4rem;
+	box-sizing:border-box
+}
+.menu_box{
+	height: 1.4rem;
+	box-sizing:border-box;
+}
+.menu3{
+	width: 45%;
+	background: #9fdecb;
+	margin-left: 5%;
+	height: 0.8rem;
+	line-height: 0.8rem;
+	float: left;
+	box-sizing:border-box;
+}
+.menu4{
+	width: 45%;
+	background: #a5c8ee;
+	height: 0.5rem;
+	line-height: 0.5rem;
+	float: left; 
+	margin-left: 5%;
+	margin-top: 0.1rem;
+	box-sizing:border-box;
 }
