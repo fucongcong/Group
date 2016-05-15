@@ -96,7 +96,7 @@ class UserController extends BaseController
         $userInfo = D('User') -> getUserInfo($userId);
         $user = D('User') -> getUserInfo($uid);
 
-        $groups = D('Groups') -> findGroupsByUid($userId, 0);
+        $groups = D('Groups') -> findGroupsByUid($userId, 0, 3);
         foreach ($groups as &$group) {
             $group['user'] = D('User') -> getUserInfo($group['uid']);
         }

@@ -39,9 +39,9 @@
 	</div>
 </div>
 {% if userInfo.uid == user.uid%}
-	<div class="textbox">我的求助</div>
+	<div class="textbox">我最近的求助</div>
 {% else %}
-	<div class="textbox">TA的求助</div>
+	<div class="textbox">TA最近的求助</div>
 {% endif %}
 
 <div class="list_body mlr01 mb09">
@@ -67,13 +67,18 @@
         {% endfor %}
     </ul>
 </div>
-<div class="post_box">
-	{% if userInfo.uid == user.uid%}
+
+{% if userInfo.uid == user.uid%}
+	<div class="post_box">
 		<div class="post_but">修改个人资料</div>
-	{% else %}
-		<div class="add_but">添加好友</div>
-	{% endif %}
-</div>
+	</div>
+{% else %}
+	<div class="getfriend">
+		<div class="addfriend">加为好友</div>
+		<div class="sendifo">发送消息</div>
+	</div>
+{% endif %}
+
 
 {% include 'Web/Views/public/bottom.html.twig' %} 
 {% endblock %}
