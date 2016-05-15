@@ -2,9 +2,11 @@
 	margin-right: 0.2rem;
 	margin-left: 0.2rem;
 	margin-top: 0.1rem;
+	margin-bottom: 0.9rem;
 	font-size: 12px;
 }
 .list_body li{
+	position: relative;
 	background-color: #fff;
 	margin-bottom: 0.1rem;
 	padding-top: 0.1rem;

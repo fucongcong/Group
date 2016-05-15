@@ -121,6 +121,15 @@ body {
     margin-bottom: 0px;
 }
 
+.mlr01 {
+   margin-left: 0.1rem;
+   margin-right: 0.1rem;
+}
+
+.mb09 {
+    margin-bottom: 0.9rem;
+}
+
 .info {
     width: 80%;
 }
