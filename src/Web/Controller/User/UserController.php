@@ -73,7 +73,7 @@ class UserController extends BaseController
        $follows = D('Follow') -> getFollows($uid);
 
        foreach ($follows as &$follow) {
-            $follow['user'] = D('User') -> getUserInfo($follow['uid']);
+            $follow['user'] = D('User') -> getUserInfo($follow['fuid']);
         }
         return $this -> render('Web/Views/User/follows.html.twig', array(
             'follows' => $follows

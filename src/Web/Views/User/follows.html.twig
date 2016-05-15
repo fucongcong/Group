@@ -21,7 +21,7 @@
 </div>
 <ul class="friend_list">
 	{% for follow in follows %}
-	<li>
+	<li class="user-link" data-id="{{ follow.user.uid }}">
 		{% if follow.user.sex == 'male' %}
 	                <img src="{{ asset("asset/img/header.jpg") }}">
 	            {% else %}
