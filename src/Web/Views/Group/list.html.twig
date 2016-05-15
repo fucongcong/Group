@@ -23,7 +23,12 @@
     <ul>
         {% for group in groups %}
         <li class="go_detail" data-gid="{{ group.gid }}">
-            <img src="{{ asset("asset/img/touxiang2.jpg") }}">
+            {% if group.user.sex == 'male' %}
+                <img src="{{ asset("asset/img/header.jpg") }}">
+            {% else %}
+                <img src="{{ asset("asset/img/touxiang2.jpg") }}">
+            {% endif %}
+            
             <div class="info_box">
                 <div class="info">
                     <span>{{ group.title }}</span>

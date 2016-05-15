@@ -27,11 +27,6 @@ class UserModel extends Model {
     {   
         $user = $this -> field('uid,username,sex,avatar,content,sign') -> where(['uid' => $uid]) -> find();
         if (empty($user)) return [];
-        $sex = [
-            'male' => '男',
-            'female' => '女'
-        ];
-        $user['sex'] = $sex[$user['sex']];
 
         if (!empty($user['avatar'])) {
             $avater = explode(".", $user['avatar']);
@@ -43,7 +38,8 @@ class UserModel extends Model {
 
     public function updateUserInfo($uid, $info)
     {   
-         if (isset($info['sign'])) $data['sign'] = $info['sign'];
+        if (isset($info['sign'])) $data['sign'] = $info['sign'];
+        if (isset($info['sex'])) $data['sex'] = $info['sex'];
         if (isset($info['content'])) $data['content'] = $info['content'];
         if (isset($info['username'])) $data['username'] = $info['username'];
         if (!empty($data)) return $this -> data($data) -> where(['uid' => $uid]) -> save();

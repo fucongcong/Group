@@ -42,6 +42,15 @@
 			<input type="text" class="login_name" placeholder="个性签名" name="sign" value="{{ user.sign }}">
 		</div>
 	</div>
+	<div class="header_box">
+
+	         <label for="male"><img src="{{ asset("asset/img/header.jpg") }}"></label>
+	         <input type="radio" name="sex" value="male" id="male" {% if user.sex == 'male' %}checked="checked"{% endif%}>
+	        
+	        <label for="female"><img src="{{ asset("asset/img/touxiang2.jpg") }}"></label>
+	        <input type="radio" name="sex" value="female" id="female" {% if user.sex == 'female' %}checked="checked"{% endif%}>
+	        <div>你是MM还是GG？选一张迷人帅气的头像吧。</div>
+    	</div>
 	<div class="login_but">保&nbsp&nbsp&nbsp存</div>
 </form>
 <div class="alert_box hide">

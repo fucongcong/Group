@@ -97,6 +97,9 @@ class UserController extends BaseController
         $user = D('User') -> getUserInfo($uid);
 
         $groups = D('Groups') -> findGroupsByUid($userId, 0);
+        foreach ($groups as &$group) {
+            $group['user'] = D('User') -> getUserInfo($group['uid']);
+        }
         return $this -> render('Web/Views/User/userInfo.html.twig',[
             'user' => $user,
             'groups' => $groups,

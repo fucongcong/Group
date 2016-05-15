@@ -60,3 +60,18 @@
 	font-size: 12px;
 	background-color: #f2f0c7;
 }
+.header_box{
+	width: 80%;
+	text-align: center;
+	margin-top: 0.1rem;
+	margin-bottom: 0.1rem;
+}
+.header_box img{
+	text-align: center;
+	width: 0.6rem;
+	height: auto;
+}
+.header_box div{
+	font-size: 0.1rem;
+	color: #b59e58;
+}

@@ -50,8 +50,13 @@
         </div>
     </div>
     <div class="header_box">
-        <img src="{{ asset("asset/img/header.jpg") }}">
-        <div>选一张迷人帅气的头像吧。</div>
+
+         <label for="male"><img src="{{ asset("asset/img/header.jpg") }}"></label>
+         <input type="radio" name="sex" value="male" id="male" checked="checked">
+        
+        <label for="female"><img src="{{ asset("asset/img/touxiang2.jpg") }}"></label>
+        <input type="radio" name="sex" value="female" id="female">
+        <div>你是MM还是GG？选一张迷人帅气的头像吧。</div>
     </div>
     <div class="register_but">注&nbsp&nbsp&nbsp册</div>
 

@@ -19,7 +19,11 @@
 <div class="posts" id="posts" >
     <div class="posted" id="posted" >
         <div class="header user-link" data-id="{{ group.user.uid }}">
-            <img src="{{ asset("asset/img/touxiang2.jpg") }}" >
+            {% if group.user.sex == 'male' %}
+                <img src="{{ asset("asset/img/header.jpg") }}">
+            {% else %}
+                <img src="{{ asset("asset/img/touxiang2.jpg") }}">
+            {% endif %}
         </div>
         <div class="poster" id="poster">
             <span>{{ group.user.username }}</span>
@@ -38,7 +42,11 @@
 {% for post in posts %}
     <li class="mt5">
         <div class="header user-link" data-id="{{ post.user.uid}}">
-            <img src="{{ asset("asset/img/touxiang2.jpg") }}" >
+            {% if post.user.sex == 'male' %}
+                <img src="{{ asset("asset/img/header.jpg") }}">
+            {% else %}
+                <img src="{{ asset("asset/img/touxiang2.jpg") }}">
+            {% endif %}
         </div>
         <div class="poster">
             <span>{{ post.user.username }}</span>
