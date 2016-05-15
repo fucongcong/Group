@@ -57,6 +57,23 @@ return [
         'methods' => 'POST',
     ],
    
+   'follow'=>[
+        'pattern' => '/user/follow',
+        'controller' => 'Web:User:User:follow',
+        'methods' => 'POST',
+    ],
+
+   'follows'=>[
+        'pattern' => '/user/follows',
+        'controller' => 'Web:User:User:follows',
+    ],
+
+    'unfollow'=>[
+        'pattern' => '/user/unfollow',
+        'controller' => 'Web:User:User:unfollow',
+        'methods' => 'POST',
+    ],
+
 
     'group_list'=>[
         'pattern' => '/group/list',

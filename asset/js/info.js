@@ -10,4 +10,10 @@ define('/asset/js/info', function(require, exports, module) {
         uid = $(this).data('id');
         location.href = "/user/info/"+uid;
     })
+
+    $(".list-friends").on("tap",function(){
+        location.href = "/user/follows";
+    })
+
+    
 });

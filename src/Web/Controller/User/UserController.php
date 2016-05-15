@@ -66,6 +66,20 @@ class UserController extends BaseController
             ));
     }
 
+    public function followsAction(Request $request)
+    {   
+        $uid = \Session::get('uid');
+        if (!$uid) return $this -> redirect('/login');
+       $follows = D('Follow') -> getFollows($uid);
+
+       foreach ($follows as &$follow) {
+            $follow['user'] = D('User') -> getUserInfo($follow['uid']);
+        }
+        return $this -> render('Web/Views/User/follows.html.twig', array(
+            'follows' => $follows
+            ));
+    }
+
     public function doLoginAction(Request $request)
     {      
         $user = $request -> request -> all();
@@ -96,6 +110,7 @@ class UserController extends BaseController
         $userInfo = D('User') -> getUserInfo($userId);
         $user = D('User') -> getUserInfo($uid);
 
+        $is_follow = D('Follow') -> isFollow($uid, $userId);
         $groups = D('Groups') -> findGroupsByUid($userId, 0, 3);
         foreach ($groups as &$group) {
             $group['user'] = D('User') -> getUserInfo($group['uid']);
@@ -103,6 +118,7 @@ class UserController extends BaseController
         return $this -> render('Web/Views/User/userInfo.html.twig',[
             'user' => $user,
             'groups' => $groups,
+            'is_follow' => $is_follow,
             'userInfo' => $userInfo
             ]);
     }
@@ -133,8 +149,31 @@ class UserController extends BaseController
         return $this->createJsonResponse('', 'success', 1);
     }
 
+    public function followAction(Request $request)
+    {   
+        $fuid = $request -> request -> get('fuid');
+        $uid = \Session::get('uid');
+        if (!$uid) return $this->createJsonResponse('', 'not login', 0);
 
+        if (intval($fuid) < 0) return $this->createJsonResponse('', 'uid error', 0);
 
+        $res = D('Follow') -> addFollow($uid, $fuid);
+        if ($res) return $this->createJsonResponse('', 'success', 1);
+        return $this->createJsonResponse('', 'error', 0);
+    }
+
+    public function unfollowAction(Request $request)
+    {   
+        $fuid = $request -> request -> get('fuid');
+        $uid = \Session::get('uid');
+        if (!$uid) return $this->createJsonResponse('', 'not login', 0);
+
+        if (intval($fuid) < 0) return $this->createJsonResponse('', 'uid error', 0);
+
+        $res = D('Follow') -> unFollow($uid, $fuid);
+        if ($res) return $this->createJsonResponse('', 'success', 1);
+        return $this->createJsonResponse('', 'error', 0);
+    }
 
 
 

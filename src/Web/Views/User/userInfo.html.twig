@@ -74,7 +74,11 @@
 	</div>
 {% else %}
 	<div class="getfriend">
-		<div class="addfriend">加为好友</div>
+		{% if is_follow %}
+		<div class="addfriend unfollow" data-id={{ userInfo.uid }}>删除好友</div>
+		{% else %}
+		<div class="addfriend follow" data-id={{ userInfo.uid }}>加为好友</div>
+		{% endif %}
 		<div class="sendifo">发送消息</div>
 	</div>
 {% endif %}

@@ -31,6 +31,7 @@
 	float: left;
 }
 .info_det{
+	min-width: 1rem;
 	background: url(../img/desc_pic.jpg) no-repeat 0.6rem 6px;
 	padding-left: 0.75rem;
 	padding-top: 6px;

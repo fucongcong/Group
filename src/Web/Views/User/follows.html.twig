@@ -1,0 +1,37 @@
+{% extends 'Web/Views/layout.html.twig' %}
+
+{% block title %}个人中心{% endblock %}
+{% block parent_stylesheets %}
+<link rel="stylesheet" type="text/css" href="{{ asset("asset/css/details.css") }}" />
+<link rel="stylesheet" type="text/css" href="{{ asset("asset/css/list.css") }}" />
+<link rel="stylesheet" type="text/css" href="{{ asset("asset/css/WebApp_reset.css") }}" />
+<link rel="stylesheet" type="text/css" href="{{ asset("asset/css/public.css") }}" />
+{% endblock %}
+
+{% block head_scripts %}
+<script>
+    seajs.use("/asset/js/home")
+    seajs.use("/asset/js/follows")
+</script>
+{% endblock %}
+
+{% block body %}
+<div class="search_box">
+	<input type="text" id="search_tab" class="search_tab" placeholder="输入姓名">
+</div>
+<ul class="friend_list">
+	{% for follow in follows %}
+	<li>
+		{% if follow.user.sex == 'male' %}
+	                <img src="{{ asset("asset/img/header.jpg") }}">
+	            {% else %}
+	                <img src="{{ asset("asset/img/touxiang2.jpg") }}">
+	            {% endif %}
+		<div>{{ follow.user.username}}</div>
+	</li>
+	{% endfor %}
+	
+</ul>
+
+{% include 'Web/Views/public/bottom.html.twig' %} 
+{% endblock %}
