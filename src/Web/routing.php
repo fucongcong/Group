@@ -41,6 +41,23 @@ return [
         'controller' => 'Web:User:User:index',
     ],
 
+    'user_Info'=>[
+        'pattern' => '/user/info/{uid}',
+        'controller' => 'Web:User:User:info',
+    ],
+
+    'user_changeInfo'=>[
+        'pattern' => '/user/changeInfo',
+        'controller' => 'Web:User:User:changeInfo',
+    ],
+
+    'user_do_changeInfo'=>[
+        'pattern' => '/user/doChangeInfo',
+        'controller' => 'Web:User:User:doChangeInfo',
+        'methods' => 'POST',
+    ],
+   
+
     'group_list'=>[
         'pattern' => '/group/list',
         'controller' => 'Web:Group:Index:list',

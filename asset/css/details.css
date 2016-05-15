@@ -36,7 +36,7 @@
 .posts .posts_info{
 	border-top: 1px;
 	margin: 0.1rem;
-	padding-bottom: 0.1rem;
+	margin-bottom: 0.1rem;
 	font-size: 12px;
 }
 .thing .thing_label{
@@ -48,18 +48,21 @@
 .posts_info .info_des{
 	padding-left: 0.16rem;
 	padding-top: 0.06rem;
-	background: url(../img/text.png) no-repeat left 0.1rem;
+	padding-bottom: 0.1rem;
+	background: url(../img/text.png) no-repeat left 0.06rem;
 	background-size: 0.12rem;
+	min-height: 0.2rem;
 }
 .comment_nav{
-	background: #fff;
 	margin-right: 0.1rem;
 	margin-left: 0.1rem;
 	margin-bottom: 0.5rem;
 }
 .comment_nav li{
+	background: #fff;
 	width: 100%;
 	padding-top: 0.1rem;
+	padding-bottom: 0.1rem;
 	overflow: hidden;
 }
 .comment_box{
@@ -113,5 +116,65 @@
 	margin-top: 0.1rem;
 	margin-left: 0.1rem;
 	border-radius: 0.05rem;
+	box-sizing:border-box;
+}
+.textbox{
+	padding-left: 0.1rem;
+	line-height: 0.3rem;
+}
+.post_box{
+	width: 100%;
+	position: fixed;
+	bottom: 50px;
+}
+.post_box .post_but{
+	background-color: #9fdecb;
+	margin-right: 0.2rem;
+	margin-left: 0.2rem;
+	margin-bottom: 0.1rem;
+	margin-top: 0.1rem;
+	color: #fff;
+	height: 0.3rem;
+	text-align: center;
+	line-height: 0.3rem;
+}
+.post_box .add_but{
+	background-color: #9fdecb;
+	margin-right: 0.2rem;
+	margin-left: 0.2rem;
+	margin-bottom: 0.1rem;
+	margin-top: 0.1rem;
+	color: #fff;
+	height: 0.3rem;
+	text-align: center;
+	line-height: 0.3rem;
+}
+
+.getfriend{
+	width: 100%;
+	position: fixed;
+	bottom: 0;
+	margin-right: 0.2rem;
+	margin-left: 0.2rem;
+	margin-bottom: 0.1rem;
+	text-align: center;
+	color: #fff;
+}
+.addfriend{
+	width: 40%;
+	float: left;
+	height: 0.3rem;
+	line-height: 0.3rem;
+	background: #9fdecb;
+	margin-right: 5%;
+	box-sizing:border-box;
+}
+.sendifo{
+	width: 40%;
+	float: left;
+	height: 0.3rem;
+	line-height: 0.3rem;
+	background: #fadd7f;
+	margin-left: 5%;
 	box-sizing:border-box;
 }

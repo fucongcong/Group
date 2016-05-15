@@ -13,7 +13,10 @@ class UserController extends BaseController
         $uid = \Session::get('uid');
         if (!$uid) return $this -> redirect('/login');
 
-        return $this -> render('Web/Views/User/info.html.twig');
+         $user = D('User') -> getUserInfo($uid);
+        return $this -> render('Web/Views/User/info.html.twig',[
+            'user' => $user
+            ]);
     }
 
     public function registerAction(Request $request)
@@ -84,23 +87,56 @@ class UserController extends BaseController
         return $this -> redirect('/login');
     }
 
-
-
-
-
-
-
-
-
-
-
-    public function detailAction(Request $request)
+    public function infoAction($uid)
     {   
-        $uid = $request -> query -> get('uid');
+        $userId = $uid;
+        $uid = \Session::get('uid');
+        if (!$uid) return $this -> redirect('/login');
+
+        $userInfo = D('User') -> getUserInfo($userId);
         $user = D('User') -> getUserInfo($uid);
-        if ($user) return $this -> createJsonResponse($user, '', 1);
-        return $this -> createJsonResponse('', '用户不存在', 0);
+
+        $groups = D('Groups') -> findGroupsByUid($userId, 0);
+        return $this -> render('Web/Views/User/userInfo.html.twig',[
+            'user' => $user,
+            'groups' => $groups,
+            'userInfo' => $userInfo
+            ]);
     }
+
+    public function changeInfoAction()
+    {
+        $uid = \Session::get('uid');
+        if (!$uid) return $this -> redirect('/login');
+
+        $user = D('User') -> getUserInfo($uid);
+        return $this -> render('Web/Views/User/changeInfo.html.twig',[
+            'user' => $user
+            ]);
+    }
+
+    public function doChangeInfoAction(Request $request)
+    {
+        $uid = \Session::get('uid');
+        if (!$uid) return $this->createJsonResponse('', 'not login', 0);
+
+        $userInfo = $request -> request -> all();
+
+        if (!SimpleValidator::truename($userInfo['username'])) {
+            return $this->createJsonResponse('', '姓名格式不正确', 0);
+        }
+
+        D('User') -> updateUserInfo($uid, $userInfo);
+        return $this->createJsonResponse('', 'success', 1);
+    }
+
+
+
+
+
+
+
+
 
     public function editAction(Request $request)
     {   

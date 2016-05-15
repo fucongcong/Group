@@ -25,7 +25,7 @@ class UserModel extends Model {
 
     public function getUserInfo($uid)
     {   
-        $user = $this -> field('uid,username,sex,avatar') -> where(['uid' => $uid]) -> find();
+        $user = $this -> field('uid,username,sex,avatar,content,sign') -> where(['uid' => $uid]) -> find();
         if (empty($user)) return [];
         $sex = [
             'male' => '男',
@@ -41,9 +41,10 @@ class UserModel extends Model {
         return $user;
     }
 
-    public function updateUserInfo($info, $uid)
+    public function updateUserInfo($uid, $info)
     {   
-        if (isset($info['sex'])) $data['sex'] = $info['sex'];
+         if (isset($info['sign'])) $data['sign'] = $info['sign'];
+        if (isset($info['content'])) $data['content'] = $info['content'];
         if (isset($info['username'])) $data['username'] = $info['username'];
         if (!empty($data)) return $this -> data($data) -> where(['uid' => $uid]) -> save();
         return false;

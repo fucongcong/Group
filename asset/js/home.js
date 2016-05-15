@@ -29,4 +29,9 @@ define('/asset/js/home', function(require, exports, module) {
     $(".menu4").on("tap",function(){
         location.href = "/user";
     })
+
+    $(".user-link").on("tap",function(){
+        uid = $(this).data('id');
+        location.href = "/user/info/"+uid;
+    })
 });

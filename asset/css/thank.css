@@ -9,31 +9,28 @@
 	margin-bottom: 0.1rem;
 	padding-top: 0.1rem;
 	padding-left: 0.1rem;
-	height: 0.7rem;
+	min-height: 0.7rem;
 }
 .list_body img{
-	float: left;
+	/*float: left;*/
 	height: 0.6rem;
 	position: absolute;
 }
 .info_box{
 	margin-left: 0.1rem;
-	float: left;
 }
 .info_box .info{
-	width: 70%;
+	width: 90%;
 }
 .info_box span{
 	background: url(../img/tag_pic.jpg) no-repeat 0.6rem;
 	padding-left: 0.75rem;
-	float: left;
 }
 .info_det{
 	background: url(../img/desc_pic.jpg) no-repeat 0.6rem 6px;
 	padding-left: 0.75rem;
 	padding-top: 6px;
 	font-size: 10px;
-	float: left;
 }
 .check_box{
 	width: 0.6rem;
@@ -51,27 +48,10 @@
 	color: #a5c8ee;
 	padding-top: 20px;
 }
-.search_box{
-	border-radius: 0.1rem;
-	height: 0.3rem;
-	margin-top: 0.1rem;
-	background: #fff url(../img/search.png) no-repeat 5px center;
-	background-size: 0.2rem;
-	margin-right: 0.2rem;
-	margin-left: 0.2rem;
-}
-.search_box .search_tab{
-	color: #959595;
-	height: 0.3rem;
-	vertical-align: center;
-	font-weight: bold;
-	font-size: 0.1rem;
-	padding-left: 0.3rem;
-}
 .post_box{
 	width: 100%;
 	position: fixed;
-	bottom: 50px;
+	bottom: 0;
 }
 .post_box .post_but{
 	background-color: #9fdecb;
@@ -83,21 +63,4 @@
 	height: 0.3rem;
 	text-align: center;
 	line-height: 0.3rem;
-}
-.friend_list{
-	margin: 0.2rem;
-}
-.friend_list li{
-	height: 0.5rem;
-	line-height: 0.3rem;
-	border-bottom: 1px #fff solid;
-}
-.friend_list img{
-	float: left;
-	padding-top: 0.05rem;
-	width: 0.4rem;
-	height: auto;
-}
-.friend_list div{
-	padding-left: 0.5rem;
 }

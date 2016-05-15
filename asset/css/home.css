@@ -50,8 +50,8 @@
 .menu1{
 	width: 100%;
 	background: #a5c8ee;
-	height: 0.5rem;
-	line-height: 0.5rem;
+	height: 0.45rem;
+	line-height: 0.45rem;
 }
 .menu_box{
 	width: 100%;
@@ -62,28 +62,28 @@
 	background: #fadd7f;
 	margin-right: 5%;
 	float: left;
-	height: 1.4rem;
-	line-height: 1.4rem;
+	height: 1.2rem;
+	line-height: 1.2rem;
 	box-sizing:border-box
 }
 .menu_box{
-	height: 1.4rem;
+	height: 1.2rem;
 	box-sizing:border-box;
 }
 .menu3{
 	width: 45%;
 	background: #9fdecb;
 	margin-left: 5%;
-	height: 0.8rem;
-	line-height: 0.8rem;
+	height: 0.7rem;
+	line-height: 0.7rem;
 	float: left;
 	box-sizing:border-box;
 }
 .menu4{
 	width: 45%;
 	background: #a5c8ee;
-	height: 0.5rem;
-	line-height: 0.5rem;
+	height: 0.4rem;
+	line-height: 0.4rem;
 	float: left; 
 	margin-left: 5%;
 	margin-top: 0.1rem;

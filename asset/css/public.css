@@ -44,6 +44,9 @@ body {
        -moz-transform: rotateZ(360deg);
        }
 }
+.hide{
+  display: none;
+}
 .but_tab{
   bottom: 0;
   position: fixed;
@@ -84,4 +87,52 @@ body {
   background: #9fdecb url(../img/man_off.png) no-repeat center center;
   background-size: 0.25rem;
   box-sizing:border-box;
+}
+.alert_box{
+  width: 50%;
+  padding: 0 25% 0 25%;
+  bottom: 0.7rem;
+  position: fixed;
+}
+.alert_box .alert{
+  background: rgba(0,0,0,0.6);
+  width: 100%;
+  color: #fff;
+  border-radius: 0.05rem;
+  text-align: center;
+  line-height: 0.3rem;
+  height: 0.3rem;
+  font-size: 0.12rem;
+}
+
+.mt10 {
+  margin-top: 10px;
+}
+
+.mr0{
+    margin-right: 0px;
+}
+
+.ml0{
+    margin-left: 0px;
+}
+
+.mb0 {
+    margin-bottom: 0px;
+}
+
+.info {
+    width: 80%;
+}
+
+.fz14 {
+    font-size: 14px;
+}
+
+.m01 {
+    margin: 0.1rem;
+}
+
+.mb10 {
+    margin-bottom: 10px;
 }

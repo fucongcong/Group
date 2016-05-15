@@ -1,0 +1,71 @@
+{% extends 'Web/Views/layout.html.twig' %}
+
+{% block title %}个人中心{% endblock %}
+{% block parent_stylesheets %}
+<link rel="stylesheet" type="text/css" href="{{ asset("asset/css/details.css") }}" />
+<link rel="stylesheet" type="text/css" href="{{ asset("asset/css/list.css") }}" />
+<link rel="stylesheet" type="text/css" href="{{ asset("asset/css/WebApp_reset.css") }}" />
+<link rel="stylesheet" type="text/css" href="{{ asset("asset/css/public.css") }}" />
+{% endblock %}
+
+{% block head_scripts %}
+<script>
+    seajs.use("/asset/js/home")
+    seajs.use("/asset/js/myinfo")
+</script>
+{% endblock %}
+
+{% block body %}
+<div class="posts" id="posts" >
+	<div class="posted" id="posted" >
+		<div class="header">
+			<img src="{{ asset("asset/img/touxiang2.jpg") }}" >
+		</div>
+		<div class="poster" id="poster">
+			<span>{{ userInfo.username}}</span>
+			<h1>荣誉勋章</h1>
+			<h2>信息学院</h2>
+		</div>
+	</div>
+	<div class="posts_info" id="posts_info">
+		<div class="thing">
+			<div class="thing_label" id="thing_label">简介：{{ userInfo.content|default('暂无简介')}}</div>
+		</div>
+		<div class="info_des">个性签名：{{ userInfo.sign|default('他很懒，什么都没留下')}}</div>
+	</div>
+</div>
+{% if userInfo.uid == user.uid%}
+	<div class="textbox">我的求助</div>
+{% else %}
+	<div class="textbox">TA的求助</div>
+{% endif %}
+
+<div class="list_body m01">
+    <ul>
+        {% for group in groups %}
+        <li class="go_detail" data-gid="{{ group.gid }}">
+            <img src="{{ asset("asset/img/touxiang2.jpg") }}">
+            <div class="info_box">
+                <div class="info">
+                    <span>{{ group.title }}</span>
+                    <div class="info_det">{{ group.content }}</div>
+                </div>
+                <div class="check_box">
+                    <div class="check_info01">查看详情</div>
+                    <div class="up_time">{{ group.ctime|smart_time }}</div>
+                </div>
+            </div>
+        </li>
+        {% endfor %}
+    </ul>
+</div>
+<div class="post_box">
+	{% if userInfo.uid == user.uid%}
+		<div class="post_but">修改个人资料</div>
+	{% else %}
+		<div class="add_but">添加好友</div>
+	{% endif %}
+</div>
+
+{% include 'Web/Views/public/bottom.html.twig' %} 
+{% endblock %}

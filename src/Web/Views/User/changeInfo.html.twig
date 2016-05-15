@@ -1,0 +1,51 @@
+{% extends 'Web/Views/layout.html.twig' %}
+
+{% block title %}个人中心{% endblock %}
+{% block stylesheets %}
+<link rel="stylesheet" type="text/css" href="{{ asset("asset/css/public.css") }}" />
+<link rel="stylesheet" type="text/css" href="{{ asset("asset/css/change.css") }}" />
+<link rel="stylesheet" type="text/css" href="{{ asset("asset/css/WebApp_reset.css") }}" />
+{% endblock %}
+
+{% block head_scripts %}
+<script>
+    seajs.use("/asset/js/home")
+    seajs.use("/asset/js/change")
+</script>
+{% endblock %}
+
+{% block body %}
+<div class="logo">
+	<img src="{{ asset("asset/img/logo.png") }}" >
+</div>
+<div class="title">修改个人资料</div>
+<form class="login_box" id="info-form" data-id="{{user.uid}}">
+	<div class="row mr0 ml0 info"  style="display:none;">
+	        <div class="alert alert-info fz14" role="alert">
+	        </div>
+	    </div>
+	<div class="input_box" id="name_box">
+		<div class="input_name">用户名</div>
+		<div class="input">
+			<input type="text" class="login_name" placeholder="姓名" value="{{ user.username }}" name="username">
+		</div>
+	</div>
+	<div class="input_box" id="pas_box">
+		<div class="input_name">简介</div>
+		<div class="input">
+			<input type="text" class="login_name" placeholder="介绍一下自己" name="content" value="{{ user.content }}">
+		</div>
+	</div>
+	<div class="input_box" id="pas_box">
+		<div class="input_name">个性签名</div>
+		<div class="input">
+			<input type="text" class="login_name" placeholder="个性签名" name="sign" value="{{ user.sign }}">
+		</div>
+	</div>
+	<div class="login_but">保&nbsp&nbsp&nbsp存</div>
+</form>
+<div class="alert_box hide">
+	<div class="alert"></div>
+</div>
+{% include 'Web/Views/public/bottom.html.twig' %} 
+{% endblock %}
