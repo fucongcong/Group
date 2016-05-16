@@ -15,13 +15,17 @@ class IndexController extends BaseController
         $start = $request -> query -> get('start');
         if (!$start) $start = 0;
 
-        $groups = D('Groups') -> findGroups($start);
+        $key = $request -> query -> get('key');
+        if (!$key) $key = '';
+
+        $groups = D('Groups') -> findGroups($start, 10, $key);
 
         foreach ($groups as &$group) {
             $group['user'] = D('User') -> getUserInfo($group['uid']);
         }
         return $this -> render('Web/Views/Group/list.html.twig', [
-            'groups' => $groups
+            'groups' => $groups,
+            'key' => $key
             ]);
     }
 

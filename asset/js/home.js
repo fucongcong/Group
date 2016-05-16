@@ -34,4 +34,9 @@ define('/asset/js/home', function(require, exports, module) {
         uid = $(this).data('id');
         location.href = "/user/info/"+uid;
     })
+
+    $(".go_detail").on("tap",function(){
+        gid = $(this).data('gid');
+        location.href = "/group/"+gid;
+    })
 });

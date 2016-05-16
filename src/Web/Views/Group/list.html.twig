@@ -16,9 +16,9 @@
 {% endblock %}
 
 {% block body %}
-<div class="search_box">
-    <input type="text" id="search_tab" class="search_tab" placeholder="输入关键字">
-</div>
+<form class="search_box">
+    <input type="text" id="search_tab" class="search_tab" placeholder="输入关键字" name="key" value="{{ key }}">
+</form>
 <div class="list_body">
     <ul>
         {% for group in groups %}

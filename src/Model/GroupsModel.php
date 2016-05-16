@@ -38,9 +38,9 @@ class GroupsModel extends Model {
         return $this -> where(['gid' => $gid]) -> delete();
     }
 
-    public function findGroups($start, $limit = 10)
-    {
-        return $this -> order('mtime DESC') -> limit("{$start},{$limit}") -> select();
+    public function findGroups($start, $limit = 10, $key = '')
+    {   
+        return $this -> where(['title' => ['like', "%".$key."%"]]) -> order('mtime DESC') -> limit("{$start},{$limit}") -> select();
     }
 
     public function findGroupsByUid($uid, $start, $limit = 10)
