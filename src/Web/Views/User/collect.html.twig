@@ -1,0 +1,38 @@
+{% extends 'Web/Views/layout.html.twig' %}
+
+{% block title %}我的收藏{% endblock %}
+
+{% block stylesheets %}
+<link rel="stylesheet" type="text/css" href="{{ asset("asset/css/public.css") }}" />
+<link rel="stylesheet" type="text/css" href="{{ asset("asset/css/list.css") }}" />
+<link rel="stylesheet" type="text/css" href="{{ asset("asset/css/WebApp_reset.css") }}" />
+{% endblock %}
+
+{% block head_scripts %}
+<script>
+    seajs.use("/asset/js/home")
+</script>
+{% endblock %}
+
+{% block body %}
+<div class="list_body">
+    <ul>
+        {% for group in groups %}
+        <li class="go_detail" data-gid="{{ group.gid }}" style="height:0.8rem">
+            {% if group.user.sex == 'male' %}
+                <img src="{{ asset("asset/img/header.jpg") }}">
+            {% else %}
+                <img src="{{ asset("asset/img/touxiang2.jpg") }}">
+            {% endif %}
+            <div class="info_box">
+                <div class="info">
+                    <span>{{ group.title }}</span>
+                    <div class="info_det">{{ group.content }}</div>
+                </div>
+            </div>
+        </li>
+        {% endfor %}
+    </ul>
+</div>
+{% include 'Web/Views/public/bottom.html.twig' %} 
+{% endblock %}

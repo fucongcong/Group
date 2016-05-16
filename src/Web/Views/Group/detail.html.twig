@@ -41,11 +41,11 @@
 
 {% if is_colloect %}
     <div class="edit_box ">
-        <div class="ml0 uncollect">已收藏</div>
+        <div class="ml0 uncollect" data-id="{{ group.gid }}">已收藏</div>
     </div>
 {% else %}
     <div class="edit_box ">
-        <div class="ml0 colloect">收藏</div>
+        <div class="ml0 colloect" data-id="{{ group.gid }}">收藏</div>
     </div>
 {% endif %}
 

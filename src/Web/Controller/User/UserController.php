@@ -189,7 +189,20 @@ class UserController extends BaseController
         return $this->createJsonResponse('', 'error', 0);
     }
 
+    public function collectAction(Request $request)
+    {
+        $uid = \Session::get('uid');
+        if (!$uid) return $this -> redirect('/login');
 
+        $groups = D('GroupsCollect') -> getCollectByUid($uid);
+        foreach ($groups as &$group) {
+            $group = D('Groups') -> getGroup($group['gid']);
+        }
+ 
+        return $this -> render('Web/Views/User/collect.html.twig',[
+            'groups' => $groups
+            ]);
+    }
 
 
 

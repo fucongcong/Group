@@ -15,5 +15,9 @@ define('/asset/js/info', function(require, exports, module) {
         location.href = "/user/follows";
     })
 
+    $(".list-collect").on("tap",function(){
+        location.href = "/user/collect";
+    })
+    
     
 });

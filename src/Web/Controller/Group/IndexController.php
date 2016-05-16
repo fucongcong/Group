@@ -53,11 +53,14 @@ class IndexController extends BaseController
     }
 
     public function detailAction(Request $request, $gid)
-    {
+    { 
+        $uid = \Session::get('uid');
         $group = D('Groups') -> getGroup($gid);
         
         if (empty($group)) return $this -> redirect('/list');
         $group['user'] = D('User') -> getUserInfo($group['uid']);
+
+        $is_colloect = D('GroupsCollect') -> isCollect($uid, $gid);
 
         $start = $request -> query -> get('start');
         if (!$start) $start = 0;
@@ -68,7 +71,8 @@ class IndexController extends BaseController
         }
         return $this -> render('Web/Views/Group/detail.html.twig',[
             'group' => $group,
-            'posts' => $posts
+            'posts' => $posts,
+            'is_colloect' => $is_colloect
             ]);
     }
 
@@ -90,6 +94,31 @@ class IndexController extends BaseController
             ]);
     }
 
+    public function addCollectAction(Request $request)
+    {
+        $gid = $request -> request -> get('gid');
+        $uid = \Session::get('uid');
+        if (!$uid) return $this->createJsonResponse('', 'not login', 0);
+
+        if (intval($gid) < 0) return $this->createJsonResponse('', 'gid error', 0);
+
+        $res = D('GroupsCollect') -> addCollect($uid, $gid);
+        if ($res) return $this->createJsonResponse('', 'success', 1);
+        return $this->createJsonResponse('', 'error', 0);
+    }
+
+    public function unCollectAction(Request $request)
+    {
+        $gid = $request -> request -> get('gid');
+        $uid = \Session::get('uid');
+        if (!$uid) return $this->createJsonResponse('', 'not login', 0);
+
+        if (intval($gid) < 0) return $this->createJsonResponse('', 'gid error', 0);
+
+        $res = D('GroupsCollect') -> unCollect($uid, $gid);
+        if ($res) return $this->createJsonResponse('', 'success', 1);
+        return $this->createJsonResponse('', 'error', 0);
+    }
 
 
 

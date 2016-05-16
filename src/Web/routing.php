@@ -84,6 +84,10 @@ return [
         'methods' => 'POST',
     ],
 
+   'collect'=>[
+        'pattern' => '/user/collect',
+        'controller' => 'Web:User:User:collect',
+    ],
 
     'group_list'=>[
         'pattern' => '/group/list',
@@ -101,6 +105,18 @@ return [
         'methods' => 'POST',
     ],
 
+    'group_collect'=>[
+        'pattern' => '/group/collect',
+        'controller' => 'Web:Group:Index:addCollect',
+        'methods' => 'POST',
+    ],
+
+    'group_uncollect'=>[
+        'pattern' => '/group/unCollect',
+        'controller' => 'Web:Group:Index:unCollect',
+        'methods' => 'POST',
+    ],
+
     'group_detail'=>[
         'pattern' => '/group/{gid}',
         'controller' => 'Web:Group:Index:detail',
@@ -112,81 +128,83 @@ return [
         'methods' => 'POST',
     ],
 
-    
-
-
-
-
-
-
-
-
-
-
-
-
-    'user_detail'=>[
-        'pattern' => '/user/detail',
-        'controller' => 'Web:User:User:detail',
-    ],
-
-    'user_changePassword'=>[
-        'pattern' => '/user/changePassword',
-        'controller' => 'Web:User:User:changePassword',
-        'methods' => 'POST',
-    ],
-
-    'user_edit'=>[
-        'pattern' => '/user/edit',
-        'controller' => 'Web:User:User:edit',
-        'methods' => 'POST',
-    ],
-
-    'user_setAvatar'=>[
-        'pattern' => '/user/setAvatar',
-        'controller' => 'Web:User:User:setAvatar',
-        'methods' => 'POST',
-    ],
-
-    'user_pets'=>[
-        'pattern' => '/user/pets',
-        'controller' => 'Web:User:Index:listPets',
-        'methods' => 'POST',
-    ],
-
-    'user_groups'=>[
-        'pattern' => '/user/groups',
-        'controller' => 'Web:User:Index:listGroups',
-        'methods' => 'POST',
-    ],
 
 
     
 
 
-    'group_edit'=>[
-        'pattern' => '/group/edit',
-        'controller' => 'Web:Group:Index:editGroup',
-        'methods' => 'POST',
-    ],
 
-    'group_delete'=>[
-        'pattern' => '/group/delete',
-        'controller' => 'Web:Group:Index:deleteGroup',
-        'methods' => 'POST',
-    ],
 
-    'group_ding'=>[
-        'pattern' => '/group/ding',
-        'controller' => 'Web:Group:Index:dingGroup',
-        'methods' => 'POST',
-    ],
 
-    'group_unding'=>[
-        'pattern' => '/group/unding',
-        'controller' => 'Web:Group:Index:unDingGroup',
-        'methods' => 'POST',
-    ],
+
+
+
+
+
+
+
+    // 'user_detail'=>[
+    //     'pattern' => '/user/detail',
+    //     'controller' => 'Web:User:User:detail',
+    // ],
+
+    // 'user_changePassword'=>[
+    //     'pattern' => '/user/changePassword',
+    //     'controller' => 'Web:User:User:changePassword',
+    //     'methods' => 'POST',
+    // ],
+
+    // 'user_edit'=>[
+    //     'pattern' => '/user/edit',
+    //     'controller' => 'Web:User:User:edit',
+    //     'methods' => 'POST',
+    // ],
+
+    // 'user_setAvatar'=>[
+    //     'pattern' => '/user/setAvatar',
+    //     'controller' => 'Web:User:User:setAvatar',
+    //     'methods' => 'POST',
+    // ],
+
+    // 'user_pets'=>[
+    //     'pattern' => '/user/pets',
+    //     'controller' => 'Web:User:Index:listPets',
+    //     'methods' => 'POST',
+    // ],
+
+    // 'user_groups'=>[
+    //     'pattern' => '/user/groups',
+    //     'controller' => 'Web:User:Index:listGroups',
+    //     'methods' => 'POST',
+    // ],
+
+
+    
+
+
+    // 'group_edit'=>[
+    //     'pattern' => '/group/edit',
+    //     'controller' => 'Web:Group:Index:editGroup',
+    //     'methods' => 'POST',
+    // ],
+
+    // 'group_delete'=>[
+    //     'pattern' => '/group/delete',
+    //     'controller' => 'Web:Group:Index:deleteGroup',
+    //     'methods' => 'POST',
+    // ],
+
+    // 'group_ding'=>[
+    //     'pattern' => '/group/ding',
+    //     'controller' => 'Web:Group:Index:dingGroup',
+    //     'methods' => 'POST',
+    // ],
+
+    // 'group_unding'=>[
+    //     'pattern' => '/group/unding',
+    //     'controller' => 'Web:Group:Index:unDingGroup',
+    //     'methods' => 'POST',
+    // ],
 
     // 'group_list'=>[
     //     'pattern' => '/group/list',
@@ -195,15 +213,15 @@ return [
 
 
 
-    'group_post_delete'=>[
-        'pattern' => '/group/post/delete',
-        'controller' => 'Web:Group:Post:deletePost',
-        'methods' => 'POST',
-    ],
+    // 'group_post_delete'=>[
+    //     'pattern' => '/group/post/delete',
+    //     'controller' => 'Web:Group:Post:deletePost',
+    //     'methods' => 'POST',
+    // ],
 
-     'group_post_list'=>[
-        'pattern' => '/group/post/list',
-        'controller' => 'Web:Group:Post:listPosts',
-    ],
+    //  'group_post_list'=>[
+    //     'pattern' => '/group/post/list',
+    //     'controller' => 'Web:Group:Post:listPosts',
+    // ],
 
 ];
