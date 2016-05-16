@@ -29,6 +29,25 @@ class IndexController extends BaseController
             ]);
     }
 
+    public function listGroupsAction(Request $request)
+    {
+        $start = $request -> query -> get('start');
+        if (!$start) $start = 0;
+
+        $key = $request -> query -> get('key');
+        if (!$key) $key = '';
+
+        $groups = D('Groups') -> findGroups($start, 10, $key);
+
+        foreach ($groups as &$group) {
+            $group['user'] = D('User') -> getUserInfo($group['uid']);
+        }
+
+        return $this -> render('Web/Views/Group/list-ajax.html.twig', [
+            'groups' => $groups,
+            ]);
+    }
+
     public function postAction(Request $request)
     {   
         $uid = \Session::get('uid');
@@ -133,16 +152,7 @@ class IndexController extends BaseController
 
 
 
-    public function listGroupsAction(Request $request)
-    {
-        $start = $request -> query -> get('start');
-        if (!$start) $start = 0;
 
-        $groups = D('Groups') -> findGroups($start);
-
-        if (empty($groups)) return $this -> createJsonResponse(null, '', 0);
-        return $this -> createJsonResponse($groups, '', 1);
-    }
 
     public function editGroupAction(Request $request)
     {

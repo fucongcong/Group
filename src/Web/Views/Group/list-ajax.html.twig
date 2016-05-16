@@ -1,0 +1,22 @@
+<ul>
+    {% for group in groups %}
+    <li class="go_detail" data-gid="{{ group.gid }}">
+        {% if group.user.sex == 'male' %}
+            <img src="{{ asset("asset/img/header.jpg") }}">
+        {% else %}
+            <img src="{{ asset("asset/img/touxiang2.jpg") }}">
+        {% endif %}
+        
+        <div class="info_box">
+            <div class="info">
+                <span>{{ group.title }}</span>
+                <div class="info_det">{{ group.content }}</div>
+            </div>
+            <div class="check_box">
+                <div class="check_info01">查看详情</div>
+                <div class="up_time">{{ group.ctime|smart_time }}</div>
+            </div>
+        </div>
+    </li>
+    {% endfor %}
+</ul>

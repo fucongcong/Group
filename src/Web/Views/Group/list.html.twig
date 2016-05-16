@@ -9,6 +9,8 @@
 {% endblock %}
 
 {% block head_scripts %}
+<script src="{{ asset("asset/js/jquery1.8.js") }}"></script>
+<script src="{{ asset("asset/js/loadmore.js") }}"></script>
 <script>
     seajs.use("/asset/js/home")
     seajs.use("/asset/js/list")
@@ -19,7 +21,7 @@
 <form class="search_box">
     <input type="text" id="search_tab" class="search_tab" placeholder="输入关键字" name="key" value="{{ key }}">
 </form>
-<div class="list_body">
+<div class="list_body" data-key="{{ key }}">
     <ul>
         {% for group in groups %}
         <li class="go_detail" data-gid="{{ group.gid }}">

@@ -128,7 +128,10 @@ return [
         'methods' => 'POST',
     ],
 
-
+    'group_list_more'=>[
+        'pattern' => '/group/list/more',
+        'controller' => 'Web:Group:Index:listGroups',
+    ],
 
     
 
@@ -206,10 +209,7 @@ return [
     //     'methods' => 'POST',
     // ],
 
-    // 'group_list'=>[
-    //     'pattern' => '/group/list',
-    //     'controller' => 'Web:Group:Index:listGroups',
-    // ],
+
 
 
 
