@@ -41,6 +41,11 @@ return [
         'controller' => 'Web:User:User:index',
     ],
 
+    'scarf'=>[
+        'pattern' => '/scarf',
+        'controller' => 'Web:Group:Index:scarf',
+    ],
+
     'user_Info'=>[
         'pattern' => '/user/info/{uid}',
         'controller' => 'Web:User:User:info',

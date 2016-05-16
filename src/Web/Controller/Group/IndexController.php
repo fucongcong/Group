@@ -72,6 +72,23 @@ class IndexController extends BaseController
             ]);
     }
 
+    public function scarfAction(Request $request)
+    {   
+        $uid = \Session::get('uid');
+        if (!$uid) return $this -> redirect('/login');
+
+        $start = $request -> query -> get('start');
+        if (!$start) $start = 0;
+
+        $groups = D('Groups') -> findGroupsByUid($uid, 0, 3);
+        foreach ($groups as &$group) {
+            $group['user'] = D('User') -> getUserInfo($group['uid']);
+        }
+    
+        return $this -> render('Web/Views/Group/scarf.html.twig',[
+            'groups' => $groups,
+            ]);
+    }
 
 
 

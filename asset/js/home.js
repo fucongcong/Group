@@ -10,7 +10,7 @@ define('/asset/js/home', function(require, exports, module) {
     })
 
     $(".tab_box3").on("tap",function(){
-        
+        location.href = "/scarf";
     })
 
     $(".tab_box4").on("tap",function(){
@@ -18,7 +18,7 @@ define('/asset/js/home', function(require, exports, module) {
     })
 
     $(".menu1").on("tap",function(){
-        location.href = "../thank.html";
+        location.href = "/scarf";
     })
     $(".menu2").on("tap",function(){
         location.href = "/group/list";
