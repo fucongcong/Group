@@ -107,7 +107,7 @@ class IndexController extends BaseController
         $start = $request -> query -> get('start');
         if (!$start) $start = 0;
 
-        $groups = D('Groups') -> findGroupsByUid($uid, 0, 3);
+        $groups = D('Groups') -> findGroupsByUid($uid, 0, 10);
         foreach ($groups as &$group) {
             $group['user'] = D('User') -> getUserInfo($group['uid']);
         }
