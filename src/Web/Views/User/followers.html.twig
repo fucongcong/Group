@@ -1,6 +1,6 @@
 {% extends 'Web/Views/layout.html.twig' %}
 
-{% block title %}好友{% endblock %}
+{% block title %}粉丝{% endblock %}
 {% block parent_stylesheets %}
 <link rel="stylesheet" type="text/css" href="{{ asset("asset/css/details.css") }}" />
 <link rel="stylesheet" type="text/css" href="{{ asset("asset/css/list.css") }}" />
@@ -17,21 +17,21 @@
 
 {% block body %}
 <div class="getfriend mt10">
-    <div class="sendifo fl follows">好友</div>
-    <div class="addfriend fr follower">粉丝</div>
+    <div class="sendifo follower">粉丝</div>
+    <div class="addfriend follows">好友</div>
 </div>
 <ul class="friend_list">
-	{% for follow in follows %}
-	<li class="user-link" data-id="{{ follow.user.uid }}">
-		{% if follow.user.sex == 'male' %}
-	                <img src="{{ asset("asset/img/header.jpg") }}">
-	            {% else %}
-	                <img src="{{ asset("asset/img/touxiang2.jpg") }}">
-	            {% endif %}
-		<div>{{ follow.user.username}}</div>
-	</li>
-	{% endfor %}
-	
+    {% for follow in follows %}
+    <li class="user-link" data-id="{{ follow.user.uid }}">
+        {% if follow.user.sex == 'male' %}
+                    <img src="{{ asset("asset/img/header.jpg") }}">
+                {% else %}
+                    <img src="{{ asset("asset/img/touxiang2.jpg") }}">
+                {% endif %}
+        <div>{{ follow.user.username}}</div>
+    </li>
+    {% endfor %}
+    
 </ul>
 
 {% include 'Web/Views/public/bottom.html.twig' %} 

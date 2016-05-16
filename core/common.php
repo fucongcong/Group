@@ -164,7 +164,7 @@ function parse_name($name, $type=0) {
 
 // 自定义异常处理
 function throw_exception($msg, $type='Exception', $code=0) {
-    throw new $type($msg, $code, true);
+    throw new Exception($msg);
 }
 
 // 实例化model

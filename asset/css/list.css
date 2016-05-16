@@ -76,6 +76,19 @@
 	position: fixed;
 	bottom: 50px;
 }
+
+.edit_box .post_but{
+	background-color: #9fdecb;
+	margin-right: 0.1rem;
+	margin-left: 0.1rem;
+	margin-bottom: 0.1rem;
+	margin-top: 0.1rem;
+	color: #fff;
+	height: 0.3rem;
+	text-align: center;
+	line-height: 0.3rem;
+}
+
 .post_box .post_but{
 	background-color: #9fdecb;
 	margin-right: 0.2rem;

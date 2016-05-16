@@ -37,7 +37,23 @@
 		</div>
 		<div class="info_des">个性签名：{{ userInfo.sign|default('他很懒，什么都没留下')}}</div>
 	</div>
+
 </div>
+
+{% if userInfo.uid == user.uid%}
+    <div class="edit_box ">
+        <div class="ml0 post_but">修改个人资料</div>
+    </div>
+{% else %}
+    <div class="getfriend">
+        {% if is_follow %}
+        <div class="addfriend unfollow" data-id={{ userInfo.uid }}>取消关注</div>
+        {% else %}
+        <div class="addfriend follow" data-id={{ userInfo.uid }}>添加关注</div>
+        {% endif %}
+        <div class="sendifo">发送消息</div>
+    </div>
+{% endif %}
 {% if userInfo.uid == user.uid%}
 	<div class="textbox">我最近的求助</div>
 {% else %}
@@ -67,21 +83,6 @@
         {% endfor %}
     </ul>
 </div>
-
-{% if userInfo.uid == user.uid%}
-	<div class="post_box">
-		<div class="post_but">修改个人资料</div>
-	</div>
-{% else %}
-	<div class="getfriend">
-		{% if is_follow %}
-		<div class="addfriend unfollow" data-id={{ userInfo.uid }}>删除好友</div>
-		{% else %}
-		<div class="addfriend follow" data-id={{ userInfo.uid }}>加为好友</div>
-		{% endif %}
-		<div class="sendifo">发送消息</div>
-	</div>
-{% endif %}
 
 
 {% include 'Web/Views/public/bottom.html.twig' %} 

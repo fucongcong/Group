@@ -25,6 +25,11 @@ class FollowModel extends Model {
 		return $this -> where(['uid' => $uid]) -> select();
 	}
 
+	public function getFollowers($uid)
+	{
+		return $this -> where(['fuid' => $uid]) -> select();
+	}
+
 	public function isFollow($uid, $fuid)
 	{
 		if ($this -> where(['uid' => $uid, 'fuid' => $fuid]) -> find()) {

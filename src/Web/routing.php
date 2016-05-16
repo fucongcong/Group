@@ -68,6 +68,11 @@ return [
         'controller' => 'Web:User:User:follows',
     ],
 
+   'follower'=>[
+        'pattern' => '/user/follower',
+        'controller' => 'Web:User:User:follower',
+    ],
+
     'unfollow'=>[
         'pattern' => '/user/unfollow',
         'controller' => 'Web:User:User:unfollow',

@@ -26,6 +26,7 @@ class UserModel extends Model {
     public function getUserInfo($uid)
     {   
         $user = $this -> field('uid,username,sex,avatar,content,sign') -> where(['uid' => $uid]) -> find();
+
         if (empty($user)) return [];
 
         if (!empty($user['avatar'])) {

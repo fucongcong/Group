@@ -54,6 +54,7 @@
 	min-height: 0.2rem;
 }
 .comment_nav{
+	margin-bottom: 1rem;
 	margin-right: 0.1rem;
 	margin-left: 0.1rem;
 }
@@ -137,6 +138,30 @@
 	text-align: center;
 	line-height: 0.3rem;
 }
+.edit_box .colloect {
+	background-color: #9fdecb;
+	margin-right: 0.1rem;
+	margin-left: 0.1rem;
+	margin-bottom: 0.1rem;
+	margin-top: 0.1rem;
+	color: #fff;
+	height: 0.3rem;
+	text-align: center;
+	line-height: 0.3rem;
+}
+
+.edit_box .uncollect {
+	background-color: #fff;
+	margin-right: 0.1rem;
+	margin-left: 0.1rem;
+	margin-bottom: 0.1rem;
+	margin-top: 0.1rem;
+	color: #959595;;
+	height: 0.3rem;
+	text-align: center;
+	line-height: 0.3rem;
+}
+
 .post_box .add_but{
 	background-color: #9fdecb;
 	margin-right: 0.2rem;
@@ -150,30 +175,26 @@
 }
 
 .getfriend{
-	width: 100%;
-	position: fixed;
 	bottom: 0;
-	margin-right: 0.2rem;
-	margin-left: 0.2rem;
+	margin-left: 0.1rem;
+	margin-right: 0.1rem;
 	margin-bottom: 0.5rem;
 	text-align: center;
 	color: #fff;
 }
 .addfriend{
-	width: 40%;
+	width: 50%;
 	float: left;
 	height: 0.3rem;
 	line-height: 0.3rem;
 	background: #9fdecb;
-	margin-right: 5%;
 	box-sizing:border-box;
 }
 .sendifo{
-	width: 40%;
-	float: left;
+	width: 50%;
+	float: right;
 	height: 0.3rem;
 	line-height: 0.3rem;
 	background: #fadd7f;
-	margin-left: 5%;
 	box-sizing:border-box;
 }

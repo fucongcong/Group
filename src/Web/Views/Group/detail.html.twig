@@ -26,7 +26,7 @@
             {% endif %}
         </div>
         <div class="poster" id="poster">
-            <span>{{ group.user.username }}</span>
+            <span class="user-link" data-id="{{ group.user.uid }}">{{ group.user.username }}</span>
             <h1>荣誉勋章</h1>
             <h2>{{ group.user.school|default('信息学院') }}</h2>
         </div>
@@ -38,6 +38,17 @@
         <div class="info_des">{{ group.content}}</div>
     </div>
 </div>
+
+{% if is_colloect %}
+    <div class="edit_box ">
+        <div class="ml0 uncollect">已收藏</div>
+    </div>
+{% else %}
+    <div class="edit_box ">
+        <div class="ml0 colloect">收藏</div>
+    </div>
+{% endif %}
+
 <ul class="comment_nav">
 {% for post in posts %}
     <li class="mt5">
@@ -49,7 +60,7 @@
             {% endif %}
         </div>
         <div class="poster">
-            <span>{{ post.user.username }}</span>
+            <span class="user-link" data-id="{{ group.user.uid }}">{{ post.user.username }}</span>
             <div class="comment_box">{{ post.content }}</div>
             <div class="comment_time">{{ post.ctime|smart_time }}</div>
         </div>

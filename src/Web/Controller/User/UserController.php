@@ -13,7 +13,7 @@ class UserController extends BaseController
         $uid = \Session::get('uid');
         if (!$uid) return $this -> redirect('/login');
 
-         $user = D('User') -> getUserInfo($uid);
+        $user = D('User') -> getUserInfo($uid);
         return $this -> render('Web/Views/User/info.html.twig',[
             'user' => $user
             ]);
@@ -76,6 +76,20 @@ class UserController extends BaseController
             $follow['user'] = D('User') -> getUserInfo($follow['fuid']);
         }
         return $this -> render('Web/Views/User/follows.html.twig', array(
+            'follows' => $follows
+            ));
+    }
+
+    public function followerAction(Request $request)
+    {   
+        $uid = \Session::get('uid');
+        if (!$uid) return $this -> redirect('/login');
+       $follows = D('Follow') -> getFollowers($uid);
+
+       foreach ($follows as &$follow) {
+            $follow['user'] = D('User') -> getUserInfo($follow['uid']);
+        }
+        return $this -> render('Web/Views/User/followers.html.twig', array(
             'follows' => $follows
             ));
     }
