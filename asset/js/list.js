@@ -44,6 +44,5 @@ define('/asset/js/list', function(require, exports, module) {
                 pageCount++;
                 dragger.reset();
             })
-            dragger.reset();
         });
 });
