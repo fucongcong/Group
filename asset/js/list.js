@@ -29,14 +29,14 @@ define('/asset/js/list', function(require, exports, module) {
                 }
             }
         });
-        // dragger.on('dragDownLoad', function() {console.log(1)
-        //     setTimeout(function() {
-        //         // 无论何时，必须由业务功能主动调用reset()接口，以还原状态
-        //         // 比如在onDragDownLoad()回调中使用ajax加载数据时，在ajax的回调函数中应当调用reset()重置drag状态
-        //         // 如果不重置，drag操作将失效
-        //         dragger.reset();
-        //     }, 200);
-        // });
+        dragger.on('dragDownLoad', function() {console.log(1)
+            setTimeout(function() {
+                // 无论何时，必须由业务功能主动调用reset()接口，以还原状态
+                // 比如在onDragDownLoad()回调中使用ajax加载数据时，在ajax的回调函数中应当调用reset()重置drag状态
+                // 如果不重置，drag操作将失效
+                dragger.reset();
+            }, 200);
+        });
         dragger.on('dragUpLoad', function() {
             key = $('#list_body').data('key');
             $.get('/group/list/more', {start:pageCount * 10, key:key}, function(res){
