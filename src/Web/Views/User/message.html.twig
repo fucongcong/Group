@@ -1,0 +1,36 @@
+{% extends 'Web/Views/layout.html.twig' %}
+
+{% block title %}好友{% endblock %}
+{% block parent_stylesheets %}
+<link rel="stylesheet" type="text/css" href="{{ asset("asset/css/details.css") }}" />
+<link rel="stylesheet" type="text/css" href="{{ asset("asset/css/list.css") }}" />
+<link rel="stylesheet" type="text/css" href="{{ asset("asset/css/WebApp_reset.css") }}" />
+<link rel="stylesheet" type="text/css" href="{{ asset("asset/css/public.css") }}" />
+{% endblock %}
+
+{% block head_scripts %}
+<script>
+    seajs.use("/asset/js/home")
+    seajs.use("/asset/js/message")
+</script>
+{% endblock %}
+
+{% block body %}
+
+<ul class="friend_list">
+    {% for message in messages %}
+    <li class="message-link" data-id="{{ message.user.uid }}" style="line-height:0.25rem">
+        {% if message.user.sex == 'male' %}
+                    <img src="{{ asset("asset/img/header.jpg") }}">
+                {% else %}
+                    <img src="{{ asset("asset/img/touxiang2.jpg") }}">
+                {% endif %}
+        <div class="fz12">{{ message.user.username}}</div>
+        <div>{{ message.content|raw }}</div>
+    </li>
+    {% endfor %}
+    
+</ul>
+
+{% include 'Web/Views/public/bottom.html.twig' %} 
+{% endblock %}

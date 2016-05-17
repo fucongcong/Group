@@ -61,6 +61,21 @@ return [
         'controller' => 'Web:User:User:doChangeInfo',
         'methods' => 'POST',
     ],
+
+    'user_message_info'=>[
+        'pattern' => '/user/message/info/{uid}',
+        'controller' => 'Web:User:User:messageInfo',
+    ],
+   
+   'user_message_add'=>[
+        'pattern' => '/user/message/add',
+        'controller' => 'Web:User:User:messageAdd',
+    ],
+
+    'messages'=>[
+        'pattern' => '/user/messages',
+        'controller' => 'Web:User:User:messageList',
+    ],
    
    'follow'=>[
         'pattern' => '/user/follow',

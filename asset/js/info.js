@@ -18,6 +18,10 @@ define('/asset/js/info', function(require, exports, module) {
     $(".list-collect").on("tap",function(){
         location.href = "/user/collect";
     })
+
+    $(".list-messages").on("tap",function(){
+        location.href = "/user/messages";
+    })
     
     
 });

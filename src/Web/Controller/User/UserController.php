@@ -14,8 +14,11 @@ class UserController extends BaseController
         if (!$uid) return $this -> redirect('/login');
 
         $user = D('User') -> getUserInfo($uid);
+
+        $messageNum = D('message') -> getUnRead($uid);
         return $this -> render('Web/Views/User/info.html.twig',[
-            'user' => $user
+            'user' => $user,
+            'messageNum' => $messageNum
             ]);
     }
 
@@ -204,72 +207,121 @@ class UserController extends BaseController
             ]);
     }
 
+    public function messageAddAction(Request $request)
+    {
+        $to_uid = $request -> request -> get('to_uid');
+        $content = $request -> request -> get('content');
+        $uid = \Session::get('uid');
+        if (!$uid) return $this->createJsonResponse('', 'not login', 0);
 
+        if (intval($to_uid) < 0 || $uid == $to_uid) return $this->createJsonResponse('', 'uid error', 0);
 
+        $res = D('Message') -> addMessage($uid, $to_uid, $content);
+        if ($res) return $this->createJsonResponse('', 'success', 1);
+        return $this->createJsonResponse('', 'error', 0);
+    }
 
-    public function editAction(Request $request)
+    public function messageInfoAction(Request $request, $uid)
     {   
-        $info = $request -> request -> all();
-        $uid = $this -> isLogin($info['token']);
-        if (!$uid) return $this -> createJsonResponse('', '请登录', 2); 
+        $to_uid = $uid;
+
+        $uid = \Session::get('uid');
+        if (!$uid) return $this -> redirect('/login');
+
+        $messages = D('Message') -> listMessage($uid, $to_uid);
+
+        $user = D('User') -> getUserInfo($to_uid);
+        $users[$to_uid] = $user;
+        $users[$uid] = D('User') -> getUserInfo($uid);
+
+        return $this -> render('Web/Views/Message/post.html.twig',[
+            'messages' => $messages,
+            'user' => $user,
+            'users' => $users
+            ]);
+    }
+
+    public function messageListAction(Request $request)
+    {   
+        $uid = \Session::get('uid');
+        if (!$uid) return $this -> redirect('/login');
+
+        $messages = D('Message') -> findMessages($uid);
+
+        foreach ($messages as &$message) {
+            $message['user'] = D('User') -> getUserInfo($message['uid']);
+            $message['content'] = getShort($message['content'], 15);
+        }
+
+        return $this -> render('Web/Views/User/message.html.twig',[
+            'messages' => $messages,
+            ]);
+    }
+
+
+    // public function editAction(Request $request)
+    // {   
+    //     $info = $request -> request -> all();
+    //     $uid = $this -> isLogin($info['token']);
+    //     if (!$uid) return $this -> createJsonResponse('', '请登录', 2); 
         
-        if (isset($info['sex']) && !in_array($info['sex'], ['male', 'female'])) {
-            return $this -> createJsonResponse('', '性别有误', 0);
-        }
+    //     if (isset($info['sex']) && !in_array($info['sex'], ['male', 'female'])) {
+    //         return $this -> createJsonResponse('', '性别有误', 0);
+    //     }
 
-        if (isset($info['username']) && !SimpleValidator::nickname($info['username'])) {
-            return $this->createJsonResponse('', '用户名3-20位，一个中文为2个字符', 0);
-        }
+    //     if (isset($info['username']) && !SimpleValidator::nickname($info['username'])) {
+    //         return $this->createJsonResponse('', '用户名3-20位，一个中文为2个字符', 0);
+    //     }
 
-        D('User') -> updateUserInfo($info, $uid);
-        $user = D('User') -> getUserInfo($uid);
-        return $this -> createJsonResponse($user, '更新成功', 1);
-    }
+    //     D('User') -> updateUserInfo($info, $uid);
+    //     $user = D('User') -> getUserInfo($uid);
+    //     return $this -> createJsonResponse($user, '更新成功', 1);
+    // }
 
-    public function changePasswordAction(Request $request)
-    {
-        $token = $request -> request -> get('token');
-        $uid = $this -> isLogin($token);
-        if (!$uid) return $this -> createJsonResponse('', '请登录', 2);
+    // public function changePasswordAction(Request $request)
+    // {
+    //     $token = $request -> request -> get('token');
+    //     $uid = $this -> isLogin($token);
+    //     if (!$uid) return $this -> createJsonResponse('', '请登录', 2);
 
-        $user = $request -> request -> all();
-        if (!SimpleValidator::password($user['old_password']) && !SimpleValidator::password($user['new_password'])) {
-            return $this->createJsonResponse('', '密码格式不正确', 0);
-        }
+    //     $user = $request -> request -> all();
+    //     if (!SimpleValidator::password($user['old_password']) && !SimpleValidator::password($user['new_password'])) {
+    //         return $this->createJsonResponse('', '密码格式不正确', 0);
+    //     }
 
-        if (D('User') -> updatePassword($uid, md5($user['old_password']), md5($user['new_password']))) {
-            return $this->createJsonResponse('', '密码修改成功', 1);
-        }
-        return $this->createJsonResponse('', '密码修改失败', 0);
-    }
+    //     if (D('User') -> updatePassword($uid, md5($user['old_password']), md5($user['new_password']))) {
+    //         return $this->createJsonResponse('', '密码修改成功', 1);
+    //     }
+    //     return $this->createJsonResponse('', '密码修改失败', 0);
+    // }
 
-    public function setAvatarAction(Request $request)
-    {
-        $info = $request -> request -> all();
-        $uid = $this -> isLogin($info['token']);
-        if (!$uid) return $this -> createJsonResponse('', '请登录', 2);
+    // public function setAvatarAction(Request $request)
+    // {
+    //     $info = $request -> request -> all();
+    //     $uid = $this -> isLogin($info['token']);
+    //     if (!$uid) return $this -> createJsonResponse('', '请登录', 2);
 
-        $file = $request->files->get('avatar');
-        $filenamePrefix = "user_{$uid}_";
+    //     $file = $request->files->get('avatar');
+    //     $filenamePrefix = "user_{$uid}_";
 
-        $hash = substr(md5($filenamePrefix . time()), -8);
-        $ext = $file -> getClientOriginalExtension();
-        if ($ext) {
-            $ext = '.' . $ext;
-        }
+    //     $hash = substr(md5($filenamePrefix . time()), -8);
+    //     $ext = $file -> getClientOriginalExtension();
+    //     if ($ext) {
+    //         $ext = '.' . $ext;
+    //     }
 
-        $fileName = $filenamePrefix . $hash . $ext;
+    //     $fileName = $filenamePrefix . $hash . $ext;
 
-        $file = $file -> move(__ROOT__."asset/public/avatar", $fileName);
+    //     $file = $file -> move(__ROOT__."asset/public/avatar", $fileName);
 
-        $img = \Intervention\Image\ImageManagerStatic::make("asset/public/avatar/".$fileName);
-        // resize image instance
-        $img->resize(200, 200);
-        // save image in desired format
-        $img->save(__ROOT__."asset/public/avatar/".$filenamePrefix . $hash . '2X2' . $ext);
+    //     $img = \Intervention\Image\ImageManagerStatic::make("asset/public/avatar/".$fileName);
+    //     // resize image instance
+    //     $img->resize(200, 200);
+    //     // save image in desired format
+    //     $img->save(__ROOT__."asset/public/avatar/".$filenamePrefix . $hash . '2X2' . $ext);
 
-        D('User') -> updateUserAvatar($fileName, $uid);
-        $user = D('User') -> getUserInfo($uid);
-        return $this -> createJsonResponse($user, '头像更新成功', 1);
-    }
+    //     D('User') -> updateUserAvatar($fileName, $uid);
+    //     $user = D('User') -> getUserInfo($uid);
+    //     return $this -> createJsonResponse($user, '头像更新成功', 1);
+    // }
 }

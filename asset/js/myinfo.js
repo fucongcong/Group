@@ -24,4 +24,9 @@ define('/asset/js/myinfo', function(require, exports, module) {
             } 
         }) 
     })
+
+    $('.sendifo').on('tap', function() {
+       uid = $(this).data('id');
+       location.href = '/user/message/info/'+uid;
+    })
 });

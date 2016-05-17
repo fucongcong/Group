@@ -1,0 +1,86 @@
+{% extends 'Web/Views/layout.html.twig' %}
+
+{% block title %}私信{% endblock %}
+
+{% block parent_stylesheets %}
+<link rel="stylesheet" type="text/css" href="{{ asset("asset/css/public.css") }}" />
+<link rel="stylesheet" type="text/css" href="{{ asset("asset/css/message.css") }}" />
+<link rel="stylesheet" type="text/css" href="{{ asset("asset/css/WebApp_reset.css") }}" />
+{% endblock %}
+
+{% block head_scripts %}
+<script>
+    seajs.use("/asset/js/home")
+    seajs.use("/asset/js/message")
+</script>
+{% endblock %}
+
+{% block body %}
+<div class="posts" id="posts" >
+    <div class="posted" id="posted" >
+        <div class="header">
+            {% if user.sex == 'male' %}
+                <img src="{{ asset("asset/img/header.jpg") }}">
+            {% else %}
+                <img src="{{ asset("asset/img/touxiang2.jpg") }}">
+            {% endif %}
+        </div>
+        <div class="poster" id="poster">
+            <span>{{ user.username}}</span>
+            <h1>荣誉勋章</h1>
+            <h2>信息学院</h2>
+        </div>
+    </div>
+    <div class="posts_info" id="posts_info">
+        <div class="thing">
+            <div class="thing_label" id="thing_label">简介：{{ user.content|default('暂无简介')}}</div>
+        </div>
+        <div class="info_des">个性签名：{{ user.sign|default('他很懒，什么都没留下')}}</div>
+    </div>
+</div>
+
+<ul class="comment_nav">
+{% for message in messages %}
+    {% if message.uid == user.uid %}
+        <li class="mt5">
+            <div class="header header-message">
+                {% if users[message.uid].sex == 'male' %}
+                    <img src="{{ asset("asset/img/header.jpg") }}">
+                {% else %}
+                    <img src="{{ asset("asset/img/touxiang2.jpg") }}">
+                {% endif %}
+            </div>
+            <div class="ml07">
+                <div class="comment_box">{{ message.content }}</div>
+                <div class="comment_time" style="text-align: left;">{{ message.ctime|smart_time }}</div>
+            </div>
+        </li>
+    {% else %}
+        <li class="mt5">
+            <div class="header-right header-message fr">
+                {% if users[message.uid].sex == 'male' %}
+                    <img src="{{ asset("asset/img/header.jpg") }}">
+                {% else %}
+                    <img src="{{ asset("asset/img/touxiang2.jpg") }}">
+                {% endif %}
+            </div>
+            <div class="poster-right">
+                
+                <div class="comment_box ">{{ message.content }}</div>
+                <div class="comment_time">{{ message.ctime|smart_time }}</div>
+            </div>
+        </li>
+        
+    {% endif %}
+
+{% endfor %}
+</ul>
+<form class="chat_box" id="reply-form">
+    <div class="chat_input">
+        <input type="hidden" name="to_uid" value="{{ user.uid }}">
+        <input type="text" placeholder="点击输入" name="content">
+    </div>
+    <div class="chat_but">私敲TA</div>
+</from>
+{% include 'Web/Views/public/bottom.html.twig' %} 
+{% endblock %}

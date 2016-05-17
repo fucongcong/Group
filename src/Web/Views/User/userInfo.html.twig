@@ -47,11 +47,11 @@
 {% else %}
     <div class="getfriend">
         {% if is_follow %}
-        <div class="addfriend unfollow" data-id={{ userInfo.uid }}>取消关注</div>
+        <div class="addfriend unfollow" data-id="{{ userInfo.uid }}">取消关注</div>
         {% else %}
-        <div class="addfriend follow" data-id={{ userInfo.uid }}>添加关注</div>
+        <div class="addfriend follow" data-id="{{ userInfo.uid }}">添加关注</div>
         {% endif %}
-        <div class="sendifo">发送消息</div>
+        <div class="sendifo" data-id="{{ userInfo.uid }}">发送消息</div>
     </div>
 {% endif %}
 {% if userInfo.uid == user.uid%}

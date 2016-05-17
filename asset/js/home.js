@@ -39,4 +39,9 @@ define('/asset/js/home', function(require, exports, module) {
         gid = $(this).data('gid');
         location.href = "/group/"+gid;
     })
+
+    $('.message-link').on('tap', function() {
+       uid = $(this).data('id');
+       location.href = '/user/message/info/'+uid;
+    })
 });
