@@ -7,7 +7,7 @@ define('/asset/js/list', function(require, exports, module) {
     })
 
     var pageCount = 1;
-    var dragger = new DragLoader(document.getElementsByClassName('body')[0], {
+    var dragger = new DragLoader(document.getElementsByClassName('list_body')[0], {
             dragDownRegionCls: 'latest',
             dragUpRegionCls: 'more',
             // dragDownHelper: function(status) {console.log(1);
@@ -37,7 +37,7 @@ define('/asset/js/list', function(require, exports, module) {
         //         dragger.reset();
         //     }, 200);
         // });
-        dragger.on('dragUpLoad', function() {console.log(2)
+        dragger.on('dragUpLoad', function() {
             key = $('#list_body').data('key');
             $.get('/group/list/more', {start:pageCount * 10, key:key}, function(res){
                 $('.ul-list').append(res);
