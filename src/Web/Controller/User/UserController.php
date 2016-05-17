@@ -15,7 +15,7 @@ class UserController extends BaseController
 
         $user = D('User') -> getUserInfo($uid);
 
-        $messageNum = D('message') -> getUnRead($uid);
+        $messageNum = D('Message') -> getUnRead($uid);
         return $this -> render('Web/Views/User/info.html.twig',[
             'user' => $user,
             'messageNum' => $messageNum
