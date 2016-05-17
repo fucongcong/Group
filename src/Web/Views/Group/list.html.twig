@@ -18,11 +18,12 @@
 {% endblock %}
 
 {% block body %}
+
 <form class="search_box">
     <input type="text" id="search_tab" class="search_tab" placeholder="输入关键字" name="key" value="{{ key }}">
 </form>
-<div class="list_body" data-key="{{ key }}">
-    <ul>
+<div class="list_body" data-key="{{ key }}" data-totalPage="{{ totalPage }}" id="list_body">
+    <ul class="ul-list">
         {% for group in groups %}
         <li class="go_detail" data-gid="{{ group.gid }}">
             {% if group.user.sex == 'male' %}

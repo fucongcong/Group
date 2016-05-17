@@ -43,6 +43,11 @@ class GroupsModel extends Model {
         return $this -> where(['title' => ['like', "%".$key."%"]]) -> order('mtime DESC') -> limit("{$start},{$limit}") -> select();
     }
 
+    public function findGroupsCount($key = '')
+    {
+        return $this -> where(['title' => ['like', "%".$key."%"]]) -> count();
+    }
+
     public function findGroupsByUid($uid, $start, $limit = 10)
     {
         return $this -> where(['uid' => $uid]) -> order('ctime DESC') -> limit("{$start},{$limit}") -> select();

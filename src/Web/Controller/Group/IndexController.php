@@ -23,8 +23,12 @@ class IndexController extends BaseController
         foreach ($groups as &$group) {
             $group['user'] = D('User') -> getUserInfo($group['uid']);
         }
+
+        $totalPage = D('Groups') -> findGroupsCount($key);
+        $totalPage = ceil($totalPage/10);
         return $this -> render('Web/Views/Group/list.html.twig', [
             'groups' => $groups,
+            'totalPage' => $totalPage,
             'key' => $key
             ]);
     }
