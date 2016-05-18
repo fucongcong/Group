@@ -6,6 +6,7 @@
 <link rel="stylesheet" type="text/css" href="{{ asset("asset/css/public.css") }}" />
 <link rel="stylesheet" type="text/css" href="{{ asset("asset/css/list.css") }}" />
 <link rel="stylesheet" type="text/css" href="{{ asset("asset/css/WebApp_reset.css") }}" />
+<link rel="stylesheet" type="text/css" href="{{ asset("asset/css/header.css") }}" />
 {% endblock %}
 
 {% block head_scripts %}
@@ -15,6 +16,7 @@
 {% endblock %}
 
 {% block body %}
+<div class="textbox"><span class="glyphicon glyphicon-heart mr5"></span>我的收藏</div>
 <div class="list_body">
     <ul>
         {% for group in groups %}

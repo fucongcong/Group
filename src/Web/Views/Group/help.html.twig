@@ -6,6 +6,7 @@
 <link rel="stylesheet" type="text/css" href="{{ asset("asset/css/public.css") }}" />
 <link rel="stylesheet" type="text/css" href="{{ asset("asset/css/list.css") }}" />
 <link rel="stylesheet" type="text/css" href="{{ asset("asset/css/WebApp_reset.css") }}" />
+<link rel="stylesheet" type="text/css" href="{{ asset("asset/css/header.css") }}" />
 {% endblock %}
 
 {% block head_scripts %}
@@ -15,6 +16,8 @@
 {% endblock %}
 
 {% block body %}
+
+<div class="textbox"><span class="glyphicon glyphicon-leaf mr5"></span>我的求助</div>
 <div class="list_body">
     <ul>
         {% for group in groups %}
@@ -35,7 +38,7 @@
     </ul>
 </div>
 <div class="post_box">
-    <div class="post_but">发布感谢信</div>
+    <div class="post_but post-scarf">发布感谢信</div>
 </div>
 {% include 'Web/Views/public/bottom.html.twig' %} 
 {% endblock %}

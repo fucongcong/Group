@@ -33,12 +33,16 @@ class UserController extends BaseController
 
         if (empty($user)) return $this -> createJsonResponse($user, '参数错误', 0);
 
-        if (!SimpleValidator::truename($user['username'])) {
-            return $this->createJsonResponse('', '姓名格式不正确', 0);
+        if (!SimpleValidator::nickname($user['username'])) {
+            return $this->createJsonResponse('', '昵称格式不正确', 0);
         }
 
         if (!SimpleValidator::email($user['email'])) {
             return $this->createJsonResponse('', '邮箱不正确', 0);
+        }
+
+        if (D('User') -> isNickNameRegister($user['username'])) {
+            return $this -> createJsonResponse('', '该昵称已被注册', 0);
         }
 
         if (D('User') -> isEmailRegister($user['email'])) {
@@ -158,8 +162,12 @@ class UserController extends BaseController
 
         $userInfo = $request -> request -> all();
 
-        if (!SimpleValidator::truename($userInfo['username'])) {
-            return $this->createJsonResponse('', '姓名格式不正确', 0);
+        if (!SimpleValidator::nickname($userInfo['username'])) {
+            return $this->createJsonResponse('', '昵称格式不正确', 0);
+        }
+
+        if (D('User') -> isNickNameRegister($userInfo['username'])) {
+            return $this -> createJsonResponse('', '该昵称已被注册', 0);
         }
 
         D('User') -> updateUserInfo($uid, $userInfo);
@@ -250,12 +258,39 @@ class UserController extends BaseController
 
         foreach ($messages as &$message) {
             $message['user'] = D('User') -> getUserInfo($message['uid']);
-            $message['content'] = getShort($message['content'], 15);
+            $message['content'] = getShort($message['content'], 13);
         }
 
         return $this -> render('Web/Views/User/message.html.twig',[
             'messages' => $messages,
             ]);
+    }
+
+    public function postScarfAction(Request $request)
+    {   
+        $uid = \Session::get('uid');
+        if (!$uid) return $this -> redirect('/login');
+
+        return $this -> render('Web/Views/Scarf/post.html.twig',[
+            ]);
+    }
+
+    public function doPostScarfAction(Request $request)
+    {      
+        $uid = \Session::get('uid');
+        if (!$uid) return $this->createJsonResponse('', 'not login', 0);
+
+        $username = $request -> request -> get('username');
+        $user = D('User') -> getUserByName($username);
+
+        if (!$user) return $this->createJsonResponse('', '用户不存在', 0);
+
+        if ($uid == $user['uid']) return $this->createJsonResponse('', '不能给自己发感谢信', 0);
+        $content = $request -> request -> get('content');
+        
+        $res = D('Scarf') -> addScarf($uid, $user['uid'], $content);
+        if ($res) return $this->createJsonResponse('', 'success', 1);
+        return $this->createJsonResponse('', 'error', 0);
     }
 
 

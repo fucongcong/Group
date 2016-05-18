@@ -1,0 +1,95 @@
+{% extends 'Web/Views/layout.html.twig' %}
+
+{% block title %}红领巾{% endblock %}
+
+{% block stylesheets %}
+<link rel="stylesheet" type="text/css" href="{{ asset("asset/css/public.css") }}" />
+<link rel="stylesheet" type="text/css" href="{{ asset("asset/css/list.css") }}" />
+<link rel="stylesheet" type="text/css" href="{{ asset("asset/css/WebApp_reset.css") }}" />
+{% endblock %}
+
+{% block head_scripts %}
+<script>
+    seajs.use("/asset/js/home")
+</script>
+{% endblock %}
+
+{% block body %}
+<style type="text/css">
+.list_body{
+    margin-right: 0.2rem;
+    margin-left: 0.2rem;
+    margin-top: 0.45rem;
+    margin-bottom: 0.9rem;
+    font-size: 12px;
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    overflow-y: scroll;
+    -webkit-overflow-scrolling: touch;
+}
+.textbox {
+    padding-top: 0.1rem;
+    padding-bottom: 0.1rem;
+    line-height: 0.3rem;
+    text-align: center;
+    color: #9fdecb;
+}
+.getfriend{
+    bottom: 0;
+    margin-left: 0.2rem;
+    margin-right: 0.2rem;
+    margin-bottom: 0.5rem;
+    text-align: center;
+    color: #fff;
+}
+.addfriend{
+    width: 50%;
+    float: left;
+    height: 0.3rem;
+    line-height: 0.3rem;
+    background: #9fdecb;
+    box-sizing:border-box;
+}
+.sendifo{
+    width: 50%;
+    float: right;
+    height: 0.3rem;
+    line-height: 0.3rem;
+    background: #fadd7f;
+    box-sizing:border-box;
+}
+.info_box .info {
+    width: 85%;
+}
+</style>
+<div class="getfriend mt10">
+    <div class="sendifo thank">我的感谢</div>
+    <div class="addfriend scarf">红领巾</div>
+</div>
+<div class="list_body">
+    <ul>
+        {% for scarf in scarfs %}
+        <li class="go_detail" data-gid="{{ group.gid }}" style="height:0.8rem">
+            {% if scarf.user.sex == 'male' %}
+                <img src="{{ asset("asset/img/header.jpg") }}">
+            {% else %}
+                <img src="{{ asset("asset/img/touxiang2.jpg") }}">
+            {% endif %}
+            <div class="info_box">
+                <div class="info">
+                     <span><font style="color:#fadd7f">我给</font> {{ scarf.user.username }}<font style="color:#fadd7f"> 的感谢信</font></span>
+                    <div class="info_det">{{ scarf.content }}</div>
+                </div>
+            </div>
+        </li>
+        {% endfor %}
+    </ul>
+</div>
+<div class="post_box">
+    <div class="post_but post-scarf">发布感谢信</div>
+</div>
+{% include 'Web/Views/public/bottom.html.twig' %} 
+{% endblock %}

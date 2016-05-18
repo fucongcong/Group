@@ -111,15 +111,52 @@ class IndexController extends BaseController
         $start = $request -> query -> get('start');
         if (!$start) $start = 0;
 
+        $scarfs = D('Scarf') -> findScarfs($uid);
+        foreach ($scarfs as &$scarf) {
+            $scarf['user'] = D('User') -> getUserInfo($scarf['uid']);
+        }
+    
+        return $this -> render('Web/Views/Scarf/index.html.twig',[
+            'scarfs' => $scarfs,
+            ]);
+    }
+
+    public function thankAction(Request $request)
+    {   
+        $uid = \Session::get('uid');
+        if (!$uid) return $this -> redirect('/login');
+
+        $start = $request -> query -> get('start');
+        if (!$start) $start = 0;
+
+        $scarfs = D('Scarf') -> findSendScarfs($uid);
+        foreach ($scarfs as &$scarf) {
+            $scarf['user'] = D('User') -> getUserInfo($scarf['uid']);
+        }
+    
+        return $this -> render('Web/Views/Scarf/thank.html.twig',[
+            'scarfs' => $scarfs,
+            ]);
+    }
+
+    public function helpAction(Request $request)
+    {   
+        $uid = \Session::get('uid');
+        if (!$uid) return $this -> redirect('/login');
+
+        $start = $request -> query -> get('start');
+        if (!$start) $start = 0;
+
         $groups = D('Groups') -> findGroupsByUid($uid, 0, 10);
         foreach ($groups as &$group) {
             $group['user'] = D('User') -> getUserInfo($group['uid']);
         }
     
-        return $this -> render('Web/Views/Group/scarf.html.twig',[
+        return $this -> render('Web/Views/Group/help.html.twig',[
             'groups' => $groups,
             ]);
     }
+    
 
     public function addCollectAction(Request $request)
     {

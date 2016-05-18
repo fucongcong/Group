@@ -1,0 +1,35 @@
+{% extends 'Web/Views/layout.html.twig' %}
+
+{% block title %}发布感谢信{% endblock %}
+
+{% block stylesheets %}
+<link rel="stylesheet" type="text/css" href="{{ asset("asset/css/public.css") }}" />
+<link rel="stylesheet" type="text/css" href="{{ asset("asset/css/post.css") }}" />
+<link rel="stylesheet" type="text/css" href="{{ asset("asset/css/WebApp_reset.css") }}" />
+{% endblock %}
+
+{% block head_scripts %}
+<script>
+    seajs.use("/asset/js/home")
+    seajs.use("/asset/js/scarfPost")
+</script>
+{% endblock %}
+
+{% block body %}
+<form id="post-form">
+<div class="row m01 message" style="display:none;">
+    <div class="alert alert-info fz14 mb0" role="alert">
+    </div>
+</div>
+
+<div class="title_box" style="background: #fff url('{{ asset("asset/img/user_pic.jpg") }}') no-repeat 0.1rem center;">
+    <input type="text" placeholder="请输入要感谢的用户昵称" name="username"/>
+</div>
+<div class="info_box">
+    <textarea placeholder="点击输入感谢内容 字数上限200" name="content"></textarea>
+</div>
+<div class="post_but">发布</div>
+<div class="cancel_but">放弃</div>
+</form>
+{% include 'Web/Views/public/bottom.html.twig' %} 
+{% endblock %}

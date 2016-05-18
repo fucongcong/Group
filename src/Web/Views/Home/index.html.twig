@@ -17,16 +17,26 @@
 {% block body %}
 <div class="body">
 <div class="head_box">
-	<div class="lf_box">
-		<div class="head">
-			<img src="{{ asset("asset/img/header.jpg") }}">
-			<div>潇洒哥</div>
+	{% if not scarf %}
+		<div class="lf_box">
+			<div class="head">
+				{% if scarf.user.sex == 'male' %}
+	                <img src="{{ asset("asset/img/header.jpg") }}">
+	            {% else %}
+	                <img src="{{ asset("asset/img/touxiang2.jpg") }}">
+	            {% endif %}
+				<div>{{ scarf.user.username }}</div>
+			</div>
+			<div class="lf_info">
+				<div class="thx_tit">{{ scarf.user.username }} TO {{ scarf.myInfo.username }}的<span>感谢信</span></div>
+				<div class="thx_info">{{ scarf.content|raw }}</div>
+			</div>
 		</div>
-		<div class="lf_info">
-			<div class="thx_tit">杨小咩TO潇洒哥的<span>感谢信</span></div>
-			<div class="thx_info">潇洒哥真乃活雷锋！感谢潇洒哥帮我找到了钱包</div>
+	{% else %}
+		<div class="lf_box">
+		还没有收到任何感谢信
 		</div>
-	</div>
+	{% endif %}
 </div>
 <div class="menu">
 	<div class="menu1">红领巾小队</div>

@@ -6,6 +6,7 @@ define('/asset/js/list', function(require, exports, module) {
         location.href = "/group/post";
     })
 
+    var totalPage = $('.list_body').data('totalpage');
     var pageCount = 1;
     var dragger = new DragLoader(document.getElementsByClassName('list_body')[0], {
             dragDownRegionCls: 'latest',
@@ -39,10 +40,14 @@ define('/asset/js/list', function(require, exports, module) {
         });
         dragger.on('dragUpLoad', function() {
             key = $('#list_body').data('key');
-            $.get('/group/list/more', {start:pageCount * 10, key:key}, function(res){
-                $('.ul-list').append(res);
-                pageCount++;
+            if (totalPage > pageCount ) {
+                $.get('/group/list/more', {start:pageCount * 10, key:key}, function(res){
+                    $('.ul-list').append(res);
+                    pageCount++;
+                    dragger.reset();
+                })
+            } else {
                 dragger.reset();
-            })
+            }
         });
 });

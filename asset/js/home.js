@@ -35,6 +35,10 @@ define('/asset/js/home', function(require, exports, module) {
         location.href = "/user/info/"+uid;
     })
 
+    $(".post-scarf").on("tap",function(){
+        location.href = "/user/scarf/add";
+    })
+
     $("body").on("tap", ".go_detail", function(){
         gid = $(this).data('gid');
         location.href = "/group/"+gid;
@@ -43,5 +47,13 @@ define('/asset/js/home', function(require, exports, module) {
     $('.message-link').on('tap', function() {
        uid = $(this).data('id');
        location.href = '/user/message/info/'+uid;
+    })
+
+    $(".scarf").on("tap",function(){
+        location.href = "/scarf";
+    })
+
+    $(".thank").on("tap",function(){
+        location.href = "/scarf/thank";
     })
 });

@@ -46,6 +46,16 @@ return [
         'controller' => 'Web:Group:Index:scarf',
     ],
 
+    'scarf_thank'=>[
+        'pattern' => '/scarf/thank',
+        'controller' => 'Web:Group:Index:thank',
+    ],
+
+    'help'=>[
+        'pattern' => '/user/help',
+        'controller' => 'Web:Group:Index:help',
+    ],
+
     'user_Info'=>[
         'pattern' => '/user/info/{uid}',
         'controller' => 'Web:User:User:info',
@@ -67,9 +77,19 @@ return [
         'controller' => 'Web:User:User:messageInfo',
     ],
    
-   'user_message_add'=>[
+    'user_message_add'=>[
         'pattern' => '/user/message/add',
         'controller' => 'Web:User:User:messageAdd',
+    ],
+
+    'user_scarf_add'=>[
+        'pattern' => '/user/scarf/add',
+        'controller' => 'Web:User:User:postScarf',
+    ],
+
+    'user_scarf_do_add'=>[
+        'pattern' => '/user/scarf/doadd',
+        'controller' => 'Web:User:User:doPostScarf',
     ],
 
     'messages'=>[
@@ -77,18 +97,18 @@ return [
         'controller' => 'Web:User:User:messageList',
     ],
    
-   'follow'=>[
+    'follow'=>[
         'pattern' => '/user/follow',
         'controller' => 'Web:User:User:follow',
         'methods' => 'POST',
     ],
 
-   'follows'=>[
+    'follows'=>[
         'pattern' => '/user/follows',
         'controller' => 'Web:User:User:follows',
     ],
 
-   'follower'=>[
+    'follower'=>[
         'pattern' => '/user/follower',
         'controller' => 'Web:User:User:follower',
     ],
@@ -99,7 +119,7 @@ return [
         'methods' => 'POST',
     ],
 
-   'collect'=>[
+    'collect'=>[
         'pattern' => '/user/collect',
         'controller' => 'Web:User:User:collect',
     ],

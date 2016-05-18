@@ -23,5 +23,7 @@ define('/asset/js/info', function(require, exports, module) {
         location.href = "/user/messages";
     })
     
-    
+    $(".list-help").on("tap",function(){
+        location.href = "/user/help";
+    })
 });

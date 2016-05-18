@@ -18,9 +18,21 @@ class UserModel extends Model {
         return false;
     }
 
+    public function isNickNameRegister($username)
+    {   
+        $exist = $this -> where(['username' => $username]) -> count();
+        if ($exist) return true;
+        return false;
+    }
+
     public function getUserByEmail($email)
     {
         return $this -> where(['email' => $email]) -> find();
+    }
+
+    public function getUserByName($username)
+    {
+        return $this -> where(['username' => $username]) -> find();
     }
 
     public function getUserInfo($uid)

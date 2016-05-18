@@ -113,12 +113,20 @@ body {
     margin-right: 0px;
 }
 
+.mr5{
+    margin-right: 5px;
+}
+
 .ml0{
     margin-left: 0px;
 }
 
 .mb0 {
     margin-bottom: 0px;
+}
+
+.mb01 {
+    margin-bottom: 0.1rem;
 }
 
 .mlr01 {

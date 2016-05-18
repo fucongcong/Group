@@ -6,6 +6,7 @@
 <link rel="stylesheet" type="text/css" href="{{ asset("asset/css/list.css") }}" />
 <link rel="stylesheet" type="text/css" href="{{ asset("asset/css/WebApp_reset.css") }}" />
 <link rel="stylesheet" type="text/css" href="{{ asset("asset/css/public.css") }}" />
+<link rel="stylesheet" type="text/css" href="{{ asset("asset/css/header.css") }}" />
 {% endblock %}
 
 {% block head_scripts %}
@@ -16,10 +17,10 @@
 {% endblock %}
 
 {% block body %}
-
-<ul class="friend_list">
+<div class="textbox"><span class="glyphicon glyphicon-heart mr5"></span>我的消息</div>
+<ul class="friend_list" style="margin-top:0;">
     {% for message in messages %}
-    <li class="message-link" data-id="{{ message.user.uid }}" style="line-height:0.25rem">
+    <li class="message-link mb01" data-id="{{ message.user.uid }}" style="line-height:0.25rem;background:#fff;">
         {% if message.user.sex == 'male' %}
                     <img src="{{ asset("asset/img/header.jpg") }}">
                 {% else %}

@@ -12,6 +12,13 @@ class IndexController extends BaseController
         $uid = \Session::get('uid');
         if (!$uid) return $this -> redirect('/login');
 
-        return $this -> render('Web/Views/Home/index.html.twig');
+        $scarf = D('Scarf') -> getLastScarf($uid);
+        $scarf['user'] = D('User') -> getUserInfo($scarf['uid']);
+        $scarf['myInfo'] = D('User') -> getUserInfo($scarf['to_uid']);
+        $scarf['content'] = getShort($scarf['content'], 35);
+
+        return $this -> render('Web/Views/Home/index.html.twig', [
+            'scarf' => $scarf
+            ]);
     }
 }
