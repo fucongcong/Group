@@ -166,7 +166,8 @@ class UserController extends BaseController
             return $this->createJsonResponse('', '昵称格式不正确', 0);
         }
 
-        if (D('User') -> isNickNameRegister($userInfo['username'])) {
+        $user = D('User') -> getUserInfo($uid);
+        if ($user['username'] != $userInfo['username'] &&  D('User') -> isNickNameRegister($userInfo['username'])) {
             return $this -> createJsonResponse('', '该昵称已被注册', 0);
         }
 
