@@ -288,7 +288,7 @@ class UserController extends BaseController
         if ($uid == $user['uid']) return $this->createJsonResponse('', '不能给自己发感谢信', 0);
         $content = $request -> request -> get('content');
         
-        if (!trim($content) == "") return $this->createJsonResponse('', '内容不能为空', 0);
+        if (trim($content) == "") return $this->createJsonResponse('', '内容不能为空', 0);
 
         $res = D('Scarf') -> addScarf($uid, $user['uid'], $content);
         if ($res) return $this->createJsonResponse('', 'success', 1);
