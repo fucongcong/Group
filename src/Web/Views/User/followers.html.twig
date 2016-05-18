@@ -6,6 +6,7 @@
 <link rel="stylesheet" type="text/css" href="{{ asset("asset/css/list.css") }}" />
 <link rel="stylesheet" type="text/css" href="{{ asset("asset/css/WebApp_reset.css") }}" />
 <link rel="stylesheet" type="text/css" href="{{ asset("asset/css/public.css") }}" />
+<link rel="stylesheet" type="text/css" href="{{ asset("asset/css/header.css") }}" />
 {% endblock %}
 
 {% block head_scripts %}
@@ -16,9 +17,10 @@
 {% endblock %}
 
 {% block body %}
+<div class="textbox"><span class="glyphicon glyphicon-bullhorn mr5"></span>我的好友</div>
 <div class="getfriend mt10">
     <div class="sendifo follower">粉丝</div>
-    <div class="addfriend follows">好友</div>
+    <div class="addfriend follows">关注</div>
 </div>
 <ul class="friend_list">
     {% for follow in follows %}
