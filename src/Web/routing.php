@@ -134,4 +134,24 @@ return [
         'controller' => 'Web:Pet:Index:setAvatar',
         'methods' => 'POST',
     ],
+
+
+    'visit_add'=>[
+        'pattern' => '/visit/add',
+        'controller' => 'Web:Visit:Index:addVisit',
+        'methods' => 'POST',
+    ],
+
+    'visit_delete'=>[
+        'pattern' => '/visit/delete',
+        'controller' => 'Web:Visit:Index:deleteVisit',
+        'methods' => 'POST',
+    ],
+    'user_visits'=>[
+        'pattern' => '/user/visits',
+        'controller' => 'Web:User:Index:listVisits',
+        'methods' => 'POST',
+    ],
+
+
 ];

@@ -23,7 +23,19 @@ class IndexController extends BaseController
 
     public function listVisitsAction(Request $request)
     {
-        
+        $token = $request -> request -> get('token');
+        $uid = $this -> isLogin($token);
+        if (!$uid) return $this -> createJsonResponse('', '请登录', 2);
+
+        $start = $request -> query -> get('start');
+        if (!$start) $start = 0;
+
+        $visits = D('Visit') -> findVisitsByUid($uid, $start);
+        foreach ($visits as &$visit) {
+            $visit['pet'] = D('Pet') -> getPet($visit['pid']);
+        }
+        if ($visits) return $this -> createJsonResponse($visits, '', 1);
+        return $this -> createJsonResponse(null, '', 0);
     }
 
     public function listOrdersAction(Request $request)
