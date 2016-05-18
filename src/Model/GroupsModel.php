@@ -52,9 +52,9 @@ class GroupsModel extends Model {
     public function wavePostNum($gid, $type = 'up')
     {   
         if ($type == 'up') {
-            $sql = "UPDATE `groups` SET post_num=post_num+1";
+            $sql = "UPDATE `groups` SET post_num=post_num+1 WHERE gid={$gid}";
         } else {
-            $sql = "UPDATE `groups` SET post_num=post_num-1";
+            $sql = "UPDATE `groups` SET post_num=post_num-1 WHERE gid={$gid}";
         }
         
         return M() -> query($sql);
