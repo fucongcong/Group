@@ -16,7 +16,7 @@ class ScarfModel extends Model {
 
     public function findScarfs($uid)
     {   
-        return $this -> where(['to_uid' => $uid]) -> select();
+        return $this -> where(['to_uid' => $uid]) -> order("ctime DESC") -> select();
     }
 
     public function getLastScarf($uid)
@@ -26,6 +26,6 @@ class ScarfModel extends Model {
 
     public function findSendScarfs($uid)
     {   
-        return $this -> where(['uid' => $uid]) -> select();
+        return $this -> where(['uid' => $uid]) -> order("ctime DESC") -> select();
     }
 }

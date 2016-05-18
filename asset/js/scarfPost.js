@@ -11,7 +11,7 @@ define('/asset/js/scarfPost', function(require, exports, module) {
         $.post('/user/scarf/doadd', $('#post-form').serialize(), function(res){
             res = $.parseJSON(res);
             if (res.status == 1) {
-                location.href = "/scarf";
+                location.href = "/scarf/thank";
             } else {
                 $('.message').show();
                 $('.alert-info').html(res.info);
