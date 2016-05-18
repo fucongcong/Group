@@ -22,9 +22,9 @@
     {% for message in messages %}
     <li class="message-link mb01" data-id="{{ message.user.uid }}" style="line-height:0.25rem;background:#fff;">
         {% if message.user.sex == 'male' %}
-                    <img src="{{ asset("asset/img/header.jpg") }}">
+                    <img src="{{ asset("asset/img/header.jpg") }}" class="pl005">
                 {% else %}
-                    <img src="{{ asset("asset/img/touxiang2.jpg") }}">
+                    <img src="{{ asset("asset/img/touxiang2.jpg") }}" class="pl005">
                 {% endif %}
         <div class="fz12">{{ message.user.username}}</div>
         <div>{{ message.content|raw }}</div>

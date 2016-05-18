@@ -158,6 +158,10 @@ body {
     margin-bottom: 10px;
 }
 
+.pl005 {
+  padding-left: 0.05rem;
+}
+
 .fl {
   float: left
 }

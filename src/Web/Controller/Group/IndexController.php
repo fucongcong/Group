@@ -131,7 +131,7 @@ class IndexController extends BaseController
 
         $scarfs = D('Scarf') -> findSendScarfs($uid);
         foreach ($scarfs as &$scarf) {
-            $scarf['user'] = D('User') -> getUserInfo($scarf['uid']);
+            $scarf['user'] = D('User') -> getUserInfo($scarf['to_uid']);
         }
     
         return $this -> render('Web/Views/Scarf/thank.html.twig',[
