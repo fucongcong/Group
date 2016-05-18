@@ -24,7 +24,4 @@ return array(
     	'controller' => 'Web:Group:Group:test',
     	'methods' => 'GET',
     ],
-
-
-    );
-?>
+);
