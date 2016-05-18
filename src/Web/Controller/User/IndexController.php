@@ -13,7 +13,7 @@ class IndexController extends BaseController
         $uid = $this -> isLogin($token);
         if (!$uid) return $this -> createJsonResponse('', '请登录', 2);
 
-        $start = $request -> query -> get('start');
+        $start = $request -> request -> get('start');
         if (!$start) $start = 0;
 
         $groups = D('Groups') -> findGroupsByUid($uid, $start);
@@ -27,7 +27,7 @@ class IndexController extends BaseController
         $uid = $this -> isLogin($token);
         if (!$uid) return $this -> createJsonResponse('', '请登录', 2);
 
-        $start = $request -> query -> get('start');
+        $start = $request -> request -> get('start');
         if (!$start) $start = 0;
 
         $visits = D('Visit') -> findVisitsByUid($uid, $start);
@@ -49,7 +49,7 @@ class IndexController extends BaseController
         $uid = $this -> isLogin($token);
         if (!$uid) return $this -> createJsonResponse('', '请登录', 2);
 
-        $start = $request -> query -> get('start');
+        $start = $request -> request -> get('start');
         if (!$start) $start = 0;
 
         $pets = D('Pet') -> findPetsByUid($uid, $start);
