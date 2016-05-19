@@ -154,4 +154,14 @@ return [
     ],
 
 
+    'goods'=>[
+        'pattern' => '/goods',
+        'controller' => 'Web:Goods:Index:listGoods',
+    ],
+
+    'goods_detail'=>[
+        'pattern' => '/goods/detail',
+        'controller' => 'Web:Goods:Index:detail',
+    ],
+
 ];

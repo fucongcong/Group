@@ -34,12 +34,15 @@ class IndexController extends BaseController
         foreach ($visits as $key => &$visit) {
             $pet = D('Pet') -> getPet($visit['pid']);
             if ($pet) {
-                $visit['pet'] = $pet;
+                $visit['pname'] = $pet['pname'];
+                $visit['avatar'] = $pet['avatar'];
+                $visit['sex'] = $pet['sex'];
+                $visit['age'] = $pet['age'];
             } else {
                 unset($visits[$key]);
             }
         }
-        if ($visits) return $this -> createJsonResponse($visits, '', 1);
+        if ($visits) return $this -> createJsonResponse(array_values($visits), '', 1);
         return $this -> createJsonResponse(null, '', 0);
     }
 
