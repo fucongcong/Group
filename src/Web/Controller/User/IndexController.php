@@ -38,6 +38,7 @@ class IndexController extends BaseController
                 $visit['avatar'] = $pet['avatar'];
                 $visit['sex'] = $pet['sex'];
                 $visit['age'] = $pet['age'];
+                $visit['type'] = $pet['type'];
             } else {
                 unset($visits[$key]);
             }
