@@ -32,7 +32,12 @@ class IndexController extends BaseController
 
         $visits = D('Visit') -> findVisitsByUid($uid, $start);
         foreach ($visits as &$visit) {
-            $visit['pet'] = D('Pet') -> getPet($visit['pid']);
+            $pet = D('Pet') -> getPet($visit['pid']);
+            $visit['pname'] = $pet['pname'];
+            $visit['avatar'] = $pet['avatar'];
+            $visit['type'] = $pet['type'];
+            $visit['age'] = $pet['age'];
+            $visit['sex'] = $pet['sex'];
         }
         if ($visits) return $this -> createJsonResponse($visits, '', 1);
         return $this -> createJsonResponse(null, '', 0);
