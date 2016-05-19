@@ -31,13 +31,13 @@ class IndexController extends BaseController
         if (!$start) $start = 0;
 
         $visits = D('Visit') -> findVisitsByUid($uid, $start);
-        foreach ($visits as &$visit) {
+        foreach ($visits as $key => &$visit) {
             $pet = D('Pet') -> getPet($visit['pid']);
-            $visit['pname'] = $pet['pname'];
-            $visit['avatar'] = $pet['avatar'];
-            $visit['type'] = $pet['type'];
-            $visit['age'] = $pet['age'];
-            $visit['sex'] = $pet['sex'];
+            if ($pet) {
+                $visit['pet'] = $pet;
+            } else {
+                unset($visits[$key]);
+            }
         }
         if ($visits) return $this -> createJsonResponse($visits, '', 1);
         return $this -> createJsonResponse(null, '', 0);
