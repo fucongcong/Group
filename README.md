@@ -3,21 +3,15 @@
 [![Code Climate](https://codeclimate.com/repos/5657fbc8ea0d1f5571028f67/badges/c8175ffa03bd301eb7c7/gpa.svg)](https://codeclimate.com/repos/5657fbc8ea0d1f5571028f67/feed)
 [![Build Status](https://travis-ci.org/fucongcong/Group.svg?branch=master)](https://travis-ci.org/fucongcong/Group)
 
+#####version 1.2.3 合并swoole http server,优化cron，上线基本的async服务
 #####version 1.2.2 定时服务多进程化了。优化了异步队列命令提示
 #####version 1.2.1 支持了异步队列服务，轻松搞定高并发！（在php7环境中，stop命令可以会出现失败的情况，请ps -ef|grep queue 查看进程是否被终止）
 #####[性能测试报告,使用swoole http server的话可以参考Group framework的swoole-http-server分支](https://github.com/fucongcong/ssos/blob/master/php/group%E6%A1%86%E6%9E%B6%E6%B5%8B%E8%AF%95.md)
 #####未来版本开发计划： 
-- 类文件缓存的优化
+- 更轻量级化数据层与服务层
 - rpc服务
-- cookie服务
 - i18n支持
 - 一些常用类库的丰富（中文转拼音，验证码，校验，过滤xss，tag...）
-- 更多的单元测试
-- 代码注释与重构
-- 队列服务支持对某个队列发送命令
-- 定时服务支持对某个任务发送命令
-- 基于swoole http server的api服务
-- 基于swoole的异步非阻塞server服务，用于处理复杂耗时的业务逻辑
 
 轻量级框架，通俗易懂，快速上手。
 觉得帮到您了点击右上star!给我一点动力！
