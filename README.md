@@ -39,6 +39,7 @@ PHP交流ＱＱ群：390536187
 ####7.[视图层](#user-content-视图层)
 
 ####8.[框架基础服务](#user-content-框架基础服务)
+- [Async](#user-content-async)
 - [Container](#user-content-container)
 - [Cache](#user-content-cache)
 - [Config](#user-content-config)
@@ -54,7 +55,7 @@ PHP交流ＱＱ群：390536187
 - [Session](#user-content-session)
 - [Log](#user-content-log)
 - [Queue](#user-content-queue)
-
+- [Test](#user-content-test)
 
 ####9.[单元测试](#user-content-单元测试)
 
