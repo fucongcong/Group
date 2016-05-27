@@ -1,6 +1,6 @@
 <?php
 
-namespace src\Services\Group\Dao;
+namespace src\Dao\Group;
 
 interface GroupDao
 {

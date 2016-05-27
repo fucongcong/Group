@@ -39,4 +39,7 @@ return [
         ],
     ],
 
+    //当使用swoole http server 时，需要指定host,port
+    'swoole_host' => '127.0.0.1',
+    'swoole_port' => 9777,
 ];
