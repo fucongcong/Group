@@ -4,14 +4,16 @@
 [![Build Status](https://travis-ci.org/fucongcong/Group.svg?branch=master)](https://travis-ci.org/fucongcong/Group)
 
 #####version 1.2.3 合并swoole http server,优化cron，上线基本的async服务
-#####version 1.2.2 定时服务多进程化了。优化了异步队列命令提示
-#####version 1.2.1 支持了异步队列服务，轻松搞定高并发！（在php7环境中，stop命令可以会出现失败的情况，请ps -ef|grep queue 查看进程是否被终止）
-#####[性能测试报告,使用swoole http server的话可以参考Group framework的swoole-http-server分支](https://github.com/fucongcong/ssos/blob/master/php/group%E6%A1%86%E6%9E%B6%E6%B5%8B%E8%AF%95.md)
+#####version 1.2.2 定时服务多进程化了。优化了异步任务队列命令提示
+#####version 1.2.1 支持了异步任务队列服务，轻松搞定高并发
+#####[使用swoole http server性能测试报告](https://github.com/fucongcong/ssos/blob/master/php/group%E6%A1%86%E6%9E%B6%E6%B5%8B%E8%AF%95.md)
+
 #####未来版本开发计划： 
 - 更轻量级化数据层与服务层
 - rpc服务
 - i18n支持
 - 一些常用类库的丰富（中文转拼音，验证码，校验，过滤xss，tag...）
+
 
 轻量级框架，通俗易懂，快速上手。
 觉得帮到您了点击右上star!给我一点动力！
@@ -37,6 +39,7 @@ PHP交流ＱＱ群：390536187
 ####7.[视图层](#user-content-视图层)
 
 ####8.[框架基础服务](#user-content-框架基础服务)
+- [Async](#user-content-async)
 - [Container](#user-content-container)
 - [Cache](#user-content-cache)
 - [Config](#user-content-config)
@@ -52,7 +55,7 @@ PHP交流ＱＱ群：390536187
 - [Session](#user-content-session)
 - [Log](#user-content-log)
 - [Queue](#user-content-queue)
-
+- [Test](#user-content-test)
 
 ####9.[单元测试](#user-content-单元测试)
 
@@ -60,10 +63,15 @@ PHP交流ＱＱ群：390536187
 
 ####环境依赖
 - PHP > 5.5
+- Redis
+- Mysql
+- Nginx or Apache
+- Composer
 
 ####扩展模块
 - [PhpRedis](https://github.com/phpredis/phpredis)
-- [Swoole](https://github.com/swoole/swoole-src)
+- [Swoole，建议最新版本，1.8.0以上](https://github.com/swoole/swoole-src)
+- [beanstalkd](https://github.com/kr/beanstalkd) 
 
 ####框架介绍
 （1）模版引擎：twig （symfony2使用的模版引擎）
@@ -95,17 +103,19 @@ PHP交流ＱＱ群：390536187
 - doc (文档)
 - runtime (缓存)
 - src (你的网站核心代码)
+    - Async (异步服务)
+    - Dao （模型层）
 	- Services （服务层）
-		- Group (示例)
-			- Dao （数据层）
-		  		- Impl （数据层接口）
-		  	- Impl （服务层接口）
-		  	- Rely （服务之间的依赖）
 	- Web
+        - Command (控制台命令扩展)
 	 	- Controller （控制层）
-	 	- View (视图层)
+	 	- Cron （异步定时器）
+        - Listeners （监听器）
+        - Queue （队列任务）
+        - View (视图层)
 	 	- routing.php （路由配置）
 - index.php(主入口)
+- server.php(swoole http server 入口)
 
 ## 路由篇
 （1）自定义路由
@@ -224,7 +234,6 @@ public function getGroupService()
 ## 服务层
 #####（1）简单介绍一下目录结构
 - Group (示例)
-    - Dao （数据层）
     - Impl （服务层实现的接口）
     - Rely （定义服务之间的依赖关系）
 GroupService.php(接口)
@@ -295,10 +304,10 @@ class GroupServiceImpl extends GroupBaseService implements GroupService
 ```php
 <?php
 
-    namespace src\Services\Group\Dao\Impl;
+    namespace src\Dao\Group\Impl;
 
     use Dao;
-    use src\Services\Group\Dao\GroupDao;
+    use src\Dao\Group\GroupDao;
 
     class GroupDaoImpl extends Dao implements GroupDao
     {
@@ -591,12 +600,58 @@ class KernalResponseListener extends Listener
      sql:migrate   [default|write|read|all] [name]  参数可不填，执行sql模板(默认会向default服务器执行.第二个参数只有当第一个参数为write|read时，才会生效,如果不填，默认为write|read下面所有服务器)
      sql:rollback   [default|write|read|all] [name]  参数可不填，执行sql模板(默认会向default服务器执行.第二个参数只有当第一个参数为write|read时，才会生效,如果不填，默认为write|read下面所有服务器)
 
-
+####自定义控制台
+#####配置文件config/app.php  
+```php
+    //扩展console命令行控制台
+    'console_commands' => [
+        'log:clear' => [
+            'command' => 'src\Web\Command\LogClearCommand', //执行的类
+            'help' => '清除日志', //提示
+        ],
+    ],
+```
 ## CronJob
-#####异步定时器介绍
+#####异步定时器介绍(目前只支持秒级定时，毫秒级定时暂未修改，可以实现)
 #####依赖：[Swoole1.7.14以上版本](https://github.com/swoole/swoole-src)
 
 #####配置文件config/cron.php
+```php
+    return [
+
+        'cache_dir' => 'runtime/cron',
+
+        'class_cache' => 'runtime/cron/bootstrap.class.cache',
+
+        //log路径
+        'log_dir' => 'runtime/cron',
+
+        //定时器轮询周期，精确到毫秒
+        'tick_time' => 1000,
+
+        'job' => [
+
+            [
+                'name' => 'TestLog',//任务名
+                'time' => '*/1 * * * *',//定时规则 分 小时 天 周 月
+                'command' => 'src\Web\Cron\Test',//执行的类库
+            ],
+
+            [
+                'name' => 'testCache',
+                'time' => '24 */2 * * *',//定时规则 分 小时 天 周 月
+                'command' => 'src\Web\Cron\TestCache',
+            ],
+
+            [
+                'name' => 'testSql',
+                'time' => '*/2 * * * *',//定时规则 分 小时 天 周 月
+                'command' => 'src\Web\Cron\TestSql',
+            ],
+
+        ],
+    ];
+```
 #####执行命令
 
     app/cron start|restart|stop

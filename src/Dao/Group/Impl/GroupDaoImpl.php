@@ -1,9 +1,9 @@
 <?php
 
-namespace src\Services\Group\Dao\Impl;
+namespace src\Dao\Group\Impl;
 
 use Dao;
-use src\Services\Group\Dao\GroupDao;
+use src\Dao\Group\GroupDao;
 
 class GroupDaoImpl extends Dao implements GroupDao
 {
@@ -24,7 +24,7 @@ class GroupDaoImpl extends Dao implements GroupDao
         //$group = $this->getWrite('master2')->fetchOne($sql, $bind);
 
         //读取读服务器配置，如果没有指定具体参数，随机读取分配的服务器
-        $group = $this->getRead()->fetchOne($sql, $bind);
+        $group = $this->getDefault()->fetchOne($sql, $bind);
         return $group ? $group : null;
     }
 
