@@ -24,7 +24,7 @@ return [
         'Group\Routing\RouteServiceProvider',
         'Group\EventDispatcher\EventDispatcherServiceProvider',
         'Group\Queue\QueueServiceProvider',
-        'Group\Rpc\RpcServiceProvider',  //开启后提供rpc服务  需要安装swoole
+        //'Group\Rpc\RpcServiceProvider',  //开启后提供rpc服务  需要安装swoole
     ],
 
     //需要实例化的单例
