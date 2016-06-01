@@ -14,6 +14,7 @@ $app = new App();
 $app -> initSelf();
 $app -> doBootstrap($loader);
 $app -> registerServices();
+$app -> singleton('container') -> setAppPath(__ROOT__);
 
 $console = new Console($argv);
 $console -> run();

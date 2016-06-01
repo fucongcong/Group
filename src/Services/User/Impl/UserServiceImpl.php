@@ -9,7 +9,7 @@ class UserServiceImpl extends UserBaseService implements UserService
 
     public function getUser($id)
     {
-        return 2;
+        return 3;
     }
 
 }

@@ -2,7 +2,7 @@
 
 [![Code Climate](https://codeclimate.com/repos/5657fbc8ea0d1f5571028f67/badges/c8175ffa03bd301eb7c7/gpa.svg)](https://codeclimate.com/repos/5657fbc8ea0d1f5571028f67/feed)
 [![Build Status](https://travis-ci.org/fucongcong/Group.svg?branch=master)](https://travis-ci.org/fucongcong/Group)
-
+#####version 1.2.4 rpc服务上线，cron脚本命令更新
 #####version 1.2.3 合并swoole http server,优化cron，上线基本的async服务
 #####version 1.2.2 定时服务多进程化了。优化了异步任务队列命令提示
 #####version 1.2.1 支持了异步任务队列服务，轻松搞定高并发
@@ -10,7 +10,6 @@
 
 #####未来版本开发计划： 
 - 更轻量级化数据层与服务层
-- rpc服务
 - i18n支持
 - 一些常用类库的丰富（中文转拼音，验证码，校验，过滤xss，tag...）
 
@@ -56,6 +55,7 @@ PHP交流ＱＱ群：390536187
 - [Log](#user-content-log)
 - [Queue](#user-content-queue)
 - [Test](#user-content-test)
+- [RPC](#user-content-rpc)
 
 ####9.[单元测试](#user-content-单元测试)
 
@@ -654,7 +654,7 @@ class KernalResponseListener extends Listener
 ```
 #####执行命令
 
-    app/cron start|restart|stop
+    app/cron start|restart|stop|status|exec (job name)
 
 ## Queue
 #####异步队列服务介绍
@@ -706,6 +706,26 @@ class TestJob extends QueueJob
 }
 ```
 #####队列图形化管理工具[beanstalk_console](https://github.com/ptrofimov/beanstalk_console) 
+
+## RPC
+#####依赖：[Swoole](https://github.com/swoole/swoole-src)
+#####启用config/app.php 中的serviceProviders里面的RpcServiceProvider
+#####配置config/rpc.php文件,
+#####服务启动 php rpc_server.php &
+#####服务热重启 php rpc_server.php -s reload
+#####注意服务会默认开放src/Services下面所有服务的公有函数的调用
+#####使用
+```php
+    
+    //指调用User模块下UserService 的getUser方法， 最后跟上参数
+    $res = \Rpc::call('User:User', 'getUser', [1]);
+    //错误返回false
+    var_dump($res);
+
+```
+#####用途，做soa服务化管理时。用于分布式。
+
+
 ## 单元测试
 
     phpunit --bootstrap app/test.php src
