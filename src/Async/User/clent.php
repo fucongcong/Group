@@ -44,4 +44,4 @@ class DataPack
 $cmd = "getUserInfo";
 $data = [1,2,3,4,5];
 $data = DataPack::pack($cmd, $data);
-asyncRedis($data);
+var_dump(asyncRedis($data));

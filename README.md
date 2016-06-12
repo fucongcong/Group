@@ -116,6 +116,7 @@ PHP交流ＱＱ群：390536187
 	 	- routing.php （路由配置）
 - index.php(主入口)
 - server.php(swoole http server 入口)
+- rpc_server.php(rpc server 启动脚本)
 
 ## 路由篇
 （1）自定义路由
