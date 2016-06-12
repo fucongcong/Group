@@ -27,5 +27,4 @@ class GroupDaoImpl extends Dao implements GroupDao
         $group = $this->getDefault()->fetchOne($sql, $bind);
         return $group ? $group : null;
     }
-
 }
