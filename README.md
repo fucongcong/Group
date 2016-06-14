@@ -2,11 +2,19 @@
 
 [![Code Climate](https://codeclimate.com/repos/5657fbc8ea0d1f5571028f67/badges/c8175ffa03bd301eb7c7/gpa.svg)](https://codeclimate.com/repos/5657fbc8ea0d1f5571028f67/feed)
 [![Build Status](https://travis-ci.org/fucongcong/Group.svg?branch=master)](https://travis-ci.org/fucongcong/Group)
-#####version 1.2.4 rpc服务上线，cron脚本命令更新
-#####version 1.2.3 合并swoole http server,优化cron，上线基本的async服务
-#####version 1.2.2 定时服务多进程化了。优化了异步任务队列命令提示
-#####version 1.2.1 支持了异步任务队列服务，轻松搞定高并发
-#####[使用swoole http server性能测试报告](https://github.com/fucongcong/ssos/blob/master/php/group%E6%A1%86%E6%9E%B6%E6%B5%8B%E8%AF%95.md)
+
+####编写此框架的意义:
+
+首先现在流行的框架有很多。编写这个框架，其实可以说这个框架的特色，与其他框架的区别。
+
+- 支持普通业务场景的功能开发。
+- 提供了基于swoole的一些异步队列，定时任务，多task处理任务，rpc服务等等服务。而这些功能，普通框架并没有很好的集成，而Group内部已经将这些服务集成在了一起，随时可以和业务代码穿插。所以也就是我为什么不拆分每个服务为单独的项目的原因了。而这些服务往往都是我们开发中必需的。
+- 目录结构清晰简单
+- 轻量级。框架的代码目前应该在1W行左右
+- 包管理composer支持。
+- 架构可扩展性
+
+#####[使用swoole http server](https://github.com/fucongcong/ssos/blob/master/php/group%E6%A1%86%E6%9E%B6%E6%B5%8B%E8%AF%95.md)
 
 #####未来版本开发计划： 
 - Async服务完善。解决数据层断线重连，业务层内存泄漏等常见问题
