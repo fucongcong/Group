@@ -21,6 +21,6 @@
     "require": {
         "php": ">=5.3",
         "hprose/hprose": "dev-master",
-        "group/group-framework": "~1.1.9"
+        "group/group-framework": "dev-master"
     }
 }

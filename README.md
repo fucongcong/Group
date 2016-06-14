@@ -9,6 +9,7 @@
 #####[使用swoole http server性能测试报告](https://github.com/fucongcong/ssos/blob/master/php/group%E6%A1%86%E6%9E%B6%E6%B5%8B%E8%AF%95.md)
 
 #####未来版本开发计划： 
+- Async服务完善。解决数据层断线重连，业务层内存泄漏等常见问题
 - 更轻量级化数据层与服务层
 - i18n支持
 - 一些常用类库的丰富（中文转拼音，验证码，校验，过滤xss，tag...）
