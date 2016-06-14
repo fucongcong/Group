@@ -23,7 +23,7 @@ class GroupController extends Controller
     
     public function testAction(Request $request, $id)
     {   
-        var_dump(\Rpc::call('User:User', 'getUser', [1]));
+        //var_dump(\Rpc::call('User:User', 'getUser', [1]));
 
         // \Log::debug('123',['user'=>1]);
         // \Log::debug('1233',['user'=>12]);
