@@ -112,10 +112,14 @@ PHP交流ＱＱ群：390536187
 - doc (文档)
 - runtime (缓存)
 - src (你的网站核心代码)
+    - Admin (后台分组)
+        - Controller （控制层）
+        - View (视图层)
+        - routing.php （路由配置）
     - Async (异步服务)
     - Dao （模型层）
 	- Services （服务层）
-	- Web
+	- Web (前台分组)
         - Command (控制台命令扩展)
 	 	- Controller （控制层）
 	 	- Cron （异步定时器）
@@ -123,6 +127,7 @@ PHP交流ＱＱ群：390536187
         - Queue （队列任务）
         - View (视图层)
 	 	- routing.php （路由配置）
+    - Demo（可以自行添加分组）
 - index.php(主入口)
 - server.php(swoole http server 入口)
 - rpc_server.php(rpc server 启动脚本)
@@ -246,7 +251,7 @@ public function getGroupService()
 - Group (示例)
     - Impl （服务层实现的接口）
     - Rely （定义服务之间的依赖关系）
-GroupService.php(接口)
+- GroupService.php(接口)
 
 #####服务层主要用于处理数据层与控制层间数据的业务处理。只要继承Service类就可以了。
 
@@ -541,7 +546,23 @@ class KernalResponseListener extends Listener
 
 #####事件绑定器Subscriber
 
+## Request
 
+#####参照symfony2的Request服务
+```php
+
+    //get
+    $request -> query -> get('xxx');
+    $request -> query -> all()
+
+    //post
+    $request -> request -> get('xxx');
+    $request -> request -> all()
+    
+
+    //file 
+    $request -> file -> get('xxxx');
+```
 
 ## Session
 
