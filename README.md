@@ -552,13 +552,16 @@ class KernalResponseListener extends Listener
 ```php
 
     //get
-    $request -> query() -> get('xxx');
+    $request -> query -> get('xxx');
+    $request -> query -> all()
 
     //post
-    $request -> request() -> get('xxx');
-
+    $request -> request -> get('xxx');
+    $request -> request -> all()
     
 
+    //file 
+    $request -> file -> get('xxxx');
 ```
 
 ## Session
