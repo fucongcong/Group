@@ -96,6 +96,10 @@ PHP交流ＱＱ群：390536187
 	cd Group
 
 	composer install
+#### 更新框架版本（部分涉及到配置文件的需要更新git的master最新分支）
+
+    composer update
+
 
 ####1.服务器配置文件
 
@@ -546,22 +550,113 @@ class KernalResponseListener extends Listener
 
 #####事件绑定器Subscriber
 
+#####写一个subscriber
+```php
+
+    use Group\Events\EventSubscriberInterface;
+
+    class TestSubscriber implements EventSubscriberInterface
+    {   
+        //注册多个监听事件
+        public function getSubscribedEvents()
+        {
+            return [
+
+                //eventName  =>  listener
+                'test.start' => 'onTestStart',
+                //eventName  =>  listener, priority
+                'test.stop' => ['onTestStop', 100],
+                //eventName  => array  listener, priority
+                'test.doing' => [
+                    ['onDoA'],
+                    ['onDoB', 225],
+                ],
+            ];
+        }
+
+        public function onTestStart(\Event $event)
+        {
+            echo 'onTestStart';
+        }
+
+        public function onTestStop(\Event $event)
+        {
+            echo 'onTestStop';
+        }
+
+        public function onDoA(\Event $event)
+        {
+            echo 'onDoA';
+        }
+
+        public function onDoB(\Event $event)
+        {
+            echo 'onDoB';
+        }
+    }
+
+```
+#####添加到EventDispatcher
+```php
+        $subscriber = new TestSubscriber();
+
+        EventDispatcher::addSubscriber($subscriber);
+
+        EventDispatcher::hasListeners('test.start')
+        EventDispatcher::hasListeners('test.stop')
+        EventDispatcher::hasListeners('test.doing')
+
+        EventDispatcher::dispatch('test.start');
+        EventDispatcher::dispatch('test.stop');
+        EventDispatcher::dispatch('test.doing');
+
+        EventDispatcher::removeSubscriber($subscriber);
+```
+
 ## Request
 
 #####参照symfony2的Request服务
 ```php
+    public function testAction(Request $request, $id)
+    {
+        //get
+        $request -> query -> get('xxx');
+        $request -> query -> all()
 
-    //get
-    $request -> query -> get('xxx');
-    $request -> query -> all()
+        //post
+        $request -> request -> get('xxx');
+        $request -> request -> all()
+        
 
-    //post
-    $request -> request -> get('xxx');
-    $request -> request -> all()
-    
+        //file 
+        $request -> file -> get('xxxx');
+    }
+```
 
-    //file 
-    $request -> file -> get('xxxx');
+## Response
+
+#####常规
+```php
+    public function testAction(Request $request, $id)
+    {
+        return new \Response('这是文本');
+    }
+```
+
+#####json格式
+```php
+    public function testAction(Request $request, $id)
+    {
+        return new \JsonResponse('这是文本');
+    }
+```
+
+#####重定向
+```php
+    public function testAction(Request $request, $id)
+    {
+        return $this -> redirect('http://xxxx');
+    }
 ```
 
 ## Session
