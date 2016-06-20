@@ -778,6 +778,25 @@ class KernalResponseListener extends Listener
         ],
     ];
 ```
+
+#####执行的类库示例
+```php
+
+    namespace src\Web\Cron;
+
+    use Group\Cron\CronJob;
+
+    //继承CronJob父类
+    class Test extends CronJob
+    {   
+        //实现handle方法即可  框架内部所有服务都可正常使用
+        public function handle()
+        {
+            \Log::info('nihao', ['time' => date('Y-m-d H:i:s', time())], 'cron.job');
+        }
+
+    }
+```
 #####执行命令
 
     app/cron start|restart|stop|status|exec (job name)
