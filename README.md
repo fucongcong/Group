@@ -7,12 +7,17 @@
 
 首先现在流行的框架有很多。编写这个框架，其实可以说这个框架的特色，与其他框架的区别。
 
-- 支持普通业务场景的功能开发。
-- 提供了基于swoole的一些异步队列，定时任务，多task处理任务，rpc服务等等服务。而这些功能，普通框架并没有很好的集成，而Group内部已经将这些服务集成在了一起，随时可以和业务代码穿插。所以也就是我为什么不拆分每个服务为单独的项目的原因了。而这些服务往往都是我们开发中必需的。
+- 支持普通业务场景的功能开发，4层架构。
+- 一键启动rpc服务，不与主业务冲突，轻松完成后期SOA转行，支持TCP HTTP Websocket协议
+- 一键启动定时任务，还在用系统自带的cronjob？
+- 一键启动队列任务，还在自己集成队列服务？
+- async多task处理任务支持，业务逻辑复杂性能差？多进程帮你解决性能问题！
 - 目录结构清晰简单
-- 轻量级。框架的代码目前应该在1W行左右
+- 轻量级。框架的实际代码目前应该在5千行左右
 - 包管理composer支持。
-- 架构可扩展性
+- 架构可扩展性，规范的命名空间化，自己扩展类库随时可行
+- Debug工具条支持，找性能问题？找你的sql哪里慢了？找视图层渲染变量？找模板？debug条一览无余
+- laravel,symfony2有的控制台，我们也有！数据库脚本自动化！自动生成基础结构！自定义扩展控制台！
 
 #####[使用swoole http server](https://github.com/fucongcong/ssos/blob/master/php/group%E6%A1%86%E6%9E%B6%E6%B5%8B%E8%AF%95.md)
 
@@ -53,6 +58,7 @@ PHP交流ＱＱ群：390536187
 - [Config](#user-content-config)
 - [Console](#user-content-console)
 - [CronJob](#user-content-cronjob)
+- [Debug](#user-content-debug)
 - [Exception](#user-content-exception)
 - [EventDispatcher](#user-content-eventdispatcher)
 - [FileCache](#user-content-filecache)
@@ -104,6 +110,7 @@ PHP交流ＱＱ群：390536187
 ####1.服务器配置文件
 
 [Ngnix配置](https://github.com/fucongcong/Group/blob/master/doc/ngnix_server_config.txt)
+[Ngnix&Apache配置](https://github.com/fucongcong/Group/blob/master/doc/nginx_proxy&apache.txt)
 
 ####2.进入框架
 
@@ -738,7 +745,7 @@ class KernalResponseListener extends Listener
     ],
 ```
 ## CronJob
-#####异步定时器介绍(目前只支持秒级定时，毫秒级定时暂未修改，可以实现)
+#####异步定时器介绍(目前只支持秒级定时,基本涉及到毫秒定时的业务很少)
 #####依赖：[Swoole1.7.14以上版本](https://github.com/swoole/swoole-src)
 
 #####配置文件config/cron.php
@@ -853,6 +860,7 @@ class TestJob extends QueueJob
 #####队列图形化管理工具[beanstalk_console](https://github.com/ptrofimov/beanstalk_console) 
 
 ## RPC
+#####一个启动命令完成rpc服务！！不与其他业务冲突！！
 #####依赖：[Swoole](https://github.com/swoole/swoole-src)
 #####启用config/app.php 中的serviceProviders里面的RpcServiceProvider
 #####配置config/rpc.php文件,
