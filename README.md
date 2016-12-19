@@ -9,7 +9,7 @@
 
 - 支持普通业务场景的功能开发，4层架构。
 - 一键启动rpc服务，不与主业务冲突，轻松完成后期SOA转行，支持TCP HTTP Websocket协议
-- 一键启动定时任务，还在用系统自带的cronjob？
+- 一键启动定时任务，还在用系统自带的cronjob？（支持子进程重启,自动重启,防止内存泄漏）
 - 一键启动队列任务，还在自己集成队列服务？
 - async多task处理任务支持，业务逻辑复杂性能差？多进程帮你解决性能问题！
 - 目录结构清晰简单
@@ -745,19 +745,24 @@ class KernalResponseListener extends Listener
     ],
 ```
 ## CronJob
-#####异步定时器介绍(目前只支持秒级定时,基本涉及到毫秒定时的业务很少)
+#####异步定时器介绍(支持秒级定时)
 #####依赖：[Swoole1.7.14以上版本](https://github.com/swoole/swoole-src)
 
 #####配置文件config/cron.php
 ```php
     return [
-
+        //是否为守护进程
+        'daemon' => true,
+    
         'cache_dir' => 'runtime/cron',
 
         'class_cache' => 'runtime/cron/bootstrap.class.cache',
 
         //log路径
         'log_dir' => 'runtime/cron',
+
+        //每个定时任务执行到达该上限时，该子进程会自动重启，释放内存
+        'max_handle' => 5,
 
         //定时器轮询周期，精确到毫秒
         'tick_time' => 1000,
@@ -806,7 +811,7 @@ class KernalResponseListener extends Listener
 ```
 #####执行命令
 
-    app/cron start|restart|stop|status|exec (job name)
+    app/cron start|restart|stop|status|exec (job name)|rejob (job name)
 
 ## Queue
 #####异步队列服务介绍
