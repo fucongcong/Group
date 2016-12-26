@@ -20,7 +20,6 @@
     ],
     "require": {
         "php": ">=5.3",
-        "hprose/hprose": "dev-master",
         "group/group-framework": "dev-master"
     }
 }
