@@ -30,7 +30,8 @@
 
 轻量级框架，通俗易懂，快速上手。
 觉得帮到您了点击右上star!给我一点动力！
-联系我Email: cc@xitongxue.com
+PHP交流群：390536187
+联系我Email: cc@xitongxue.com,coco.fu@clothesmake.com
 
 ####1.[Group框架简介](#user-content-group框架简介)
 
