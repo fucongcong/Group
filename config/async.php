@@ -18,12 +18,12 @@ return [
             //server配置，请根据实际情况调整参数
             'config' => [  
                 //worker进程数量         
-                'worker_num' => 4,
+                'worker_num' => 2,
                 //最大请求数，超过后讲重启worker进程
                 'max_request' => 50000,
 
                 //task进程数量
-                'task_worker_num' => 16,
+                'task_worker_num' => 5,
                 //task进程最大处理请求上限，超过后讲重启task进程
                 'task_max_request' => 50000,
 
@@ -73,6 +73,14 @@ return [
                     'handler' => 'src\Async\User\Task\UserHandler',
                     //task结束时需要执行的处理器
                     'onFinish' => 'src\Async\User\Finish\UserHandler',
+                ],
+                [   
+                    //work传来的命令
+                    'cmd' => 'getUserAddress',
+                    //task处理器
+                    'handler' => 'src\Async\User\Task\UserAddressHandler',
+                    //task结束时需要执行的处理器
+                    'onFinish' => 'src\Async\User\Finish\UserAddressHandler',
                 ],
 
             ], 

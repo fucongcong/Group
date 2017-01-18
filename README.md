@@ -448,6 +448,263 @@ class GroupServiceImpl extends GroupBaseService implements GroupService
 
 ## 框架基础服务
 
+## Async
+#### Async服务是可以无缝接入到任务业务中的，你可以使用框架中的任务服务在实现handle方法中。 Async是基于swoole的task-server服务，用于将慢速任务丢给异步task去处理，从而解决性能问题.(建议更新到swoole最新版本 测试环境为v1.9.2)。
+
+##### 修改配置 config/async.php
+
+##### 开启async server
+
+    app/async user_server 
+
+
+##### 执行client查看运行结果
+
+    php src/Async/User/clent.php
+
+
+#### 完整流程介绍
+
+![流程介绍](group-async.png)
+
+##### 使用注意
+- 使用全局变量，局部静态变量时，内存释放的问题。否则有可能内存泄漏！
+- 共享单个数据库对象，对数据库长连接丢失时的断线重连问题。要做好断线重连机制(Group框架内部已经做了)
+- 控制好worker与task的数量。比例。防止出现worker接受大量tcp连接时，task处理不过来，导致数据返回超时。
+
+##### 详细介绍一下配置
+
+```php
+    <?php
+    return [
+
+        'client' => [],
+        //配置swoole异步服务器
+        'server' => [
+
+            //可以配置多个server，注意请监听不同的端口。
+            //serverName
+            'user_server' => [
+
+                'serv' => '0.0.0.0',
+                'port' => 9519,
+
+                //swoole server配置，请根据实际情况调整参数.不详细解释
+                'config' => [  
+                  //more
+                ],
+
+                'onWork' => [
+                    [   
+                        //client端发送过来的处理命令
+                        'cmd' => 'getUserInfo',
+                        //处理器
+                        'handler' => 'src\Async\User\Work\UserHandler',
+                    ],
+
+                ], 
+
+                //如果work中的handler有任务丢给task
+                'onTask' => [
+                    [   
+                        //work传来的命令
+                        'cmd' => 'getUserInfo',
+                        //task处理器
+                        'handler' => 'src\Async\User\Task\UserHandler',
+                        //task结束时需要执行的处理器
+                        'onFinish' => 'src\Async\User\Finish\UserHandler',
+                    ],
+                    [   
+                        //work传来的命令
+                        'cmd' => 'getUserAddress',
+                        //task处理器
+                        'handler' => 'src\Async\User\Task\UserAddressHandler',
+                        //task结束时需要执行的处理器
+                        'onFinish' => 'src\Async\User\Finish\UserAddressHandler',
+                    ],
+
+                ], 
+            ],
+        ],
+    ];
+
+```
+
+####详细介绍一下onWork
+
+#####onWork，很明显server端在接受client数据时，触发的事件。分为两个参数cmd(命令名称)和handler(处理的类)。onWork事件旨在将任务分发到task
+
+```php
+    'onWork' => [
+        [   
+            //client端发送过来的处理命令
+            'cmd' => 'getUserInfo',
+            //处理器
+            'handler' => 'src\Async\User\Work\UserHandler',
+        ],
+
+    ], 
+```
+####src/Async/User/Work/UserHandler.php,请继承Group\Async\Handler\WorkHandler类，实现handle()即可。
+
+##### 获取client端发送的数据
+
+```php   
+    
+    $this -> getData();
+
+```
+
+##### 投递task任务
+
+```php   
+    
+    $cmd = "getUserInfo";
+    $this -> task($cmd, $data);
+
+```
+
+##### 完整示例
+
+```php
+    <?php
+
+    namespace src\Async\User\Work;
+
+    use Group\Async\Handler\WorkHandler;
+
+    class UserHandler extends WorkHandler
+    {
+        public function handle()
+        {
+            $data = $this -> getData();
+            foreach ($data as $value) {
+                $this -> task("getUserInfo", $value);
+            }
+        }
+    }
+```
+
+
+#####投递完task任务，我们来看看onTask事件
+
+```php
+    'onTask' => [
+        [   
+            //work传来的命令
+            'cmd' => 'getUserInfo',
+            //task处理器
+            'handler' => 'src\Async\User\Task\UserHandler',
+            //task结束时需要执行的处理器
+            'onFinish' => 'src\Async\User\Finish\UserHandler',
+        ],
+        [   
+            //work传来的命令
+            'cmd' => 'getUserAddress',
+            //task处理器
+            'handler' => 'src\Async\User\Task\UserAddressHandler',
+            //task结束时需要执行的处理器
+            'onFinish' => 'src\Async\User\Finish\UserAddressHandler',
+        ],
+
+    ], 
+```
+
+####上面的work丢过来任务后，我们可以写一个src/Async/User/Task/UserHandler.php来处理task进程要做的事情。请继承Group\Async\Handler\TaskHandler类，实现handle()即可。
+
+##### 获取work发送的数据
+
+```php   
+    
+    $this -> getData();
+
+```
+
+##### 完整示例
+
+```php
+    <?php
+
+    namespace src\Async\User\Task;
+
+    use Group\Async\Handler\TaskHandler;
+
+    class UserHandler extends TaskHandler
+    {
+        public function handle()
+        {   
+            $users = ['1', '2', '3', '4', '5', '6', '7', '8', '9', '10'];
+            $data = $this -> getData();
+
+            $userId = $data['data'];
+            $user = $users[$userId - 1];
+
+            //当user为1时，我还要获取他的地址信息
+            if ($user == 1) {
+                $user = [];
+                $user['id'] = $users[$userId - 1];
+                $user['type'] = 'needAddress';
+            }
+
+            $data = \Group\Async\DataPack::pack("getUserInfo", $user, $data['info']);
+            return $data;
+        }
+    }
+
+
+```
+
+####task任务完成之后,我们就要写最后的finish事件了。把数据丢回给client端。我们可以写一个src/Async/User/Finish/UserHandler.php来处理task进程要做的事情。请继承Group\Async\Handler\FinishHandler类，实现handle()即可。
+
+##### 获取task最后return回来的数据
+
+```php   
+    
+    $this -> getData();
+
+```
+
+#####client端的demo 请看src/Async/User/client.php
+
+
+##### 投递task任务(在结束一个task任务之后，你还可以继续投递给其他的task)
+
+```php   
+    
+    $cmd = "getUserAddress";
+    $this -> task($cmd, $data);
+
+```
+
+##### 完整示例
+
+```php
+    <?php
+
+    namespace src\Async\User\Finish;
+
+    use Group\Async\Handler\FinishHandler;
+
+    class UserHandler extends FinishHandler
+    {
+        public function handle()
+        {
+            $data = $this -> getData();
+            if (isset($data['type']) && $data['type'] == 'needAddress') {
+                //继续执行getUserAddress的task
+                $this -> task("getUserAddress", $data['id']);
+            } else {
+                return $data;
+            }
+        }
+    }
+
+
+```
+##### 等到所有task执行完成时，系统会自动返回所有处理完成的数据。
+
+
+
 ## Container
 #####Container是一个基础的容器，一些系统变量会存放于这里
 

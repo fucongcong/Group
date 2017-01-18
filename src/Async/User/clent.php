@@ -1,6 +1,6 @@
 <?php
 
-function asyncRedis($data, $getRecv = false){
+function asyncJob($data, $getRecv = false){
     static $redis_client = null;
     if (is_null($redis_client)){
         $redis_client = pfsockopen('0.0.0.0', 9519);
@@ -42,6 +42,6 @@ class DataPack
 }
 
 $cmd = "getUserInfo";
-$data = [1,2,3,4,5];
+$data = [1,2,3,4,5,6,7,8,9,10];
 $data = DataPack::pack($cmd, $data);
-var_dump(asyncRedis($data));
+var_dump(asyncJob($data, true));
