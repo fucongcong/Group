@@ -8,19 +8,29 @@ class UserHandler extends TaskHandler
 {
 	public function handle()
 	{	
-		$users = ['1', '2', '3', '4', '5', '6', '7', '8', '9', '10'];
+		$users = [
+			1 => 'user1', 
+			2 => 'user2', 
+			3 => 'user3', 
+			4 => 'user4', 
+			5 => 'user5', 
+			6 => 'user6', 
+			7 => 'user7', 
+			8 => 'user8', 
+			9 => 'user9', 
+			10 => 'user10'
+		];
+
 		$data = $this -> getData();
-
 		$userId = $data['data'];
-		$user = $users[$userId - 1];
+		$user = $users[$userId];
 
-		if ($user == 1) {
+		if ($user == 'user1') {
 			$user = [];
-			$user['id'] = $users[$userId - 1];
-			$user['type'] = 'needAddress';
+			$user['name'] = $users[$userId];
+			$user['cmd'] = 'needAddress';
 		}
 
-		$data = \Group\Async\DataPack::pack("getUserInfo", $user, $data['info']);
-		return $data;
+		return $this->finish($user);
 	}
 }

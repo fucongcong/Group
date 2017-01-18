@@ -449,8 +449,9 @@ class GroupServiceImpl extends GroupBaseService implements GroupService
 ## 框架基础服务
 
 ## Async
-#### Async服务是可以无缝接入到任务业务中的，你可以使用框架中的任务服务在实现handle方法中。 Async是基于swoole的task-server服务，用于将慢速任务丢给异步task去处理，从而解决性能问题.(建议更新到swoole最新版本 测试环境为v1.9.2)。
+#### Async服务是可以无缝接入到任务业务中的，你可以使用框架中的任何服务在实现handle方法中。 Async是基于swoole的task-server服务，用于将慢速任务丢给异步task去处理，从而解决性能问题.(建议更新到swoole最新版本 测试环境为v1.9.2)。
 
+##### 使用场景：单进程业务复杂，可以拆分为多个子进程同时进行业务数据封装，此过程是异步阻塞的，客户端还是会阻塞等待服务端返回数据。
 ##### 修改配置 config/async.php
 
 ##### 开启async server
@@ -519,8 +520,6 @@ class GroupServiceImpl extends GroupBaseService implements GroupService
                         'cmd' => 'getUserAddress',
                         //task处理器
                         'handler' => 'src\Async\User\Task\UserAddressHandler',
-                        //task结束时需要执行的处理器
-                        'onFinish' => 'src\Async\User\Finish\UserAddressHandler',
                     ],
 
                 ], 
@@ -579,7 +578,7 @@ class GroupServiceImpl extends GroupBaseService implements GroupService
         {
             $data = $this -> getData();
             foreach ($data as $value) {
-                $this -> task("getUserInfo", $value);
+                $this -> task($value);
             }
         }
     }
@@ -603,8 +602,6 @@ class GroupServiceImpl extends GroupBaseService implements GroupService
             'cmd' => 'getUserAddress',
             //task处理器
             'handler' => 'src\Async\User\Task\UserAddressHandler',
-            //task结束时需要执行的处理器
-            'onFinish' => 'src\Async\User\Finish\UserAddressHandler',
         ],
 
     ], 
@@ -633,28 +630,37 @@ class GroupServiceImpl extends GroupBaseService implements GroupService
     {
         public function handle()
         {   
-            $users = ['1', '2', '3', '4', '5', '6', '7', '8', '9', '10'];
+            $users = [
+                1 => 'user1', 
+                2 => 'user2', 
+                3 => 'user3', 
+                4 => 'user4', 
+                5 => 'user5', 
+                6 => 'user6', 
+                7 => 'user7', 
+                8 => 'user8', 
+                9 => 'user9', 
+                10 => 'user10'
+            ];
+
             $data = $this -> getData();
-
             $userId = $data['data'];
-            $user = $users[$userId - 1];
+            $user = $users[$userId];
 
-            //当user为1时，我还要获取他的地址信息
-            if ($user == 1) {
+            if ($user == 'user1') {
                 $user = [];
-                $user['id'] = $users[$userId - 1];
-                $user['type'] = 'needAddress';
+                $user['name'] = $users[$userId];
+                $user['cmd'] = 'needAddress';
             }
 
-            $data = \Group\Async\DataPack::pack("getUserInfo", $user, $data['info']);
-            return $data;
+            return $this->finish($user);
         }
     }
 
 
 ```
 
-####task任务完成之后,我们就要写最后的finish事件了。把数据丢回给client端。我们可以写一个src/Async/User/Finish/UserHandler.php来处理task进程要做的事情。请继承Group\Async\Handler\FinishHandler类，实现handle()即可。
+####task任务完成之后,我们就要写最后的finish事件了(如果不定义finish事件，系统会自动返回task返回的数据)。把数据丢回给client端。我们可以写一个src/Async/User/Finish/UserHandler.php来处理task进程要做的事情。请继承Group\Async\Handler\FinishHandler类，实现handle()即可。
 
 ##### 获取task最后return回来的数据
 
@@ -689,12 +695,11 @@ class GroupServiceImpl extends GroupBaseService implements GroupService
     {
         public function handle()
         {
-            $data = $this -> getData();
-            if (isset($data['type']) && $data['type'] == 'needAddress') {
-                //继续执行getUserAddress的task
-                $this -> task("getUserAddress", $data['id']);
+            $user = $this -> getData();
+            if (isset($user['cmd']) && $user['cmd'] == 'needAddress') {
+                $this -> task("getUserAddress", $user['name']);
             } else {
-                return $data;
+                return $user;
             }
         }
     }

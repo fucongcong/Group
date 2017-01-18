@@ -79,8 +79,6 @@ return [
                     'cmd' => 'getUserAddress',
                     //task处理器
                     'handler' => 'src\Async\User\Task\UserAddressHandler',
-                    //task结束时需要执行的处理器
-                    'onFinish' => 'src\Async\User\Finish\UserAddressHandler',
                 ],
 
             ], 
