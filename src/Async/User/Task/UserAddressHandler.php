@@ -10,9 +10,9 @@ class UserAddressHandler extends TaskHandler
 	{	
 		$data = $this -> getData();
 
-		$userId = $data['data'];
-		$user = ['hangzhou', $userId];
-		$data = \Group\Async\DataPack::pack("getUserAddress", $user, $data['info']);
-		return $data;
+		$userName = $data['data'];
+		$user = ['hangzhou', $userName];
+
+		return $this->finish($user);
 	}
 }

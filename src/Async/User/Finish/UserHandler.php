@@ -8,11 +8,11 @@ class UserHandler extends FinishHandler
 {
 	public function handle()
 	{
-		$data = $this -> getData();
-		if (isset($data['type']) && $data['type'] == 'needAddress') {
-			$this -> task("getUserAddress", $data['id']);
+		$user = $this -> getData();
+		if (isset($user['cmd']) && $user['cmd'] == 'needAddress') {
+			$this -> task("getUserAddress", $user['name']);
 		} else {
-			return $data;
+			return $user;
 		}
 	}
 }

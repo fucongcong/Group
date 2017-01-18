@@ -10,7 +10,7 @@ class UserHandler extends WorkHandler
 	{
 		$data = $this -> getData();
 		foreach ($data as $value) {
-			$this -> task("getUserInfo", $value);
+			$this -> task($value);
 		}
 	}
 }
