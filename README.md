@@ -449,7 +449,7 @@ class GroupServiceImpl extends GroupBaseService implements GroupService
 ## 框架基础服务
 
 ## Async
-#### Async服务是可以无缝接入到任务业务中的，你可以使用框架中的任务服务在实现hanle方法中。 Async是基于swoole的task-server服务，用于将慢速任务丢给异步task去处理，从而解决性能问题.(建议更新到swoole最新版本 测试环境为v1.9.2)。
+#### Async服务是可以无缝接入到任务业务中的，你可以使用框架中的任务服务在实现handle方法中。 Async是基于swoole的task-server服务，用于将慢速任务丢给异步task去处理，从而解决性能问题.(建议更新到swoole最新版本 测试环境为v1.9.2)。
 
 ##### 修改配置 config/async.php
 
