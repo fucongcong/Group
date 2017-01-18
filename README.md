@@ -448,6 +448,13 @@ class GroupServiceImpl extends GroupBaseService implements GroupService
 
 ## 框架基础服务
 
+## Async
+##### Async是基于swoole的task-server服务，用于将慢速任务丢给异步task去处理，从而解决性能问题.(建议更新到swoole最新版本 v1.9.2)
+##### 修改配置 config/async.php
+##### 执行 app/async user_server 开启server
+##### 执行 php src/Async/User/clent.php  查看运行结果
+
+
 ## Container
 #####Container是一个基础的容器，一些系统变量会存放于这里
 
