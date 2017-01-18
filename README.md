@@ -617,6 +617,14 @@ class GroupServiceImpl extends GroupBaseService implements GroupService
 
 ```
 
+##### 返回处理好的数据
+
+```php   
+    
+    return $this->finish($data);
+
+```
+
 ##### 完整示例
 
 ```php
