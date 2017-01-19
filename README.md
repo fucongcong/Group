@@ -716,7 +716,18 @@ class GroupServiceImpl extends GroupBaseService implements GroupService
 ```
 ##### 等到所有task执行完成时，系统会自动返回所有处理完成的数据。
 
+#### 在框架中使用,Group的Async封装了call方法作为client端与server端通信,包含了4个参数
 
+```php
+    
+    $server = 'user_server'; //config配置的serverName
+    $cmd = "getUserInfo"; // 传给server的指令
+    $data = [1,2,3,4,5,6,7,8,9,10]; // 数据
+    $needRecvData = true; //默认为true，false的话server端不会返回数据
+
+    \Async::call($server, $cmd, $data, $needRecvData);
+
+```
 
 ## Container
 #####Container是一个基础的容器，一些系统变量会存放于这里
