@@ -8,10 +8,10 @@
 首先现在流行的框架有很多。编写这个框架，其实可以说这个框架的特色，与其他框架的区别。
 
 - 支持普通业务场景的功能开发，4层架构。
+- async多task处理任务支持，业务逻辑复杂性能差？多进程帮你解决性能问题！
 - 一键启动rpc服务，不与主业务冲突，轻松完成后期SOA转行，支持TCP HTTP Websocket协议
 - 一键启动定时任务，还在用系统自带的cronjob？（支持子进程重启,自动重启,防止内存泄漏）
 - 一键启动队列任务，还在自己集成队列服务？
-- async多task处理任务支持，业务逻辑复杂性能差？多进程帮你解决性能问题！
 - 目录结构清晰简单
 - 轻量级。框架的实际代码目前应该在5千行左右
 - 包管理composer支持。
@@ -21,11 +21,9 @@
 
 #####[使用swoole http server](https://github.com/fucongcong/ssos/blob/master/php/group%E6%A1%86%E6%9E%B6%E6%B5%8B%E8%AF%95.md)
 
-#####未来版本开发计划： 
-- Async服务完善。解决数据层断线重连，业务层内存泄漏等常见问题
-- 更轻量级化数据层与服务层
+#####未来版本开发计划:
 - i18n支持
-- 一些常用类库的丰富（中文转拼音，验证码，校验，过滤xss，tag...）
+- 一些常用类库的丰富（中文转拼音，验证码...）
 
 
 轻量级框架，通俗易懂，快速上手。
@@ -716,7 +714,18 @@ class GroupServiceImpl extends GroupBaseService implements GroupService
 ```
 ##### 等到所有task执行完成时，系统会自动返回所有处理完成的数据。
 
+#### 在框架中使用,Group的Async封装了call方法作为client端与server端通信,包含了4个参数
 
+```php
+    
+    $server = 'user_server'; //config配置的serverName
+    $cmd = "getUserInfo"; // 传给server的指令
+    $data = [1,2,3,4,5,6,7,8,9,10]; // 数据
+    $needRecvData = true; //默认为true，false的话server端不会返回数据
+
+    \Async::call($server, $cmd, $data, $needRecvData);
+
+```
 
 ## Container
 #####Container是一个基础的容器，一些系统变量会存放于这里
