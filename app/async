@@ -12,9 +12,8 @@ define('__ROOT__', realpath(dirname(__FILE__)) . DIRECTORY_SEPARATOR . "../");
 
 $app = new App();
 $app -> initSelf();
-$app -> doBootstrap($loader);
-$app -> registerServices();
-$app -> singleton('container') -> setAppPath(__ROOT__);
+$provider = new Group\Cache\FileCacheServiceProvider($app::getInstance());
+$provider -> register();
 
 $async = new Async($argv);
 $async -> run();
