@@ -456,6 +456,9 @@ class GroupServiceImpl extends GroupBaseService implements GroupService
 
     app/async user_server 
 
+##### 注意如果要开启守护进程模式，不要设置swoole config的daemonize为true(相对路径会出错),应该如下:
+
+    app/async user_server &
 
 ##### 执行client查看运行结果
 

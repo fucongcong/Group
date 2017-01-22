@@ -16,7 +16,7 @@ return [
             'port' => 9519,
 
             //server配置，请根据实际情况调整参数
-            'config' => [  
+            'config' => [
                 //worker进程数量         
                 'worker_num' => 2,
                 //最大请求数，超过后讲重启worker进程
@@ -41,8 +41,8 @@ return [
                 //1平均分配，2按FD取摸固定分配，3抢占式分配，默认为取模
                 'dispatch_mode' => 3,
 
-                //守护进程
-                //'daemonize' => true,
+                //守护进程 此参数为true会出错
+                'daemonize' => false,
 
                 //日志
                 'log_file' => 'runtime/async/user_server.log',
