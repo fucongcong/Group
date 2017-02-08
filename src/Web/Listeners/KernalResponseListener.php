@@ -17,4 +17,3 @@ class KernalResponseListener extends Listener
         echo 'this is a KernalResponse Listener';
     }
 }
-
