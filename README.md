@@ -3,7 +3,7 @@
 [![Code Climate](https://codeclimate.com/github/fucongcong/framework/badges/gpa.svg)](https://codeclimate.com/github/fucongcong/framework)
 [![Build Status](https://travis-ci.org/fucongcong/Group.svg?branch=master)](https://travis-ci.org/fucongcong/Group)
 
-####编写此框架的意义:
+#### 编写此框架的意义:
 
 首先现在流行的框架有很多。编写这个框架，其实可以说这个框架的特色，与其他框架的区别。
 
@@ -19,9 +19,9 @@
 - Debug工具条支持，找性能问题？找你的sql哪里慢了？找视图层渲染变量？找模板？debug条一览无余
 - laravel,symfony2有的控制台，我们也有！数据库脚本自动化！自动生成基础结构！自定义扩展控制台！
 
-#####[使用swoole http server](https://github.com/fucongcong/ssos/blob/master/php/group%E6%A1%86%E6%9E%B6%E6%B5%8B%E8%AF%95.md)
+##### [使用swoole http server](https://github.com/fucongcong/ssos/blob/master/php/group%E6%A1%86%E6%9E%B6%E6%B5%8B%E8%AF%95.md)
 
-#####未来版本开发计划:
+##### 未来版本开发计划:
 - i18n支持
 - 一些常用类库的丰富（中文转拼音，验证码...）
 
@@ -31,26 +31,26 @@
 PHP交流群：390536187
 联系我Email: cc@xitongxue.com,coco.fu@clothesmake.com
 
-####1.[Group框架简介](#user-content-group框架简介)
+#### 1.[Group框架简介](#user-content-group框架简介)
 
 - [后端框架介绍](#user-content-框架介绍)
 
-####2.[快速开始](#user-content-快速开始)
+#### 2.[快速开始](#user-content-快速开始)
 - [服务器配置文件](#user-content-1服务器配置文件)
 - [进入框架](#user-content-2进入框架)
 - [目录结构](#user-content-3目录结构)
 
-####3.[路由篇](#user-content-路由篇)
+#### 3.[路由篇](#user-content-路由篇)
 
-####4.[控制层](#user-content-控制层)
+#### 4.[控制层](#user-content-控制层)
 
-####5.[服务层](#user-content-服务层)
+#### 5.[服务层](#user-content-服务层)
 
-####6.[数据层](#user-content-数据层)
+#### 6.[数据层](#user-content-数据层)
 
-####7.[视图层](#user-content-视图层)
+#### 7.[视图层](#user-content-视图层)
 
-####8.[框架基础服务](#user-content-框架基础服务)
+#### 8.[框架基础服务](#user-content-框架基础服务)
 - [Async](#user-content-async)
 - [Container](#user-content-container)
 - [Cache](#user-content-cache)
@@ -71,23 +71,23 @@ PHP交流群：390536187
 - [Test](#user-content-test)
 - [RPC](#user-content-rpc)
 
-####9.[单元测试](#user-content-单元测试)
+#### 9.[单元测试](#user-content-单元测试)
 
 ## Group框架简介
 
-####环境依赖
+#### 环境依赖
 - PHP > 5.5
 - Redis
 - Mysql
 - Nginx or Apache
 - Composer
 
-####扩展模块
+#### 扩展模块
 - [PhpRedis](https://github.com/phpredis/phpredis)
 - [Swoole，建议最新版本，1.8.0以上](https://github.com/swoole/swoole-src)
 - [beanstalkd](https://github.com/kr/beanstalkd) 
 
-####框架介绍
+#### 框架介绍
 （1）模版引擎：twig （symfony2使用的模版引擎）
 
 （2）分层：Dao（模型层）,Service（服务层），Controller（控制层），View（视图层）
@@ -106,16 +106,16 @@ PHP交流群：390536187
     composer update
 
 
-####1.服务器配置文件
+#### 1.服务器配置文件
 
 [Ngnix配置](https://github.com/fucongcong/Group/blob/master/doc/ngnix_server_config.txt)
 [Ngnix&Apache配置](https://github.com/fucongcong/Group/blob/master/doc/nginx_proxy&apache.txt)
 
-####2.进入框架
+#### 2.进入框架
 
 访问 http://localhost:8081 进入框架主页
 
-####3.目录结构
+#### 3.目录结构
 - app (脚本文件)
 - asset (前端文件)
 - config (配置文件)
@@ -322,9 +322,9 @@ class GroupServiceImpl extends GroupBaseService implements GroupService
 ```
 
 ## 数据层
-#####支持主从配置(详见配置文件)
+##### 支持主从配置(详见配置文件)
 
-#####如何使用
+##### 如何使用
 
 ```php
 <?php
@@ -360,9 +360,9 @@ class GroupServiceImpl extends GroupBaseService implements GroupService
     }
 ```
 
-#####支持的语法
+##### 支持的语法
 
-#####fetch(*)
+##### fetch(*)
 ```php
     $pdo = $this->getDefault();
 
@@ -406,7 +406,7 @@ class GroupServiceImpl extends GroupBaseService implements GroupService
     $stm = "UPDATE test SET incr = incr + 1 WHERE foo = :foo AND bar = :bar";
     $row_count = $pdo->fetchAffected($stm, $bind);
 ```
-#####数组转换
+##### 数组转换
 
 ```php
     $pdo = $this->getDefault();
@@ -423,8 +423,8 @@ class GroupServiceImpl extends GroupBaseService implements GroupService
 ```
 
 ## 视图层
-#####基础的twig语法文档请查看twig官方(twig.sensiolabs.org/documentation)
-#####简单介绍框架内部扩展好的方法
+##### 基础的twig语法文档请查看twig官方(twig.sensiolabs.org/documentation)
+##### 简单介绍框架内部扩展好的方法
 
     {{ asset("asset/css/bootstrap.min.css") }} asset方法主要是用于获取前端js,css文件的地址
 
@@ -434,7 +434,7 @@ class GroupServiceImpl extends GroupBaseService implements GroupService
 
     {{ 1454566745|smart_time }} 时间戳转换
 
-#####开启csrf验证防止跨站攻击
+##### 开启csrf验证防止跨站攻击
 
     //在post 请求时，如果在session.php配置文件中开启csrf_check参数，默认会检查csrf_token参数。你可以在表单中加入以下参数
     <form method="post" action="{{url('create_group', {'id':1})}}">
@@ -530,9 +530,9 @@ class GroupServiceImpl extends GroupBaseService implements GroupService
 
 ```
 
-####详细介绍一下onWork
+#### 详细介绍一下onWork
 
-#####onWork，很明显server端在接受client数据时，触发的事件。分为两个参数cmd(命令名称)和handler(处理的类)。onWork事件旨在将任务分发到task
+##### onWork，很明显server端在接受client数据时，触发的事件。分为两个参数cmd(命令名称)和handler(处理的类)。onWork事件旨在将任务分发到task
 
 ```php
     'onWork' => [
@@ -545,7 +545,7 @@ class GroupServiceImpl extends GroupBaseService implements GroupService
 
     ], 
 ```
-####src/Async/User/Work/UserHandler.php,请继承Group\Async\Handler\WorkHandler类，实现handle()即可。
+#### src/Async/User/Work/UserHandler.php,请继承Group\Async\Handler\WorkHandler类，实现handle()即可。
 
 ##### 获取client端发送的数据
 
@@ -586,7 +586,7 @@ class GroupServiceImpl extends GroupBaseService implements GroupService
 ```
 
 
-#####投递完task任务，我们来看看onTask事件
+##### 投递完task任务，我们来看看onTask事件
 
 ```php
     'onTask' => [
@@ -608,7 +608,7 @@ class GroupServiceImpl extends GroupBaseService implements GroupService
     ], 
 ```
 
-####上面的work丢过来任务后，我们可以写一个src/Async/User/Task/UserHandler.php来处理task进程要做的事情。请继承Group\Async\Handler\TaskHandler类，实现handle()即可。
+#### 上面的work丢过来任务后，我们可以写一个src/Async/User/Task/UserHandler.php来处理task进程要做的事情。请继承Group\Async\Handler\TaskHandler类，实现handle()即可。
 
 ##### 获取work发送的数据
 
@@ -669,7 +669,7 @@ class GroupServiceImpl extends GroupBaseService implements GroupService
 
 ```
 
-####task任务完成之后,我们就要写最后的finish事件了(如果不定义finish事件，系统会自动返回task返回的数据)。把数据丢回给client端。我们可以写一个src/Async/User/Finish/UserHandler.php来处理task进程要做的事情。请继承Group\Async\Handler\FinishHandler类，实现handle()即可。
+#### task任务完成之后,我们就要写最后的finish事件了(如果不定义finish事件，系统会自动返回task返回的数据)。把数据丢回给client端。我们可以写一个src/Async/User/Finish/UserHandler.php来处理task进程要做的事情。请继承Group\Async\Handler\FinishHandler类，实现handle()即可。
 
 ##### 获取task最后return回来的数据
 
@@ -679,7 +679,7 @@ class GroupServiceImpl extends GroupBaseService implements GroupService
 
 ```
 
-#####client端的demo 请看src/Async/User/client.php
+##### client端的demo 请看src/Async/User/client.php
 
 
 ##### 投递task任务(在结束一个task任务之后，你还可以继续投递给其他的task)
@@ -735,7 +735,7 @@ class GroupServiceImpl extends GroupBaseService implements GroupService
 
 ## Cache
 
-#####目前只支持了Redis得cache，使用请在cache.php配置中配置redis
+##### 目前只支持了Redis得cache，使用请在cache.php配置中配置redis
 
 ```php
 
@@ -757,7 +757,7 @@ class GroupServiceImpl extends GroupBaseService implements GroupService
 
 ## FileCache
 
-#####文件形式的缓存
+##### 文件形式的缓存
 
 ```php
 
@@ -775,7 +775,7 @@ class GroupServiceImpl extends GroupBaseService implements GroupService
 
 ## Config
 
-#####用于查找config目录下得配置
+##### 用于查找config目录下得配置
 
 ```php
 
@@ -790,7 +790,7 @@ class GroupServiceImpl extends GroupBaseService implements GroupService
 
 ## EventDispatcher
 
-#####事件监听Listener
+##### 事件监听Listener
 
 #####先写一个监听KernalResponseListener
 ```php
@@ -817,7 +817,7 @@ class KernalResponseListener extends Listener
 
 ```
 
-#####绑定监听
+##### 绑定监听
 
 ```php
 
@@ -838,9 +838,9 @@ class KernalResponseListener extends Listener
 
 ```
 
-#####事件绑定器Subscriber
+##### 事件绑定器Subscriber
 
-#####写一个subscriber
+##### 写一个subscriber
 ```php
 
     use Group\Events\EventSubscriberInterface;
@@ -886,7 +886,7 @@ class KernalResponseListener extends Listener
     }
 
 ```
-#####添加到EventDispatcher
+##### 添加到EventDispatcher
 ```php
         $subscriber = new TestSubscriber();
 
@@ -905,7 +905,7 @@ class KernalResponseListener extends Listener
 
 ## Request
 
-#####参照symfony2的Request服务
+##### 参照symfony2的Request服务
 ```php
     public function testAction(Request $request, $id)
     {
@@ -925,7 +925,7 @@ class KernalResponseListener extends Listener
 
 ## Response
 
-#####常规
+##### 常规
 ```php
     public function testAction(Request $request, $id)
     {
@@ -933,7 +933,7 @@ class KernalResponseListener extends Listener
     }
 ```
 
-#####json格式
+##### json格式
 ```php
     public function testAction(Request $request, $id)
     {
@@ -941,7 +941,7 @@ class KernalResponseListener extends Listener
     }
 ```
 
-#####重定向
+##### 重定向
 ```php
     public function testAction(Request $request, $id)
     {
@@ -951,7 +951,7 @@ class KernalResponseListener extends Listener
 
 ## Session
 
-#####Session 目前支持2中方式存储，默认存放在runtime/sessions下，也可以开启redis driver，将session存在redis中，详见配置
+##### Session 目前支持2中方式存储，默认存放在runtime/sessions下，也可以开启redis driver，将session存在redis中，详见配置
 ```php
 
     use Session;
@@ -969,7 +969,7 @@ class KernalResponseListener extends Listener
 ```
 ## Log
 
-#####默认存放于runtime/log
+##### 默认存放于runtime/log
 ```php
 
     use Log;
@@ -990,7 +990,7 @@ class KernalResponseListener extends Listener
 
 ## Console
 
-####控制台的使用方法
+#### 控制台的使用方法
 
     //进入根目录 执行
     app/console
@@ -1016,8 +1016,8 @@ class KernalResponseListener extends Listener
      sql:migrate   [default|write|read|all] [name]  参数可不填，执行sql模板(默认会向default服务器执行.第二个参数只有当第一个参数为write|read时，才会生效,如果不填，默认为write|read下面所有服务器)
      sql:rollback   [default|write|read|all] [name]  参数可不填，执行sql模板(默认会向default服务器执行.第二个参数只有当第一个参数为write|read时，才会生效,如果不填，默认为write|read下面所有服务器)
 
-####自定义控制台
-#####配置文件config/app.php  
+#### 自定义控制台
+##### 配置文件config/app.php  
 ```php
     //扩展console命令行控制台
     'console_commands' => [
@@ -1028,10 +1028,10 @@ class KernalResponseListener extends Listener
     ],
 ```
 ## CronJob
-#####异步定时器介绍(支持秒级定时)
-#####依赖：[Swoole1.7.14以上版本](https://github.com/swoole/swoole-src)
+##### 异步定时器介绍(支持秒级定时)
+##### 依赖：[Swoole1.7.14以上版本](https://github.com/swoole/swoole-src)
 
-#####配置文件config/cron.php
+##### 配置文件config/cron.php
 ```php
     return [
         //是否为守护进程
@@ -1074,7 +1074,7 @@ class KernalResponseListener extends Listener
     ];
 ```
 
-#####执行的类库示例
+##### 执行的类库示例
 ```php
 
     namespace src\Web\Cron;
@@ -1092,16 +1092,16 @@ class KernalResponseListener extends Listener
 
     }
 ```
-#####执行命令
+##### 执行命令
 
     app/cron start|restart|stop|status|exec (job name)|rejob (job name)
 
 ## Queue
-#####异步队列服务介绍
-#####依赖：[Swoole1.7.14以上版本](https://github.com/swoole/swoole-src) 
-#####依赖：[beanstalkd](https://github.com/kr/beanstalkd) 
+##### 异步队列服务介绍
+##### 依赖：[Swoole1.7.14以上版本](https://github.com/swoole/swoole-src) 
+##### 依赖：[beanstalkd](https://github.com/kr/beanstalkd) 
 
-#####向队列插入任务
+##### 向队列插入任务
 ```php
 
     use Queue;
@@ -1118,12 +1118,12 @@ class KernalResponseListener extends Listener
     Queue::put($tube, $data, $priority, $delaytime, $lifetime);
 
 ```
-#####配置config/queue.php  
-#####开启异步队列服务处理任务
+##### 配置config/queue.php  
+##### 开启异步队列服务处理任务
     
     app/queue start|restart|stop
 
-#####最后看看我们的任务怎么写
+##### 最后看看我们的任务怎么写
 ```php
     <?php
 
@@ -1145,17 +1145,17 @@ class TestJob extends QueueJob
 
 }
 ```
-#####队列图形化管理工具[beanstalk_console](https://github.com/ptrofimov/beanstalk_console) 
+##### 队列图形化管理工具[beanstalk_console](https://github.com/ptrofimov/beanstalk_console) 
 
 ## RPC
-#####一个启动命令完成rpc服务！！不与其他业务冲突！！
-#####依赖：[Swoole](https://github.com/swoole/swoole-src)
-#####启用config/app.php 中的serviceProviders里面的RpcServiceProvider
-#####配置config/rpc.php文件,
-#####服务启动 php rpc_server.php &
-#####服务热重启 php rpc_server.php -s reload
-#####注意服务会默认开放src/Services下面所有服务的公有函数的调用
-#####使用
+##### 一个启动命令完成rpc服务！！不与其他业务冲突！！
+##### 依赖：[Swoole](https://github.com/swoole/swoole-src)
+##### 启用config/app.php 中的serviceProviders里面的RpcServiceProvider
+##### 配置config/rpc.php文件,
+##### 服务启动 php rpc_server.php &
+##### 服务热重启 php rpc_server.php -s reload
+##### 注意服务会默认开放src/Services下面所有服务的公有函数的调用
+##### 使用
 ```php
     
     //指调用User模块下UserService 的getUser方法， 最后跟上参数
@@ -1164,7 +1164,7 @@ class TestJob extends QueueJob
     var_dump($res);
 
 ```
-#####用途，做soa服务化管理时。用于分布式。
+##### 用途，做soa服务化管理时。用于分布式。
 
 
 ## 单元测试
