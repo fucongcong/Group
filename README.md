@@ -1094,7 +1094,13 @@ class KernalResponseListener extends Listener
 ```
 ##### 执行命令
 
-    app/cron start|restart|stop|status|exec (job name)|rejob (job name)
+    app/cron start|restart|stop|status|exec (job name)|rejob (job name)|server
+
+##### 图形界面管理
+![图形界面管理](cron-admin.png)
+
+    app/cron server &  (访问 127.0.0.1:10008 即可)
+
 
 ## Queue
 ##### 异步队列服务介绍
