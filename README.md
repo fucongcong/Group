@@ -1166,6 +1166,9 @@ class TestJob extends QueueJob
     
     //指调用User模块下UserService 的getUser方法， 最后跟上参数
     $res = \Rpc::call('User:User', 'getUser', [1]);
+    //也可以这样
+    $res = \Rpc::service('User:User')->getUser(1);
+
     //错误返回false
     var_dump($res);
 
