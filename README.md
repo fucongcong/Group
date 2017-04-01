@@ -256,15 +256,17 @@ public function getGroupService()
 ```
 
 ## 服务层
+
 #####（1）简单介绍一下目录结构
 - Group (示例)
     - Impl （服务层实现的接口）
     - Rely （定义服务之间的依赖关系）
 - GroupService.php(接口)
 
-#####服务层主要用于处理数据层与控制层间数据的业务处理。只要继承Service类就可以了。
+##### 服务层主要用于处理数据层与控制层间数据的业务处理。只要继承Service类就可以了。
 
     GroupService.php
+
 ```php
 <?php
 namespace src\Services\Group;
@@ -730,7 +732,8 @@ class GroupServiceImpl extends GroupBaseService implements GroupService
 ```
 
 ## Container
-#####Container是一个基础的容器，一些系统变量会存放于这里
+
+##### Container是一个基础的容器，一些系统变量会存放于这里
 
 ## Cache
 
@@ -791,7 +794,8 @@ class GroupServiceImpl extends GroupBaseService implements GroupService
 
 ##### 事件监听Listener
 
-#####先写一个监听KernalResponseListener
+##### 先写一个监听KernalResponseListener
+
 ```php
 <?php
 
@@ -1005,15 +1009,14 @@ class KernalResponseListener extends Listener
 
      ----------------------------------------------------------
 
-     使用帮助: 
-     Usage: app/console [options] [args...] 
+    使用帮助: 
+    Usage: app/console [options] [args...] 
 
-     generate:service name       生成一个自定义service
-     generate:controller  name    生成一个自定义controller
-     sql:generate                生成一个sql执行模板(存放于app/sql)
-     sql:clean                清除lock文件,您可以再次执行migrate脚本中的命令
-     sql:migrate   [default|write|read|all] [name]  参数可不填，执行sql模板(默认会向default服务器执行.第二个参数只有当第一个参数为write|read时，才会生效,如果不填，默认为write|read下面所有服务器)
-     sql:rollback   [default|write|read|all] [name]  参数可不填，执行sql模板(默认会向default服务器执行.第二个参数只有当第一个参数为write|read时，才会生效,如果不填，默认为write|read下面所有服务器)
+    generate:service name                               生成一个自定义service
+    generate:controller name|groupname:name             生成一个自定义controller(默认存放在src/Web,如果想要指定分组 groupname:name)
+    sql:generate                                        生成一个sql执行模板(存放于app/sql)
+    sql:migrate                                         执行sql更新
+    sql:rollback version                                执行sql回滚到指定版本
 
 #### 自定义控制台
 ##### 配置文件config/app.php  
