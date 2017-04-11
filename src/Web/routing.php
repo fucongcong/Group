@@ -76,7 +76,7 @@ return [
         'pattern' => '/user/message/info/{uid}',
         'controller' => 'Web:User:User:messageInfo',
     ],
-   
+
     'user_message_add'=>[
         'pattern' => '/user/message/add',
         'controller' => 'Web:User:User:messageAdd',

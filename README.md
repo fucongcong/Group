@@ -1,27 +1,35 @@
 # Group
 
-[![Code Climate](https://codeclimate.com/repos/5657fbc8ea0d1f5571028f67/badges/c8175ffa03bd301eb7c7/gpa.svg)](https://codeclimate.com/repos/5657fbc8ea0d1f5571028f67/feed)
+[![Code Climate](https://codeclimate.com/github/fucongcong/framework/badges/gpa.svg)](https://codeclimate.com/github/fucongcong/framework)
 [![Build Status](https://travis-ci.org/fucongcong/Group.svg?branch=master)](https://travis-ci.org/fucongcong/Group)
 
-#####version 1.2.2 定时服务多进程化了。优化了异步队列命令提示
-#####version 1.2.1 支持了异步队列服务，轻松搞定高并发！（在php7环境中，stop命令可以会出现失败的情况，请ps -ef|grep queue 查看进程是否被终止）
-#####[性能测试报告,使用swoole http server的话可以参考Group framework的swoole-http-server分支](https://github.com/fucongcong/ssos/blob/master/php/group%E6%A1%86%E6%9E%B6%E6%B5%8B%E8%AF%95.md)
-#####未来版本开发计划： 
-- 类文件缓存的优化
-- rpc服务
-- cookie服务
+####编写此框架的意义:
+
+首先现在流行的框架有很多。编写这个框架，其实可以说这个框架的特色，与其他框架的区别。
+
+- 支持普通业务场景的功能开发，4层架构。
+- async多task处理任务支持，业务逻辑复杂性能差？多进程帮你解决性能问题！
+- 一键启动rpc服务，不与主业务冲突，轻松完成后期SOA转行，支持TCP HTTP Websocket协议
+- 一键启动定时任务，还在用系统自带的cronjob？（支持子进程重启,自动重启,防止内存泄漏）
+- 一键启动队列任务，还在自己集成队列服务？
+- 目录结构清晰简单
+- 轻量级。框架的实际代码目前应该在5千行左右
+- 包管理composer支持。
+- 架构可扩展性，规范的命名空间化，自己扩展类库随时可行
+- Debug工具条支持，找性能问题？找你的sql哪里慢了？找视图层渲染变量？找模板？debug条一览无余
+- laravel,symfony2有的控制台，我们也有！数据库脚本自动化！自动生成基础结构！自定义扩展控制台！
+
+#####[使用swoole http server](https://github.com/fucongcong/ssos/blob/master/php/group%E6%A1%86%E6%9E%B6%E6%B5%8B%E8%AF%95.md)
+
+#####未来版本开发计划:
 - i18n支持
-- 一些常用类库的丰富（中文转拼音，验证码，校验，过滤xss，tag...）
-- 更多的单元测试
-- 代码注释与重构
-- 队列服务支持对某个队列发送命令
-- 定时服务支持对某个任务发送命令
-- 基于swoole http server的api服务
-- 基于swoole的异步非阻塞server服务，用于处理复杂耗时的业务逻辑
+- 一些常用类库的丰富（中文转拼音，验证码...）
+
 
 轻量级框架，通俗易懂，快速上手。
 觉得帮到您了点击右上star!给我一点动力！
-PHP交流ＱＱ群：390536187
+PHP交流群：390536187
+联系我Email: cc@xitongxue.com,coco.fu@clothesmake.com
 
 ####1.[Group框架简介](#user-content-group框架简介)
 
@@ -43,11 +51,13 @@ PHP交流ＱＱ群：390536187
 ####7.[视图层](#user-content-视图层)
 
 ####8.[框架基础服务](#user-content-框架基础服务)
+- [Async](#user-content-async)
 - [Container](#user-content-container)
 - [Cache](#user-content-cache)
 - [Config](#user-content-config)
 - [Console](#user-content-console)
 - [CronJob](#user-content-cronjob)
+- [Debug](#user-content-debug)
 - [Exception](#user-content-exception)
 - [EventDispatcher](#user-content-eventdispatcher)
 - [FileCache](#user-content-filecache)
@@ -58,7 +68,8 @@ PHP交流ＱＱ群：390536187
 - [Session](#user-content-session)
 - [Log](#user-content-log)
 - [Queue](#user-content-queue)
-
+- [Test](#user-content-test)
+- [RPC](#user-content-rpc)
 
 ####9.[单元测试](#user-content-单元测试)
 
@@ -66,10 +77,15 @@ PHP交流ＱＱ群：390536187
 
 ####环境依赖
 - PHP > 5.5
+- Redis
+- Mysql
+- Nginx or Apache
+- Composer
 
 ####扩展模块
 - [PhpRedis](https://github.com/phpredis/phpredis)
-- [Swoole](https://github.com/swoole/swoole-src)
+- [Swoole，建议最新版本，1.8.0以上](https://github.com/swoole/swoole-src)
+- [beanstalkd](https://github.com/kr/beanstalkd) 
 
 ####框架介绍
 （1）模版引擎：twig （symfony2使用的模版引擎）
@@ -85,10 +101,15 @@ PHP交流ＱＱ群：390536187
 	cd Group
 
 	composer install
+#### 更新框架版本（部分涉及到配置文件的需要更新git的master最新分支）
+
+    composer update
+
 
 ####1.服务器配置文件
 
 [Ngnix配置](https://github.com/fucongcong/Group/blob/master/doc/ngnix_server_config.txt)
+[Ngnix&Apache配置](https://github.com/fucongcong/Group/blob/master/doc/nginx_proxy&apache.txt)
 
 ####2.进入框架
 
@@ -101,17 +122,25 @@ PHP交流ＱＱ群：390536187
 - doc (文档)
 - runtime (缓存)
 - src (你的网站核心代码)
+    - Admin (后台分组)
+        - Controller （控制层）
+        - View (视图层)
+        - routing.php （路由配置）
+    - Async (异步服务)
+    - Dao （模型层）
 	- Services （服务层）
-		- Group (示例)
-			- Dao （数据层）
-		  		- Impl （数据层接口）
-		  	- Impl （服务层接口）
-		  	- Rely （服务之间的依赖）
-	- Web
+	- Web (前台分组)
+        - Command (控制台命令扩展)
 	 	- Controller （控制层）
-	 	- View (视图层)
+	 	- Cron （异步定时器）
+        - Listeners （监听器）
+        - Queue （队列任务）
+        - View (视图层)
 	 	- routing.php （路由配置）
+    - Demo（可以自行添加分组）
 - index.php(主入口)
+- server.php(swoole http server 入口)
+- rpc_server.php(rpc server 启动脚本)
 
 ## 路由篇
 （1）自定义路由
@@ -230,10 +259,9 @@ public function getGroupService()
 ## 服务层
 #####（1）简单介绍一下目录结构
 - Group (示例)
-    - Dao （数据层）
     - Impl （服务层实现的接口）
     - Rely （定义服务之间的依赖关系）
-GroupService.php(接口)
+- GroupService.php(接口)
 
 #####服务层主要用于处理数据层与控制层间数据的业务处理。只要继承Service类就可以了。
 
@@ -301,10 +329,10 @@ class GroupServiceImpl extends GroupBaseService implements GroupService
 ```php
 <?php
 
-    namespace src\Services\Group\Dao\Impl;
+    namespace src\Dao\Group\Impl;
 
     use Dao;
-    use src\Services\Group\Dao\GroupDao;
+    use src\Dao\Group\GroupDao;
 
     class GroupDaoImpl extends Dao implements GroupDao
     {
@@ -418,6 +446,290 @@ class GroupServiceImpl extends GroupBaseService implements GroupService
 
 ## 框架基础服务
 
+## Async
+#### Async服务是可以无缝接入到任务业务中的，你可以使用框架中的任何服务在实现handle方法中。 Async是基于swoole的task-server服务，用于将慢速任务丢给异步task去处理，从而解决性能问题.(建议更新到swoole最新版本 测试环境为v1.9.2)。
+
+##### 使用场景：单进程业务复杂，可以拆分为多个子进程同时进行业务数据封装，此过程是异步阻塞的，客户端还是会阻塞等待服务端返回数据。
+##### 修改配置 config/async.php
+
+##### 开启async server
+
+    app/async user_server 
+
+##### 注意如果要开启守护进程模式，不要设置swoole config的daemonize为true(相对路径会出错),应该如下:
+
+    app/async user_server &
+
+##### 执行client查看运行结果
+
+    php src/Async/User/clent.php
+
+
+#### 完整流程介绍
+
+![流程介绍](group-async.png)
+
+##### 使用注意
+- 使用全局变量，局部静态变量时，内存释放的问题。否则有可能内存泄漏！
+- 共享单个数据库对象，对数据库长连接丢失时的断线重连问题。要做好断线重连机制(Group框架内部已经做了)
+- 控制好worker与task的数量。比例。防止出现worker接受大量tcp连接时，task处理不过来，导致数据返回超时。
+
+##### 详细介绍一下配置
+
+```php
+    <?php
+    return [
+
+        'client' => [],
+        //配置swoole异步服务器
+        'server' => [
+
+            //可以配置多个server，注意请监听不同的端口。
+            //serverName
+            'user_server' => [
+
+                'serv' => '0.0.0.0',
+                'port' => 9519,
+
+                //swoole server配置，请根据实际情况调整参数.不详细解释
+                'config' => [  
+                  //more
+                ],
+
+                'onWork' => [
+                    [   
+                        //client端发送过来的处理命令
+                        'cmd' => 'getUserInfo',
+                        //处理器
+                        'handler' => 'src\Async\User\Work\UserHandler',
+                    ],
+
+                ], 
+
+                //如果work中的handler有任务丢给task
+                'onTask' => [
+                    [   
+                        //work传来的命令
+                        'cmd' => 'getUserInfo',
+                        //task处理器
+                        'handler' => 'src\Async\User\Task\UserHandler',
+                        //task结束时需要执行的处理器
+                        'onFinish' => 'src\Async\User\Finish\UserHandler',
+                    ],
+                    [   
+                        //work传来的命令
+                        'cmd' => 'getUserAddress',
+                        //task处理器
+                        'handler' => 'src\Async\User\Task\UserAddressHandler',
+                    ],
+
+                ], 
+            ],
+        ],
+    ];
+
+```
+
+####详细介绍一下onWork
+
+#####onWork，很明显server端在接受client数据时，触发的事件。分为两个参数cmd(命令名称)和handler(处理的类)。onWork事件旨在将任务分发到task
+
+```php
+    'onWork' => [
+        [   
+            //client端发送过来的处理命令
+            'cmd' => 'getUserInfo',
+            //处理器
+            'handler' => 'src\Async\User\Work\UserHandler',
+        ],
+
+    ], 
+```
+####src/Async/User/Work/UserHandler.php,请继承Group\Async\Handler\WorkHandler类，实现handle()即可。
+
+##### 获取client端发送的数据
+
+```php   
+    
+    $this -> getData();
+
+```
+
+##### 投递task任务
+
+```php   
+    
+    $cmd = "getUserInfo";
+    $this -> task($cmd, $data);
+
+```
+
+##### 完整示例
+
+```php
+    <?php
+
+    namespace src\Async\User\Work;
+
+    use Group\Async\Handler\WorkHandler;
+
+    class UserHandler extends WorkHandler
+    {
+        public function handle()
+        {
+            $data = $this -> getData();
+            foreach ($data as $value) {
+                $this -> task($value);
+            }
+        }
+    }
+```
+
+
+#####投递完task任务，我们来看看onTask事件
+
+```php
+    'onTask' => [
+        [   
+            //work传来的命令
+            'cmd' => 'getUserInfo',
+            //task处理器
+            'handler' => 'src\Async\User\Task\UserHandler',
+            //task结束时需要执行的处理器
+            'onFinish' => 'src\Async\User\Finish\UserHandler',
+        ],
+        [   
+            //work传来的命令
+            'cmd' => 'getUserAddress',
+            //task处理器
+            'handler' => 'src\Async\User\Task\UserAddressHandler',
+        ],
+
+    ], 
+```
+
+####上面的work丢过来任务后，我们可以写一个src/Async/User/Task/UserHandler.php来处理task进程要做的事情。请继承Group\Async\Handler\TaskHandler类，实现handle()即可。
+
+##### 获取work发送的数据
+
+```php   
+    
+    $this -> getData();
+
+```
+
+##### 返回处理好的数据
+
+```php   
+    
+    return $this->finish($data);
+
+```
+
+##### 完整示例
+
+```php
+    <?php
+
+    namespace src\Async\User\Task;
+
+    use Group\Async\Handler\TaskHandler;
+
+    class UserHandler extends TaskHandler
+    {
+        public function handle()
+        {   
+            $users = [
+                1 => 'user1', 
+                2 => 'user2', 
+                3 => 'user3', 
+                4 => 'user4', 
+                5 => 'user5', 
+                6 => 'user6', 
+                7 => 'user7', 
+                8 => 'user8', 
+                9 => 'user9', 
+                10 => 'user10'
+            ];
+
+            $data = $this -> getData();
+            $userId = $data['data'];
+            $user = $users[$userId];
+
+            if ($user == 'user1') {
+                $user = [];
+                $user['name'] = $users[$userId];
+                $user['cmd'] = 'needAddress';
+            }
+
+            return $this->finish($user);
+        }
+    }
+
+
+```
+
+####task任务完成之后,我们就要写最后的finish事件了(如果不定义finish事件，系统会自动返回task返回的数据)。把数据丢回给client端。我们可以写一个src/Async/User/Finish/UserHandler.php来处理task进程要做的事情。请继承Group\Async\Handler\FinishHandler类，实现handle()即可。
+
+##### 获取task最后return回来的数据
+
+```php   
+    
+    $this -> getData();
+
+```
+
+#####client端的demo 请看src/Async/User/client.php
+
+
+##### 投递task任务(在结束一个task任务之后，你还可以继续投递给其他的task)
+
+```php   
+    
+    $cmd = "getUserAddress";
+    $this -> task($cmd, $data);
+
+```
+
+##### 完整示例
+
+```php
+    <?php
+
+    namespace src\Async\User\Finish;
+
+    use Group\Async\Handler\FinishHandler;
+
+    class UserHandler extends FinishHandler
+    {
+        public function handle()
+        {
+            $user = $this -> getData();
+            if (isset($user['cmd']) && $user['cmd'] == 'needAddress') {
+                $this -> task("getUserAddress", $user['name']);
+            } else {
+                return $user;
+            }
+        }
+    }
+
+
+```
+##### 等到所有task执行完成时，系统会自动返回所有处理完成的数据。
+
+#### 在框架中使用,Group的Async封装了call方法作为client端与server端通信,包含了4个参数
+
+```php
+    
+    $server = 'user_server'; //config配置的serverName
+    $cmd = "getUserInfo"; // 传给server的指令
+    $data = [1,2,3,4,5,6,7,8,9,10]; // 数据
+    $needRecvData = true; //默认为true，false的话server端不会返回数据
+
+    \Async::call($server, $cmd, $data, $needRecvData);
+
+```
+
 ## Container
 #####Container是一个基础的容器，一些系统变量会存放于这里
 
@@ -528,7 +840,114 @@ class KernalResponseListener extends Listener
 
 #####事件绑定器Subscriber
 
+#####写一个subscriber
+```php
 
+    use Group\Events\EventSubscriberInterface;
+
+    class TestSubscriber implements EventSubscriberInterface
+    {   
+        //注册多个监听事件
+        public function getSubscribedEvents()
+        {
+            return [
+
+                //eventName  =>  listener
+                'test.start' => 'onTestStart',
+                //eventName  =>  listener, priority
+                'test.stop' => ['onTestStop', 100],
+                //eventName  => array  listener, priority
+                'test.doing' => [
+                    ['onDoA'],
+                    ['onDoB', 225],
+                ],
+            ];
+        }
+
+        public function onTestStart(\Event $event)
+        {
+            echo 'onTestStart';
+        }
+
+        public function onTestStop(\Event $event)
+        {
+            echo 'onTestStop';
+        }
+
+        public function onDoA(\Event $event)
+        {
+            echo 'onDoA';
+        }
+
+        public function onDoB(\Event $event)
+        {
+            echo 'onDoB';
+        }
+    }
+
+```
+#####添加到EventDispatcher
+```php
+        $subscriber = new TestSubscriber();
+
+        EventDispatcher::addSubscriber($subscriber);
+
+        EventDispatcher::hasListeners('test.start')
+        EventDispatcher::hasListeners('test.stop')
+        EventDispatcher::hasListeners('test.doing')
+
+        EventDispatcher::dispatch('test.start');
+        EventDispatcher::dispatch('test.stop');
+        EventDispatcher::dispatch('test.doing');
+
+        EventDispatcher::removeSubscriber($subscriber);
+```
+
+## Request
+
+#####参照symfony2的Request服务
+```php
+    public function testAction(Request $request, $id)
+    {
+        //get
+        $request -> query -> get('xxx');
+        $request -> query -> all()
+
+        //post
+        $request -> request -> get('xxx');
+        $request -> request -> all()
+        
+
+        //file 
+        $request -> file -> get('xxxx');
+    }
+```
+
+## Response
+
+#####常规
+```php
+    public function testAction(Request $request, $id)
+    {
+        return new \Response('这是文本');
+    }
+```
+
+#####json格式
+```php
+    public function testAction(Request $request, $id)
+    {
+        return new \JsonResponse('这是文本');
+    }
+```
+
+#####重定向
+```php
+    public function testAction(Request $request, $id)
+    {
+        return $this -> redirect('http://xxxx');
+    }
+```
 
 ## Session
 
@@ -597,15 +1016,85 @@ class KernalResponseListener extends Listener
      sql:migrate   [default|write|read|all] [name]  参数可不填，执行sql模板(默认会向default服务器执行.第二个参数只有当第一个参数为write|read时，才会生效,如果不填，默认为write|read下面所有服务器)
      sql:rollback   [default|write|read|all] [name]  参数可不填，执行sql模板(默认会向default服务器执行.第二个参数只有当第一个参数为write|read时，才会生效,如果不填，默认为write|read下面所有服务器)
 
-
+####自定义控制台
+#####配置文件config/app.php  
+```php
+    //扩展console命令行控制台
+    'console_commands' => [
+        'log:clear' => [
+            'command' => 'src\Web\Command\LogClearCommand', //执行的类
+            'help' => '清除日志', //提示
+        ],
+    ],
+```
 ## CronJob
-#####异步定时器介绍
+#####异步定时器介绍(支持秒级定时)
 #####依赖：[Swoole1.7.14以上版本](https://github.com/swoole/swoole-src)
 
 #####配置文件config/cron.php
+```php
+    return [
+        //是否为守护进程
+        'daemon' => true,
+    
+        'cache_dir' => 'runtime/cron',
+
+        'class_cache' => 'runtime/cron/bootstrap.class.cache',
+
+        //log路径
+        'log_dir' => 'runtime/cron',
+
+        //每个定时任务执行到达该上限时，该子进程会自动重启，释放内存
+        'max_handle' => 5,
+
+        //定时器轮询周期，精确到毫秒
+        'tick_time' => 1000,
+
+        'job' => [
+
+            [
+                'name' => 'TestLog',//任务名
+                'time' => '*/1 * * * *',//定时规则 分 小时 天 周 月
+                'command' => 'src\Web\Cron\Test',//执行的类库
+            ],
+
+            [
+                'name' => 'testCache',
+                'time' => '24 */2 * * *',//定时规则 分 小时 天 周 月
+                'command' => 'src\Web\Cron\TestCache',
+            ],
+
+            [
+                'name' => 'testSql',
+                'time' => '*/2 * * * *',//定时规则 分 小时 天 周 月
+                'command' => 'src\Web\Cron\TestSql',
+            ],
+
+        ],
+    ];
+```
+
+#####执行的类库示例
+```php
+
+    namespace src\Web\Cron;
+
+    use Group\Cron\CronJob;
+
+    //继承CronJob父类
+    class Test extends CronJob
+    {   
+        //实现handle方法即可  框架内部所有服务都可正常使用
+        public function handle()
+        {
+            \Log::info('nihao', ['time' => date('Y-m-d H:i:s', time())], 'cron.job');
+        }
+
+    }
+```
 #####执行命令
 
-    app/cron start|restart|stop
+    app/cron start|restart|stop|status|exec (job name)|rejob (job name)
 
 ## Queue
 #####异步队列服务介绍
@@ -657,6 +1146,27 @@ class TestJob extends QueueJob
 }
 ```
 #####队列图形化管理工具[beanstalk_console](https://github.com/ptrofimov/beanstalk_console) 
+
+## RPC
+#####一个启动命令完成rpc服务！！不与其他业务冲突！！
+#####依赖：[Swoole](https://github.com/swoole/swoole-src)
+#####启用config/app.php 中的serviceProviders里面的RpcServiceProvider
+#####配置config/rpc.php文件,
+#####服务启动 php rpc_server.php &
+#####服务热重启 php rpc_server.php -s reload
+#####注意服务会默认开放src/Services下面所有服务的公有函数的调用
+#####使用
+```php
+    
+    //指调用User模块下UserService 的getUser方法， 最后跟上参数
+    $res = \Rpc::call('User:User', 'getUser', [1]);
+    //错误返回false
+    var_dump($res);
+
+```
+#####用途，做soa服务化管理时。用于分布式。
+
+
 ## 单元测试
 
     phpunit --bootstrap app/test.php src

@@ -22,6 +22,7 @@
   {% block stylesheets %}
   {% endblock %}
 
+  {{ debugHeader() }} 
 </head>
 <body>
 <!-- {#   {% include 'web/views/public/head.html.twig' %} #} -->
@@ -50,5 +51,6 @@
     {% block head_scripts %}{% endblock %}
 {# amd  requirejs: #}
   {# <script data-main="/asset/js/index" src="/asset/js/require.js"></script>#}
+  {{ debug() }} 
 </body>
 </html>
