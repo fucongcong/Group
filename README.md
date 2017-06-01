@@ -65,6 +65,7 @@ PHP交流群：390536187
 - [Request](#user-content-request)
 - [Response](#user-content-response)
 - [Session](#user-content-session)
+- [StaticCache](#user-content-staticCache)
 - [Log](#user-content-log)
 - [Queue](#user-content-queue)
 - [Test](#user-content-test)
@@ -772,6 +773,28 @@ class GroupServiceImpl extends GroupBaseService implements GroupService
 
     FileCache::get('test.php');
     FileCache::get('test.php', 'runtime/cache/test/');
+
+```
+
+## StaticCache
+
+##### 静态变量形式的缓存(当前进程有效)
+
+```php
+
+    use StaticCache;
+
+    StaticCache::set('foo', 'bar');
+    //默认该变量可以被释放，也可设置不释放。使用情况：在使用Async服务中，会涉及静态变量释放的问题。
+    StaticCache::set('foo', 'bar', false);
+
+    StaticCache::get('foo'); //return bar
+
+    //刷新可释放的静态变量
+    StaticCache::flush();
+
+    //刷新所有静态变量
+    StaticCache::flushAll();
 
 ```
 
