@@ -1,4 +1,5 @@
 <?php
+
 namespace src\Services\User\Rely;
 
 use Service;
@@ -9,5 +10,4 @@ abstract class UserBaseService extends Service
     {
         return $this->createDao("User:User");
     }
-
 }

@@ -10,6 +10,7 @@ class UserHandler extends FinishHandler
 	{
 		$user = $this -> getData();
 		if (isset($user['cmd']) && $user['cmd'] == 'needAddress') {
+			unset($user['cmd']);
 			$this -> task("getUserAddress", $user['name']);
 		} else {
 			return $user;

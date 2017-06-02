@@ -65,7 +65,7 @@ PHP交流群：390536187
 - [Request](#user-content-request)
 - [Response](#user-content-response)
 - [Session](#user-content-session)
-- [StaticCache](#user-content-staticCache)
+- [StaticCache](#user-content-staticcache)
 - [Log](#user-content-log)
 - [Queue](#user-content-queue)
 - [Test](#user-content-test)
