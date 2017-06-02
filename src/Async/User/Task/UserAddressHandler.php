@@ -10,8 +10,8 @@ class UserAddressHandler extends TaskHandler
 	{	
 		$data = $this -> getData();
 
-		$userName = $data['data'];
-		$user = ['hangzhou', $userName];
+		$user = $data['data'];
+		$user['address'] = 'HZ';
 
 		return $this->finish($user);
 	}
