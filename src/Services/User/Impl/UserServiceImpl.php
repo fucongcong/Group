@@ -11,4 +11,9 @@ class UserServiceImpl extends UserBaseService implements UserService
 	{
 		return $this->getUserDao()->getUser($id);
 	}
+
+    public function addUser($user)
+    {
+        return $this->getUserDao()->addUser($user);
+    }
 }
