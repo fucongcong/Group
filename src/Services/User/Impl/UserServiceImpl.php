@@ -16,4 +16,29 @@ class UserServiceImpl extends UserBaseService implements UserService
     {
         return $this->getUserDao()->addUser($user);
     }
+
+    public function addUsers($users)
+    {
+        //Transaction
+        $connection = app('dao')->getDefault();
+        try {
+            $connection->beginTransaction();
+            foreach ($users as $user) {
+                $this->addUser($user);
+            }
+            $connection->commit();
+        } catch (\Exception $e) {
+            $connection->rollback();
+        }
+    }
+
+    public function getUserByName($nickname)
+    {
+        return $this->getUserDao()->getUserByName($nickname);
+    }
+
+    public function updateUserPassword($userId, $password)
+    {
+        return $this->getUserDao()->updateUserPassword($userId, $password);
+    }
 }
