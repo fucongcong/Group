@@ -6,100 +6,100 @@ return
 
         'default' => [
 
-            "database_driver" => "mysql",
+            "driver" => "pdo_mysql",
 
-            "database_host" => "127.0.0.1",
+            "host" => "127.0.0.1",
 
-            "database_port" => "3306",
+            "port" => "3306",
 
-            "database_name" => "Group",
+            "dbname" => "Group",
 
-            "database_user" => "root",
+            "user" => "cm",
 
-            "database_password" => "123",
+            "password" => "123",
 
-            "database_charset" => "utf8",
+            "charset" => "utf8",
         ],
 
-        // 'write' => [
+        'write' => [
 
-        //     'master1' => [
+            'master1' => [
 
-        //         "database_driver" => "mysql",
+                "driver" => "pdo_mysql",
 
-        //         "database_host" => "127.0.0.1",
+                "host" => "127.0.0.1",
 
-        //         "database_port" => "3306",
+                "port" => "3306",
 
-        //         "database_name" => "Group1",
+                "dbname" => "Group1",
 
-        //         "database_user" => "root",
+                "user" => "root",
 
-        //         "database_password" => "123",
+                "password" => "123",
 
-        //         "database_charset" => "utf8",
-        //     ],
+                "charset" => "utf8",
+            ],
 
-        //     'master2' => [
+            'master2' => [
 
-        //         "database_driver" => "mysql",
+                "driver" => "pdo_mysql",
 
-        //         "database_host" => "127.0.0.1",
+                "host" => "127.0.0.1",
 
-        //         "database_port" => "3306",
+                "port" => "3306",
 
-        //         "database_name" => "Group2",
+                "dbname" => "Group2",
 
-        //         "database_user" => "root",
+                "user" => "root",
 
-        //         "database_password" => "123",
+                "password" => "123",
 
-        //         "database_charset" => "utf8",
-        //     ],
-        // ],
+                "charset" => "utf8",
+            ],
+        ],
 
-        // 'read' => [
+        'read' => [
 
-        //     'slave1' => [
+            'slave1' => [
 
-        //         "database_driver" => "mysql",
+                "driver" => "pdo_mysql",
 
-        //         "database_host" => "127.0.0.1",
+                "host" => "127.0.0.1",
 
-        //         "database_port" => "3306",
+                "port" => "3306",
 
-        //         "database_name" => "Group3",
+                "dbname" => "Group3",
 
-        //         "database_user" => "root",
+                "user" => "root",
 
-        //         "database_password" => "123",
+                "password" => "123",
 
-        //         "database_charset" => "utf8",
-        //     ],
+                "charset" => "utf8",
+            ],
 
-        //     'slave2' =>  [
+            'slave2' =>  [
 
-        //         "database_driver" => "mysql",
+                "driver" => "pdo_mysql",
 
-        //         "database_host" => "127.0.0.1",
+                "host" => "127.0.0.1",
 
-        //         "database_port" => "3306",
+                "port" => "3306",
 
-        //         "database_name" => "Group4",
+                "dbname" => "Group4",
 
-        //         "database_user" => "root",
+                "user" => "root",
 
-        //         "database_password" => "123",
+                "password" => "123",
 
-        //         "database_charset" => "utf8",
-        //     ],
-        // ],
+                "charset" => "utf8",
+            ],
+        ],
     ],
 
 
 
     //redis null
-    'cache' => 'null',
+    'cache' => 'redis',
 
     'redis' => [
 
