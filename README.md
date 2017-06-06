@@ -1180,7 +1180,7 @@ class TestJob extends QueueJob
 
 ## RPC
 ##### 一个启动命令完成rpc服务！！不与其他业务冲突！！
-##### 依赖：[Swoole](https://github.com/swoole/swoole-src)
+##### 依赖：[Swoole 最新支持到v1.9.10](https://github.com/swoole/swoole-src)
 ##### 启用config/app.php 中的serviceProviders里面的RpcServiceProvider
 ##### 配置config/rpc.php文件,
 ##### 服务启动 php rpc_server.php &
