@@ -13,7 +13,7 @@
 - 一键启动定时任务，还在用系统自带的cronjob？（支持子进程重启,自动重启,防止内存泄漏）
 - 一键启动队列任务，还在自己集成队列服务？
 - 目录结构清晰简单
-- 轻量级。框架的实际代码目前应该在5千行左右
+- 轻量级
 - 包管理composer支持。
 - 架构可扩展性，规范的命名空间化，自己扩展类库随时可行
 - Debug工具条支持，找性能问题？找你的sql哪里慢了？找视图层渲染变量？找模板？debug条一览无余
@@ -324,90 +324,64 @@ class GroupServiceImpl extends GroupBaseService implements GroupService
 ```
 
 ## 数据层
-##### 支持主从配置(详见配置文件)
+##### 集成Doctrine，增加断线重连机制，支持主从配置(详见配置文件)
 
-##### 如何使用
+##### 如何使用example
 
 ```php
 <?php
 
-    namespace src\Dao\Group\Impl;
+namespace src\Dao\User\Impl;
 
-    use Dao;
-    use src\Dao\Group\GroupDao;
+use Dao;
+use src\Dao\User\UserDao;
 
-    class GroupDaoImpl extends Dao implements GroupDao
+class UserDaoImpl extends Dao implements UserDao
+{
+    protected $table = "user";
+
+    public function getUser($id)
     {
-        //定以数据表
-        protected $tables="groups";
-
-        //具体方法
-        public function getGroup($id)
-        {
-            $sql="SELECT * FROM {$this->tables} WHERE id=:id LIMIT 0,1";
-            //动态参数绑定
-            $bind = array('id' => $id);
-            //读取默认配置
-            //$group = $this->getDefault()->fetchOne($sql, $bind);
-
-            //读取写服务器配置，如果没有指定具体参数，随机写入分配的服务器
-            //$group = $this->getWrite('master1')->fetchOne($sql, $bind);
-            //$group = $this->getWrite('master2')->fetchOne($sql, $bind);
-
-            //读取读服务器配置，如果没有指定具体参数，随机读取分配的服务器
-            //$group = $this->getRead()->fetchOne($sql, $bind);
-            return $group ? $group : null;
-        }
-
+        $queryBuilder = $this->getDefault()->createQueryBuilder();
+        $queryBuilder
+            ->select("*")
+            ->from($this->table)
+            ->where('id = ?')
+            ->setParameter(0, $id);
+            
+        return $queryBuilder->execute()->fetch();
     }
+
+    public function addUser($user)
+    {
+        $conn = $this->getDefault();
+        $affected = $conn->insert($this->table, $user);
+        if ($affected <= 0) {
+            return fasle;
+        }
+        return $conn->lastInsertId();
+    }
+
+    public function getUserByName($nickname)
+    {
+        $queryBuilder = $this->getDefault()->createQueryBuilder();
+        $queryBuilder
+            ->select("*")
+            ->from($this->table)
+            ->where('nickname = ?')
+            ->setParameter(0, $nickname);
+            
+        return $queryBuilder->execute()->fetch();
+    }
+
+    public function updateUserPassword($userId, $password)
+    {
+        return $this->getDefault()->update($this->table, ['password' => $password], ['id' => $userId]);
+    }
+}
+
 ```
 
-##### 支持的语法
-
-##### fetch(*)
-```php
-    $pdo = $this->getDefault();
-
-    $stm  = 'SELECT * FROM test WHERE foo = :foo AND bar = :bar';
-    $bind = array('foo' => 'baz', 'bar' => 'dib');
-    $result = $pdo->fetchAll($stm, $bind);
-
-    // fetchAssoc() returns an associative array of all rows where the key is the
-    // first column, and the row arrays are keyed on the column names
-    $result = $pdo->fetchAssoc($stm, $bind);
-
-    // fetchGroup() is like fetchAssoc() except that the values aren't wrapped in
-    // arrays. Instead, single column values are returned as a single dimensional
-    // array and multiple columns are returned as an array of arrays
-    // Set style to PDO::FETCH_NAMED when values are an array
-    // (i.e. there are more than two columns in the select)
-    $result = $pdo->fetchGroup($stm, $bind, $style = PDO::FETCH_COLUMN)
-
-    // fetchObject() returns the first row as an object of your choosing; the
-    // columns are mapped to object properties. an optional 4th parameter array
-    // provides constructor arguments when instantiating the object.
-    $result = $pdo->fetchObject($stm, $bind, 'ClassName', array('ctor_arg_1'));
-
-    // fetchObjects() returns an array of objects of your choosing; the
-    // columns are mapped to object properties. an optional 4th parameter array
-    // provides constructor arguments when instantiating the object.
-    $result = $pdo->fetchObjects($stm, $bind, 'ClassName', array('ctor_arg_1'));
-
-    // fetchOne() returns the first row as an associative array where the keys
-    // are the column names
-    $result = $pdo->fetchOne($stm, $bind);
-
-    // fetchPairs() returns an associative array where each key is the first
-    // column and each value is the second column
-    $result = $pdo->fetchPairs($stm, $bind);
-
-    // fetchValue() returns the value of the first row in the first column
-    $result = $pdo->fetchValue($stm, $bind);
-
-    // fetchAffected() returns the number of affected rows
-    $stm = "UPDATE test SET incr = incr + 1 WHERE foo = :foo AND bar = :bar";
-    $row_count = $pdo->fetchAffected($stm, $bind);
-```
 ##### 数组转换
 
 ```php

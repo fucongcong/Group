@@ -3,21 +3,21 @@ return [
 
     //异步消息队列的配置
     //分布式
-    'server' => [
-        [
-            'host' => "127.0.0.1",
-            'port' => 11300
-        ],
-        [
-            'host' => "127.0.0.1",
-            'port' => 11299
-        ],
-    ],
-    //单机
     // 'server' => [
-    //     'host' => "127.0.0.1",
-    //     'port' => 11300
+    //     [
+    //         'host' => "127.0.0.1",
+    //         'port' => 11300
+    //     ],
+    //     [
+    //         'host' => "127.0.0.1",
+    //         'port' => 11299
+    //     ],
     // ],
+    //单机
+    'server' => [
+        'host' => "127.0.0.1",
+        'port' => 11300
+    ],
 
     //log路径
     'log_dir' => 'runtime/queue',
@@ -32,23 +32,23 @@ return [
     'queue_jobs' => [
 
         [
-            'tube' => 'testjob1',//队列的名称
-            'job'  => 'src\Web\Queue\TestJob',//需要执行的任务
+            'tube' => 'update_user_info',//队列的名称
+            'job'  => 'src\Web\Queue\UpdateUser',//需要执行的任务
             //处理当前队列的进程数
-            'task_worker_num' => 3,
+            'task_worker_num' => 10,
         ],
-        [
-            'tube' => 'testjob3',//队列的名称
-            'job'  => 'src\Web\Queue\TestJob',//需要执行的任务
-            //处理当前队列的进程数
-            'task_worker_num' => 1,
-        ],
-        [
-            'tube' => 'testjob2',//队列的名称
-            'job'  => 'src\Web\Queue\TestJob',//需要执行的任务
-            //处理当前队列的进程数
-            'task_worker_num' => 2,
-        ]
+        // [
+        //     'tube' => 'testjob3',//队列的名称
+        //     'job'  => 'src\Web\Queue\TestJob',//需要执行的任务
+        //     //处理当前队列的进程数
+        //     'task_worker_num' => 1,
+        // ],
+        // [
+        //     'tube' => 'testjob2',//队列的名称
+        //     'job'  => 'src\Web\Queue\TestJob',//需要执行的任务
+        //     //处理当前队列的进程数
+        //     'task_worker_num' => 2,
+        // ]
 
     ],
 

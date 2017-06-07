@@ -14,7 +14,7 @@ return
 
             "dbname" => "Group",
 
-            "user" => "cm",
+            "user" => "root",
 
             "password" => "123",
 

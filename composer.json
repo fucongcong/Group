@@ -21,5 +21,11 @@
     "require": {
         "php": ">=5.3",
         "group/group-framework": "dev-master"
+    },
+    "repositories": {
+        "packagist": {
+            "type": "composer",
+            "url": "https://packagist.phpcomposer.com"
+        }
     }
 }

@@ -7,15 +7,44 @@ use src\Dao\User\UserDao;
 
 class UserDaoImpl extends Dao implements UserDao
 {
-    protected $tables = "user";
+    protected $table = "user";
 
     public function getUser($id)
     {
-    	$sql="SELECT * FROM {$this->tables} WHERE id=:id LIMIT 0,1";
-        //动态参数绑定
-        $bind = array('id' => $id);
-        //读取读服务器配置，如果没有指定具体参数，随机读取分配的服务器
-        $user = $this->getDefault()->fetchOne($sql, $bind);
-        return $user ? $user : null;
+        $queryBuilder = $this->getDefault()->createQueryBuilder();
+        $queryBuilder
+            ->select("*")
+            ->from($this->table)
+            ->where('id = ?')
+            ->setParameter(0, $id);
+            
+        return $queryBuilder->execute()->fetch();
+    }
+
+    public function addUser($user)
+    {
+        $conn = $this->getDefault();
+        $affected = $conn->insert($this->table, $user);
+        if ($affected <= 0) {
+            return fasle;
+        }
+        return $conn->lastInsertId();
+    }
+
+    public function getUserByName($nickname)
+    {
+        $queryBuilder = $this->getDefault()->createQueryBuilder();
+        $queryBuilder
+            ->select("*")
+            ->from($this->table)
+            ->where('nickname = ?')
+            ->setParameter(0, $nickname);
+            
+        return $queryBuilder->execute()->fetch();
+    }
+
+    public function updateUserPassword($userId, $password)
+    {
+        return $this->getDefault()->update($this->table, ['password' => $password], ['id' => $userId]);
     }
 }

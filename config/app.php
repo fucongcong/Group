@@ -32,7 +32,7 @@ return [
 
     //需要实例化的单例
     'singles' => [
-        //like  'demo'       => 'src\demo\demo',
+        'dao'       => 'Group\Dao\Dao',
     ],
 
     //扩展console命令行控制台
