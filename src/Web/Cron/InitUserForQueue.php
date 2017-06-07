@@ -4,12 +4,12 @@ namespace src\Web\Cron;
 
 use Group\Cron\CronJob;
 
-class InitUser extends CronJob
+class InitUserForQueue extends CronJob
 {
     public function handle()
     {   
         $users = [];
-        for ($i=0; $i < 10; $i++) { 
+        for ($i=0; $i < 300; $i++) { 
             $users[] = [
                 'nickname' => 'user_'.$i.time(),
                 'email' => 'test@qq.com'.$i.time(),
@@ -18,6 +18,13 @@ class InitUser extends CronJob
         }
 
         $this->getUserService()->addUsers($users);
+
+        foreach ($users as $user) {
+            $res = \Queue::put('update_user_info', json_encode($user));
+            // if ($res) {
+            //     \Cache::getRedis()->incr('cron_count');
+            // }
+        }
     }
 
     public function getUserService()

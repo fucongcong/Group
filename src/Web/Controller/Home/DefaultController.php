@@ -10,6 +10,10 @@ class DefaultController extends Controller
     //一个action 与route对应
     public function indexAction()
     {	
+     //    dump(\Rpc::call('User:User', 'getUser', [1]));
+
+     //    dump(\Rpc::service('User:User')->getUser(1));
+
     	// $server = 'user_server'; //config配置的serverName
 	    // $cmd = "getUserInfo"; // 传给server的指令
 	    // $data = [1,2,3,4,5,6,7,8,9,10]; // 数据
