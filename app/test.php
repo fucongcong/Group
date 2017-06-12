@@ -11,6 +11,5 @@ define('__ROOT__', realpath(dirname(__FILE__)) . DIRECTORY_SEPARATOR . "../");
 
 $app = new App();
 $app -> initSelf();
-$app -> doBootstrap($loader);
 $app -> registerServices();
 $app -> singleton('container') -> setAppPath(__ROOT__);
