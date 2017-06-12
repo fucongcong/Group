@@ -2,6 +2,8 @@
 
 [详细文档](https://fucongcong.gitbooks.io/group-doc/content/)
 
+#### Group将出异步协程的单独分支，敬请期待与探索。
+
 [![Code Climate](https://codeclimate.com/github/fucongcong/framework/badges/gpa.svg)](https://codeclimate.com/github/fucongcong/framework)
 [![Build Status](https://travis-ci.org/fucongcong/Group.svg?branch=master)](https://travis-ci.org/fucongcong/Group)
 
@@ -9,7 +11,6 @@
 
 首先现在流行的框架有很多。编写这个框架，其实可以说这个框架的特色，与其他框架的区别。
 
-- 支持普通业务场景的功能开发，4层架构。
 - async多task处理任务支持，业务逻辑复杂性能差？多进程帮你解决性能问题！
 - 一键启动rpc服务，不与主业务冲突，轻松完成后期SOA转行，支持TCP HTTP Websocket协议
 - 一键启动定时任务，还在用系统自带的cronjob？（支持子进程重启,自动重启,防止内存泄漏）
