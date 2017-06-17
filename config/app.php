@@ -32,7 +32,6 @@ return [
 
     //需要实例化的单例
     'singles' => [
-        'dao'       => 'Group\Dao\Dao',
     ],
 
     //扩展console命令行控制台
@@ -48,7 +47,7 @@ return [
     'swoole_port' => 9777,
     'swoole_setting' => [
         'reactor_num' => 4,
-        'worker_num' => 25,    //worker process num
+        'worker_num' => 2,    //worker process num
         'backlog' => 128,   //listen backlog
         'max_request' => 2000,
         'heartbeat_idle_time' => 30,

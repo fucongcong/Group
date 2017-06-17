@@ -11,9 +11,6 @@ return [
     //log路径
     'log_dir' => 'runtime/cron',
 
-    //每个定时任务执行到达该上限时，该子进程会自动重启，释放内存
-    'max_handle' => 30,
-
     //定时器轮询周期，精确到毫秒
     'tick_time' => 1000,
 
