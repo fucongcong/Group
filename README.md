@@ -2,7 +2,7 @@
 
 [详细文档](https://fucongcong.gitbooks.io/group-doc/content/)
 
-#### Group将出异步协程的单独分支，敬请期待与探索。
+#### Group推出异步协程分支 [猛戳](https://github.com/fucongcong/Group-Co)。
 
 [![Code Climate](https://codeclimate.com/github/fucongcong/framework/badges/gpa.svg)](https://codeclimate.com/github/fucongcong/framework)
 [![Build Status](https://travis-ci.org/fucongcong/Group.svg?branch=master)](https://travis-ci.org/fucongcong/Group)
