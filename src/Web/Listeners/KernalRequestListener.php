@@ -4,7 +4,6 @@ namespace src\Web\Listeners;
 
 use Listener;
 use Event;
-use Firebase\JWT\JWT;
 use Config;
 use Session;
 
