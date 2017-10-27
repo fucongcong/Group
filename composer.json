@@ -20,7 +20,7 @@
     ],
     "require": {
         "php": ">=5.3",
-        "group/group-framework": "dev-master"
+        "group/group-framework": "dev-develop"
     },
     "repositories": {
         "packagist": {

@@ -14,8 +14,8 @@
  {#  <meta content="{{ csrf_token('site') }}" name="csrf-token" /> #}
 
   {% block stylesheets %}
-    <link href="{{ asset("asset/css/bootstrap.min.css") }}" rel="stylesheet">
-    <link href="{{ asset("asset/css/web.css") }}" rel="stylesheet">
+    <link href="{{ assets("css/bootstrap.min.css") }}" rel="stylesheet">
+    <link href="{{ assets("css/web.css") }}" rel="stylesheet">
 
   {% endblock %}
 
@@ -32,22 +32,6 @@
 
 {#   {% include 'web/views/public/bottom.html.twig' %} #}
 
-{# cmd  seajs: #}
-{#
-    <script>
-     var app = {};
-      app.jspath="/asset/lib/sea-modules";
-    </script>
-    <script src="{{ asset("asset/lib/sea-modules/seajs/seajs/2.2.1/sea.js") }}"></script>
-    <script src="{{ asset("asset/lib/seajs-config.js") }}"></script>
-    <script>
-    seajs.use("/asset/js/index")
-    </script>
-
-  #}
-
-{# amd  requirejs: #}
-  {# <script data-main="/asset/js/index" src="/asset/js/require.js"></script>#}
   {{ debug() }} 
 </body>
 </html>
