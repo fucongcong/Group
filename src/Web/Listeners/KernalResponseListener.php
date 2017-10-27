@@ -1,6 +1,6 @@
 <?php
 
-namespace src\web\Listeners;
+namespace src\Web\Listeners;
 
 use Listener;
 use Event;
