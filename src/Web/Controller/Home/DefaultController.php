@@ -21,6 +21,12 @@ class DefaultController extends Controller
 	    // $users = \Async::call($server, $cmd, $data, $needRecvData);
     	// dump(json_decode($users, true));
         //渲染模版 模版的启始路径可在config的view.php配置
+        //
+        \Log::info('start', []);
+        service("User:User")->testAop(2);
+        service("User:User")->testAop(1);
+        \Log::info('end', []);
+        
         return $this -> render('Web/Views/Default/index.html.twig');
     }
 }
