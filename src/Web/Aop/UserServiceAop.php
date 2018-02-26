@@ -17,7 +17,7 @@ class UserServiceAop {
         Log::info('after userService', [$res]);
     }
 
-    public function throw($id,Exception $e)
+    public function exception($id,Exception $e)
     {
         Log::info('throw userService', [$e->getMessage()]);
     }
