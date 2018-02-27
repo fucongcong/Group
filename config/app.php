@@ -31,6 +31,25 @@ return [
     'singles' => [
     ],
 
+    //aop切面
+    'aop' => [
+        //singles实例化的单例的别名
+        'src\Services\User\Impl\UserServiceImpl' => [
+            //方法执行前
+            'before' => [
+                //对应 方法 -> 通知处理 
+                'testAop' => ['src\Web\Aop\UserServiceAop::before', 'src\Web\Aop\UserServiceAop::before']
+            ],
+            'after' => [
+                'testAop' => 'src\Web\Aop\UserServiceAop::after'
+            ],
+            'throw' => [
+                //对应 方法 -> 通知处理
+                'testAop' => 'src\Web\Aop\UserServiceAop::exception'
+            ],
+        ], 
+    ],
+
     //扩展console命令行控制台
     'console_commands' => [
         'log:clear' => [

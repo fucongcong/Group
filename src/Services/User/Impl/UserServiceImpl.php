@@ -41,4 +41,13 @@ class UserServiceImpl extends UserBaseService implements UserService
     {
         return $this->getUserDao()->updateUserPassword($userId, $password);
     }
+
+    public function testAop($id)
+    {
+        if ($id > 1) {
+            return $id;
+        } else {
+            throw new \Exception("Error Id", 1);
+        }
+    }
 }
