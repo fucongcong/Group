@@ -30,5 +30,4 @@
 
 
 轻量级框架，通俗易懂，快速上手。点击右上star!
-PHP交流群：390536187
 联系我Email: cc@xitongxue.com,coco.fu@clothesmake.com
