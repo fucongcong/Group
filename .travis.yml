@@ -5,6 +5,8 @@ php:
 install:
     - composer install
 script:
+    - wget https://phar.phpunit.de/phpunit-7.0.phar
+    - php phpunit-7.0.phar --version
     - sudo find -L ./app -name '*.php' -print0 | xargs -0 -n 1 -P 4 php -l
     - sudo find -L ./src -name '*.php' -print0 | xargs -0 -n 1 -P 4 php -l
     - sudo find -L ./config -name '*.php' -print0 | xargs -0 -n 1 -P 4 php -l
