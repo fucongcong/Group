@@ -9,11 +9,12 @@ $loader = require __DIR__.'/../vendor/autoload.php';
 $loader->setUseIncludePath(true);
 
 define('__ROOT__', realpath(dirname(__FILE__)) . DIRECTORY_SEPARATOR . "../");
+define('__FILEROOT__', realpath(dirname(__FILE__)) . DIRECTORY_SEPARATOR . "../");
 
 $app = new App();
-$app -> initSelf();
-$provider = new Group\Cache\FileCacheServiceProvider($app::getInstance());
-$provider -> register();
+$app->initSelf();
+$provider = new Group\Cron\FileCacheServiceProvider($app::getInstance());
+$provider->register();
 
 $cron = new Cron($argv, $loader);
 $cron -> run();
